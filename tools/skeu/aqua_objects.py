@@ -94,8 +94,8 @@ def tv(g: Glyph) -> None:
 
 
 def joined_displays(g: Glyph) -> None:
-    g.stroke(A.rr(1.2, 3.4, 6.6, 7.0, 1.0), STROKE)
-    g.stroke(A.rr(8.2, 3.4, 6.6, 7.0, 1.0), STROKE)
+    g.stroke(A.rr(1.7, 3.4, 6.2, 7.0, 1.0), STROKE)
+    g.stroke(A.rr(8.1, 3.4, 6.2, 7.0, 1.0), STROKE)
     g.bar(7.0, 9.0, 2.0, 1.6, 0.4)
     g.stroke(A.polyline([(2.0, 14.0), (14.0, 14.0)]), 1.3)
 
@@ -279,7 +279,7 @@ def thunderbolt(g: Glyph, acquiring: bool = False) -> None:
              (8.5, 7.2)], 0.5)
     if acquiring:
         for index in range(2):
-            g.stroke(A.arc(12.8, 4.2, 1.4 + index * 1.3, 20, 250), 1.0)
+            g.stroke(A.arc(11.9, 4.4, 1.2 + index * 1.1, 20, 250), 1.0)
 
 
 def network_wired(g: Glyph) -> None:
@@ -308,10 +308,10 @@ def printer(g: Glyph) -> None:
 def printer_network(g: Glyph) -> None:
     """A printer with a signal badge: shared on the wire."""
     A.printer(g, 7.6, 7.6)
-    G._badge(g, 12.4, 12.2, 2.8)
-    g.hole(A.circ(11.2, 13.0, 0.5))
+    G._badge(g, 11.9, 11.9, 2.8)
+    g.hole(A.circ(10.7, 12.7, 0.5))
     for index in range(2):
-        g.erase(A.arc(11.2, 13.0, 1.4 + index * 1.3, 270, 360), 0.85)
+        g.erase(A.arc(10.7, 12.7, 1.4 + index * 1.3, 270, 360), 0.85)
 
 
 def scanner(g: Glyph) -> None:
@@ -429,9 +429,9 @@ def fingerprint(g: Glyph) -> None:
 def face_id(g: Glyph) -> None:
     """A face scan: corner brackets around two eyes and a mouth."""
     for sx, sy in ((1, 1), (-1, 1), (1, -1), (-1, -1)):
-        g.stroke(A.polyline([(8.0 + sx * 6.4, 8.0 + sy * 2.6),
-                             (8.0 + sx * 6.4, 8.0 + sy * 6.4),
-                             (8.0 + sx * 2.6, 8.0 + sy * 6.4)]), 1.4)
+        g.stroke(A.polyline([(8.0 + sx * 6.2, 8.0 + sy * 2.6),
+                             (8.0 + sx * 6.2, 8.0 + sy * 6.2),
+                             (8.0 + sx * 2.6, 8.0 + sy * 6.2)]), 1.4)
     g.dot(5.8, 6.6, 0.95)
     g.dot(10.2, 6.6, 0.95)
     return g.stroke(A.arc(8.0, 7.6, 2.4, 30, 150), 1.2)
@@ -500,7 +500,7 @@ def microphone_sensitivity(g: Glyph, level: str = "medium") -> None:
     A.microphone(g)
     waves = {"muted": 0, "low": 1, "medium": 2, "high": 3}[level]
     for index in range(waves):
-        g.stroke(A.arc(8.0, 6.2, 3.4 + index * 1.8, 20, 160), 1.1)
+        g.stroke(A.arc(8.0, 6.2, 3.0 + index * 1.3, 20, 160), 1.1)
     if level == "muted":
         g.erase(A.polyline([(3.4, 12.6), (12.6, 3.4)]), 1.9)
         g.stroke(A.polyline([(3.4, 12.6), (12.6, 3.4)]), STROKE)
@@ -586,7 +586,9 @@ def cellular_signal(g: Glyph, strength: int, generation: str = "",
         elif text == "H":
             _digit(g, 10.2, 2.4, "H", width=2.2)
     if badge == "acquiring":
-        g.stroke(A.arc(8.0, 13.2, 7.6, 196, 344), 0.9)
+        # A dashed ring tight around the bars; at 7.6 units of radius it ran
+        # out past the tile on both sides.
+        g.stroke(A.arc(8.0, 12.8, 6.2, 196, 344), 0.9)
         return
     if badge:
         G._badge(g, 12.2, 12.4, 2.6, 1.0)
@@ -642,7 +644,7 @@ def network_state(g: Glyph, kind: str = "wired", state: str = "") -> None:
         network_wired(g)
         if state == "acquiring":
             for index in range(2):
-                g.stroke(A.arc(12.4, 12.2, 1.5 + index * 1.5, 180, 330), 1.0)
+                g.stroke(A.arc(11.7, 12.0, 1.3 + index * 1.2, 180, 330), 1.0)
         elif state == "disconnected":
             A.slash(g)
     elif kind == "vpn":
@@ -662,8 +664,10 @@ def network_state(g: Glyph, kind: str = "wired", state: str = "") -> None:
             G._badge(g, 12.4, 12.4, 2.6)
             G._cut_cross(g, 12.4, 12.4, 1.35, 1.15)
     elif kind == "error":
+        # A cut only rubs out ink that is already there, and a ring is a
+        # stroke: the cross has to be *drawn*, or the icon is a bare circle.
         g.ring(8.0, 8.0, 5.6, STROKE)
-        G._cut_cross(g, 8.0, 8.0, 2.6, 1.8)
+        A.cross(g, 8.0, 8.0, 2.4, 1.7)
     elif kind == "offline":
         g.ring(8.0, 8.0, 5.6, STROKE)
         g.erase(A.polyline([(3.0, 13.0), (13.0, 3.0)]), 2.2)
@@ -695,7 +699,7 @@ def bluetooth_state(g: Glyph, kind: str = "active") -> None:
         g.stroke(A.polyline([(2.6, 13.4), (13.4, 2.6)]), STROKE)
     elif kind == "acquiring":
         for index in range(2):
-            g.stroke(A.arc(8.0, 7.6, 4.4 + index * 2.2, 200, 340), 1.1)
+            g.stroke(A.arc(8.0, 7.6, 4.2 + index * 1.8, 200, 340), 1.1)
     elif kind == "disconnected":
         g.stroke(A.polyline([(5.4, 4.2), (10.6, 4.2)]), 1.2)
     elif kind == "hardware-disabled":
@@ -719,12 +723,12 @@ def airplane(g: Glyph, off: bool = False) -> None:
 def rotation(g: Glyph, locked: bool = False) -> None:
     """A device with the screen-turn arrow around it."""
     g.stroke(A.rr(6.0, 4.6, 4.0, 6.8, 1.0), STROKE)
-    g.stroke(A.arc(8.0, 8.0, 6.6, -30, 205), 1.5)
-    g.solid([(13.2, 1.9), (14.8, 6.0), (10.5, 5.7)], 0.5)
+    g.stroke(A.arc(8.0, 8.0, 6.0, -30, 205), 1.5)
+    g.solid([(12.6, 2.3), (13.9, 5.9), (10.3, 5.6)], 0.5)
     if locked:
-        g.dot(12.4, 12.2, 2.9)
-        g.hole(A.rr(11.6, 12.0, 1.7, 1.6, 0.4))
-        g.erase(A.arc(12.4, 11.8, 0.9, 180, 360), 0.9)
+        g.dot(11.9, 11.7, 2.7)
+        g.hole(A.rr(11.1, 11.5, 1.6, 1.5, 0.4))
+        g.erase(A.arc(11.9, 11.3, 0.85, 180, 360), 0.9)
 
 
 def orientation(g: Glyph, kind: str = "landscape") -> None:
@@ -744,8 +748,8 @@ def brightness(g: Glyph, kind: str = "display") -> None:
     g.dot(8.0, 7.0, 3.2)
     for index in range(8):
         angle = math.radians(index * 45)
-        g.stroke(A.polyline([(8.0 + 4.4 * math.cos(angle), 7.0 + 4.4 * math.sin(angle)),
-                             (8.0 + 5.8 * math.cos(angle), 7.0 + 5.8 * math.sin(angle))]),
+        g.stroke(A.polyline([(8.0 + 4.1 * math.cos(angle), 7.0 + 4.1 * math.sin(angle)),
+                             (8.0 + 5.4 * math.cos(angle), 7.0 + 5.4 * math.sin(angle))]),
                  1.1)
     if kind == "keyboard":
         g.bar(2.4, 13.0, 11.2, 1.6, 0.8)
@@ -754,9 +758,9 @@ def brightness(g: Glyph, kind: str = "display") -> None:
 
 def night_light(g: Glyph, off: bool = False) -> None:
     """A crescent moon over a horizon."""
-    g.hole(A.circ(8.0, 6.6, 5.0))
-    g.stroke(A.circ(8.0, 6.6, 5.0), STROKE + 0.3)
-    g.hole(A.circ(10.0, 5.4, 4.2))
+    g.hole(A.circ(8.0, 7.0, 4.6))
+    g.stroke(A.circ(8.0, 7.0, 4.6), STROKE + 0.3)
+    g.hole(A.circ(9.9, 6.0, 3.9))
     g.bar(1.8, 13.2, 12.4, 1.7, 0.85)
     if off:
         g.erase(A.polyline([(2.0, 13.0), (14.0, 2.0)]), 2.1)
@@ -865,11 +869,11 @@ def channel_security(g: Glyph, secure: bool = True) -> None:
 def changes(g: Glyph, allow: bool = True) -> None:
     """A sheet with an allow/deny seal."""
     A.sheet(g, 2.8, 1.8, 9.0, 11.0)
-    G._badge(g, 11.4, 12.0, 3.2)
+    G._badge(g, 11.5, 11.6, 3.0)
     if allow:
-        G._cut_check(g, 11.4, 12.0, 1.7, 1.3)
+        G._cut_check(g, 11.5, 11.6, 1.7, 1.3)
     else:
-        G._cut_cross(g, 11.4, 12.0, 1.5, 1.25)
+        G._cut_cross(g, 11.5, 11.6, 1.5, 1.25)
 
 
 def notifications_disabled(g: Glyph) -> None:
@@ -877,7 +881,7 @@ def notifications_disabled(g: Glyph) -> None:
     g.solid([(4.2, 10.4), (4.2, 6.8), (8.0, 3.0), (11.8, 6.8), (11.8, 10.4)], 1.1)
     g.bar(2.6, 10.2, 10.8, 1.8, 0.9)
     g.hole(A.circ(8.0, 13.2, 1.4))
-    g.dot(8.0, 1.9, 1.1)
+    g.dot(8.0, 2.2, 1.0)
     g.erase(A.polyline([(2.4, 13.6), (13.6, 2.4)]), 2.1)
     g.stroke(A.polyline([(2.4, 13.6), (13.6, 2.4)]), STROKE)
 
@@ -896,20 +900,21 @@ def alarm(g: Glyph) -> None:
     g.ring(8.0, 8.6, 5.0, STROKE + 0.2)
     g.stroke(A.polyline([(8.0, 5.4), (8.0, 8.6), (10.4, 9.8)]), 1.4)
     g.dot(8.0, 8.6, 0.8)
-    for x in (2.4, 13.6):
-        g.stroke(A.arc(x if x > 8 else x, 4.2, 1.6, 180, 360), 1.4)
-    g.solid([(1.8, 5.0), (4.2, 2.6), (5.0, 3.2), (2.6, 5.6)], 0.4)
-    g.solid([(14.2, 5.0), (11.8, 2.6), (11.0, 3.2), (13.4, 5.6)], 0.4)
+    # The bells used to hang off the tile: their arcs reached 0.1 and 15.9.
+    for x in (3.1, 12.9):
+        g.stroke(A.arc(x, 4.4, 1.4, 180, 360), 1.3)
+    g.solid([(2.4, 5.1), (4.7, 2.8), (5.5, 3.4), (3.1, 5.7)], 0.4)
+    g.solid([(13.6, 5.1), (11.3, 2.8), (10.5, 3.4), (12.9, 5.7)], 0.4)
 
 
 def appointment_status(g: Glyph, kind: str = "soon") -> None:
     G.appointment_new(g)
     if kind == "missed":
-        G._badge(g, 12.2, 11.8, 2.9)
-        G._cut_cross(g, 12.2, 11.8, 1.5, 1.25)
+        G._badge(g, 11.9, 11.6, 2.8)
+        G._cut_cross(g, 11.9, 11.6, 1.4, 1.2)
     else:
-        G._badge(g, 12.2, 11.8, 2.9)
-        g.erase(A.circ(12.2, 11.8, 1.0))
+        G._badge(g, 11.9, 11.6, 2.8)
+        g.erase(A.circ(11.9, 11.6, 1.0))
 
 
 def task_status(g: Glyph, past: bool = False) -> None:
@@ -950,16 +955,14 @@ def media_playlist(g: Glyph, kind: str = "consecutive") -> None:
     for y in (3.2, 6.2, 9.2):
         g.bar(1.9, y - 0.9, 8.4, 1.8, 0.9)
     if kind == "shuffle":
-        g.stroke(A.polyline([(11.4, 4.0), (14.2, 7.4), (11.4, 10.8)]), 1.4)
-        g.stroke(A.polyline([(11.4, 10.8), (13.2, 10.8)]), 1.4)
-        g.stroke(A.polyline([(11.4, 4.0), (13.2, 4.0)]), 1.4)
-    elif kind == "repeat-song":
-        g.stroke(A.arc(12.6, 7.4, 2.4, -80, 250), 1.4)
-        g.solid([(14.4, 4.8), (15.4, 7.4), (13.0, 7.2)], 0.4)
-        g.dot(12.6, 7.4, 0.9)
-    elif kind == "repeat":
-        g.stroke(A.arc(12.6, 7.4, 2.4, -80, 250), 1.4)
-        g.solid([(14.4, 4.8), (15.4, 7.4), (13.0, 7.2)], 0.4)
+        g.stroke(A.polyline([(11.2, 4.0), (13.9, 7.4), (11.2, 10.8)]), 1.4)
+        g.stroke(A.polyline([(11.2, 10.8), (13.0, 10.8)]), 1.4)
+        g.stroke(A.polyline([(11.2, 4.0), (13.0, 4.0)]), 1.4)
+    elif kind in ("repeat", "repeat-song"):
+        g.stroke(A.arc(12.1, 7.4, 2.1, -80, 250), 1.4)
+        g.solid([(13.4, 4.9), (14.4, 7.4), (12.1, 7.2)], 0.4)
+        if kind == "repeat-song":
+            g.dot(12.1, 7.4, 0.9)
     else:
         for index in range(2):
             g.stroke(A.polyline([(11.2, 6.0 + index * 3.0),
@@ -968,31 +971,31 @@ def media_playlist(g: Glyph, kind: str = "consecutive") -> None:
 
 def printer_state(g: Glyph, kind: str = "printing") -> None:
     A.printer(g)
-    G._badge(g, 12.2, 11.8, 2.9)
+    G._badge(g, 11.9, 11.6, 2.8)
     if kind == "error":
-        G._cut_cross(g, 12.2, 11.8, 1.5, 1.25)
+        G._cut_cross(g, 11.9, 11.6, 1.4, 1.2)
     elif kind == "warning":
-        g.solid([(12.2, 10.2), (14.0, 13.6), (10.4, 13.6)], 0.4)
+        g.solid([(11.9, 10.1), (13.6, 13.4), (10.2, 13.4)], 0.4)
     else:
         for index in range(2):
-            g.erase(A.rr(10.6, 10.8 + index * 1.4, 3.2, 0.8, 0.3))
+            g.erase(A.rr(10.3, 10.6 + index * 1.4, 3.2, 0.8, 0.3))
 
 
 def software_update(g: Glyph, urgent: bool = False) -> None:
     G.system_software_update(g)
     if urgent:
-        G._badge(g, 12.2, 4.0, 3.0)
-        g.erase(A.rr(11.5, 2.4, 1.4, 2.6, 0.6))
-        g.hole(A.circ(12.2, 5.6, 0.7))
+        G._badge(g, 11.8, 4.2, 2.8)
+        g.erase(A.rr(11.1, 2.7, 1.4, 2.5, 0.6))
+        g.hole(A.circ(11.8, 5.7, 0.7))
 
 
 def location_services(g: Glyph, active: bool = True) -> None:
     """Crosshair pin: location services."""
     g.ring(8.0, 8.0, 4.4, STROKE)
-    g.line((8.0, 1.4), (8.0, 3.6), STROKE)
-    g.line((8.0, 12.4), (8.0, 14.6), STROKE)
-    g.line((1.4, 8.0), (3.6, 8.0), STROKE)
-    g.line((12.4, 8.0), (14.6, 8.0), STROKE)
+    g.line((8.0, 1.9), (8.0, 3.6), STROKE)
+    g.line((8.0, 12.4), (8.0, 14.1), STROKE)
+    g.line((1.9, 8.0), (3.6, 8.0), STROKE)
+    g.line((12.4, 8.0), (14.1, 8.0), STROKE)
     if active:
         g.dot(8.0, 8.0, 2.0)
     else:
@@ -1002,7 +1005,7 @@ def location_services(g: Glyph, active: bool = True) -> None:
 
 def user_status(g: Glyph, kind: str = "available") -> None:
     """A contact disc with the presence mark cut in."""
-    A.person_solid(g, 8.0, 7.4, 1.0)
+    A.person_solid(g, 8.0, 7.2, 1.0)
     badge = {
         "available": "check",
         "away": "clock",
@@ -1013,23 +1016,23 @@ def user_status(g: Glyph, kind: str = "available") -> None:
         "not-tracked": "question",
         "status-pending": "dots",
     }[kind]
-    G._badge(g, 12.4, 12.4, 3.1, 0.0)
+    G._badge(g, 11.9, 11.7, 2.9)
     if badge == "check":
-        G._cut_check(g, 12.4, 12.4, 1.6, 1.3)
+        G._cut_check(g, 11.9, 11.7, 1.5, 1.25)
     elif badge == "minus":
-        G._cut_minus(g, 12.4, 12.4, 1.7, 1.4)
+        G._cut_minus(g, 11.9, 11.7, 1.6, 1.35)
     elif badge == "clock":
-        g.hole(A.circ(12.4, 12.4, 2.0))
-        g.ring(12.4, 12.4, 2.0, 1.1)
-        g.erase(A.polyline([(12.4, 11.3), (12.4, 12.4), (13.2, 12.9)]), 1.0)
+        g.hole(A.circ(11.9, 11.7, 1.9))
+        g.ring(11.9, 11.7, 1.9, 1.1)
+        g.erase(A.polyline([(11.9, 10.6), (11.9, 11.7), (12.7, 12.2)]), 1.0)
     elif badge == "question":
-        g.hole(A.circ(12.4, 12.4, 1.9))
-        g.ring(12.4, 12.4, 1.9, 1.1)
-        g.erase(A.rr(11.9, 11.4, 1.0, 1.3, 0.4))
-        g.hole(A.circ(12.4, 13.4, 0.55))
+        g.hole(A.circ(11.9, 11.7, 1.8))
+        g.ring(11.9, 11.7, 1.8, 1.1)
+        g.erase(A.rr(11.4, 10.7, 1.0, 1.2, 0.4))
+        g.hole(A.circ(11.9, 12.7, 0.55))
     elif badge == "dots":
-        for offset in (-1.1, 1.1):
-            g.hole(A.circ(12.4 + offset, 12.4, 0.6))
+        for offset in (-1.0, 1.0):
+            g.hole(A.circ(11.9 + offset, 11.7, 0.6))
     # invisible/offline keep a plain disc, which reads as "no presence"
 
 
@@ -1042,12 +1045,12 @@ def avatar_default(g: Glyph) -> None:
 
 def auth_sim_state(g: Glyph, kind: str = "locked") -> None:
     memory_card(g, kind="sim")
-    G._badge(g, 12.2, 11.8, 3.0)
+    G._badge(g, 11.9, 11.7, 2.9)
     if kind == "locked":
-        g.erase(A.rr(11.1, 12.0, 2.2, 1.8, 0.5))
-        g.stroke(A.arc(12.2, 12.0, 0.85, 180, 360), 0.7)
+        g.erase(A.rr(10.8, 11.9, 2.2, 1.8, 0.5))
+        g.stroke(A.arc(11.9, 11.9, 0.85, 180, 360), 0.7)
     else:
-        G._cut_cross(g, 12.2, 11.8, 1.5, 1.25)
+        G._cut_cross(g, 11.9, 11.7, 1.4, 1.2)
 
 
 # --------------------------------------------------------------------------- #
@@ -1103,8 +1106,8 @@ def snow(g: Glyph) -> None:
 
 def storm(g: Glyph) -> None:
     cloud(g, 8.0, 5.8, 0.82)
-    bolt = [(9.0, 9.4), (5.8, 13.2), (7.6, 13.2), (6.8, 15.6), (10.2, 11.4),
-            (8.4, 11.4)]
+    bolt = [(9.0, 9.2), (6.0, 12.8), (7.8, 12.8), (7.0, 15.0), (10.2, 11.0),
+            (8.4, 11.0)]
     g.hole(A.ell(10.0, 12.0, 3.4, 3.2))
     g.solid(bolt, 0.2)
 
@@ -1119,9 +1122,9 @@ def fog(g: Glyph) -> None:
 def wind(g: Glyph) -> None:
     """Three curling gusts."""
     for index, y in enumerate((4.6, 8.0, 11.4)):
-        length = 8.0 + index * 1.6
+        length = 7.6 + index * 1.4
         g.stroke(A.polyline([(1.8, y), (1.8 + length, y)]), 1.6)
-        g.stroke(A.arc(1.8 + length, y - 1.5, 1.5, 90, 360), 1.6)
+        g.stroke(A.arc(1.8 + length, y - 1.3, 1.3, 90, 360), 1.5)
 
 
 def tornado(g: Glyph) -> None:
@@ -1137,7 +1140,7 @@ def few_clouds(g: Glyph, night: bool = False) -> None:
     if night:
         moon(g, 5.8, 5.8, 3.2)
     else:
-        sun(g, 6.3, 6.1, 2.4, 8)
+        sun(g, 6.6, 6.4, 2.2, 8)
     cloud(g, 9.2, 10.2, 0.82)
 
 
@@ -1163,9 +1166,9 @@ def sunrise(g: Glyph, rising: bool = True) -> None:
                  1.4)
     g.bar(1.8, 10.6, 12.4, 1.8, 0.9)
     if rising:
-        g.solid([(8.0, 12.8), (10.4, 15.2), (5.6, 15.2)], 0.5)
+        g.solid([(8.0, 12.8), (10.3, 15.0), (5.7, 15.0)], 0.5)
     else:
-        g.solid([(8.0, 15.4), (10.4, 13.0), (5.6, 13.0)], 0.5)
+        g.solid([(8.0, 14.9), (10.3, 12.8), (5.7, 12.8)], 0.5)
 
 
 # --------------------------------------------------------------------------- #
@@ -1275,14 +1278,14 @@ def face(g: Glyph, eyes: str = "dot", mouth: str = "smile",
         for x in (4.6, 11.4):
             g.bar(x - 1.3, 8.6, 2.6, 1.3, 0.65)
     elif extra == "halo":
-        g.stroke(A.ell(8.0, 2.2, 3.5, 1.05), 1.25)
+        g.stroke(A.ell(8.0, 2.6, 3.2, 0.9), 1.15)
     elif extra == "horns":
         for sx in (-1, 1):
             g.solid([(8.0 + sx * 4.4, 2.6), (8.0 + sx * 6.2, 0.8),
                      (8.0 + sx * 5.6, 4.0)], 0.4)
     elif extra == "monkey":
         for sx in (-1, 1):
-            g.ring(8.0 + sx * 5.3, 8.0, 1.65, 1.2)
+            g.ring(8.0 + sx * 4.9, 8.0, 1.5, 1.15)
         g.dot(8.0, 9.6, 0.75)
 
 
@@ -1519,9 +1522,9 @@ def legacy_app(g: Glyph, kind: str = "terminal") -> None:
         g.dot(8.0, 5.8, 1.8)
         g.fill("M4.8 12.4A3.2 3.2 0 0 1 11.2 12.4Z")
     elif kind == "panel":
-        g.stroke(A.rr(1.6, 2.6, 12.8, 10.4, 1.2), STROKE)
-        g.bar(1.6, 2.6, 12.8, 2.8, 1.0)
-        A.person(g, 5.4, 7.2, 1.5, 1.2, 3.0)
+        g.stroke(A.rr(1.9, 2.9, 12.2, 9.8, 1.2), STROKE)
+        g.bar(1.9, 2.9, 12.2, 2.6, 1.0)
+        A.person(g, 5.4, 6.2, 1.3, 1.2, 2.6)
         return g.bar(9.0, 7.4, 3.6, 1.4, 0.6)
     elif kind == "emblem-important":
         g.solid([(8.0, 1.8), (14.2, 8.0), (8.0, 14.2), (1.8, 8.0)], 1.2)

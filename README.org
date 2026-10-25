@@ -171,9 +171,10 @@ maak --list           # every task with its docstring
 maak gallery          # rebuild gallery.html from the icons on disk
 maak docs             # recompose the sheets in docs/ for this README
 maak build            # gallery + docs, then verify
-maak check            # index.theme, every directory, counts, gallery freshness
+maak check            # index.theme, every directory, counts, gallery, file mapping
 maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
 maak names           # link the app names and file-type names the desktops ask for
+maak mappings        # ask GIO which icon real file names actually get
 maak symbolic         # redraw the 646 symbolic icons + 487 plain scalable ones
 maak variants         # rebuild the accent and dark variant themes
 maak report           # rescan $HOME -> FILE-TYPES.org
@@ -197,6 +198,7 @@ python3 tools/make_plain.py           # the un-suffixed scalable icons (487)
 python3 tools/make_variants.py        # the accent and dark variant themes
 python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
 python3 tools/check_theme.py          # the checks behind maak check
+python3 tools/check_mapping.py        # GIO + GTK: what each real file draws
 #+end_src
 
 =make_symbolic.py= writes one Aqua glyph per Adwaita symbol name, checked against
@@ -216,19 +218,26 @@ instead.
 
 Discovery only knows the machine that builds the pack, and the programs people
 run differ per distribution, so =tools/skeu/apps.py= also carries two tables
-that travel with the artwork: =ROSTER= declares the programs no build machine is
-guaranteed to have (Chromium, VS Code, Obsidian, Lutris, Transmission, GParted,
-Ghostty, Dolphin, Okular …) together with every name they answer to, and
-=EXTRA_NAMES= adds the older or shorter spellings of programs that are drawn
-anyway (=gnome-calculator=, =eog=, =firefox-esr=, =google-chrome-stable=). Both
-feed the same link step, so a name resolves whether or not the desktop entry
-that declares it exists on this machine. =make_theme_mimes.py= does the same job
-for file types: it derives
+that travel with the artwork: =ROSTER= declares the programs no build machine
+is guaranteed to have (Chromium, VS Code, Obsidian, Lutris, Transmission,
+GParted, Ghostty, Dolphin, Okular …) together with every name they answer to,
+and =EXTRA_NAMES= adds the older or shorter spellings of programs that are
+drawn anyway (=gnome-calculator=, =eog=, =firefox-esr=,
+=google-chrome-stable=). Both feed the same link step, so a name resolves
+whether or not the desktop entry that declares it exists on this machine.
+
+=make_theme_mimes.py= does the same job for file types: it derives
 =package-x-generic= from the archive artwork, links the names that drifted
 (=application-vnd.rar= against =application-vnd-rar=), and points the
-compressed-tar names at the compressor's own drawing. =make_gallery.py= reads the
-theme directories and both =index.json= files, so a new icon shows up in the
-gallery after one run - =--check= is what =maak check= uses to catch a stale
+compressed-tar names at the compressor's own drawing. =check_mapping.py= is
+the test of that table: it hands real file names - =archive.tar.gz=,
+=archive.tgz=, =archive.tar.zst=, =.7z=, =.zip=, a lone =.lz= or =.br= - to
+GIO, follows the icon chain GIO derives from each one, and fails when a name
+lands on the generic carton, resolves at some sizes but not others, points at
+a dangling link, will not open, or is answered by the parent theme where a
+variant draws its own monochrome copy. =make_gallery.py= reads the theme
+directories and both =index.json= files, so a new icon shows up in the gallery
+after one run - =--check= is what =maak check= uses to catch a stale
 =gallery.html=. The relief renderer itself lives in =tools/skeu/= (numpy +
 Pillow; =inkscape= for the handful of vector icons).
 
@@ -238,7 +247,7 @@ Pillow; =inkscape= for the handful of vector icons).
 |--------------+------:+---------------------------------------------------------|
 | =apps=       |   975 | 251 drawn icons, each linked under every name it is asked by |
 | =places=     |   171 | folders, drives, network shares, 14 colour variants     |
-| =mimetypes=  |   652 | documents, media, archives, source code, 377 extensions |
+| =mimetypes=  |   678 | documents, media, archives, source code, 377 extensions |
 | =emblems=    |    17 | read-only, symbolic links, locked, shared …             |
 | =categories= |    27 | menu and application-group icons                        |
 | =devices=    |    88 | drives, phones, printers, USB, network hardware          |

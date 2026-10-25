@@ -44,7 +44,7 @@ def _cut_check(g: Glyph, cx: float, cy: float, arm: float = 1.8,
 
 
 def _badge(g: Glyph, cx: float, cy: float, r: float = 3.1,
-           ring: float = 1.15) -> None:
+           ring: float = 1.0) -> None:
     """A solid badge disc with a clear margin around it."""
     A.badge_hole(g, cx, cy, r + ring)
     A.badge(g, cx, cy, r)
@@ -157,10 +157,16 @@ def document_print(g: Glyph) -> None:
 
 
 def document_print_preview(g: Glyph) -> None:
-    """A printer with a magnifier over the sheet it produced."""
+    """A printer with a magnifier over the sheet it produced.
+
+    The lens is drawn by hand rather than with ``A.magnifier``: that helper's
+    handle is tuned for the full tile and would have carried the badge off
+    the corner here.
+    """
     A.printer(g)
-    A.badge_hole(g, 11.0, 11.0, 3.6)
-    A.magnifier(g, 10.9, 10.9, 1.65, 1.3)
+    A.badge_hole(g, 10.8, 10.8, 3.4)
+    g.ring(10.6, 10.6, 1.55, 1.3)
+    return g.line((11.7, 11.7), (13.6, 13.6), 1.5)
 
 
 def document_page_setup(g: Glyph) -> None:
@@ -195,13 +201,23 @@ def _cut_gear(g: Glyph, cx: float, cy: float, r: float) -> None:
 
 
 def document_revert(g: Glyph) -> None:
-    """A sheet with a circular arrow: reload the saved copy."""
+    """A sheet with a circular arrow: reload the saved copy.
+
+    The arrow is one arc with a head on its end, the way ``object-rotate``
+    draws it, rather than a closed ring with a rectangle bitten out of it: at
+    16 px the bite left a ring with a smudge beside it instead of an arrow.
+    """
     A.sheet(g, 2.4, 1.8, 8.4, 11.2)
     _text_rows(g, [5.0, 7.0], 4.2, 8.0)
-    A.badge_hole(g, 11.5, 11.5, 4.0)
-    g.ring(11.5, 11.5, 2.5, 1.35)
-    g.hole(A.rr(11.0, 9.2, 3.0, 2.4, 0.0))
-    A.arrow(g, -140, 9.3, 9.3, 0.26)
+    A.badge_hole(g, 11.4, 11.4, 3.3)
+    radius = 2.2
+    g.stroke(A.arc(11.4, 11.4, radius, -60, 205), 1.4)
+    angle = math.radians(-60)
+    px, py = 11.4 + radius * math.cos(angle), 11.4 + radius * math.sin(angle)
+    tx, ty = -math.sin(angle), math.cos(angle)
+    g.solid([(px + tx * 1.7, py + ty * 1.7),
+             (px - tx * 0.4 - ty * 1.5, py - ty * 0.4 + tx * 1.5),
+             (px - tx * 0.4 + ty * 1.5, py - ty * 0.4 - tx * 1.5)], 0.4)
 
 
 def document_edit(g: Glyph) -> None:
@@ -241,12 +257,17 @@ def insert_image(g: Glyph) -> None:
 
 
 def insert_link(g: Glyph) -> None:
-    """The Aqua chain link, two interlocking capsules."""
-    g.stroke(A.rr(1.9, 6.2, 8.0, 3.6, 1.8), STROKE)
-    g.stroke(A.rr(6.1, 6.2, 8.0, 3.6, 1.8), STROKE)
-    g.hole(A.rr(6.4, 7.4, 3.2, 1.2, 0.6))
-    _badge(g, 12.0, 11.8, 2.7)
-    _cut_plus(g, 12.0, 11.8, 1.5, 1.3)
+    """The Aqua chain link, two interlocking capsules.
+
+    The link sits high enough for the plus badge to stand under it.  Drawn
+    across the middle of the tile, the badge's clearance cut the right-hand
+    capsule in half and the mark stopped reading as a chain at all.
+    """
+    g.stroke(A.rr(1.9, 5.2, 8.0, 3.4, 1.7), STROKE)
+    g.stroke(A.rr(6.1, 5.2, 8.0, 3.4, 1.7), STROKE)
+    g.hole(A.rr(6.4, 6.3, 3.2, 1.2, 0.6))
+    _badge(g, 12.2, 12.2, 2.5)
+    _cut_plus(g, 12.2, 12.2, 1.4, 1.25)
 
 
 def insert_object(g: Glyph) -> None:
@@ -344,11 +365,17 @@ def edit_find(g: Glyph) -> None:
 
 
 def edit_find_replace(g: Glyph) -> None:
-    """A magnifier with a pencil at its corner: find and replace."""
+    """A magnifier with a pencil at its corner: find and replace.
+
+    The clearance plate is small enough to leave the lens alone.  It used to
+    be four units of radius centred on the corner, which erased the far side
+    of the lens and most of the handle as well.
+    """
     A.magnifier(g, 6.2, 6.2, 4.1, STROKE)
-    A.badge_hole(g, 12.0, 12.2, 4.0)
-    g.solid([(9.4, 14.6), (10.0, 12.5), (13.3, 9.2), (14.6, 10.5),
-             (11.3, 13.9)], 0.4)
+    A.badge_hole(g, 12.5, 12.5, 2.9)
+    g.solid([(10.8, 14.2), (11.3, 12.6), (13.7, 10.2), (14.8, 11.3),
+             (12.4, 13.7)], 0.4)
+    return g.dot(11.0, 14.0, 0.55)
 
 
 def system_search(g: Glyph) -> None:
@@ -356,10 +383,14 @@ def system_search(g: Glyph) -> None:
 
 
 def find_location(g: Glyph) -> None:
-    """A locator: crosshair with a bore in the middle."""
-    g.ring(8.0, 8.0, 5.0, STROKE)
-    for tail, head in (((8.0, 1.0), (8.0, 3.4)), ((8.0, 12.6), (8.0, 15.0)),
-                       ((1.0, 8.0), (3.4, 8.0)), ((12.6, 8.0), (15.0, 8.0))):
+    """A locator: crosshair with a bore in the middle.
+
+    The ticks reach past the ring, so the mark reads as a reticle instead of
+    a circle with four nubs on it.
+    """
+    g.ring(8.0, 8.0, 4.2, STROKE)
+    for tail, head in (((8.0, 1.8), (8.0, 3.5)), ((8.0, 12.5), (8.0, 14.2)),
+                       ((1.8, 8.0), (3.5, 8.0)), ((12.5, 8.0), (14.2, 8.0))):
         g.line(tail, head, STROKE)
     return g.dot(8.0, 8.0, 1.2)
 
@@ -488,17 +519,17 @@ def open_menu(g: Glyph) -> None:
 def view_fullscreen(g: Glyph) -> None:
     """Four corner brackets."""
     for sx, sy in ((1.0, 1.0), (-1.0, 1.0), (1.0, -1.0), (-1.0, -1.0)):
-        g.stroke(A.polyline([(8.0 + sx * 6.4, 8.0 + sy * 2.2),
-                             (8.0 + sx * 6.4, 8.0 + sy * 6.4),
-                             (8.0 + sx * 2.2, 8.0 + sy * 6.4)]), STROKE)
+        g.stroke(A.polyline([(8.0 + sx * 6.2, 8.0 + sy * 2.2),
+                             (8.0 + sx * 6.2, 8.0 + sy * 6.2),
+                             (8.0 + sx * 2.2, 8.0 + sy * 6.2)]), STROKE)
 
 
 def view_restore(g: Glyph) -> None:
     """Inward corner brackets: leave fullscreen."""
     for sx, sy in ((1.0, 1.0), (-1.0, 1.0), (1.0, -1.0), (-1.0, -1.0)):
-        g.stroke(A.polyline([(8.0 + sx * 2.0, 8.0 + sy * 6.4),
+        g.stroke(A.polyline([(8.0 + sx * 2.0, 8.0 + sy * 6.2),
                              (8.0 + sx * 2.0, 8.0 + sy * 2.0),
-                             (8.0 + sx * 6.4, 8.0 + sy * 2.0)]), STROKE)
+                             (8.0 + sx * 6.2, 8.0 + sy * 2.0)]), STROKE)
 
 
 def view_pin(g: Glyph) -> None:
@@ -529,19 +560,28 @@ def view_reveal(g: Glyph) -> None:
 
 
 def view_conceal(g: Glyph) -> None:
-    """The eye struck through: looking is turned off."""
+    """The eye struck through: looking is turned off.
+
+    The bar is short and its gap narrow.  Run corner to corner with the wide
+    gap a solid body gets, it erased the almond it was supposed to cross and
+    the icon became a slash with two fragments beside it.
+    """
     A.eye(g, 8.0, 8.0)
-    g.erase(A.polyline([(1.6, 14.4), (14.4, 1.6)]), 2.8)
-    return g.stroke(A.polyline([(2.7, 13.3), (13.3, 2.7)]), 1.5)
+    g.erase(A.polyline([(2.9, 12.7), (13.1, 3.3)]), 2.2)
+    return g.stroke(A.polyline([(3.2, 12.4), (12.8, 3.6)]), 1.6)
 
 
 def view_sort(g: Glyph, descending: bool = False) -> None:
-    """Three shrinking bars and a direction arrow."""
-    heights = (10.0, 7.0, 4.0)
+    """Three bars and the arrow that says which way they run.
+
+    The arrow is the *sort direction*, so it points up for ascending and down
+    for descending; drawn sideways in the top corner it read as an arrow
+    leaving the icon rather than as the ordering of the bars.
+    """
+    heights = (10.0, 7.0, 4.0) if descending else (4.0, 7.0, 10.0)
     for index, height in enumerate(heights):
         g.bar(1.7 + index * 3.4, 13.2 - height, 2.4, height, 0.7)
-    angle = 0 if descending else 180
-    A.arrow(g, angle, 11.6, 4.4, 0.34)
+    A.arrow(g, 90 if descending else 270, 11.7, 4.3, 0.36)
 
 
 def view_sort_ascending(g: Glyph) -> None:
@@ -695,15 +735,20 @@ def media_view_subtitles(g: Glyph) -> None:
 
 
 def object_flip(g: Glyph, vertical: bool = False) -> None:
-    """A shape beside its mirror image across a dashed axis."""
-    shape = [(2.2, 4.0), (6.4, 4.0), (6.4, 12.6), (2.2, 12.6)]
-    g.solid(shape, 0.8)
-    mirrored = A.flip(shape, vertical)
-    for x, y in mirrored:
-        del x, y
-    g.solid(A.grow(mirrored, 8.0, 8.0, 1.0), 0.8)
+    """A shape beside its mirror image across a dashed axis.
+
+    The base shape has to sit *off* the axis it is mirrored about.  It used to
+    straddle the centre, so the vertical pair landed almost on top of each
+    other and the icon read as one small block on a line.
+    """
+    if vertical:
+        shape = [(3.0, 2.2), (13.0, 2.2), (13.0, 5.8), (3.0, 5.8)]
+    else:
+        shape = [(2.2, 3.0), (5.8, 3.0), (5.8, 13.0), (2.2, 13.0)]
+    g.solid(shape, 0.7)
+    g.outline(A.flip(shape, vertical), 0.7, STROKE, closed=True)
     axis = [(8.0, 1.6), (8.0, 14.4)] if not vertical else [(1.6, 8.0), (14.4, 8.0)]
-    g.erase(A.polyline(axis), 2.0)
+    g.erase(A.polyline(axis), 1.9)
     return g.stroke(A.polyline(axis), HAIRLINE + 0.3)
 
 
@@ -716,15 +761,26 @@ def object_flip_vertical(g: Glyph) -> None:
 
 
 def object_rotate(g: Glyph, left: bool = True) -> None:
-    """A rounded arrow circling a solid block."""
+    """A block inside an arrow that circles it.
+
+    The head is placed on the tangent at the open end of the arc, so it points
+    the way the block would turn: counterclockwise for "left", clockwise for
+    "right".  The old head was hung on an arbitrary corner of the tile, which
+    is why the two directions looked like the same arrow moved sideways.
+    """
     g.bar(4.6, 4.6, 6.8, 6.8, 1.4)
-    start, end = (-20, 250) if left else (-70, 200)
-    g.stroke(A.arc(8.0, 8.0, 6.1, start, end), STROKE)
-    tip = (13.2, 4.6) if left else (2.8, 4.6)
-    step = 1 if left else -1
-    points = [(tip[0] + 0.2 * step, tip[1] + 2.8), (tip[0] + 2.4 * step, tip[1]),
-              (tip[0] - 2.0 * step, tip[1] - 1.3)]
-    return g.solid(points, 0.5)
+    radius = 6.0
+    start, end = (225, -45) if left else (-45, 225)
+    g.stroke(A.arc(8.0, 8.0, radius, start, end), STROKE)
+    angle = math.radians(end)
+    px, py = 8.0 + radius * math.cos(angle), 8.0 + radius * math.sin(angle)
+    # An increasing angle sweeps clockwise; "left" travels the other way.
+    turn = -1 if left else 1
+    tx, ty = -math.sin(angle) * turn, math.cos(angle) * turn
+    nx, ny = -ty, tx
+    return g.solid([(px + tx * 2.3, py + ty * 2.3),
+                    (px - tx * 0.5 + nx * 1.9, py - ty * 0.5 + ny * 1.9),
+                    (px - tx * 0.5 - nx * 1.9, py - ty * 0.5 - ny * 1.9)], 0.45)
 
 
 def object_rotate_left(g: Glyph) -> None:
@@ -801,15 +857,15 @@ def mail_forward(g: Glyph) -> None:
 
 def mail_mark_important(g: Glyph) -> None:
     A.envelope(g, 1.9, 3.6, 10.2, 8.4)
-    _badge(g, 12.2, 11.4, 3.0)
-    g.erase(A.rr(11.4, 9.4, 1.6, 3.4, 0.75))
-    return g.hole(A.circ(12.2, 12.7, 0.85))
+    _badge(g, 11.8, 11.4, 2.9)
+    g.erase(A.rr(11.1, 9.5, 1.5, 3.2, 0.7))
+    return g.hole(A.circ(11.8, 12.6, 0.8))
 
 
 def mail_mark_junk(g: Glyph) -> None:
     A.envelope(g, 1.9, 3.6, 10.2, 8.4)
-    _badge(g, 12.2, 11.4, 3.0)
-    _cut_cross(g, 12.2, 11.4, 1.5, 1.3)
+    _badge(g, 11.8, 11.4, 2.9)
+    _cut_cross(g, 11.8, 11.4, 1.4, 1.25)
 
 
 def mail_mark_notjunk(g: Glyph, angle: float = 0.0) -> None:
@@ -934,7 +990,7 @@ def camera_switch(g: Glyph) -> None:
 
 
 def handset(g: Glyph, cx: float = 8.0, cy: float = 8.0,
-            scale: float = 1.0) -> None:
+            scale: float = 1.0, angle: float = 0.0) -> None:
     """The telephone receiver: an upright grip, a quarter turn, a mouth grip.
 
     Every phone glyph is this one shape - a vertical earpiece, a bend, a
@@ -949,7 +1005,10 @@ def handset(g: Glyph, cx: float = 8.0, cy: float = 8.0,
     path += [(6.4 + 5.8 * math.cos(math.radians(a)),
               6.4 + 5.8 * math.sin(math.radians(a))) for a in range(0, 91, 3)]
     path += [(3.2, 12.2)]
-    g.stroke(A.polyline(at(path)), 3.0 * scale)
+    points = at(path)
+    if angle:
+        points = A.rotate(points, angle, cx, cy)
+    g.stroke(A.polyline(points), 3.0 * scale)
 
 
 def call_start(g: Glyph) -> None:
@@ -972,9 +1031,13 @@ def call_direction(g: Glyph, kind: str = "incoming") -> None:
 
 
 def call_stop(g: Glyph) -> None:
-    """A handset behind a bar: hang up."""
-    handset(g)
-    A.slash(g, width=1.4, gap=0.9)
+    """A handset behind a bar: hang up.
+
+    The receiver is laid on the diagonal first.  Left upright, its long bend
+    runs parallel to the "no" slash, and the two together read as a knife.
+    """
+    handset(g, 8.0, 8.0, 0.9, angle=45)
+    A.slash(g, width=1.5, gap=0.9)
 
 
 def chat_message_new(g: Glyph) -> None:
@@ -986,7 +1049,7 @@ def chat_message_new(g: Glyph) -> None:
 def contact_new(g: Glyph) -> None:
     """A contact card: a person in a rounded frame, plus a badge."""
     g.stroke(A.rr(1.8, 2.6, 10.4, 10.8, 1.4), STROKE)
-    A.person(g, 7.0, 6.4, 1.9, STROKE, 4.0)
+    A.person(g, 7.0, 6.0, 1.8, STROKE, 3.8)
     _badge(g, 12.2, 11.6, 2.8)
     _cut_plus(g, 12.2, 11.6, 1.5, 1.3)
 
@@ -1059,11 +1122,16 @@ def format_text_italic(g: Glyph) -> None:
 
 
 def format_text_underline(g: Glyph) -> None:
-    """U with a thick rule below."""
-    g.stroke(A.polyline([(4.2, 2.6), (4.2, 8.4)]), 1.9)
-    g.stroke(A.arc(8.0, 8.4, 3.8, 0, 180), 1.9)
-    g.stroke(A.polyline([(11.8, 2.6), (11.8, 8.4)]), 1.9)
-    g.bar(3.6, 12.6, 8.8, 1.8, 0.9)
+    """U with a thick rule below it.
+
+    The bowl used to reach into the rule, so the two merged into one long
+    smear along the bottom: the U is lifted and the rule dropped to leave a
+    clear 1 px of paper between them.
+    """
+    g.stroke(A.polyline([(4.4, 2.6), (4.4, 7.0)]), 1.9)
+    g.stroke(A.arc(8.0, 7.0, 3.6, 0, 180), 1.9)
+    g.stroke(A.polyline([(11.6, 2.6), (11.6, 7.0)]), 1.9)
+    g.bar(3.8, 12.7, 8.4, 1.6, 0.8)
 
 
 def format_text_strikethrough(g: Glyph) -> None:
@@ -1119,13 +1187,18 @@ def format_justify(g: Glyph, mode: str = "left") -> None:
 
 
 def format_indent(g: Glyph, more: bool = True, rtl: bool = False) -> None:
-    """Full-width edge rows with an indented pair and a chevron between them."""
+    """Full-width edge rows, an indented pair and the chevron that moves them.
+
+    The indent is 4.9 units and the rows keep the right margin, so the two
+    middle lines read as a shifted paragraph; the chevron sits in the space
+    they leave, with a unit of paper between its tip and the first row.
+    """
     g.bar(2.0, 1.8, 12.0, 1.8, 0.9)
     g.bar(2.0, 12.4, 12.0, 1.8, 0.9)
-    x = 6.6 if not rtl else 2.0
-    g.bar(x, 5.9, 14.0 - x - 2.0, 1.8, 0.9)
-    g.bar(x, 9.9, 14.0 - x - 2.0, 1.8, 0.9)
-    A.chevron(g, 0 if more else 180, 3.6 if not rtl else 12.4, 8.0, 1.9, 1.7)
+    x = 4.0 if rtl else 7.1
+    g.bar(x, 5.9, 4.9, 1.8, 0.9)
+    g.bar(x, 9.9, 4.9, 1.8, 0.9)
+    A.chevron(g, 0 if more else 180, 12.1 if rtl else 3.9, 8.0, 1.8, 1.6)
 
 
 # --------------------------------------------------------------------------- #
@@ -1169,11 +1242,11 @@ def focus(g: Glyph, kind: str = "windows") -> None:
     """Focus brackets around a panel."""
     g.stroke(A.rr(4.6, 3.0, 6.8, 10.0, 1.0), STROKE)
     if kind == "top-bar":
-        g.bar(1.6, 1.4, 12.8, 2.6, 1.0)
+        g.bar(2.0, 1.8, 12.0, 2.4, 1.0)
     for sx, sy in ((1, 1), (-1, 1), (1, -1), (-1, -1)):
-        g.stroke(A.polyline([(8.0 + sx * 6.6, 8.0 + sy * 2.4),
-                             (8.0 + sx * 6.6, 8.0 + sy * 6.6),
-                             (8.0 + sx * 2.4, 8.0 + sy * 6.6)]), 1.6)
+        g.stroke(A.polyline([(8.0 + sx * 6.0, 8.0 + sy * 2.4),
+                             (8.0 + sx * 6.0, 8.0 + sy * 6.0),
+                             (8.0 + sx * 2.4, 8.0 + sy * 6.0)]), 1.6)
 
 
 def list_drag_handle(g: Glyph) -> None:
@@ -1396,7 +1469,7 @@ def place_network_workgroup(g: Glyph) -> None:
     g.stroke(A.rr(1.8, 2.2, 6.0, 5.0, 0.8), STROKE)
     g.stroke(A.rr(8.2, 2.2, 6.0, 5.0, 0.8), STROKE)
     g.stroke(A.polyline([(4.8, 7.2), (4.8, 9.4), (11.2, 9.4), (11.2, 7.2)]), 1.15)
-    return g.stroke(A.rr(4.4, 10.4, 7.2, 4.2, 0.7), 1.15)
+    return g.stroke(A.rr(4.4, 10.2, 7.2, 3.8, 0.7), 1.15)
 
 
 def place_start_here(g: Glyph) -> None:
@@ -1467,7 +1540,7 @@ def mime_office(g: Glyph, kind: str = "document") -> None:
             g.erase(A.polyline([(4.8, y), (12.0, y)]), 0.9)
         return
     if kind == "address-book":
-        A.person(g, 8.0, 7.2, 1.6, 1.2, 3.4)
+        A.person(g, 8.0, 6.4, 1.5, 1.2, 3.2)
         g.bar(5.4, 11.0, 5.2, 1.2, 0.6)
         return
     _text_rows(g, [5.4, 7.2, 9.0, 10.8], 4.8, 10.6)

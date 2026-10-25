@@ -22,8 +22,9 @@ the artwork itself.  ``Glyph.svg()`` wraps the result in a single
 ``fill="<ink>"`` rectangle, so the shipped file is a normal, recolourable
 symbolic icon.
 
-Coordinates are a 16x16 grid with the artwork kept inside 1.75..14.25 so a
-1.5 px round cap never touches the edge.
+Coordinates are a 16x16 grid with the artwork kept inside a 0.9 px margin, so a
+round cap never lands on the edge and nothing has to be anti-aliased into it.
+``make_symbolic.py --audit`` is what enforces that margin.
 """
 
 from __future__ import annotations
@@ -552,10 +553,19 @@ class Glyph:
         return trace(self.mask())
 
     def png(self, size: int = 256):
-        """The glyph as a preview image, for the gallery and for review."""
+        """The glyph as a preview image, for the gallery and for review.
+
+        The mirror is part of the drawing, not of the file format - ``svg()``
+        writes it as a transform because that is cheapest there - so a preview
+        has to flip its own pixels, or the ``-rtl`` names would look the same
+        as the names they mirror.
+        """
         from PIL import Image, ImageDraw
 
-        image = self.mask().resize((size, size), Image.LANCZOS)
+        mask = self.mask()
+        if self.mirror:
+            mask = mask.transpose(Image.FLIP_LEFT_RIGHT)
+        image = mask.resize((size, size), Image.LANCZOS)
         preview = Image.new("RGBA", (size, size), (0, 0, 0, 0))
         ink = Image.new("RGBA", (size, size), (46, 52, 54, 255))
         preview.paste(ink, (0, 0), image)
@@ -683,27 +693,41 @@ def badge(g: Glyph, cx: float, cy: float, r: float = 3.4) -> Glyph:
 
 
 def badge_hole(g: Glyph, cx: float, cy: float, r: float = 2.55) -> Glyph:
-    """Reserved for a cleared ring around a badge.
+    """Erase a clearance disc so a badge reads as its own plate.
 
-    A hole can only be cut from the shape it belongs to, and a badge overlaps
-    whatever happens to be underneath it, so the ring is left to the placement
-    instead: badges sit in the corner, tangent to the body, and read as their
-    own plate.  The call stays so the catalogue keeps one description of a
-    badge, and so the choice is documented where it is made.
+    A badge that overlaps the artwork has to *replace* what is underneath it.
+    Without the hole the disc and the body become one silhouette, and the plus
+    or cross cut into the badge is the only thing separating them - on a
+    bookmark or a speech bubble that reads as a blob.  Cutting the disc first
+    leaves the ring of background an emblem needs, and costs nothing where the
+    badge already sits on empty tile.
     """
-    return g
+    return g.hole(circ(cx, cy, r))
 
 
 def slash(g: Glyph, start: Point = (2.6, 13.4), end: Point = (13.4, 2.6),
-          width: float = STROKE, gap: float = 1.6) -> Glyph:
-    """The universal "disabled" bar: a gap bitten out of the body, then the bar."""
+          width: float = STROKE, gap: float = 0.9) -> Glyph:
+    """The universal "disabled" bar: a gap bitten out of the body, then the bar.
+
+    The gap is deliberately narrow.  A wide one is right for a solid body, but
+    most of what gets barred here is a 1.5 px line drawing - a rune, an eye, a
+    bell - and a 3 px band through it erases the drawing instead of separating
+    it, leaving a diagonal with stubs beside it.  0.45 px of clearance each
+    side is enough to keep the bar distinct at 16 px and keeps the art whole.
+    """
     g.erase(polyline([start, end]), width + gap)
     return g.stroke(polyline([start, end]), width)
 
 
 def sheet(g: Glyph, x: float = 3.4, y: float = 1.9, w: float = 9.2, h: float = 12.2,
           fold: float = 2.8, corner: float = 1.2, width: float = STROKE) -> Glyph:
-    """The Aqua document: a softly rounded sheet with a folded top-right corner."""
+    """The Aqua document: a softly rounded sheet with a folded top-right corner.
+
+    ``y`` is clamped to the top margin the rest of the pack keeps: several
+    callers asked for 1.6, which left the sheet's stroke 0.84 of the way to
+    the tile edge, where it reads as artwork falling off the tile.
+    """
+    y = max(y, 1.9)
     right, bottom = x + w, y + h
     path = (f"M{num(x + corner)} {num(y)}H{num(right - fold)}L{num(right)} {num(y + fold)}"
             f"V{num(bottom - corner)}A{num(corner)} {num(corner)} 0 0 1 {num(right - corner)} {num(bottom)}"
@@ -817,15 +841,27 @@ def envelope(g: Glyph, x: float = 1.9, y: float = 3.6, w: float = 12.2,
 
 
 def speech(g: Glyph, x: float = 1.9, y: float = 2.6, w: float = 12.2,
-           h: float = 9.0, tail: float = 3.4, width: float = STROKE) -> Glyph:
-    """A rounded speech bubble with a tail at the lower left."""
-    body = rr(x, y, w, h, 2.6)
-    g.stroke(body, width)
-    g.erase(rr(x + 0.4, y + h - 1.4, 2.4, 2.4))
-    g.stroke(polyline([(x + 1.3, y + h - 0.8),
-                       (x + 1.0, y + h + tail - 1.2),
-                       (x + 3.6, y + h - 0.8)]), width)
-    return g
+           h: float = 9.0, tail: float = 2.5, width: float = STROKE) -> Glyph:
+    """A rounded speech bubble with a tail cut into its lower-left corner.
+
+    The tail belongs to the outline: it leaves the bottom edge, comes to a
+    point below the bubble and returns to it, so the two are one continuous
+    line.  Drawn as a separate V over the bubble it looked like a squiggle - a
+    single stroked outline was the fix.
+    """
+    right, bottom = x + w, y + h
+    corner = 2.6
+    t0, tip, t1 = x + 5.4, (x + 1.2, bottom + tail), x + 1.6
+    path = (f"M{num(x + corner)} {num(y)}H{num(right - corner)}"
+            f"A{num(corner)} {num(corner)} 0 0 1 {num(right)} {num(y + corner)}"
+            f"V{num(bottom - corner)}"
+            f"A{num(corner)} {num(corner)} 0 0 1 {num(right - corner)} {num(bottom)}"
+            f"H{num(t0)}L{num(tip[0])} {num(tip[1])}L{num(t1)} {num(bottom)}"
+            f"H{num(x + corner)}"
+            f"A{num(corner)} {num(corner)} 0 0 1 {num(x)} {num(bottom - corner)}"
+            f"V{num(y + corner)}"
+            f"A{num(corner)} {num(corner)} 0 0 1 {num(x + corner)} {num(y)}Z")
+    return g.stroke(path, width)
 
 
 def star_shape(cx: float = 8.0, cy: float = 8.0, outer: float = 6.2,
@@ -872,8 +908,12 @@ def traffic(g: Glyph, which: str = "close", cx: float = 8.0, cy: float = 8.0,
         g.hole(rr(cx - 2.3, cy - 2.3, 4.6, 4.6, 0.9))
         g.fill(rr(cx - 1.0, cy - 1.0, 2.0, 2.0, 0.3))
     elif which == "restore":
-        g.hole(rr(cx - 2.6, cy - 2.6, 4.2, 4.2, 0.8))
-        g.bar(cx - 0.4, cy - 1.2, 3.4, 3.4, 0.8)
+        # Two panes, the way the button is drawn everywhere else: the bore is
+        # the back window's plate and the bar is the front one, overlapping its
+        # lower-right corner.  Drawn as a ring inside a ring it read as a solid
+        # box; the overlap is what makes the pair of windows legible.
+        g.hole(rr(cx - 2.5, cy - 3.1, 4.4, 4.4, 0.9))
+        g.bar(cx - 1.0, cy - 1.6, 4.4, 4.4, 0.9)
     return g
 
 
@@ -891,7 +931,8 @@ def speaker(g: Glyph, cx: float = 5.2, cy: float = 8.0, waves: int = 0,
     body = [(2.1, 6.4), (4.2, 6.4), (7.0, 3.3), (7.0, 12.7), (4.2, 9.6), (2.1, 9.6)]
     g.solid(body, 0.7)
     for index in range(waves):
-        g.stroke(arc(7.2, cy, 1.9 + index * 1.8, -48, 48), STROKE - 0.1)
+        # Four arcs (the "overamplified" level) used to end 15.2 of 16 out.
+        g.stroke(arc(7.2, cy, 1.8 + index * 1.6, -48, 48), STROKE - 0.1)
     if muted:
         g.line((9.9, 5.9), (13.2, 10.1), STROKE)
         g.line((9.9, 10.1), (13.2, 5.9), STROKE)
@@ -903,11 +944,13 @@ def microphone(g: Glyph, cx: float = 8.0, cy: float = 6.2) -> Glyph:
     g.bar(cx - 2.1, cy - 3.8, 4.2, 7.6, 2.1)
     g.hole(rr(cx - 1.0, cy - 2.4, 2.0, 3.0, 1.0))
     g.stroke(arc(cx, cy + 2.2, 3.5, 0, 180), STROKE)
-    return g.line((cx, cy + 5.7), (cx, cy + 8.6), STROKE)
+    # The stem stops short of the tile edge: it used to run to 15.5 of 16, which
+    # looked clipped next to glyphs that keep a margin.
+    return g.line((cx, cy + 5.7), (cx, cy + 7.9), STROKE)
 
 
 def battery(g: Glyph, level: float = 1.0, cx: float = 8.0, cy: float = 8.0,
-            w: float = 13.0, h: float = 7.2, width: float = STROKE) -> Glyph:
+            w: float = 12.4, h: float = 7.2, width: float = STROKE) -> Glyph:
     """A battery outline with a proportional fill and a terminal nub."""
     x = cx - w / 2
     y = cy - h / 2
@@ -996,7 +1039,7 @@ def card(g: Glyph, x: float = 2.2, y: float = 4.2, w: float = 11.6,
     return g
 
 
-def keyboard(g: Glyph, x: float = 1.5, y: float = 5.0, w: float = 13.0,
+def keyboard(g: Glyph, x: float = 1.9, y: float = 5.0, w: float = 12.2,
              h: float = 7.0) -> Glyph:
     """A keypad: a rounded deck with solid key rows and a space bar."""
     g.stroke(rr(x, y, w, h, 1.4), STROKE)
@@ -1007,15 +1050,15 @@ def keyboard(g: Glyph, x: float = 1.5, y: float = 5.0, w: float = 13.0,
     return g
 
 
-def mouse(g: Glyph, cx: float = 8.0, cy: float = 8.4) -> Glyph:
+def mouse(g: Glyph, cx: float = 8.0, cy: float = 8.1) -> Glyph:
     """The Aqua mouse: a rounded shell and a solid scroll slot."""
     g.stroke(rr(cx - 3.6, cy - 6.2, 7.2, 12.4, 3.5), STROKE)
     g.bar(cx - 0.65, cy - 4.9, 1.3, 3.2, 0.65)
     return g
 
 
-def phone(g: Glyph, cx: float = 8.0, cy: float = 8.6, w: float = 7.4,
-          h: float = 11.6) -> Glyph:
+def phone(g: Glyph, cx: float = 8.0, cy: float = 8.4, w: float = 7.4,
+          h: float = 11.2) -> Glyph:
     """A smartphone: a rounded slab with a solid screen and a home button."""
     g.stroke(rr(cx - w / 2, cy - h / 2, w, h, 2.2), STROKE)
     g.bar(cx - w / 2 + 1.4, cy - h / 2 + 1.9, w - 2.8, h - 4.8, 0.7)

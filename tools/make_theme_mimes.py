@@ -101,6 +101,42 @@ ALIASES: dict[str, str] = {
     "application-x-lzip-compressed-tar": "application-x-compressed-tar.png",
     "application-x-lrzip-compressed-tar": "application-x-compressed-tar.png",
     "application-x-rzip-compressed-tar": "application-x-compressed-tar.png",
+    # ... and a lone .lz, .lrz, .rz or .br is the same compressor without the
+    # tar, so it gets the same carton rather than falling to the generic one.
+    "application-x-lzip": "application-x-compressed-tar.png",
+    "application-x-lrzip": "application-x-compressed-tar.png",
+    "application-x-rzip": "application-x-compressed-tar.png",
+    "application-x-brotli": "application-x-compressed-tar.png",
+    "application-x-compress": "application-gzip.png",
+    # These three are the same drift in a different direction: the pack drew
+    # the dashed spelling, GIO asks for the vendor one.
+    "application-x-xpinstall": "application-x-xpi.png",
+    "application-vnd.snap": "application-x-snap.png",
+    "application-vnd.flatpak": "application-x-appimage.png",
+    # The media families drifted the other way: the pack filed its artwork
+    # under the old ``application/x-<subtype>`` spelling and GIO now asks for
+    # ``<family>-<subtype>``, so a .flac in Nautilus fell all the way back to
+    # audio-x-generic.  Found by tools/check_mapping.py, which maps real file
+    # names through GIO and reports what each one would draw.
+    "audio-flac": "audio-x-flac.png",
+    "audio-mp2": "application-x-mp2.png",
+    "audio-webm": "application-x-webm.png",
+    "video-matroska": "video-x-matroska.png",
+    "image-apng": "application-x-apng.png",
+    "image-ktx": "application-x-ktx.png",
+    "image-heif": "application-x-heif.png",
+    "image-jpx": "application-x-jpx.png",
+    "image-vnd.microsoft.icon": "image-vnd-microsoft-icon.png",
+    "font-woff2": "application-x-woff2.png",
+    "model-obj": "application-x-obj.png",
+    "application-json5": "application-x-json5.png",
+    # Source code: the text family, not the application one.
+    "text-rust": "text-x-rust.png",
+    "text-javascript": "text-x-javascript.png",
+    "text-julia": "text-x-julia.png",
+    "text-tcl": "text-x-tcl.png",
+    "text-org": "text-x-org.png",
+    "text-x-common-lisp": "application-x-lisp.png",
 }
 
 

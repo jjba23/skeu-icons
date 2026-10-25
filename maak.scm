@@ -23,7 +23,7 @@
   #:use-module (maak maak)
   ;; Only these are tasks; the helpers below stay private to the file.
   #:export (default gallery docs build icons apps names contexts projects alts
-            report check symbolic variants install uninstall clean))
+            report check mappings symbolic variants install uninstall clean))
 
 ;; ====== Constants ======
 
@@ -119,6 +119,16 @@ links through the base theme."
   "Rescan $HOME for file extensions and rewrite FILE-TYPES.org."
   (require-python)
   (tool "report_file_types.py"))
+
+(define (mappings)
+  "Check that real file names find their artwork: .zip, .tar.gz, .flac, .docx …
+
+Each sample name is handed to GIO, exactly as a file manager does, and the icon
+chain it asks for is walked against the theme and looked up through GTK in both
+the light and the dark theme, at every size, so a name that drifted shows up
+here instead of as the wrong picture on someone's desktop."
+  (require-python)
+  (tool "check_mapping.py"))
 
 (define (check)
   "Verify index.theme, every directory, the counts, and that gallery.html is current."

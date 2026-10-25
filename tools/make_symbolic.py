@@ -37,6 +37,11 @@ THEME = ROOT / "skeu-icons"
 OUT = THEME / "symbolic"
 CONTRACT = Path(__file__).resolve().parent / "symbolic-names.txt"
 
+#: How close to the tile edge ink may come, in grid units.  The pack's own
+#: envelope is 0.94..15.06 (a folder's stroke), so this is the margin the
+#: artwork is drawn to rather than a tightening of it.
+MARGIN = 0.9
+
 INK = {"light": aqua.INK_LIGHT, "dark": aqua.INK_DARK}
 
 
@@ -135,11 +140,13 @@ def check(only: str | None = None, ink: str = "light") -> list[str]:
 
 
 def audit() -> list[str]:
-    """Problems you can only see by looking: blanks and clipped drawings.
+    """Problems you can only see by looking: blanks, clipped and jammed drawings.
 
     ``--check`` compares files to the catalogue, so a glyph that draws nothing,
-    or one whose ink runs off the 16 px tile, passes it happily.  Both read as
-    "the icon is broken" on screen, so they are checked here instead.
+    one whose ink runs off the 16 px tile, or one that stops a twentieth of a
+    pixel short of the edge passes it happily.  All three read as "the icon is
+    broken" on screen - the last one because the stroke is anti-aliased into
+    the boundary and looks cut - so they are checked here instead.
     """
     import numpy as np
 
@@ -152,11 +159,13 @@ def audit() -> list[str]:
         if not len(rows):
             problems.append(f"{base}: draws nothing")
             continue
-        top, left = rows.min(), columns.min()
-        bottom, right = rows.max(), columns.max()
-        limit = 16 * aqua.RASTER - 1
-        if min(top, left) < 1 or max(bottom, right) > limit:
-            problems.append(f"{base}: ink runs off the tile")
+        top, left = rows.min() / aqua.RASTER, columns.min() / aqua.RASTER
+        bottom = (rows.max() + 1) / aqua.RASTER
+        right = (columns.max() + 1) / aqua.RASTER
+        if min(top, left) < MARGIN or max(bottom, right) > 16 - MARGIN:
+            problems.append(f"{base}: ink {left:.2f}..{right:.2f} x {top:.2f}.."
+                            f"{bottom:.2f} crowds the tile edge "
+                            f"(keep inside {MARGIN}..{16 - MARGIN:g})")
     return problems
 
 
@@ -217,7 +226,8 @@ def main(argv: list[str] | None = None) -> int:
         if problems:
             print(f"\n{len(problems)} glyph(s) need a look", file=sys.stderr)
             return 1
-        print(f"ok: {len(SYMBOLIC)} glyphs are painted and inside the tile")
+        print(f"ok: {len(SYMBOLIC)} glyphs are painted and inside the "
+              f"{MARGIN}..{16 - MARGIN:g} margin")
         return 0
     if args.check:
         problems = check(args.only, args.ink)

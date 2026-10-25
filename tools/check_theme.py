@@ -20,6 +20,10 @@ Checks, in order:
 * the accent/lightness variants in ``skeu-icons-green`` and
   ``skeu-icons-green-dark`` are intact: index.theme, accent symlinks, no
   dangling links, and the full light-ink symbolic set;
+* a table of real file names (``.zip``, ``.tar.gz``, ``.tar.xz``, ``.flac``,
+  ``.docx`` …) resolves to the artwork it should: each one is run through GIO,
+  the way a file manager does it, and the whole icon chain is checked against
+  the theme (see ``tools/check_mapping.py``);
 * ``app-icons/`` and ``project-icons/`` match their ``index.json`` (count and
   every ``icon-<size>.png``), and ``theme-manifest.json`` matches the disk;
 * no ``.icns`` file has crept back in;
@@ -213,6 +217,14 @@ def check() -> list[str]:
         problems += check_symbolic()
         problems += check_plain()
         problems += check_variants()
+
+    # what a file manager actually asks for, walked through GIO
+    try:
+        from check_mapping import check as check_mapping
+    except Exception as error:  # noqa: BLE001
+        problems.append(f"cannot import tools/check_mapping.py: {error}")
+    else:
+        problems += check_mapping(quiet=True)
 
     # the gallery must match what the generator produces
     try:

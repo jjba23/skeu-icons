@@ -43,18 +43,18 @@
     "brown",
     "graphite"
   ],
-  "icons": 1930,
+  "icons": 1956,
   "contexts": {
     "apps": 975,
     "places": 171,
-    "mimetypes": 652,
+    "mimetypes": 678,
     "emblems": 17,
     "categories": 27,
     "devices": 88
   },
   "files": {
-    "bitmaps": 34704,
-    "vectors": 2249
+    "bitmaps": 35064,
+    "vectors": 2267
   },
   "app_roster": {
     "programs": 251,
