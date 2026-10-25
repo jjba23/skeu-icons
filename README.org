@@ -91,6 +91,32 @@ drives, phones, printers and network gear.
 =app-icons/= and =project-icons/= are not part of the theme; copy one onto a
 launcher or a folder when you want that specific item to match.
 
+* Theme structure
+
+The theme follows the same layout conventions as Adwaita, so desktop tooling
+that knows one knows the other:
+
+| convention            | here                                                          |
+|-----------------------+---------------------------------------------------------------|
+| directories           | =<N>x<N>/<context>=, one section per directory in =index.theme= |
+| contexts              | =apps=, =places=, =mimetypes=, =emblems=, =categories=, =devices= |
+| =Context= values      | =Applications=, =Places=, =MimeTypes=, =Emblems=, =Categories=, =Devices= |
+| raster sections       | =Size=<N>=, =Context=…, =Type=Fixed=                          |
+| HiDPI                 | =<N>x<N>@2x=< trees declared in =ScaledDirectories= with =Scale=2= |
+| scalable layer        | =scalable/<context>=, =Size=128=, =MinSize=8=, =MaxSize=512=, =Type=Scalable= |
+| header                | =Example=folder=, =Inherits=AdwaitaLegacy,hicolor=, =DisplayDepth=32= |
+| KDE overlays          | =LinkOverlay=emblem-symbolic-link=, =LockOverlay=emblem-readonly= |
+
+Two of those are worth spelling out. The inheritance chain lists
+=AdwaitaLegacy= before =hicolor= exactly as Adwaita itself does, so the
+contexts this pack deliberately does not draw — =actions=, =status=,
+=emotes=, =ui= — and the monochrome =symbolic/= layer resolve to the GNOME
+legacy set when it is installed, and to =hicolor= otherwise. And the sizes go
+further than Adwaita's raster set (8–48 px): 64, 128, 256 and 512 px plus the
+=@2x= trees are shipped as real bitmaps rather than left to the scalable
+layer, which is safest for launchers, docks and file managers that upscale
+badly.
+
 * Drawing the artwork
 
 There is no build system: the icons are committed, and the drawing tools are

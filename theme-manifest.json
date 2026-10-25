@@ -11,8 +11,22 @@
     256,
     512
   ],
-  "scalable": true,
+  "scalable": {
+    "size": 128,
+    "min_size": 8,
+    "max_size": 512,
+    "type": "Scalable"
+  },
   "hidpi": true,
+  "inherits": [
+    "AdwaitaLegacy",
+    "hicolor"
+  ],
+  "example": "folder",
+  "kde_overlays": {
+    "link": "emblem-symbolic-link",
+    "lock": "emblem-readonly"
+  },
   "colours": [
     "red",
     "orange",

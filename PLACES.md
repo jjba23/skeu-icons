@@ -38,8 +38,10 @@ skeu-icons/index.theme                       Context=Places + ScaledDirectories
 There is no distinct artwork for *templates* and *music*, and *home* has no house icon in the pack, so
 those names point at the generic folder — deliberately, not by accident.
 
-Sizes: 16, 22, 24, 32, 48, 64, 128, 256, 512 in `Type=Fixed` directories, plus `scalable/places` with
-the vector layer and `MinSize=16 / MaxSize=1024`.
+Sizes: 16, 22, 24, 32, 48, 64, 128, 256, 512 in `Type=Fixed` directories (each with a `@2x`
+twin declared under `ScaledDirectories` with `Scale=2`), plus `scalable/places` with the vector layer
+declared the way Adwaita declares its scalable dirs: `Size=128`, `MinSize=8`, `MaxSize=512`,
+`Type=Scalable`.
 
 ## Coloured folders — how the recolouring works
 
