@@ -124,10 +124,11 @@ links through the base theme."
   "Check that real files and installed programs find their artwork.
 
 Sample file names - .zip, .tar.gz, .flac, .docx … - are handed to GIO exactly
-as a file manager does, and the installed desktop entries are read the way a
-launcher reads them; both chains are looked up through GTK in the light and the
-dark theme, at every size, so a name that drifted shows up here instead of as
-the wrong picture in a folder or a generic gear in the dock."
+as a file manager does. The installed desktop entries are read the way a
+launcher reads them, and the window classes of open windows and the default
+program for each MIME type are asked too. Every name is looked up through GTK
+in the light and the dark theme, at every size, so a name that drifted shows up
+here instead of as the wrong picture in a folder or a generic gear in the dock."
   (require-python)
   (tool "check_mapping.py"))
 
