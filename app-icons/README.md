@@ -1,7 +1,8 @@
-# Installed-application icons
+# Application icons
 
-One skeuomorphic icon per **installed GUI application** on this machine — 164 of them, discovered
-from the freedesktop desktop entries rather than hard-coded, so the set follows the system.
+One skeuomorphic icon per GUI application — 251 of them: the 164 installed on the machine that built
+this set, discovered from the freedesktop desktop entries, plus a roster of programs that a desktop is
+likely to have whether or not that machine does (Chromium, VS Code, Obsidian, Lutris, GParted, …).
 
 ```
 app-icons/
@@ -31,6 +32,12 @@ python3 tools/make_app_icons.py --list              # print the table (name → 
 python3 tools/make_app_icons.py                     # build everything (~2 min, 10 workers)
 python3 tools/make_app_icons.py --only GIMP VLC
 ```
+
+The roster travels with the artwork so a user on Fedora or Arch meets the same icons as one on
+openSUSE: `ROSTER` in `tools/skeu/apps.py` lists the programs and *every name they answer to*, and is
+unioned with whatever discovery finds. `EXTRA_NAMES` does the same for spellings of apps that are
+drawn anyway — `gnome-calculator` next to `org.gnome.Calculator`, `eog` next to `org.gnome.Loupe`,
+`firefox-esr`, `google-chrome-stable`, `transmission-gtk`.
 
 ## How each app is designed
 

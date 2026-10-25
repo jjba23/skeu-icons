@@ -44,6 +44,12 @@ CONTEXT = "apps"
 def lookup_names(app: dict) -> list[str]:
     """Every name a shell or launcher may ask for, slug first."""
     names = [slugify(app["name"])]
+    # Names declared by the roster (installed elsewhere) and the extra spellings
+    # for hand-drawn artwork, before the ones this machine's entries declare.
+    for value in (*app.get("names", []),):
+        value = (value or "").strip()
+        if value and value not in names:
+            names.append(value)
     for value in (app.get("icon", ""), app.get("wmclass", ""),
                   *app.get("desktops", [])):
         value = (value or "").strip()

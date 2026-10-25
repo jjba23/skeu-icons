@@ -7,12 +7,12 @@
     "/home/joe/.local/share/applications",
     "/home/joe/.local/share/flatpak/exports/share/applications"
   ],
-  "count": 164,
+  "count": 251,
   "objects": [
     "1Password",
     "Emacs",
+    "Firefox 24",
     "IntelliJ IDEA",
-    "browser_globe",
     "Signal",
     "address_book",
     "balance",
@@ -20,6 +20,7 @@
     "blueprint",
     "book",
     "book_open",
+    "bottle",
     "browser_globe",
     "bubble",
     "cable_coil",
@@ -27,6 +28,7 @@
     "camcorder",
     "camera",
     "card_catalog",
+    "cards",
     "cartridge",
     "cassette",
     "chart_recorder",
@@ -35,12 +37,18 @@
     "chrome_folder",
     "clapper",
     "clock_dial",
+    "cloud_paperweight",
+    "colorimeter",
+    "connector",
     "crate",
     "desk_calculator",
     "display_case",
     "documents",
     "dongle",
+    "drafting_compass",
+    "drawer",
     "drive",
+    "dual_display",
     "envelope",
     "film_reel",
     "funnel",
@@ -49,11 +57,13 @@
     "gauge",
     "gauge_cluster",
     "gears",
+    "gem_disc",
     "glass_cubes",
     "glass_keycap",
     "gramophone",
     "headphones",
     "journal",
+    "joystick",
     "keyring",
     "lamps",
     "ledger",
@@ -61,6 +71,7 @@
     "loupe",
     "magnet",
     "mahjong_tile",
+    "metronome",
     "microphone",
     "monitor",
     "naval_mine",
@@ -82,6 +93,7 @@
     "photo_print",
     "pickaxe",
     "pipe_branch",
+    "printer",
     "prism",
     "puzzle_piece",
     "radio",
@@ -89,7 +101,9 @@
     "remote_desktop",
     "reversi_discs",
     "router",
+    "safe_dial",
     "scanner",
+    "server",
     "service_bell",
     "shield",
     "slide_carousel",
@@ -103,6 +117,7 @@
     "type_block",
     "typewriter",
     "usb_stick",
+    "vise",
     "volume_knob",
     "webcam",
     "wire_cube",
@@ -123,6 +138,27 @@
       },
       "files": {
         "png": "1password/icon-1024.png"
+      }
+    },
+    {
+      "name": "AbiWord",
+      "display": "AbiWord",
+      "slug": "abiword",
+      "categories": "Office;WordProcessor",
+      "comment": "",
+      "exec": "",
+      "icon": "abiword",
+      "wmclass": "",
+      "desktop": "abiword.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "typewriter",
+        "hue": 40,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "abiword/icon-1024.png"
       }
     },
     {
@@ -198,6 +234,27 @@
       }
     },
     {
+      "name": "Anki",
+      "display": "Anki",
+      "slug": "anki",
+      "categories": "Education",
+      "comment": "",
+      "exec": "",
+      "icon": "anki",
+      "wmclass": "",
+      "desktop": "anki.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "cards",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "anki/icon-1024.png"
+      }
+    },
+    {
       "name": "Ardour",
       "display": "Ardour",
       "slug": "ardour",
@@ -213,6 +270,48 @@
       },
       "files": {
         "png": "ardour/icon-1024.png"
+      }
+    },
+    {
+      "name": "Arduino IDE",
+      "display": "Arduino IDE",
+      "slug": "arduino-ide",
+      "categories": "Development;IDE;Electronics",
+      "comment": "",
+      "exec": "",
+      "icon": "arduino",
+      "wmclass": "",
+      "desktop": "arduino.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chip",
+        "hue": 188,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "arduino-ide/icon-1024.png"
+      }
+    },
+    {
+      "name": "Ark",
+      "display": "Ark",
+      "slug": "ark",
+      "categories": "Utility;Archiving",
+      "comment": "",
+      "exec": "",
+      "icon": "ark",
+      "wmclass": "",
+      "desktop": "ark.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "parcel",
+        "hue": 220,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "ark/icon-1024.png"
       }
     },
     {
@@ -249,6 +348,27 @@
       },
       "files": {
         "png": "binary/icon-1024.png"
+      }
+    },
+    {
+      "name": "Bitwarden",
+      "display": "Bitwarden",
+      "slug": "bitwarden",
+      "categories": "Utility;Security",
+      "comment": "",
+      "exec": "",
+      "icon": "bitwarden",
+      "wmclass": "",
+      "desktop": "bitwarden.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "keyring",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "bitwarden/icon-1024.png"
       }
     },
     {
@@ -306,6 +426,27 @@
       }
     },
     {
+      "name": "Bottles",
+      "display": "Bottles",
+      "slug": "bottles",
+      "categories": "Game;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "bottles",
+      "wmclass": "",
+      "desktop": "bottles.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bottle",
+        "hue": 34,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "bottles/icon-1024.png"
+      }
+    },
+    {
       "name": "Boxes",
       "display": "Boxes",
       "slug": "boxes",
@@ -321,6 +462,27 @@
       },
       "files": {
         "png": "boxes/icon-1024.png"
+      }
+    },
+    {
+      "name": "Brasero",
+      "display": "Brasero",
+      "slug": "brasero",
+      "categories": "AudioVideo;DiscBurning",
+      "comment": "",
+      "exec": "",
+      "icon": "brasero",
+      "wmclass": "",
+      "desktop": "brasero.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "optical_disc",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "brasero/icon-1024.png"
       }
     },
     {
@@ -378,6 +540,27 @@
       }
     },
     {
+      "name": "Caja",
+      "display": "Caja",
+      "slug": "caja",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "caja",
+      "wmclass": "",
+      "desktop": "caja.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 96,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "caja/icon-1024.png"
+      }
+    },
+    {
       "name": "Calculator",
       "display": "Calculator",
       "slug": "calculator",
@@ -411,6 +594,27 @@
       },
       "files": {
         "png": "calendar/icon-1024.png"
+      }
+    },
+    {
+      "name": "Calibre",
+      "display": "Calibre",
+      "slug": "calibre",
+      "categories": "Office;Viewer",
+      "comment": "",
+      "exec": "",
+      "icon": "calibre",
+      "wmclass": "",
+      "desktop": "calibre.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "book_open",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "calibre/icon-1024.png"
       }
     },
     {
@@ -468,6 +672,27 @@
       }
     },
     {
+      "name": "Celluloid",
+      "display": "Celluloid",
+      "slug": "celluloid",
+      "categories": "AudioVideo;Video;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "celluloid",
+      "wmclass": "",
+      "desktop": "celluloid.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "film_reel",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "celluloid/icon-1024.png"
+      }
+    },
+    {
       "name": "Characters",
       "display": "Characters",
       "slug": "characters",
@@ -519,6 +744,27 @@
       },
       "files": {
         "png": "chess/icon-1024.png"
+      }
+    },
+    {
+      "name": "Chromium",
+      "display": "Chromium",
+      "slug": "chromium",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "chromium",
+      "wmclass": "",
+      "desktop": "chromium.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 212,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "chromium/icon-1024.png"
       }
     },
     {
@@ -666,6 +912,27 @@
       }
     },
     {
+      "name": "darktable",
+      "display": "darktable",
+      "slug": "darktable",
+      "categories": "Graphics;Photography",
+      "comment": "",
+      "exec": "",
+      "icon": "darktable",
+      "wmclass": "",
+      "desktop": "darktable.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "colorimeter",
+        "hue": 8,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "darktable/icon-1024.png"
+      }
+    },
+    {
       "name": "DataGrip",
       "display": "DataGrip 2026.2.6",
       "slug": "datagrip",
@@ -681,6 +948,48 @@
       },
       "files": {
         "png": "datagrip/icon-1024.png"
+      }
+    },
+    {
+      "name": "DaVinci Resolve",
+      "display": "DaVinci Resolve",
+      "slug": "davinci-resolve",
+      "categories": "AudioVideo;Video",
+      "comment": "",
+      "exec": "",
+      "icon": "davinci-resolve",
+      "wmclass": "",
+      "desktop": "davinci-resolve.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "film_reel",
+        "hue": 348,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "davinci-resolve/icon-1024.png"
+      }
+    },
+    {
+      "name": "DBeaver",
+      "display": "DBeaver",
+      "slug": "dbeaver",
+      "categories": "Development;Database",
+      "comment": "",
+      "exec": "",
+      "icon": "dbeaver",
+      "wmclass": "",
+      "desktop": "dbeaver.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "card_catalog",
+        "hue": 28,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "dbeaver/icon-1024.png"
       }
     },
     {
@@ -756,6 +1065,27 @@
       }
     },
     {
+      "name": "Discover",
+      "display": "Discover",
+      "slug": "discover",
+      "categories": "System;PackageManager",
+      "comment": "",
+      "exec": "",
+      "icon": "discover",
+      "wmclass": "",
+      "desktop": "discover.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "display_case",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "discover/icon-1024.png"
+      }
+    },
+    {
       "name": "Disk Usage Analyzer",
       "display": "Disk Usage Analyzer",
       "slug": "disk-usage-analyzer",
@@ -810,6 +1140,27 @@
       }
     },
     {
+      "name": "Docker",
+      "display": "Docker",
+      "slug": "docker",
+      "categories": "Development;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "docker-desktop",
+      "wmclass": "",
+      "desktop": "docker-desktop.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "crate",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "docker/icon-1024.png"
+      }
+    },
+    {
       "name": "Document Scanner",
       "display": "Document Scanner",
       "slug": "document-scanner",
@@ -843,6 +1194,111 @@
       },
       "files": {
         "png": "document-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Dolphin",
+      "display": "Dolphin",
+      "slug": "dolphin",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "dolphin",
+      "wmclass": "",
+      "desktop": "dolphin.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 202,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "dolphin/icon-1024.png"
+      }
+    },
+    {
+      "name": "Dropbox",
+      "display": "Dropbox",
+      "slug": "dropbox",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "dropbox",
+      "wmclass": "",
+      "desktop": "dropbox.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "drawer",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "dropbox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Eclipse",
+      "display": "Eclipse",
+      "slug": "eclipse",
+      "categories": "Development;IDE",
+      "comment": "",
+      "exec": "",
+      "icon": "eclipse",
+      "wmclass": "",
+      "desktop": "eclipse.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 268,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "eclipse/icon-1024.png"
+      }
+    },
+    {
+      "name": "Element",
+      "display": "Element",
+      "slug": "element",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "element",
+      "wmclass": "",
+      "desktop": "element.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 152,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "element/icon-1024.png"
+      }
+    },
+    {
+      "name": "Elisa",
+      "display": "Elisa",
+      "slug": "elisa",
+      "categories": "AudioVideo;Audio;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "elisa",
+      "wmclass": "",
+      "desktop": "elisa.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "record_sleeve",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "elisa/icon-1024.png"
       }
     },
     {
@@ -968,6 +1424,48 @@
       }
     },
     {
+      "name": "Falkon",
+      "display": "Falkon",
+      "slug": "falkon",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "falkon",
+      "wmclass": "",
+      "desktop": "falkon.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 168,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "falkon/icon-1024.png"
+      }
+    },
+    {
+      "name": "File Roller",
+      "display": "File Roller",
+      "slug": "file-roller",
+      "categories": "Utility;Archiving",
+      "comment": "",
+      "exec": "",
+      "icon": "file-roller",
+      "wmclass": "",
+      "desktop": "file-roller.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "parcel",
+        "hue": 40,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "file-roller/icon-1024.png"
+      }
+    },
+    {
       "name": "Files",
       "display": "Files",
       "slug": "files",
@@ -983,6 +1481,27 @@
       },
       "files": {
         "png": "files/icon-1024.png"
+      }
+    },
+    {
+      "name": "FileZilla",
+      "display": "FileZilla",
+      "slug": "filezilla",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "filezilla",
+      "wmclass": "",
+      "desktop": "filezilla.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "dual_display",
+        "hue": 12,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "filezilla/icon-1024.png"
       }
     },
     {
@@ -1017,6 +1536,27 @@
       },
       "files": {
         "png": "flatseal/icon-1024.png"
+      }
+    },
+    {
+      "name": "foot",
+      "display": "foot",
+      "slug": "foot",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "foot",
+      "wmclass": "",
+      "desktop": "foot.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "foot/icon-1024.png"
       }
     },
     {
@@ -1074,6 +1614,69 @@
       }
     },
     {
+      "name": "Geary",
+      "display": "Geary",
+      "slug": "geary",
+      "categories": "Network;Email",
+      "comment": "",
+      "exec": "",
+      "icon": "geary",
+      "wmclass": "",
+      "desktop": "geary.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "envelope",
+        "hue": 40,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "geary/icon-1024.png"
+      }
+    },
+    {
+      "name": "gedit",
+      "display": "gedit",
+      "slug": "gedit",
+      "categories": "Development;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "gedit",
+      "wmclass": "",
+      "desktop": "gedit.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "notes_pad",
+        "hue": 34,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gedit/icon-1024.png"
+      }
+    },
+    {
+      "name": "Ghostty",
+      "display": "Ghostty",
+      "slug": "ghostty",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "ghostty",
+      "wmclass": "",
+      "desktop": "ghostty.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 276,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "ghostty/icon-1024.png"
+      }
+    },
+    {
       "name": "GIMP",
       "display": "GIMP",
       "slug": "gimp",
@@ -1128,6 +1731,69 @@
       }
     },
     {
+      "name": "GNOME Terminal",
+      "display": "GNOME Terminal",
+      "slug": "gnome-terminal",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "gnome-terminal",
+      "wmclass": "",
+      "desktop": "gnome-terminal.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gnome-terminal/icon-1024.png"
+      }
+    },
+    {
+      "name": "Gnumeric",
+      "display": "Gnumeric",
+      "slug": "gnumeric",
+      "categories": "Office;Spreadsheet",
+      "comment": "",
+      "exec": "",
+      "icon": "gnumeric",
+      "wmclass": "",
+      "desktop": "gnumeric.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "ledger",
+        "hue": 96,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gnumeric/icon-1024.png"
+      }
+    },
+    {
+      "name": "Godot",
+      "display": "Godot",
+      "slug": "godot",
+      "categories": "Development;IDE",
+      "comment": "",
+      "exec": "",
+      "icon": "godot",
+      "wmclass": "",
+      "desktop": "godot.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "wire_cube",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "godot/icon-1024.png"
+      }
+    },
+    {
       "name": "Google Chrome",
       "display": "Google Chrome",
       "slug": "google-chrome",
@@ -1143,6 +1809,27 @@
       },
       "files": {
         "png": "google-chrome/icon-1024.png"
+      }
+    },
+    {
+      "name": "GParted",
+      "display": "GParted",
+      "slug": "gparted",
+      "categories": "System;Filesystem",
+      "comment": "",
+      "exec": "",
+      "icon": "gparted",
+      "wmclass": "",
+      "desktop": "gparted.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "vise",
+        "hue": 20,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gparted/icon-1024.png"
       }
     },
     {
@@ -1200,6 +1887,27 @@
       }
     },
     {
+      "name": "Gwenview",
+      "display": "Gwenview",
+      "slug": "gwenview",
+      "categories": "Graphics;Viewer",
+      "comment": "",
+      "exec": "",
+      "icon": "gwenview",
+      "wmclass": "",
+      "desktop": "gwenview.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "loupe",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gwenview/icon-1024.png"
+      }
+    },
+    {
       "name": "HandBrake",
       "display": "HandBrake",
       "slug": "handbrake",
@@ -1233,6 +1941,27 @@
       },
       "files": {
         "png": "help/icon-1024.png"
+      }
+    },
+    {
+      "name": "Heroic",
+      "display": "Heroic",
+      "slug": "heroic",
+      "categories": "Game",
+      "comment": "",
+      "exec": "",
+      "icon": "heroic",
+      "wmclass": "",
+      "desktop": "heroic.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "joystick",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "heroic/icon-1024.png"
       }
     },
     {
@@ -1308,6 +2037,27 @@
       }
     },
     {
+      "name": "Insomnia",
+      "display": "Insomnia",
+      "slug": "insomnia",
+      "categories": "Development;Network",
+      "comment": "",
+      "exec": "",
+      "icon": "insomnia",
+      "wmclass": "",
+      "desktop": "insomnia.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "pipe_branch",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "insomnia/icon-1024.png"
+      }
+    },
+    {
       "name": "IntelliJ IDEA",
       "display": "IntelliJ IDEA 2026.2.3",
       "slug": "intellij-idea",
@@ -1339,6 +2089,69 @@
       },
       "files": {
         "png": "jetbrains-toolbox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Joplin",
+      "display": "Joplin",
+      "slug": "joplin",
+      "categories": "Office;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "joplin",
+      "wmclass": "",
+      "desktop": "joplin.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "journal",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "joplin/icon-1024.png"
+      }
+    },
+    {
+      "name": "K3B",
+      "display": "K3B",
+      "slug": "k3b",
+      "categories": "AudioVideo;DiscBurning",
+      "comment": "",
+      "exec": "",
+      "icon": "k3b",
+      "wmclass": "",
+      "desktop": "k3b.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "optical_disc",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "k3b/icon-1024.png"
+      }
+    },
+    {
+      "name": "Kate",
+      "display": "Kate",
+      "slug": "kate",
+      "categories": "Development;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "kate",
+      "wmclass": "",
+      "desktop": "kate.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 216,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "kate/icon-1024.png"
       }
     },
     {
@@ -1393,6 +2206,27 @@
       },
       "files": {
         "png": "kitty/icon-1024.png"
+      }
+    },
+    {
+      "name": "Konsole",
+      "display": "Konsole",
+      "slug": "konsole",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "konsole",
+      "wmclass": "",
+      "desktop": "konsole.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 224,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "konsole/icon-1024.png"
       }
     },
     {
@@ -1540,6 +2374,27 @@
       }
     },
     {
+      "name": "LibreWolf",
+      "display": "LibreWolf",
+      "slug": "librewolf",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "librewolf",
+      "wmclass": "",
+      "desktop": "librewolf.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 216,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "librewolf/icon-1024.png"
+      }
+    },
+    {
       "name": "Lights Off",
       "display": "Lights Off",
       "slug": "lights-off",
@@ -1576,6 +2431,27 @@
       }
     },
     {
+      "name": "LMMS",
+      "display": "LMMS",
+      "slug": "lmms",
+      "categories": "AudioVideo;Audio;Sequencer",
+      "comment": "",
+      "exec": "",
+      "icon": "lmms",
+      "wmclass": "",
+      "desktop": "lmms.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "metronome",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "lmms/icon-1024.png"
+      }
+    },
+    {
       "name": "Logs",
       "display": "Logs",
       "slug": "logs",
@@ -1594,6 +2470,27 @@
       }
     },
     {
+      "name": "Logseq",
+      "display": "Logseq",
+      "slug": "logseq",
+      "categories": "Office;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "logseq",
+      "wmclass": "",
+      "desktop": "logseq.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "blueprint",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "logseq/icon-1024.png"
+      }
+    },
+    {
       "name": "Lorem",
       "display": "Lorem",
       "slug": "lorem",
@@ -1609,6 +2506,27 @@
       },
       "files": {
         "png": "lorem/icon-1024.png"
+      }
+    },
+    {
+      "name": "Lutris",
+      "display": "Lutris",
+      "slug": "lutris",
+      "categories": "Game",
+      "comment": "",
+      "exec": "",
+      "icon": "lutris",
+      "wmclass": "",
+      "desktop": "lutris.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "gamepad",
+        "hue": 274,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "lutris/icon-1024.png"
       }
     },
     {
@@ -1648,6 +2566,69 @@
       }
     },
     {
+      "name": "Mattermost",
+      "display": "Mattermost",
+      "slug": "mattermost",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "mattermost",
+      "wmclass": "",
+      "desktop": "mattermost.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mattermost/icon-1024.png"
+      }
+    },
+    {
+      "name": "MEGA",
+      "display": "MEGA",
+      "slug": "mega",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "megasync",
+      "wmclass": "",
+      "desktop": "megasync.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "safe_dial",
+        "hue": 8,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mega/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft Edge",
+      "display": "Microsoft Edge",
+      "slug": "microsoft-edge",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-edge",
+      "wmclass": "",
+      "desktop": "microsoft-edge.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "microsoft-edge/icon-1024.png"
+      }
+    },
+    {
       "name": "Microsoft Edit",
       "display": "Microsoft Edit",
       "slug": "microsoft-edit",
@@ -1666,6 +2647,27 @@
       }
     },
     {
+      "name": "Microsoft Teams",
+      "display": "Microsoft Teams",
+      "slug": "microsoft-teams",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "teams",
+      "wmclass": "",
+      "desktop": "teams.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "microsoft-teams/icon-1024.png"
+      }
+    },
+    {
       "name": "Mines",
       "display": "Mines",
       "slug": "mines",
@@ -1681,6 +2683,27 @@
       },
       "files": {
         "png": "mines/icon-1024.png"
+      }
+    },
+    {
+      "name": "Mixxx",
+      "display": "Mixxx",
+      "slug": "mixxx",
+      "categories": "AudioVideo;Audio;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "mixxx",
+      "wmclass": "",
+      "desktop": "mixxx.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "tuning_fork",
+        "hue": 190,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mixxx/icon-1024.png"
       }
     },
     {
@@ -1756,6 +2779,69 @@
       }
     },
     {
+      "name": "MySQL Workbench",
+      "display": "MySQL Workbench",
+      "slug": "mysql-workbench",
+      "categories": "Development;Database",
+      "comment": "",
+      "exec": "",
+      "icon": "mysql-workbench",
+      "wmclass": "",
+      "desktop": "mysql-workbench.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "server",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mysql-workbench/icon-1024.png"
+      }
+    },
+    {
+      "name": "Nemo",
+      "display": "Nemo",
+      "slug": "nemo",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "nemo",
+      "wmclass": "",
+      "desktop": "nemo.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 148,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "nemo/icon-1024.png"
+      }
+    },
+    {
+      "name": "Neovide",
+      "display": "Neovide",
+      "slug": "neovide",
+      "categories": "Development;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "neovide",
+      "wmclass": "",
+      "desktop": "neovide.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 142,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "neovide/icon-1024.png"
+      }
+    },
+    {
       "name": "Newsflash",
       "display": "Newsflash",
       "slug": "newsflash",
@@ -1771,6 +2857,27 @@
       },
       "files": {
         "png": "newsflash/icon-1024.png"
+      }
+    },
+    {
+      "name": "Nextcloud",
+      "display": "Nextcloud",
+      "slug": "nextcloud",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "nextcloud",
+      "wmclass": "",
+      "desktop": "nextcloud.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "cloud_paperweight",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "nextcloud/icon-1024.png"
       }
     },
     {
@@ -1828,6 +2935,48 @@
       }
     },
     {
+      "name": "Obsidian",
+      "display": "Obsidian",
+      "slug": "obsidian",
+      "categories": "Office;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "obsidian",
+      "wmclass": "",
+      "desktop": "obsidian.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "gem_disc",
+        "hue": 272,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "obsidian/icon-1024.png"
+      }
+    },
+    {
+      "name": "Okular",
+      "display": "Okular",
+      "slug": "okular",
+      "categories": "Office;Viewer",
+      "comment": "",
+      "exec": "",
+      "icon": "okular",
+      "wmclass": "",
+      "desktop": "okular.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "book_open",
+        "hue": 28,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "okular/icon-1024.png"
+      }
+    },
+    {
       "name": "openSUSE Welcome",
       "display": "openSUSE Welcome",
       "slug": "opensuse-welcome",
@@ -1843,6 +2992,27 @@
       },
       "files": {
         "png": "opensuse-welcome/icon-1024.png"
+      }
+    },
+    {
+      "name": "Opera",
+      "display": "Opera",
+      "slug": "opera",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "opera",
+      "wmclass": "",
+      "desktop": "opera.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 348,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "opera/icon-1024.png"
       }
     },
     {
@@ -1918,6 +3088,48 @@
       }
     },
     {
+      "name": "PCManFM",
+      "display": "PCManFM",
+      "slug": "pcmanfm",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "pcmanfm",
+      "wmclass": "",
+      "desktop": "pcmanfm.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "pcmanfm/icon-1024.png"
+      }
+    },
+    {
+      "name": "pgAdmin",
+      "display": "pgAdmin",
+      "slug": "pgadmin",
+      "categories": "Development;Database",
+      "comment": "",
+      "exec": "",
+      "icon": "pgadmin4",
+      "wmclass": "",
+      "desktop": "pgadmin4.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "toolbox",
+        "hue": 212,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "pgadmin/icon-1024.png"
+      }
+    },
+    {
       "name": "Photos",
       "display": "Photos",
       "slug": "photos",
@@ -1936,6 +3148,27 @@
       }
     },
     {
+      "name": "Postman",
+      "display": "Postman",
+      "slug": "postman",
+      "categories": "Development;Network",
+      "comment": "",
+      "exec": "",
+      "icon": "postman",
+      "wmclass": "",
+      "desktop": "postman.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "connector",
+        "hue": 24,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "postman/icon-1024.png"
+      }
+    },
+    {
       "name": "Print Editor",
       "display": "Print Editor",
       "slug": "print-editor",
@@ -1951,6 +3184,27 @@
       },
       "files": {
         "png": "print-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Print Settings",
+      "display": "Print Settings",
+      "slug": "print-settings",
+      "categories": "System;Settings",
+      "comment": "",
+      "exec": "",
+      "icon": "system-config-printer",
+      "wmclass": "",
+      "desktop": "system-config-printer.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "printer",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "print-settings/icon-1024.png"
       }
     },
     {
@@ -2008,6 +3262,27 @@
       }
     },
     {
+      "name": "QEMU",
+      "display": "QEMU",
+      "slug": "qemu",
+      "categories": "System;Emulator",
+      "comment": "",
+      "exec": "",
+      "icon": "qemu",
+      "wmclass": "",
+      "desktop": "qemu.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chip",
+        "hue": 12,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "qemu/icon-1024.png"
+      }
+    },
+    {
       "name": "qpwgraph",
       "display": "qpwgraph",
       "slug": "qpwgraph",
@@ -2041,6 +3316,48 @@
       },
       "files": {
         "png": "quadrapassel/icon-1024.png"
+      }
+    },
+    {
+      "name": "qutebrowser",
+      "display": "qutebrowser",
+      "slug": "qutebrowser",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "qutebrowser",
+      "wmclass": "",
+      "desktop": "qutebrowser.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 190,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "qutebrowser/icon-1024.png"
+      }
+    },
+    {
+      "name": "RawTherapee",
+      "display": "RawTherapee",
+      "slug": "rawtherapee",
+      "categories": "Graphics;Photography",
+      "comment": "",
+      "exec": "",
+      "icon": "rawtherapee",
+      "wmclass": "",
+      "desktop": "rawtherapee.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "prism",
+        "hue": 20,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rawtherapee/icon-1024.png"
       }
     },
     {
@@ -2170,6 +3487,27 @@
       }
     },
     {
+      "name": "Rhythmbox",
+      "display": "Rhythmbox",
+      "slug": "rhythmbox",
+      "categories": "AudioVideo;Audio;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "rhythmbox",
+      "wmclass": "",
+      "desktop": "rhythmbox.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "record_sleeve",
+        "hue": 14,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rhythmbox/icon-1024.png"
+      }
+    },
+    {
       "name": "Riff",
       "display": "Riff",
       "slug": "riff",
@@ -2185,6 +3523,27 @@
       },
       "files": {
         "png": "riff/icon-1024.png"
+      }
+    },
+    {
+      "name": "Rocket.Chat",
+      "display": "Rocket.Chat",
+      "slug": "rocket-chat",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "rocket.chat",
+      "wmclass": "",
+      "desktop": "rocket.chat.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 348,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rocket-chat/icon-1024.png"
       }
     },
     {
@@ -2224,6 +3583,27 @@
       }
     },
     {
+      "name": "RStudio",
+      "display": "RStudio",
+      "slug": "rstudio",
+      "categories": "Development;Science",
+      "comment": "",
+      "exec": "",
+      "icon": "rstudio",
+      "wmclass": "",
+      "desktop": "rstudio.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chart_recorder",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rstudio/icon-1024.png"
+      }
+    },
+    {
       "name": "RustDesk",
       "display": "RustDesk",
       "slug": "rustdesk",
@@ -2239,6 +3619,27 @@
       },
       "files": {
         "png": "rustdesk/icon-1024.png"
+      }
+    },
+    {
+      "name": "Scribus",
+      "display": "Scribus",
+      "slug": "scribus",
+      "categories": "Graphics;Office",
+      "comment": "",
+      "exec": "",
+      "icon": "scribus",
+      "wmclass": "",
+      "desktop": "scribus.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "drafting_compass",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "scribus/icon-1024.png"
       }
     },
     {
@@ -2278,6 +3679,48 @@
       }
     },
     {
+      "name": "Shotcut",
+      "display": "Shotcut",
+      "slug": "shotcut",
+      "categories": "AudioVideo;Video",
+      "comment": "",
+      "exec": "",
+      "icon": "shotcut",
+      "wmclass": "",
+      "desktop": "shotcut.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "clapper",
+        "hue": 24,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "shotcut/icon-1024.png"
+      }
+    },
+    {
+      "name": "Shotwell",
+      "display": "Shotwell",
+      "slug": "shotwell",
+      "categories": "Graphics;Photography",
+      "comment": "",
+      "exec": "",
+      "icon": "shotwell",
+      "wmclass": "",
+      "desktop": "shotwell.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "photo_print",
+        "hue": 340,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "shotwell/icon-1024.png"
+      }
+    },
+    {
       "name": "Signal",
       "display": "Signal",
       "slug": "signal",
@@ -2291,6 +3734,27 @@
       },
       "files": {
         "png": "signal/icon-1024.png"
+      }
+    },
+    {
+      "name": "Skype",
+      "display": "Skype",
+      "slug": "skype",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "skype",
+      "wmclass": "",
+      "desktop": "skype.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "skype/icon-1024.png"
       }
     },
     {
@@ -2363,6 +3827,27 @@
       },
       "files": {
         "png": "spotify/icon-1024.png"
+      }
+    },
+    {
+      "name": "Spyder",
+      "display": "Spyder",
+      "slug": "spyder",
+      "categories": "Development;IDE;Science",
+      "comment": "",
+      "exec": "",
+      "icon": "spyder",
+      "wmclass": "",
+      "desktop": "spyder.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 20,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "spyder/icon-1024.png"
       }
     },
     {
@@ -2456,6 +3941,27 @@
       }
     },
     {
+      "name": "Synaptic",
+      "display": "Synaptic",
+      "slug": "synaptic",
+      "categories": "System;PackageManager",
+      "comment": "",
+      "exec": "",
+      "icon": "synaptic",
+      "wmclass": "",
+      "desktop": "synaptic.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "crate",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "synaptic/icon-1024.png"
+      }
+    },
+    {
       "name": "System Monitor",
       "display": "System Monitor",
       "slug": "system-monitor",
@@ -2489,6 +3995,27 @@
       },
       "files": {
         "png": "telegram/icon-1024.png"
+      }
+    },
+    {
+      "name": "Terminator",
+      "display": "Terminator",
+      "slug": "terminator",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "terminator",
+      "wmclass": "",
+      "desktop": "terminator.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "terminator/icon-1024.png"
       }
     },
     {
@@ -2528,6 +4055,48 @@
       }
     },
     {
+      "name": "Thunar",
+      "display": "Thunar",
+      "slug": "thunar",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "thunar",
+      "wmclass": "",
+      "desktop": "thunar.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 28,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "thunar/icon-1024.png"
+      }
+    },
+    {
+      "name": "Thunderbird",
+      "display": "Thunderbird",
+      "slug": "thunderbird",
+      "categories": "Network;Email",
+      "comment": "",
+      "exec": "",
+      "icon": "thunderbird",
+      "wmclass": "",
+      "desktop": "thunderbird.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "envelope",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "thunderbird/icon-1024.png"
+      }
+    },
+    {
       "name": "TigerVNC",
       "display": "TigerVNC",
       "slug": "tigervnc",
@@ -2543,6 +4112,69 @@
       },
       "files": {
         "png": "tigervnc/icon-1024.png"
+      }
+    },
+    {
+      "name": "Tilix",
+      "display": "Tilix",
+      "slug": "tilix",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "tilix",
+      "wmclass": "",
+      "desktop": "tilix.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 168,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "tilix/icon-1024.png"
+      }
+    },
+    {
+      "name": "Timeshift",
+      "display": "Timeshift",
+      "slug": "timeshift",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "timeshift",
+      "wmclass": "",
+      "desktop": "timeshift.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "stopwatch",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "timeshift/icon-1024.png"
+      }
+    },
+    {
+      "name": "Tor Browser",
+      "display": "Tor Browser",
+      "slug": "tor-browser",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "torbrowser",
+      "wmclass": "",
+      "desktop": "torbrowser.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 282,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "tor-browser/icon-1024.png"
       }
     },
     {
@@ -2582,6 +4214,27 @@
       }
     },
     {
+      "name": "Transmission",
+      "display": "Transmission",
+      "slug": "transmission",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "transmission",
+      "wmclass": "",
+      "desktop": "transmission.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "magnet",
+        "hue": 8,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "transmission/icon-1024.png"
+      }
+    },
+    {
       "name": "Tweaks",
       "display": "Tweaks",
       "slug": "tweaks",
@@ -2597,6 +4250,27 @@
       },
       "files": {
         "png": "tweaks/icon-1024.png"
+      }
+    },
+    {
+      "name": "Unity Hub",
+      "display": "Unity Hub",
+      "slug": "unity-hub",
+      "categories": "Development;IDE",
+      "comment": "",
+      "exec": "",
+      "icon": "unityhub",
+      "wmclass": "",
+      "desktop": "unityhub.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_cubes",
+        "hue": 260,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "unity-hub/icon-1024.png"
       }
     },
     {
@@ -2654,6 +4328,69 @@
       }
     },
     {
+      "name": "VirtualBox",
+      "display": "VirtualBox",
+      "slug": "virtualbox",
+      "categories": "System;Emulator",
+      "comment": "",
+      "exec": "",
+      "icon": "virtualbox",
+      "wmclass": "",
+      "desktop": "virtualbox.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "parcel",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "virtualbox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Visual Studio Code",
+      "display": "Visual Studio Code",
+      "slug": "visual-studio-code",
+      "categories": "Development;IDE;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "code",
+      "wmclass": "",
+      "desktop": "code.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "visual-studio-code/icon-1024.png"
+      }
+    },
+    {
+      "name": "Vivaldi",
+      "display": "Vivaldi",
+      "slug": "vivaldi",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "vivaldi",
+      "wmclass": "",
+      "desktop": "vivaldi.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 8,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "vivaldi/icon-1024.png"
+      }
+    },
+    {
       "name": "VLC media player",
       "display": "VLC media player",
       "slug": "vlc-media-player",
@@ -2672,6 +4409,27 @@
       }
     },
     {
+      "name": "VMware Workstation",
+      "display": "VMware Workstation",
+      "slug": "vmware-workstation",
+      "categories": "System;Emulator",
+      "comment": "",
+      "exec": "",
+      "icon": "vmware-workstation",
+      "wmclass": "",
+      "desktop": "vmware-workstation.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_cubes",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "vmware-workstation/icon-1024.png"
+      }
+    },
+    {
       "name": "Volume Control",
       "display": "Volume Control",
       "slug": "volume-control",
@@ -2687,6 +4445,27 @@
       },
       "files": {
         "png": "volume-control/icon-1024.png"
+      }
+    },
+    {
+      "name": "VSCodium",
+      "display": "VSCodium",
+      "slug": "vscodium",
+      "categories": "Development;IDE;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "codium",
+      "wmclass": "",
+      "desktop": "codium.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "vscodium/icon-1024.png"
       }
     },
     {
@@ -2870,6 +4649,27 @@
       }
     },
     {
+      "name": "Wine",
+      "display": "Wine",
+      "slug": "wine",
+      "categories": "Game;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "wine",
+      "wmclass": "",
+      "desktop": "wine.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "bottle",
+        "hue": 344,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wine/icon-1024.png"
+      }
+    },
+    {
       "name": "Wireshark",
       "display": "Wireshark",
       "slug": "wireshark",
@@ -2939,6 +4739,27 @@
       },
       "files": {
         "png": "workbench/icon-1024.png"
+      }
+    },
+    {
+      "name": "Xfce Terminal",
+      "display": "Xfce Terminal",
+      "slug": "xfce-terminal",
+      "categories": "System;TerminalEmulator",
+      "comment": "",
+      "exec": "",
+      "icon": "xfce4-terminal",
+      "wmclass": "",
+      "desktop": "xfce4-terminal.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "xfce-terminal/icon-1024.png"
       }
     },
     {
@@ -3029,6 +4850,27 @@
       },
       "files": {
         "png": "zen-browser/icon-1024.png"
+      }
+    },
+    {
+      "name": "Zoom",
+      "display": "Zoom",
+      "slug": "zoom",
+      "categories": "Network;VideoConference",
+      "comment": "",
+      "exec": "",
+      "icon": "zoom",
+      "wmclass": "",
+      "desktop": "zoom.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "object",
+        "object": "camcorder",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "zoom/icon-1024.png"
       }
     },
     {

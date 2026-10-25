@@ -25,7 +25,7 @@ __all__ = [
     "spec_sheet", "type_stamps", "mug", "platter_stack", "wrench_lens",
     "combination_lock", "planner", "desk_lamp", "crystal_ball", "parcel",
     "drawer", "spectacles", "chart_recorder", "multitool", "lady_justice",
-    "conductor", "floppy_lambda",
+    "conductor", "floppy_lambda", "bottle",
 ]
 
 
@@ -669,6 +669,49 @@ def mug(c, hue: float = 28, cy: float = CY) -> None:
             M.chrome, profile=("sphere", 10), shadow=True, contact=0.18)
     c.paint(Rotated(Ellipse(cx + 336, cy + 292, 30, 20), 0, cx, cy), M.chrome,
             profile=("sphere", 16), contact=0.18)
+
+
+# --------------------------------------------------------------------------- #
+# the corked bottle - compatibility layers, cellars, drinks
+# --------------------------------------------------------------------------- #
+
+def bottle(c, hue: float = 30, cy: float = CY) -> None:
+    """A corked wine bottle: dark green glass, paper label, foiled capsule."""
+    cx = CX
+    body = RRect(cx, cy + 150, 268, 470, 54)
+    shoulder = Poly([(cx - 134, cy - 56), (cx + 134, cy - 56), (cx + 56, cy - 222),
+                     (cx - 56, cy - 222)], rounding=44)
+    neck = RRect(cx, cy - 274, 108, 116, 16)
+    silhouette = body | shoulder | neck
+    c.paint(Moved(silhouette, 0, 26), M.flat("#0b160e"), profile=("sphere", 120))
+    c.paint(silhouette, M.glass, profile=("bevel", 18, 26), hue=142, sat=0.56,
+            light=0.24, gloss=0.5, shadow=True, contact=0.26)
+    # the punt and the light down the shoulder
+    c.paint(Ellipse(cx, cy + 356, 118, 34), M.flat("#0a130c"),
+            profile=("sphere", 40), contact=0.2)
+    c.paint(Capsule(cx - 86, cy + 20, cx - 70, cy + 300, 20), M.flat("#e8f5ea"),
+            profile=("bevel", 8, 12), alpha=0.16)
+    c.paint(Capsule(cx + 96, cy - 20, cx + 84, cy + 210, 10), M.flat("#ffffff"),
+            profile=("bevel", 4, 6), alpha=0.10)
+    # foil capsule over the lip, with its two sealing bands
+    c.paint(RRect(cx, cy - 300, 124, 112, 12), M.enamel, profile=("bevel", 10, 14),
+            hue=hue, sat=0.72, light=0.42, gloss=0.5, shadow=True, contact=0.2)
+    for dy in (-336, -276):
+        c.paint(RRect(cx, cy + dy, 128, 12, 4), M.flat("#241a12"),
+                profile=("bevel", 3, 4), alpha=0.35)
+    c.paint(RRect(cx - 26, cy - 322, 26, 60, 8), M.flat("#ffffff"),
+            profile=("bevel", 5, 8), alpha=0.22)
+    # cork standing proud of the neck
+    c.paint(RRect(cx, cy - 366, 96, 36, 8), M.wood, profile=("bevel", 6, 9),
+            hue=34, sat=0.42, light=0.62, shadow=True, contact=0.18)
+    # printed label: laid paper, one enamel band, a ruled line of type
+    c.paint(RRect(cx, cy + 196, 216, 248, 8), M.paper, profile=("bevel", 3, 5),
+            hue=42, sat=0.12, light=0.90, shadow=True, contact=0.16)
+    c.paint(RRect(cx, cy + 266, 216, 62, 4), M.enamel, profile=("bevel", 3, 4),
+            hue=hue, sat=0.70, light=0.44, contact=0.16)
+    for i, width in enumerate((150, 168, 118)):
+        c.paint(RRect(cx, cy + 116 + i * 34, width, 10, 3), M.engraved,
+                profile=("bevel", 2, 3), alpha=0.34)
 
 
 # --------------------------------------------------------------------------- #

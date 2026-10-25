@@ -39,7 +39,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from render_skeu import render, resize, seed_for, slugify  # noqa: E402
-from skeu.apps import design  # noqa: E402
+from skeu.apps import design, extra_names, roster_apps  # noqa: E402
 
 OUT = ROOT / "app-icons"
 SVG_SRC = ROOT / "svg"
@@ -105,6 +105,26 @@ def discover() -> list[dict]:
                 "desktop": Path(path).name,
                 "desktops": [Path(path).stem],
             }
+    # Programs that are common on other desktops but absent from this machine.
+    # The roster also declares the names each one answers to, so the theme can
+    # link them even though no local desktop file mentions them.
+    for entry in roster_apps():
+        current = apps.get(entry["name"])
+        if current is None:
+            apps[entry["name"]] = entry
+        else:
+            current.setdefault("names", [])
+            for alias in entry["names"]:
+                if alias not in current["names"]:
+                    current["names"].append(alias)
+
+    # Older and shorter spellings of the same program.
+    for app in apps.values():
+        names = app.setdefault("names", [])
+        for alias in extra_names(app["name"]):
+            if alias not in names:
+                names.append(alias)
+
     return [apps[k] for k in sorted(apps)]
 
 

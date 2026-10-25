@@ -43,9 +43,9 @@
     "brown",
     "graphite"
   ],
-  "icons": 1618,
+  "icons": 1930,
   "contexts": {
-    "apps": 663,
+    "apps": 975,
     "places": 171,
     "mimetypes": 652,
     "emblems": 17,
@@ -53,8 +53,16 @@
     "devices": 88
   },
   "files": {
-    "bitmaps": 29124,
-    "vectors": 1603
+    "bitmaps": 34704,
+    "vectors": 2249
+  },
+  "app_roster": {
+    "programs": 251,
+    "drawn_here": 164,
+    "roster_only": 87,
+    "names": 997,
+    "source": "tools/skeu/apps.py (APP_ICONS, ROSTER, EXTRA_NAMES), linked by tools/make_theme_apps.py",
+    "why": "a build machine only knows its own desktop files, so the pack also ships the programs people actually run on other distributions"
   },
   "pack_artwork": 92,
   "design_rules": {
