@@ -1,0 +1,78 @@
+[Icon Theme]
+Name=Skeu Icons Dark
+Comment=Skeuomorphic icons with light-ink symbolic icons for dark desktops
+Example=folder
+Inherits=skeu-icons,AdwaitaLegacy,hicolor
+DisplayDepth=32
+LinkOverlay=emblem-symbolic-link
+LockOverlay=emblem-readonly
+
+# No freedesktop key marks a theme as dark: desktops and libadwaita pick it by
+# name or by the icon-theme setting, so the name is the contract.  Everything
+# this theme does not override resolves through Inherits=, which keeps the
+# variant a few hundred symlinks instead of a second copy of the artwork.
+Directories=symbolic/actions,symbolic/categories,symbolic/devices,symbolic/emotes,symbolic/legacy,symbolic/mimetypes,symbolic/places,symbolic/status,symbolic/ui
+
+[symbolic/actions]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Actions
+Type=Scalable
+
+[symbolic/categories]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Categories
+Type=Scalable
+
+[symbolic/devices]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Devices
+Type=Scalable
+
+[symbolic/emotes]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Emotes
+Type=Scalable
+
+[symbolic/legacy]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Legacy
+Type=Scalable
+
+[symbolic/mimetypes]
+Size=16
+MinSize=8
+MaxSize=512
+Context=MimeTypes
+Type=Scalable
+
+[symbolic/places]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Places
+Type=Scalable
+
+[symbolic/status]
+Size=16
+MinSize=8
+MaxSize=512
+Context=Status
+Type=Scalable
+
+[symbolic/ui]
+Size=16
+MinSize=8
+MaxSize=512
+Context=UI
+Type=Scalable
+

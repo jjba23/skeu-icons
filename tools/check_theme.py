@@ -15,6 +15,11 @@ Checks, in order:
 * every section belongs to a declared directory, and every ``Context=`` value is
   one the freedesktop spec defines;
 * the six contexts carry the same icon names at every fixed size;
+* the symbolic layer matches ``tools/symbolic-names.txt`` exactly, name for name
+  and byte for byte (see ``tools/make_symbolic.py``), and carries no extras;
+* the accent/lightness variants in ``skeu-icons-green`` and
+  ``skeu-icons-green-dark`` are intact: index.theme, accent symlinks, no
+  dangling links, and the full light-ink symbolic set;
 * ``app-icons/`` and ``project-icons/`` match their ``index.json`` (count and
   every ``icon-<size>.png``), and ``theme-manifest.json`` matches the disk;
 * no ``.icns`` file has crept back in;
@@ -33,6 +38,11 @@ THEME = "skeu-icons"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
 SET_SIZES = (16, 32, 64, 128, 256, 512)
 CONTEXTS = ("apps", "places", "mimetypes", "emblems", "categories", "devices")
+SYMBOLIC_CONTEXTS = ("actions", "categories", "devices", "emotes", "legacy",
+                     "mimetypes", "places", "status", "ui")
+#: Contexts whose un-suffixed icons are drawn as scalable SVG (the rest ship
+#: relief bitmaps); kept in step with tools/make_plain.py by its own check.
+PLAIN_CONTEXTS = ("actions", "emotes", "legacy", "status", "ui")
 FREEDESKTOP_CONTEXTS = {
     "Actions", "Animations", "Applications", "Categories", "Devices", "Emblems",
     "Emotes", "Filesystems", "International", "Legacy", "MimeTypes", "Places",
@@ -176,11 +186,33 @@ def check() -> list[str]:
                             f"but disk has {counts}")
         if manifest.get("icons") != sum(counts.values()):
             problems.append("theme-manifest.json: icons total does not match the disk")
+        symbolic_counts = {c: len(list((theme / "symbolic" / c).glob("*.svg")))
+                           for c in SYMBOLIC_CONTEXTS if (theme / "symbolic" / c).is_dir()}
+        symbolic_manifest = manifest.get("symbolic") or {}
+        if symbolic_manifest.get("contexts") != dict(sorted(symbolic_counts.items())):
+            problems.append("theme-manifest.json: symbolic contexts do not match the disk")
+        if symbolic_manifest.get("icons") != sum(symbolic_counts.values()):
+            problems.append("theme-manifest.json: symbolic total does not match the disk")
+        if not (manifest.get("variants") or {}).get("themes"):
+            problems.append("theme-manifest.json: variants are not listed")
 
     # nothing .icns may come back
     stray = sorted(p for p in ROOT.rglob("*.icns") if ".git" not in p.parts)
     if stray:
         problems.append(f"{len(stray)} .icns file(s) present (e.g. {stray[0].relative_to(ROOT)})")
+
+    # the symbolic layer and the variants are generated; verify them here so
+    # one `maak check` covers everything that ships.
+    try:
+        from make_plain import check as check_plain
+        from make_symbolic import check as check_symbolic
+        from make_variants import check as check_variants
+    except Exception as error:  # noqa: BLE001
+        problems.append(f"cannot import the generators: {error}")
+    else:
+        problems += check_symbolic()
+        problems += check_plain()
+        problems += check_variants()
 
     # the gallery must match what the generator produces
     try:
@@ -209,8 +241,17 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if not args.quiet:
         header, sections = parse_index(ROOT / THEME / "index.theme")
+        symbolic = sum(len(list((ROOT / THEME / "symbolic" / c).glob("*.svg")))
+                       for c in SYMBOLIC_CONTEXTS
+                       if (ROOT / THEME / "symbolic" / c).is_dir())
+        plain = sum(len(list((ROOT / THEME / "scalable" / c).glob("*.svg")))
+                    for c in PLAIN_CONTEXTS
+                    if (ROOT / THEME / "scalable" / c).is_dir())
+        variants = len(list(ROOT.glob("skeu-icons-*/index.theme")))
         print(f"ok: {header.get('Name')} - {len(sections)} directories, "
-              f"{len(SIZES)} sizes x {len(CONTEXTS)} contexts, gallery current")
+              f"{len(SIZES)} sizes x {len(CONTEXTS)} contexts, {symbolic} symbolic "
+              f"icons, {plain} plain scalable icons, {variants} variant themes, "
+              f"gallery current")
     return 0
 
 

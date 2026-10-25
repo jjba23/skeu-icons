@@ -24,6 +24,10 @@ ROOT = Path(__file__).resolve().parents[1]
 THEME = "skeu-icons"
 OUT = ROOT / "gallery.html"
 
+#: The symbolic layer's contexts, in gallery order.
+SYMBOLIC_CONTEXTS = ("actions", "categories", "devices", "emotes", "legacy",
+                     "mimetypes", "places", "status", "ui")
+
 #: Theme contexts, in gallery order: (directory, section id, heading).
 CONTEXTS = (
     ("apps", "apps", "Applications"),
@@ -248,6 +252,20 @@ def theme_section(directory: str, section_id: str, heading: str) -> tuple[list[s
     return out, len(names)
 
 
+def symbolic_section(context: str) -> tuple[list[str], int]:
+    """One context of the symbolic layer: every icon is a single scalable SVG."""
+    names = sorted(p.stem for p in (ROOT / THEME / "symbolic" / context).glob("*.svg"))
+    out = [f'<section id="symbolic-{context}">',
+           f'  <h2>Symbolic · {context} <span class="count">· {len(names)}</span></h2>',
+           '  <div class="grid">']
+    for name in names:
+        src = f"{THEME}/symbolic/{context}/{name}.svg"
+        out += card(f"symbolic-{context}-{name}", name, name,
+                    {size: src for size in SIZES}, name)
+    out += ["  </div>", "</section>"]
+    return out, len(names)
+
+
 def json_section(path: str, key: str, section_id: str, heading: str,
                  set_dir: str) -> tuple[list[str], int]:
     records = sorted(json.loads((ROOT / path).read_text())[key],
@@ -272,6 +290,10 @@ def build() -> str:
         block, n = theme_section(directory, section_id, heading)
         sections += block
         counts[heading] = n
+    for context in SYMBOLIC_CONTEXTS:
+        block, n = symbolic_section(context)
+        sections += block
+        counts[f"Symbolic · {context}"] = n
     for path, key, section_id, heading, set_dir in (
         ("app-icons/index.json", "apps", "app-icons", "Installed apps", "app-icons"),
         ("project-icons/index.json", "icons", "project-icons", "Projects", "project-icons"),
@@ -285,6 +307,8 @@ def build() -> str:
              f'<span class="chip">{len(counts)} sets</span>']
     chips += [f'<span class="chip">{heading} <b>{n}</b></span>' for heading, n in counts.items()]
     chips.append('<span class="chip">sizes <b>' + ", ".join(str(s) for s in SIZES) + "</b></span>")
+    chips.append('<span class="chip">variants <b>skeu-icons-green, '
+                 'skeu-icons-green-dark</b></span>')
     size_buttons = "".join(f'<button data-size="{s}">{s}</button>' for s in SIZES)
 
     return (HEAD.format(stats="".join(chips), size_buttons=size_buttons)

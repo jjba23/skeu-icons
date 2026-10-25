@@ -22,7 +22,7 @@
   #:use-module (maak maak)
   ;; Only these are tasks; the helpers below stay private to the file.
   #:export (default gallery docs build icons apps contexts projects alts
-            report check install clean))
+            report check symbolic variants install uninstall clean))
 
 ;; ====== Constants ======
 
@@ -55,6 +55,17 @@
 (define (gallery)
   "Rebuild gallery.html from the theme, app-icons/ and project-icons/."
   (tool "make_gallery.py"))
+
+(define (symbolic)
+  "Redraw the symbolic layer (646 names) and the un-suffixed scalable icons."
+  (require-python)
+  (tool "make_symbolic.py")
+  (tool "make_plain.py"))
+
+(define (variants)
+  "Rebuild the accent and dark variant themes as symlink trees."
+  (require-python)
+  (tool "make_variants.py"))
 
 (define (docs)
   "Recompose the README sheets in docs/ (hero, apps, projects, contexts)."
@@ -103,11 +114,17 @@
   (tool "check_theme.py"))
 
 (define (install)
-  "Install the theme for this user (~/.local/share/icons), then refresh the cache.
+  "Install every theme for this user (~/.local/share/icons), then refresh the cache.
 
 A system-wide install is the same script with --system and needs root, so it is
 left to you: `sudo ./install.sh --system'."
   (run (list "./install.sh")))
+
+(define (uninstall)
+  "Remove every installed skeu-icons theme from this user's icon directory.
+
+The system-wide removal is `sudo ./uninstall.sh --system'."
+  (run (list "./uninstall.sh")))
 
 (define (clean)
   "Remove caches and build leftovers; never touches the shipped artwork."

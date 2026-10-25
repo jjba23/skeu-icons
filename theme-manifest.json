@@ -65,5 +65,87 @@
   },
   "missing": {
     "devices": "19 freedesktop device names have no artwork yet; they fall back to hicolor"
+  },
+  "symbolic": {
+    "layer": "symbolic/<context>/*-symbolic.svg, Size=16, Type=Scalable",
+    "parity": "tools/symbolic-names.txt (every -symbolic name Adwaita ships)",
+    "icons": 646,
+    "contexts": {
+      "actions": 182,
+      "categories": 20,
+      "devices": 65,
+      "emotes": 26,
+      "legacy": 52,
+      "mimetypes": 20,
+      "places": 19,
+      "status": 237,
+      "ui": 25
+    },
+    "style": "Aqua: 1.5 px round strokes, capsule arrows, tabbed folders, specular cut-outs; monochrome so toolkits can recolour it"
+  },
+  "variants": {
+    "themes": [
+      "skeu-icons-blue",
+      "skeu-icons-blue-dark",
+      "skeu-icons-brown",
+      "skeu-icons-brown-dark",
+      "skeu-icons-cyan",
+      "skeu-icons-cyan-dark",
+      "skeu-icons-dark",
+      "skeu-icons-graphite",
+      "skeu-icons-graphite-dark",
+      "skeu-icons-green",
+      "skeu-icons-green-dark",
+      "skeu-icons-indigo",
+      "skeu-icons-indigo-dark",
+      "skeu-icons-lime",
+      "skeu-icons-lime-dark",
+      "skeu-icons-magenta",
+      "skeu-icons-magenta-dark",
+      "skeu-icons-orange",
+      "skeu-icons-orange-dark",
+      "skeu-icons-pink",
+      "skeu-icons-pink-dark",
+      "skeu-icons-red",
+      "skeu-icons-red-dark",
+      "skeu-icons-teal",
+      "skeu-icons-teal-dark",
+      "skeu-icons-violet",
+      "skeu-icons-violet-dark",
+      "skeu-icons-yellow",
+      "skeu-icons-yellow-dark"
+    ],
+    "mechanism": "symlink trees inheriting skeu-icons (relative links, so they survive install.sh copying them side by side)",
+    "accents": [
+      "red",
+      "orange",
+      "yellow",
+      "lime",
+      "green",
+      "teal",
+      "cyan",
+      "blue",
+      "indigo",
+      "violet",
+      "magenta",
+      "pink",
+      "brown",
+      "graphite"
+    ],
+    "per_accent": "skeu-icons-<accent> points the neutral folder names at the pack's <accent> enamel artwork",
+    "dark": "every -dark variant links its symbolic/ directory to skeu-icons-dark, which holds the one light-ink copy of all 646 symbols"
+  },
+  "plain_scalable": {
+    "layer": "scalable/<context>/*.svg, Size=128, MinSize=8, MaxSize=512, Type=Scalable",
+    "parity": "tools/symbolic-names.txt (the same names, without -symbolic)",
+    "icons": 487,
+    "contexts": {
+      "actions": 166,
+      "emotes": 26,
+      "legacy": 52,
+      "status": 218,
+      "ui": 25
+    },
+    "why": "actions/status/emotes/ui/legacy had no artwork at all: a toolkit asking for list-add (not list-add-symbolic) fell through to AdwaitaLegacy or hicolor"
   }
 }

@@ -27,21 +27,56 @@ server needed, with a size switcher and a light/dark/checker background).
 * Install
 
 #+begin_src sh
-./install.sh                # ~/.local/share/icons/skeu-icons
-sudo ./install.sh --system  # /usr/share/icons/skeu-icons
-./install.sh --uninstall
+./install.sh                # every theme, into ~/.local/share/icons
+./uninstall.sh              # remove them again
+sudo ./install.sh --system  # /usr/share/icons
+sudo ./uninstall.sh --system
 #+end_src
 
-Then pick *Skeu Icons* in your desktop's icon settings (GNOME Tweaks,
-XFCE Appearance, KDE System Settings, …). Log out and back in if a launcher
-keeps its old icon.
-
-Manual install is the same two steps:
+One run installs thirty themes: the pack as drawn, =skeu-icons-dark= for dark
+desktops, and an accent theme plus its dark sibling for each of the fourteen
+enamels (red, orange, yellow, lime, green, teal, cyan, blue, indigo, violet,
+magenta, pink, brown, graphite).
 
 #+begin_src sh
-cp -r skeu-icons ~/.local/share/icons/
+skeu-icons                 the pack as drawn
+skeu-icons-dark            same artwork, light-ink symbolic icons
+skeu-icons-pink            pink enamel folders, everything else unchanged
+skeu-icons-pink-dark       pink enamel, light-ink symbolic icons
+#+end_src
+
+Then pick one in your desktop's icon settings (GNOME Tweaks, XFCE Appearance,
+KDE System Settings, …). Log out and back in if a launcher keeps its old icon.
+The variants are symlink trees that inherit from =skeu-icons=, so the whole set
+must live in the same directory; =uninstall.sh= removes exactly that set and
+leaves other themes alone. For a single theme, the manual install is the same
+idea:
+
+#+begin_src sh
+cp -a skeu-icons ~/.local/share/icons/
 gtk-update-icon-cache -f -t ~/.local/share/icons/skeu-icons
 #+end_src
+
+** Colour and lightness variants
+
+| theme                        | what it changes                                     |
+|------------------------------+-----------------------------------------------------|
+| =skeu-icons=                 | nothing: the pack as drawn                          |
+| =skeu-icons-<accent>=        | folder artwork only, pointed at that enamel         |
+| =skeu-icons-dark=            | symbolic ink only, from =#2e3436= to =#deddda=       |
+| =skeu-icons-<accent>-dark=   | both                                                |
+
+An accent theme is a few hundred relative symlinks, not another copy of the
+artwork: =skeu-icons-pink/48x48/places/folder.png= is a link to
+=folder-pink.png= in the base theme, and everything it does not override comes
+through =Inherits=skeu-icons=. The light-ink symbolic layer is stored once, in
+=skeu-icons-dark/symbolic=, and every =-dark= variant reaches it through one
+relative directory link, so fourteen dark variants cost fourteen links instead
+of fourteen copies of 646 files.
+
+A toolkit recolours a =-symbolic= icon itself, which is why the ink matters
+mostly to file managers, Qt applications and anything that renders one of those
+SVGs as plain artwork.
 
 * What it looks like
 
@@ -91,6 +126,7 @@ drives, phones, printers and network gear.
 | =tools/=              | the programmes that draw the artwork                          |
 | =maak.scm=            | the tasks that redraw and re-derive everything                |
 | =install.sh=          | user/system installer with cache refresh                      |
+| =uninstall.sh=        | removes the installed themes and refreshes the cache          |
 
 =app-icons/= and =project-icons/= are not part of the theme; copy one onto a
 launcher or a folder when you want that specific item to match.
@@ -112,10 +148,10 @@ that knows one knows the other:
 | KDE overlays          | =LinkOverlay=emblem-symbolic-link=, =LockOverlay=emblem-readonly= |
 
 Two of those are worth spelling out. The inheritance chain lists
-=AdwaitaLegacy= before =hicolor= exactly as Adwaita itself does, so the
-contexts this pack deliberately does not draw — =actions=, =status=,
-=emotes=, =ui= — and the monochrome =symbolic/= layer resolve to the GNOME
-legacy set when it is installed, and to =hicolor= otherwise. And the sizes go
+=AdwaitaLegacy= before =hicolor= exactly as Adwaita itself does, so any name
+this pack still does not draw resolves to the GNOME legacy set when it is
+installed, and to =hicolor= otherwise; the pack's own =symbolic/= and
+=scalable/= layers are found first, in the theme directory itself. And the sizes go
 further than Adwaita's raster set (8–48 px): 64, 128, 256 and 512 px plus the
 =@2x= trees are shipped as real bitmaps rather than left to the scalable
 layer, which is safest for launchers, docks and file managers that upscale
@@ -134,8 +170,11 @@ maak docs             # recompose the sheets in docs/ for this README
 maak build            # gallery + docs, then verify
 maak check            # index.theme, every directory, counts, gallery freshness
 maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
+maak symbolic         # redraw the 646 symbolic icons + 487 plain scalable ones
+maak variants         # rebuild the accent and dark variant themes
 maak report           # rescan $HOME -> FILE-TYPES.org
 maak install          # ~/.local/share/icons, with cache refresh
+maak uninstall        # remove them again
 #+end_src
 
 Each task simply runs one script, so the scripts work on their own too:
@@ -147,9 +186,18 @@ python3 tools/make_context_icons.py   # just the category and device masters
 python3 tools/make_gallery.py         # gallery.html (add --check to test freshness)
 python3 tools/make_doc_images.py      # docs/ sheets for this README
 python3 tools/make_alt_icons.py       # the Alt material variants -> svg/
+python3 tools/make_symbolic.py        # the symbolic layer (646 names)
+python3 tools/make_plain.py           # the un-suffixed scalable icons (487)
+python3 tools/make_variants.py        # the accent and dark variant themes
 python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
 python3 tools/check_theme.py          # the checks behind maak check
 #+end_src
+
+=make_symbolic.py= writes one Aqua glyph per Adwaita symbol name, checked against
+=tools/symbolic-names.txt=; =make_plain.py= draws the same glyphs without the
+=-symbolic= suffix for the contexts that had no artwork at all, so a toolkit
+asking for =list-add= gets an answer instead of falling through to AdwaitaLegacy
+or to nothing.
 
 =render_skeu.py= writes the 1024 px masters into =generated/= and a full PNG set
 per project; =make_app_icons.py= discovers the installed applications from their
@@ -170,11 +218,24 @@ Pillow; =inkscape= for the handful of vector icons).
 | =categories= |    27 | menu and application-group icons                        |
 | =devices=    |    68 | drives, phones, printers, USB, network hardware         |
 
-=status=, =actions= and =emotes= are deliberately absent: they are symbolic UI
-glyphs, and inventing skeuomorphic versions of them would break the illusion.
-=devices= is still partial (68 of the 87 names Adwaita ships); the rest need
-hardware artwork that has not been drawn yet, and missing names are listed in
-=theme-manifest.json= rather than faked.
+Those six contexts ship as relief bitmaps. Everything else Adwaita names is
+covered too, drawn rather than modelled:
+
+| layer                        | icons | what it is                                     |
+|------------------------------+------:+------------------------------------------------|
+| =symbolic/<context>=         |   646 | one Aqua glyph per Adwaita =-symbolic= name      |
+| =scalable/actions=           |   182 | the same glyphs without the suffix               |
+| =scalable/status=            |   237 | volume, network, battery, security, accounts      |
+| =scalable/emotes=            |    26 | the Aqua faces                                   |
+| =scalable/ui=, =legacy=      |    77 | window widgets and Adwaita compatibility names   |
+
+=actions=, =status=, =emotes= and =ui= used to fall through to AdwaitaLegacy
+because the pack drew no artwork for them. They are the one place where a
+monochrome drawing is the right answer: a toolbar button is not an object, and
+inventing a skeuomorphic sculpture for "undo" would break the illusion faster
+than a clean glyph does. =devices= is still partial (68 of the 87 names Adwaita
+ships); the rest need hardware artwork that has not been drawn yet, and missing
+names are listed in =theme-manifest.json= rather than faked.
 
 * Artwork policy
 
