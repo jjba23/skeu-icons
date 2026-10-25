@@ -1121,3 +1121,132 @@ def ups(c, hue: float = 210, cy: float = CY) -> None:
         c.paint(RRect(cx - 140 + i * 140, cy + 80, 100, 46, 6), M.rubber,
                 profile=("bevel", 4, 5), contact=0.15)
     c.paint(Capsule(cx, cy + 190, cx, cy + 190, 9), M.lamp, profile=("sphere", 7), hue=45)
+
+
+# --------------------------------------------------------------------------- #
+# identity, ports and displays
+# --------------------------------------------------------------------------- #
+
+def _arc(cx: float, cy: float, r: float, start: float, end: float,
+         steps: int = 40) -> list[tuple[float, float]]:
+    """Points along a circular arc; 0° is east and angles grow clockwise (y down)."""
+    return [(cx + r * math.cos(math.radians(start + (end - start) * i / steps)),
+             cy + r * math.sin(math.radians(start + (end - start) * i / steps)))
+            for i in range(steps + 1)]
+
+
+def power_brick(c, hue: float = 30, cy: float = CY) -> None:
+    """The AC adapter: an ivory brick, its two pins and the cable."""
+    cx = CX
+    body = RRect(cx, cy + 60, 420, 300, 46)
+    c.paint(Moved(body, 0, 26), M.steel, profile=("bevel", 8, 12))
+    c.paint(body, M.ivory, profile=("bevel", 18, 24), shadow=True, contact=0.24)
+    c.paint(RRect(cx, cy + 60, 250, 40, 16), M.embossed_white, profile=("bevel", 6, 8))
+    for dx in (-80, 80):
+        c.paint(RRect(cx + dx, cy - 175, 40, 160, 10), M.chrome,
+                profile=("bevel", 8, 10), contact=0.18)
+    c.paint(Capsule(cx + 200, cy + 90, cx + 320, cy + 90, 24), M.rubber,
+            profile=("bevel", 6, 8))
+    c.paint(Capsule(cx + 320, cy + 90, cx + 320, cy + 240, 24), M.rubber,
+            profile=("bevel", 6, 8))
+    c.paint(RRect(cx + 320, cy + 296, 96, 84, 20), M.rubber,
+            profile=("bevel", 6, 8), contact=0.18)
+
+
+def face_reader(c, hue: float = 200, cy: float = CY) -> None:
+    """A face-unlock plate: dark glass with the face etched in the middle."""
+    cx = CX
+    plate = RRect(cx, cy, 470, 520, 84)
+    c.paint(Moved(plate, 0, 24), M.steel, profile=("bevel", 10, 12))
+    c.paint(plate, M.gunmetal, profile=("bevel", 18, 24), shadow=True, contact=0.24)
+    c.paint(RRect(cx, cy, 400, 450, 66), M.glass, profile=("bevel", 8, 10),
+            hue=hue, contact=0.22)
+    c.paint(ring(cx, cy - 30, 132, 22), M.optic, profile=("bevel", 4, 5), hue=hue)
+    for dx in (-46, 46):
+        c.paint(Circle(cx + dx, cy - 76, 15), M.optic, profile=("sphere", 15), hue=hue)
+    c.paint_mask(polyline_mask(_arc(cx, cy - 6, 72, 28, 152), 18), M.optic,
+                 emboss=2.0, hue=hue)
+
+
+def fingerprint_pad(c, hue: float = 205, cy: float = CY) -> None:
+    """A fingerprint sensor: a plated pad with the print etched into it."""
+    cx = CX
+    pad = RRect(cx, cy, 350, 520, 76)
+    c.paint(Moved(pad, 0, 24), M.steel, profile=("bevel", 10, 14))
+    c.paint(pad, M.aluminium, profile=("bevel", 20, 26), shadow=True, contact=0.24)
+    for r, width in ((118, 15), (90, 14), (62, 13), (36, 12)):
+        c.paint(ring(cx, cy - 24, r, width), M.gunmetal, profile=("bevel", 3, 4),
+                contact=0.10)
+    c.paint(Capsule(cx, cy + 26, cx, cy + 62, 11), M.gunmetal, profile=("bevel", 4, 5))
+
+
+def smartcard(c, hue: float = 208, cy: float = CY) -> None:
+    """A smart card: plastic body, printed band, gold contact chip."""
+    cx = CX
+    card = RRect(cx, cy + 30, 560, 380, 36)
+    c.paint(Moved(card, 0, 26), M.steel, profile=("bevel", 10, 14))
+    c.paint(card, M.paint, profile=("bevel", 12, 16), shadow=True, contact=0.22,
+            hue=hue, sat=0.45, light=0.50)
+    c.paint(RRect(cx, cy - 96, 480, 74, 12), M.embossed_white, profile=("bevel", 6, 8))
+    c.paint(RRect(cx - 128, cy + 96, 168, 124, 16), M.brass,
+            profile=("bevel", 8, 10), contact=0.22)
+    for i in range(3):
+        c.paint(RRect(cx - 128, cy + 62 + i * 32, 140, 11, 4), M.gunmetal,
+                profile=("bevel", 2, 3))
+
+
+def colorimeter(c, hue: float = 286, cy: float = CY) -> None:
+    """A colour meter: a white puck with an optic port and a chrome ring."""
+    cx = CX
+    puck = Circle(cx, cy + 40, 300)
+    c.paint(Moved(puck, 0, 26), M.steel, profile=("sphere", 300))
+    c.paint(puck, M.ivory, profile=("sphere", 300), shadow=True, contact=0.22)
+    c.paint(ring(cx, cy - 40, 152, 36), M.chrome, profile=("bevel", 6, 8), contact=0.20)
+    c.paint(Circle(cx, cy - 40, 118), M.optic, profile=("sphere", 118), hue=hue)
+    c.paint(Capsule(cx - 210, cy + 200, cx - 60, cy + 200, 22), M.chrome,
+            profile=("bevel", 6, 8))
+
+
+def feature_phone(c, hue: float = 200, cy: float = CY) -> None:
+    """A candybar phone: tiny screen, keypad, hard plastic shell."""
+    cx = CX
+    body = RRect(cx, cy, 330, 640, 52)
+    c.paint(Moved(body, 0, 24), M.steel, profile=("bevel", 8, 12))
+    c.paint(body, M.paint, profile=("bevel", 16, 20), shadow=True, contact=0.22,
+            hue=hue, sat=0.42, light=0.46)
+    c.paint(RRect(cx, cy - 186, 240, 176, 14), M.screen, profile=("bevel", 6, 8),
+            hue=hue, contact=0.22)
+    for row in range(4):
+        for col in range(3):
+            c.paint(RRect(cx + (col - 1) * 78, cy + 26 + row * 64, 58, 44, 12),
+                    M.embossed_white, profile=("bevel", 4, 5), contact=0.12)
+
+
+def thunderbolt_hub(c, hue: float = 208, cy: float = CY) -> None:
+    """A Thunderbolt dock: a chrome body with the bolt stamped on its lid."""
+    cx = CX
+    base = RRect(cx, cy + 130, 450, 240, 40)
+    c.paint(Moved(base, 0, 26), M.steel, profile=("bevel", 10, 14))
+    c.paint(base, M.aluminium, profile=("bevel", 18, 24), shadow=True, contact=0.22)
+    c.paint(RRect(cx, cy + 150, 250, 26, 10), M.gunmetal, profile=("bevel", 5, 7),
+            contact=0.28)
+    bolt = Poly([(cx + 46, cy - 300), (cx - 96, cy - 56), (cx - 6, cy - 56),
+                 (cx - 46, cy + 96), (cx + 96, cy - 108), (cx + 6, cy - 108)],
+                rounding=12)
+    c.paint(bolt, M.chrome, profile=("bevel", 8, 12), shadow=True, contact=0.20)
+    for dx in (-150, 150):
+        c.paint(Circle(cx + dx, cy + 170, 14), M.lamp, profile=("sphere", 14), hue=45)
+
+
+def dual_display(c, hue: float = 212, cy: float = CY) -> None:
+    """Two displays side by side: one wide workspace."""
+    cx = CX
+    for dx in (-182, 182):
+        panel = RRect(cx + dx, cy - 60, 330, 232, 18)
+        c.paint(Moved(panel, 0, 20), M.gunmetal, profile=("bevel", 8, 10))
+        c.paint(panel, M.aluminium, profile=("bevel", 10, 12), shadow=True, contact=0.20)
+        c.paint(RRect(cx + dx, cy - 62, 296, 194, 8), M.screen,
+                profile=("bevel", 4, 6), hue=hue)
+        c.paint(RRect(cx + dx, cy + 96, 42, 120, 8), M.chrome, profile=("bevel", 4, 6))
+        c.paint(RRect(cx + dx, cy + 168, 156, 28, 13), M.chrome,
+                profile=("bevel", 4, 6), contact=0.15)

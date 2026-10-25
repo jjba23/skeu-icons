@@ -216,7 +216,7 @@ Pillow; =inkscape= for the handful of vector icons).
 | =mimetypes=  |   618 | documents, media, archives, source code, 377 extensions |
 | =emblems=    |    17 | read-only, symbolic links, locked, shared …             |
 | =categories= |    27 | menu and application-group icons                        |
-| =devices=    |    68 | drives, phones, printers, USB, network hardware         |
+| =devices=    |    88 | drives, phones, printers, USB, network hardware          |
 
 Those six contexts ship as relief bitmaps. Everything else Adwaita names is
 covered too, drawn rather than modelled:
@@ -233,9 +233,9 @@ covered too, drawn rather than modelled:
 because the pack drew no artwork for them. They are the one place where a
 monochrome drawing is the right answer: a toolbar button is not an object, and
 inventing a skeuomorphic sculpture for "undo" would break the illusion faster
-than a clean glyph does. =devices= is still partial (68 of the 87 names Adwaita
-ships); the rest need hardware artwork that has not been drawn yet, and missing
-names are listed in =theme-manifest.json= rather than faked.
+than a clean glyph does. =devices= is complete: every device name Adwaita ships
+now has a drawn object, from an AC brick and a candybar phone to a colour meter,
+a smart card and a Thunderbolt dock.
 
 * Artwork policy
 

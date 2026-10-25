@@ -117,6 +117,30 @@ DEVICES: dict[str, tuple] = {
     "motherboard": (O.motherboard, dict()),
     "cpu": (O.chip, dict()),
     "dock": (T.dock, dict()),
+    # The rest of Adwaita's device vocabulary. Some are the same object under a
+    # second name (an iPod is a player, a projector is a projector), some are
+    # objects the pack had never drawn: an AC brick, a fingerprint pad, a smart
+    # card, a colour meter, a candybar phone, a Thunderbolt dock, two screens.
+    "ac-adapter": (O.power_brick, dict()),
+    "auth-face": (O.face_reader, dict()),
+    "auth-fingerprint": (O.fingerprint_pad, dict()),
+    "auth-sim": (O.memory_card, dict(kind="sim")),
+    "auth-smartcard": (O.smartcard, dict()),
+    "bluetooth": (T.dongle, dict()),
+    "colorimeter-colorhug": (O.colorimeter, dict()),
+    "computer-apple-ipad": (O.tablet, dict()),
+    "display-projector": (O.projector, dict()),
+    "media-optical-cd": (O.optical_disc, dict(label=200)),
+    "media-removable": (O.drive, dict(vents=False)),
+    "microphone": (O.microphone, dict()),
+    "multimedia-player-apple-ipod-touch": (O.player, dict(hue=205)),
+    "network-cellular": (T.modem, dict()),
+    "phone-apple-iphone": (O.phone, dict()),
+    "phone-old": (O.feature_phone, dict()),
+    "thunderbolt": (O.thunderbolt_hub, dict()),
+    "uninterruptible-power-supply": (O.ups, dict()),
+    "video-joined-displays": (O.dual_display, dict()),
+    "video-single-display": (O.monitor, dict()),
 }
 
 #: The project icons: one recognisable motif per repository.
