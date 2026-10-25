@@ -8,14 +8,17 @@ aluminium — physical objects, not a squircle grid.
 #+attr_html: :width 100% :alt six icons from the pack on a paper gradient
 [[file:docs/hero.png]]
 
-* 1 223 icons across six freedesktop contexts, at 16, 22, 24, 32, 48, 64, 128,
+ 1 223 icons across six freedesktop contexts, at 16, 22, 24, 32, 48, 64, 128,
   256 and 512 px, plus =@2x= HiDPI copies and a =scalable/= SVG layer —
   22 014 bitmaps and 1 083 vectors.
-* File-type icons for 377 extensions, each under both its mime name and the
+
+ File-type icons for 377 extensions, each under both its mime name and the
   =application-x-<ext>= fallback — see [[file:FILE-TYPES.org][FILE-TYPES.org]] for the scanned list.
-* Two extra sets outside the theme: 164 icons for the applications installed
+
+ Two extra sets outside the theme: 164 icons for the applications installed
   here and 46 for personal projects.
-* Every icon is its own object: no icon mask, no flat redesign, no uniform
+
+ Every icon is its own object: no icon mask, no flat redesign, no uniform
   rounded-square grid.
 
 Open [[file:gallery.html][gallery.html]] to see everything (it renders straight from the theme, no
