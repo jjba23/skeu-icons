@@ -1,0 +1,10 @@
+# written by gtk-update-icon-cache / the installer, never committed
+skeu-icons/icon-theme.cache
+
+# python
+__pycache__/
+*.py[co]
+
+# editor / OS noise
+*.swp
+.DS_Store

@@ -1,0 +1,422 @@
+{
+  "generator": "tools/render_skeu.py",
+  "style": "skeuomorphic, no icon mask",
+  "count": 46,
+  "objects": 41,
+  "icons": [
+    {
+      "name": "araneola",
+      "slug": "araneola",
+      "purpose": "Guile web crawler and sitemap generator",
+      "object": "spider",
+      "files": {
+        "png": "araneola/icon-1024.png"
+      }
+    },
+    {
+      "name": "bewaking",
+      "slug": "bewaking",
+      "purpose": "Guile double-encryption and obfuscation library",
+      "object": "padlock",
+      "files": {
+        "png": "bewaking/icon-1024.png"
+      }
+    },
+    {
+      "name": "byggsteg",
+      "slug": "byggsteg",
+      "purpose": "Readable, replaceable CI/CD orchestrator in Guile",
+      "object": "metronome",
+      "files": {
+        "png": "byggsteg/icon-1024.png"
+      }
+    },
+    {
+      "name": "byggsteg-woodpecker",
+      "slug": "byggsteg-woodpecker",
+      "purpose": "Bash plugins bridging Woodpecker CI into Byggsteg",
+      "object": "woodpecker",
+      "files": {
+        "png": "byggsteg-woodpecker/icon-1024.png"
+      }
+    },
+    {
+      "name": "carvoeiro-water-fun",
+      "slug": "carvoeiro-water-fun",
+      "purpose": "Bilingual Guile-generated water-park site",
+      "object": "anchor",
+      "files": {
+        "png": "carvoeiro-water-fun/icon-1024.png"
+      }
+    },
+    {
+      "name": "cask-and-cons",
+      "slug": "cask-and-cons",
+      "purpose": "Dotfiles plus the caco CLI",
+      "object": "chrome_folder",
+      "files": {
+        "png": "cask-and-cons/icon-1024.png"
+      }
+    },
+    {
+      "name": "consceal",
+      "slug": "consceal",
+      "purpose": "Guile tool to manage and deploy secrets",
+      "object": "combination_lock",
+      "files": {
+        "png": "consceal/icon-1024.png"
+      }
+    },
+    {
+      "name": "free-alacarte",
+      "slug": "free-alacarte",
+      "purpose": "Haskell free-monad library for embedded DSLs",
+      "object": "spoons",
+      "files": {
+        "png": "free-alacarte/icon-1024.png"
+      }
+    },
+    {
+      "name": "ggg",
+      "slug": "ggg",
+      "purpose": "Guile glyph generator for SVG badges and logos",
+      "object": "type_stamps",
+      "files": {
+        "png": "ggg/icon-1024.png"
+      }
+    },
+    {
+      "name": "guile-openapi-generator",
+      "slug": "guile-openapi-generator",
+      "purpose": "Generates Guile servers and clients from OpenAPI",
+      "object": "spec_sheet",
+      "files": {
+        "png": "guile-openapi-generator/icon-1024.png"
+      }
+    },
+    {
+      "name": "guix",
+      "slug": "guix",
+      "purpose": "Fork of GNU Guix with own package additions",
+      "object": "gnu",
+      "files": {
+        "png": "guix/icon-1024.png"
+      }
+    },
+    {
+      "name": "guix-jointhefreeworld",
+      "slug": "guix-jointhefreeworld",
+      "purpose": "Signed Guix channel for jointhefreeworld software",
+      "object": "gnu",
+      "files": {
+        "png": "guix-jointhefreeworld/icon-1024.png"
+      }
+    },
+    {
+      "name": "heks-bash",
+      "slug": "heks-bash",
+      "purpose": "Declarative Bash config driven by Guile",
+      "object": "terminal",
+      "files": {
+        "png": "heks-bash/icon-1024.png"
+      }
+    },
+    {
+      "name": "heks-emacs",
+      "slug": "heks-emacs",
+      "purpose": "Modular, reproducible Emacs configuration",
+      "object": "book",
+      "files": {
+        "png": "heks-emacs/icon-1024.png"
+      }
+    },
+    {
+      "name": "heks-linux",
+      "slug": "heks-linux",
+      "purpose": "Modular programmable GNU/Linux system config",
+      "object": "penguin",
+      "files": {
+        "png": "heks-linux/icon-1024.png"
+      }
+    },
+    {
+      "name": "hygguile",
+      "slug": "hygguile",
+      "purpose": "Cozy S-expression server-rendered UI library",
+      "object": "mug",
+      "files": {
+        "png": "hygguile/icon-1024.png"
+      }
+    },
+    {
+      "name": "iter-vitae",
+      "slug": "iter-vitae",
+      "purpose": "Guile generator for beautiful CVs and resumes",
+      "object": "paper",
+      "files": {
+        "png": "iter-vitae/icon-1024.png"
+      }
+    },
+    {
+      "name": "jointhefreeworld",
+      "slug": "jointhefreeworld",
+      "purpose": "Homepage, blog and movement site built from Org",
+      "object": "browser_globe",
+      "files": {
+        "png": "jointhefreeworld/icon-1024.png"
+      }
+    },
+    {
+      "name": "kracht",
+      "slug": "kracht",
+      "purpose": "Helper tooling for Guile Scheme programming",
+      "object": "vise",
+      "files": {
+        "png": "kracht/icon-1024.png"
+      }
+    },
+    {
+      "name": "lambdock",
+      "slug": "lambdock",
+      "purpose": "GTK4/C Wayland desktop dock",
+      "object": "sheep",
+      "files": {
+        "png": "lambdock/icon-1024.png"
+      }
+    },
+    {
+      "name": "lenkesamler",
+      "slug": "lenkesamler",
+      "purpose": "Guile bookmark manager and link archive",
+      "object": "chain",
+      "files": {
+        "png": "lenkesamler/icon-1024.png"
+      }
+    },
+    {
+      "name": "lucidplan",
+      "slug": "lucidplan",
+      "purpose": "Free project management: backlog and kanban",
+      "object": "planner",
+      "files": {
+        "png": "lucidplan/icon-1024.png"
+      }
+    },
+    {
+      "name": "maak",
+      "slug": "maak",
+      "purpose": "Infinitely extensible Guile command runner",
+      "object": "floppy_lambda",
+      "files": {
+        "png": "maak/icon-1024.png"
+      }
+    },
+    {
+      "name": "maak.el",
+      "slug": "maak-el",
+      "purpose": "Emacs integration for Maak tasks",
+      "object": "keycap",
+      "files": {
+        "png": "maak-el/icon-1024.png"
+      }
+    },
+    {
+      "name": "modusregel",
+      "slug": "modusregel",
+      "purpose": "Clean, customizable Emacs mode line",
+      "object": "book_open",
+      "files": {
+        "png": "modusregel/icon-1024.png"
+      }
+    },
+    {
+      "name": "mutastructura",
+      "slug": "mutastructura",
+      "purpose": "Lisp-powered SQL schema migrations",
+      "object": "platter_stack",
+      "files": {
+        "png": "mutastructura/icon-1024.png"
+      }
+    },
+    {
+      "name": "nix-jointhefreeworld",
+      "slug": "nix-jointhefreeworld",
+      "purpose": "Nix flake packaging jointhefreeworld software",
+      "object": "snowflake",
+      "files": {
+        "png": "nix-jointhefreeworld/icon-1024.png"
+      }
+    },
+    {
+      "name": "nixpkgs",
+      "slug": "nixpkgs",
+      "purpose": "Nixpkgs fork packaging maak upstream",
+      "object": "snowflake",
+      "files": {
+        "png": "nixpkgs/icon-1024.png"
+      }
+    },
+    {
+      "name": "olive-css",
+      "slug": "olive-css",
+      "purpose": "Tailwind-like utility CSS built with Guile",
+      "object": "palette",
+      "files": {
+        "png": "olive-css/icon-1024.png"
+      }
+    },
+    {
+      "name": "orgwebalchemy",
+      "slug": "orgwebalchemy",
+      "purpose": "Guile PEG parser turning Org into HTML/Markdown",
+      "object": "alembic",
+      "files": {
+        "png": "orgwebalchemy/icon-1024.png"
+      }
+    },
+    {
+      "name": "pingwing",
+      "slug": "pingwing",
+      "purpose": "Artanis/Guile notification nexus service",
+      "object": "envelope",
+      "files": {
+        "png": "pingwing/icon-1024.png"
+      }
+    },
+    {
+      "name": "private-notes",
+      "slug": "private-notes",
+      "purpose": "Personal Org-mode notes vault",
+      "object": "journal",
+      "files": {
+        "png": "private-notes/icon-1024.png"
+      }
+    },
+    {
+      "name": "scriba",
+      "slug": "scriba",
+      "purpose": "Structured logging library for GNU Guile",
+      "object": "inkwell",
+      "files": {
+        "png": "scriba/icon-1024.png"
+      }
+    },
+    {
+      "name": "skapa",
+      "slug": "skapa",
+      "purpose": "Lisp-powered project scaffolding and templates",
+      "object": "drafting_compass",
+      "files": {
+        "png": "skapa/icon-1024.png"
+      }
+    },
+    {
+      "name": "skeu-icons",
+      "slug": "skeu-icons",
+      "purpose": "Skeuomorphic icon set with build tools",
+      "object": "tile_stack",
+      "files": {
+        "png": "skeu-icons/icon-1024.png"
+      }
+    },
+    {
+      "name": "static-assets",
+      "slug": "static-assets",
+      "purpose": "Shared static images and CSS assets",
+      "object": "photo_print",
+      "files": {
+        "png": "static-assets/icon-1024.png"
+      }
+    },
+    {
+      "name": "symbanta",
+      "slug": "symbanta",
+      "purpose": "Privacy-friendly open-source analytics API",
+      "object": "chart_recorder",
+      "files": {
+        "png": "symbanta/icon-1024.png"
+      }
+    },
+    {
+      "name": "symbanta-dashboard",
+      "slug": "symbanta-dashboard",
+      "purpose": "React analytics dashboard, frosted-glass UI",
+      "object": "chart_recorder",
+      "files": {
+        "png": "symbanta-dashboard/icon-1024.png"
+      }
+    },
+    {
+      "name": "tekengrootte.el",
+      "slug": "tekengrootte-el",
+      "purpose": "Proportional Emacs face heights",
+      "object": "keycap",
+      "files": {
+        "png": "tekengrootte-el/icon-1024.png"
+      }
+    },
+    {
+      "name": "torikomi",
+      "slug": "torikomi",
+      "purpose": "Guile service ingesting remote files into libraries",
+      "object": "funnel",
+      "files": {
+        "png": "torikomi/icon-1024.png"
+      }
+    },
+    {
+      "name": "veritas",
+      "slug": "veritas",
+      "purpose": "Testing framework for Guile Scheme",
+      "object": "lady_justice",
+      "files": {
+        "png": "veritas/icon-1024.png"
+      }
+    },
+    {
+      "name": "veritas.el",
+      "slug": "veritas-el",
+      "purpose": "Emacs integration for Veritas tests",
+      "object": "lady_justice",
+      "files": {
+        "png": "veritas-el/icon-1024.png"
+      }
+    },
+    {
+      "name": "welkomscherm.el",
+      "slug": "welkomscherm-el",
+      "purpose": "Quiet minimal Emacs welcome dashboard",
+      "object": "desk_lamp",
+      "files": {
+        "png": "welkomscherm-el/icon-1024.png"
+      }
+    },
+    {
+      "name": "wikimusic",
+      "slug": "wikimusic",
+      "purpose": "Free music encyclopaedia: tabs, chords, lyrics",
+      "object": "conductor",
+      "files": {
+        "png": "wikimusic/icon-1024.png"
+      }
+    },
+    {
+      "name": "wolkenschloss",
+      "slug": "wolkenschloss",
+      "purpose": "Guile-driven Hetzner Cloud provisioning",
+      "object": "snow_globe",
+      "files": {
+        "png": "wolkenschloss/icon-1024.png"
+      }
+    },
+    {
+      "name": "wolk-jjba",
+      "slug": "wolk-jjba",
+      "purpose": "Personal cloud and server configuration",
+      "object": "glass_cloud",
+      "files": {
+        "png": "wolk-jjba/icon-1024.png"
+      }
+    }
+  ]
+}

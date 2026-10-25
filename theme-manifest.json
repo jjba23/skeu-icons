@@ -1,0 +1,55 @@
+{
+  "theme_name": "Skeu Icons",
+  "sizes": [
+    16,
+    22,
+    24,
+    32,
+    48,
+    64,
+    128,
+    256,
+    512
+  ],
+  "scalable": true,
+  "hidpi": true,
+  "colours": [
+    "red",
+    "orange",
+    "yellow",
+    "lime",
+    "green",
+    "teal",
+    "cyan",
+    "blue",
+    "indigo",
+    "violet",
+    "magenta",
+    "pink",
+    "brown",
+    "graphite"
+  ],
+  "icons": 1223,
+  "contexts": {
+    "apps": 322,
+    "places": 171,
+    "mimetypes": 618,
+    "emblems": 17,
+    "categories": 27,
+    "devices": 68
+  },
+  "files": {
+    "bitmaps": 22014,
+    "vectors": 1083
+  },
+  "pack_artwork": 92,
+  "design_rules": {
+    "mask": "none",
+    "light": "single key light from the upper left",
+    "accent": "one coloured gem, enamel panel or painted detail per icon",
+    "minimum_line": "3 px at 1024 px so detail survives 32 px"
+  },
+  "missing": {
+    "devices": "19 freedesktop device names have no artwork yet; they fall back to hicolor"
+  }
+}

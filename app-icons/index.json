@@ -1,0 +1,3053 @@
+{
+  "generator": "tools/make_app_icons.py",
+  "renderer": "tools/skeu (relief renderer, no icon mask)",
+  "discovered_from": [
+    "/usr/share/applications",
+    "/usr/local/share/applications",
+    "/home/joe/.local/share/applications",
+    "/home/joe/.local/share/flatpak/exports/share/applications"
+  ],
+  "count": 164,
+  "objects": [
+    "1Password",
+    "Emacs",
+    "IntelliJ IDEA",
+    "browser_globe",
+    "Signal",
+    "address_book",
+    "balance",
+    "barometer",
+    "blueprint",
+    "book",
+    "book_open",
+    "browser_globe",
+    "bubble",
+    "cable_coil",
+    "calendar_pad",
+    "camcorder",
+    "camera",
+    "card_catalog",
+    "cartridge",
+    "cassette",
+    "chart_recorder",
+    "chess_knight",
+    "chip",
+    "chrome_folder",
+    "clapper",
+    "clock_dial",
+    "crate",
+    "desk_calculator",
+    "display_case",
+    "documents",
+    "dongle",
+    "drive",
+    "envelope",
+    "film_reel",
+    "funnel",
+    "game_tiles",
+    "gamepad",
+    "gauge",
+    "gauge_cluster",
+    "gears",
+    "glass_cubes",
+    "glass_keycap",
+    "gramophone",
+    "headphones",
+    "journal",
+    "keyring",
+    "lamps",
+    "ledger",
+    "lens_turret",
+    "loupe",
+    "magnet",
+    "mahjong_tile",
+    "microphone",
+    "monitor",
+    "naval_mine",
+    "newspaper",
+    "notes_pad",
+    "optical_disc",
+    "oscilloscope",
+    "padlock",
+    "paint_tin",
+    "paint_tube",
+    "palette",
+    "pallet",
+    "paper",
+    "paper_plane",
+    "parcel",
+    "patch_panel",
+    "pen_nib",
+    "pencil_pad",
+    "photo_print",
+    "pickaxe",
+    "pipe_branch",
+    "prism",
+    "puzzle_piece",
+    "radio",
+    "record_sleeve",
+    "remote_desktop",
+    "reversi_discs",
+    "router",
+    "scanner",
+    "service_bell",
+    "shield",
+    "slide_carousel",
+    "speakers",
+    "stopwatch",
+    "tape_cartridge",
+    "terminal",
+    "tetromino",
+    "toolbox",
+    "tuning_fork",
+    "type_block",
+    "typewriter",
+    "usb_stick",
+    "volume_knob",
+    "webcam",
+    "wire_cube",
+    "zip_disc"
+  ],
+  "apps": [
+    {
+      "name": "1Password",
+      "display": "1Password",
+      "slug": "1password",
+      "categories": "Office;",
+      "comment": "Password manager and secure wallet",
+      "exec": "/opt/1Password/1password",
+      "desktop": "1password.desktop",
+      "design": {
+        "kind": "hand-authored",
+        "source": "1Password"
+      },
+      "files": {
+        "png": "1password/icon-1024.png"
+      }
+    },
+    {
+      "name": "Advanced Network Configuration",
+      "display": "Advanced Network Configuration",
+      "slug": "advanced-network-configuration",
+      "categories": "GNOME;GTK;Settings;X-GNOME-NetworkSettings;X-GNOME-Utilities;",
+      "comment": "Manage and change your network connection settings",
+      "exec": "nm-connection-editor",
+      "desktop": "nm-connection-editor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "patch_panel",
+        "hue": 182,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "advanced-network-configuration/icon-1024.png"
+      }
+    },
+    {
+      "name": "Alacritty",
+      "display": "Alacritty",
+      "slug": "alacritty",
+      "categories": "System;TerminalEmulator;Utility;",
+      "comment": "A fast, cross-platform, OpenGL terminal emulator",
+      "exec": "alacritty",
+      "desktop": "org.alacritty.Alacritty.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 192,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "alacritty/icon-1024.png"
+      }
+    },
+    {
+      "name": "Amberol",
+      "display": "Amberol",
+      "slug": "amberol",
+      "categories": "GNOME;GTK;Music;Audio;AudioVideo;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.bassi.Amberol.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gramophone",
+        "hue": 34,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "amberol/icon-1024.png"
+      }
+    },
+    {
+      "name": "Android Studio Quail 3",
+      "display": "Android Studio Quail 3 2026.1.3 Patch 1",
+      "slug": "android-studio-quail-3",
+      "categories": "Development;IDE;",
+      "comment": "An IDE for Android app development",
+      "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio\"",
+      "desktop": "jetbrains-studio-0864e1a5-b113-4840-8c08-5f1d81328037.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "android-studio-quail-3/icon-1024.png"
+      }
+    },
+    {
+      "name": "Ardour",
+      "display": "Ardour",
+      "slug": "ardour",
+      "categories": "AudioVideo;Audio;AudioVideoEditing;X-Recorders;X-Multitrack;X-Jack;",
+      "comment": "Ardour Digital Audio Workstation",
+      "exec": "ardour9",
+      "desktop": "ardour9.desktop",
+      "design": {
+        "kind": "object",
+        "object": "speakers",
+        "hue": 12,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "ardour/icon-1024.png"
+      }
+    },
+    {
+      "name": "Audacity",
+      "display": "Audacity",
+      "slug": "audacity",
+      "categories": "AudioVideo;Audio;AudioVideoEditing;",
+      "comment": "Record and edit audio files",
+      "exec": "env",
+      "desktop": "audacity.desktop",
+      "design": {
+        "kind": "object",
+        "object": "microphone",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "audacity/icon-1024.png"
+      }
+    },
+    {
+      "name": "Binary",
+      "display": "Binary",
+      "slug": "binary",
+      "categories": "GTK;Utility;",
+      "comment": "Convert numbers between bases",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.fizzyizzy05.binary.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "binary/icon-1024.png"
+      }
+    },
+    {
+      "name": "Blender",
+      "display": "Blender 5.2",
+      "slug": "blender",
+      "categories": "Graphics;3DGraphics;",
+      "comment": "3D modeling, animation, rendering and post-production",
+      "exec": "blender-5.2",
+      "desktop": "blender-5.2.desktop",
+      "design": {
+        "kind": "object",
+        "object": "wire_cube",
+        "hue": 26,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "blender/icon-1024.png"
+      }
+    },
+    {
+      "name": "Bluetooth Adapters",
+      "display": "Bluetooth Adapters",
+      "slug": "bluetooth-adapters",
+      "categories": "X-XFCE;Settings;HardwareSettings;X-XFCE-SettingsDialog;GTK;",
+      "comment": "Set Bluetooth Adapter Properties",
+      "exec": "blueman-adapters",
+      "desktop": "blueman-adapters.desktop",
+      "design": {
+        "kind": "object",
+        "object": "dongle",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "bluetooth-adapters/icon-1024.png"
+      }
+    },
+    {
+      "name": "Bluetooth Manager",
+      "display": "Bluetooth Manager",
+      "slug": "bluetooth-manager",
+      "categories": "GTK;GNOME;Settings;HardwareSettings;",
+      "comment": "Blueman Bluetooth Manager",
+      "exec": "blueman-manager",
+      "desktop": "blueman-manager.desktop",
+      "design": {
+        "kind": "object",
+        "object": "dongle",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "bluetooth-manager/icon-1024.png"
+      }
+    },
+    {
+      "name": "Boxes",
+      "display": "Boxes",
+      "slug": "boxes",
+      "categories": "GNOME;GTK;System;Development;Emulator;",
+      "comment": "View and use virtual machines",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.Boxes.desktop",
+      "design": {
+        "kind": "object",
+        "object": "parcel",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "boxes/icon-1024.png"
+      }
+    },
+    {
+      "name": "Brave",
+      "display": "Brave",
+      "slug": "brave",
+      "categories": "Network;WebBrowser;",
+      "comment": "Access the Internet",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.brave.Browser.desktop",
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 22,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "brave/icon-1024.png"
+      }
+    },
+    {
+      "name": "Bruno",
+      "display": "Bruno",
+      "slug": "bruno",
+      "categories": "Development;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.usebruno.Bruno.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "bruno/icon-1024.png"
+      }
+    },
+    {
+      "name": "btop++",
+      "display": "btop++",
+      "slug": "btop",
+      "categories": "System;Monitor;ConsoleOnly;",
+      "comment": "Resource monitor that shows usage and stats for processor, memory, dis",
+      "exec": "btop",
+      "desktop": "btop.desktop",
+      "design": {
+        "kind": "object",
+        "object": "oscilloscope",
+        "hue": 158,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "btop/icon-1024.png"
+      }
+    },
+    {
+      "name": "Calculator",
+      "display": "Calculator",
+      "slug": "calculator",
+      "categories": "GNOME;GTK;Utility;Calculator;",
+      "comment": "Perform arithmetic, scientific or financial calculations",
+      "exec": "gnome-calculator",
+      "desktop": "org.gnome.Calculator.desktop",
+      "design": {
+        "kind": "object",
+        "object": "desk_calculator",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "calculator/icon-1024.png"
+      }
+    },
+    {
+      "name": "Calendar",
+      "display": "Calendar",
+      "slug": "calendar",
+      "categories": "GNOME;GTK;Office;Calendar;Core;",
+      "comment": "Access and manage your calendars",
+      "exec": "gnome-calendar",
+      "desktop": "org.gnome.Calendar.desktop",
+      "design": {
+        "kind": "object",
+        "object": "calendar_pad",
+        "hue": 6,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "calendar/icon-1024.png"
+      }
+    },
+    {
+      "name": "Camera",
+      "display": "Camera",
+      "slug": "camera",
+      "categories": "AudioVideo;Video;Recorder;GNOME;GTK;",
+      "comment": "Take pictures and videos",
+      "exec": "snapshot",
+      "desktop": "org.gnome.Snapshot.desktop",
+      "design": {
+        "kind": "object",
+        "object": "camera",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "camera/icon-1024.png"
+      }
+    },
+    {
+      "name": "Cantata",
+      "display": "Cantata",
+      "slug": "cantata",
+      "categories": "Qt;KDE;AudioVideo;Player;",
+      "comment": "Listen to and manage your music collection",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "dog.unix.cantata.Cantata.desktop",
+      "design": {
+        "kind": "object",
+        "object": "record_sleeve",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "cantata/icon-1024.png"
+      }
+    },
+    {
+      "name": "Cartridges",
+      "display": "Cartridges",
+      "slug": "cartridges",
+      "categories": "GNOME;GTK;Game;PackageManager;",
+      "comment": "Launch all your games",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "page.kramo.Cartridges.desktop",
+      "design": {
+        "kind": "object",
+        "object": "cartridge",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "cartridges/icon-1024.png"
+      }
+    },
+    {
+      "name": "Characters",
+      "display": "Characters",
+      "slug": "characters",
+      "categories": "GNOME;GTK;Utility;",
+      "comment": "Utility application to find and insert unusual characters",
+      "exec": "/usr/bin/gnome-characters",
+      "desktop": "org.gnome.Characters.desktop",
+      "design": {
+        "kind": "object",
+        "object": "type_block",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "characters/icon-1024.png"
+      }
+    },
+    {
+      "name": "Cheese",
+      "display": "Cheese",
+      "slug": "cheese",
+      "categories": "GNOME;AudioVideo;Video;Recorder;",
+      "comment": "Take photos and videos with your webcam, with fun graphical effects",
+      "exec": "cheese",
+      "desktop": "org.gnome.Cheese.desktop",
+      "design": {
+        "kind": "object",
+        "object": "webcam",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "cheese/icon-1024.png"
+      }
+    },
+    {
+      "name": "Chess",
+      "display": "Chess",
+      "slug": "chess",
+      "categories": "GNOME;GTK;Game;BoardGame;",
+      "comment": "Play the classic two-player board game of chess",
+      "exec": "gnome-chess",
+      "desktop": "org.gnome.Chess.desktop",
+      "design": {
+        "kind": "object",
+        "object": "chess_knight",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "chess/icon-1024.png"
+      }
+    },
+    {
+      "name": "Clocks",
+      "display": "Clocks",
+      "slug": "clocks",
+      "categories": "GNOME;GTK;Utility;Clock;",
+      "comment": "Clocks for world times, plus alarms, stopwatch and a timer",
+      "exec": "gnome-clocks",
+      "desktop": "org.gnome.clocks.desktop",
+      "design": {
+        "kind": "object",
+        "object": "clock_dial",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "clocks/icon-1024.png"
+      }
+    },
+    {
+      "name": "Color Profile Viewer",
+      "display": "Color Profile Viewer",
+      "slug": "color-profile-viewer",
+      "categories": "GNOME;GTK;System;",
+      "comment": "Inspect and compare installed color profiles",
+      "exec": "gcm-viewer",
+      "desktop": "org.gnome.ColorProfileViewer.desktop",
+      "design": {
+        "kind": "object",
+        "object": "prism",
+        "hue": 250,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "color-profile-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Connections",
+      "display": "Connections",
+      "slug": "connections",
+      "categories": "GNOME;GTK;Utility;RemoteAccess;Network;",
+      "comment": "",
+      "exec": "gnome-connections",
+      "desktop": "org.gnome.Connections.desktop",
+      "design": {
+        "kind": "object",
+        "object": "router",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "connections/icon-1024.png"
+      }
+    },
+    {
+      "name": "Console",
+      "display": "Console",
+      "slug": "console",
+      "categories": "System;TerminalEmulator;Utility;GTK;GNOME;",
+      "comment": "",
+      "exec": "kgx",
+      "desktop": "org.gnome.Console.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "console/icon-1024.png"
+      }
+    },
+    {
+      "name": "Constrict",
+      "display": "Constrict",
+      "slug": "constrict",
+      "categories": "AudioVideo;Video;GNOME;GTK;",
+      "comment": "Compress videos to target sizes",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.wartybix.Constrict.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "constrict/icon-1024.png"
+      }
+    },
+    {
+      "name": "Contacts",
+      "display": "Contacts",
+      "slug": "contacts",
+      "categories": "GNOME;GTK;Office;ContactManagement;",
+      "comment": "Manage your contacts",
+      "exec": "gnome-contacts",
+      "desktop": "org.gnome.Contacts.desktop",
+      "design": {
+        "kind": "object",
+        "object": "address_book",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "contacts/icon-1024.png"
+      }
+    },
+    {
+      "name": "Curtail",
+      "display": "Curtail",
+      "slug": "curtail",
+      "categories": "GNOME;GTK;Graphics;",
+      "comment": "Compress your images",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.github.huluti.Curtail.desktop",
+      "design": {
+        "kind": "object",
+        "object": "zip_disc",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "curtail/icon-1024.png"
+      }
+    },
+    {
+      "name": "Déjà Dup Backups",
+      "display": "Déjà Dup Backups",
+      "slug": "d-j-dup-backups",
+      "categories": "Utility;Archiving;",
+      "comment": "Protect yourself from data loss",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.DejaDup.desktop",
+      "design": {
+        "kind": "object",
+        "object": "drive",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "d-j-dup-backups/icon-1024.png"
+      }
+    },
+    {
+      "name": "DataGrip",
+      "display": "DataGrip 2026.2.6",
+      "slug": "datagrip",
+      "categories": "Development;IDE;",
+      "comment": "The IDE for databases and SQL",
+      "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/datagrip/bin/datagrip\"",
+      "desktop": "jetbrains-datagrip-c8a53190-f227-4527-9a4d-0977d400f0c9.desktop",
+      "design": {
+        "kind": "object",
+        "object": "card_catalog",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "datagrip/icon-1024.png"
+      }
+    },
+    {
+      "name": "dconf Editor",
+      "display": "dconf Editor",
+      "slug": "dconf-editor",
+      "categories": "GNOME;GTK;System;",
+      "comment": "Directly edit your entire configuration database",
+      "exec": "dconf-editor",
+      "desktop": "ca.desrt.dconf-editor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "dconf-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Decoder",
+      "display": "Decoder",
+      "slug": "decoder",
+      "categories": "Utility;GTK;GNOME;Scanning;",
+      "comment": "Scan and Generate QR Codes",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.belmoussaoui.Decoder.desktop",
+      "design": {
+        "kind": "object",
+        "object": "scanner",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "decoder/icon-1024.png"
+      }
+    },
+    {
+      "name": "Dialect",
+      "display": "Dialect",
+      "slug": "dialect",
+      "categories": "Network;GTK;",
+      "comment": "Translate between languages",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "app.drey.Dialect.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 24,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "dialect/icon-1024.png"
+      }
+    },
+    {
+      "name": "Discord",
+      "display": "Discord",
+      "slug": "discord",
+      "categories": "Network;InstantMessaging;",
+      "comment": "All-in-one voice and text chat for gamers that's free, secure, and wor",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.discordapp.Discord.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 234,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "discord/icon-1024.png"
+      }
+    },
+    {
+      "name": "Disk Usage Analyzer",
+      "display": "Disk Usage Analyzer",
+      "slug": "disk-usage-analyzer",
+      "categories": "GTK;GNOME;System;Filesystem;Utility;",
+      "comment": "Check folder sizes and available disk space",
+      "exec": "baobab",
+      "desktop": "org.gnome.baobab.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gauge",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "disk-usage-analyzer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Disks",
+      "display": "Disks",
+      "slug": "disks",
+      "categories": "GNOME;GTK;Utility;X-GNOME-Utilities;",
+      "comment": "Manage Drives and Media",
+      "exec": "gnome-disks",
+      "desktop": "org.gnome.DiskUtility.desktop",
+      "design": {
+        "kind": "object",
+        "object": "drive",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "disks/icon-1024.png"
+      }
+    },
+    {
+      "name": "Displays",
+      "display": "Displays",
+      "slug": "displays",
+      "categories": "GTK;Settings;DesktopSettings;HardwareSettings;",
+      "comment": "wlroots displays configuration",
+      "exec": "wdisplays",
+      "desktop": "network.cycles.wdisplays.desktop",
+      "design": {
+        "kind": "object",
+        "object": "monitor",
+        "hue": 28,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "displays/icon-1024.png"
+      }
+    },
+    {
+      "name": "Document Scanner",
+      "display": "Document Scanner",
+      "slug": "document-scanner",
+      "categories": "GNOME;GTK;Graphics;Scanning;",
+      "comment": "Make a digital copy of your photos and documents",
+      "exec": "simple-scan",
+      "desktop": "org.gnome.SimpleScan.desktop",
+      "design": {
+        "kind": "object",
+        "object": "scanner",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "document-scanner/icon-1024.png"
+      }
+    },
+    {
+      "name": "Document Viewer",
+      "display": "Document Viewer",
+      "slug": "document-viewer",
+      "categories": "GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;",
+      "comment": "View multi-page documents",
+      "exec": "evince",
+      "desktop": "org.gnome.Evince.desktop",
+      "design": {
+        "kind": "object",
+        "object": "book_open",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "document-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Emacs",
+      "display": "Emacs",
+      "slug": "emacs",
+      "categories": "Development;TextEditor;",
+      "comment": "Edit text",
+      "exec": "emacs",
+      "desktop": "emacs.desktop",
+      "design": {
+        "kind": "hand-authored",
+        "source": "Emacs"
+      },
+      "files": {
+        "png": "emacs/icon-1024.png"
+      }
+    },
+    {
+      "name": "Emacs (Client)",
+      "display": "Emacs (Client)",
+      "slug": "emacs-client",
+      "categories": "Development;TextEditor;",
+      "comment": "Edit text",
+      "exec": "sh",
+      "desktop": "emacsclient.desktop",
+      "design": {
+        "kind": "hand-authored",
+        "source": "Emacs"
+      },
+      "files": {
+        "png": "emacs-client/icon-1024.png"
+      }
+    },
+    {
+      "name": "Emblem",
+      "display": "Emblem",
+      "slug": "emblem",
+      "categories": "Utility;GTK;GNOME;",
+      "comment": "Generate project avatars",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.design.Emblem.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 350,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "emblem/icon-1024.png"
+      }
+    },
+    {
+      "name": "Euphonica",
+      "display": "Euphonica",
+      "slug": "euphonica",
+      "categories": "AudioVideo;Player;",
+      "comment": "GTK4 libadwaita MPD client",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.htkhiem.Euphonica.desktop",
+      "design": {
+        "kind": "object",
+        "object": "headphones",
+        "hue": 190,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "euphonica/icon-1024.png"
+      }
+    },
+    {
+      "name": "Evolution",
+      "display": "Evolution",
+      "slug": "evolution",
+      "categories": "GNOME;GTK;Office;Email;Calendar;ContactManagement;X-Red-Hat-Base;",
+      "comment": "Manage your email, contacts and schedule",
+      "exec": "evolution",
+      "desktop": "org.gnome.Evolution.desktop",
+      "design": {
+        "kind": "object",
+        "object": "envelope",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "evolution/icon-1024.png"
+      }
+    },
+    {
+      "name": "Extensions",
+      "display": "Extensions",
+      "slug": "extensions",
+      "categories": "GNOME;GTK;Utility;",
+      "comment": "Configure GNOME Shell Extensions",
+      "exec": "/usr/bin/gnome-extensions-app",
+      "desktop": "org.gnome.Extensions.desktop",
+      "design": {
+        "kind": "object",
+        "object": "puzzle_piece",
+        "hue": 152,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "extensions/icon-1024.png"
+      }
+    },
+    {
+      "name": "Eyedropper",
+      "display": "Eyedropper",
+      "slug": "eyedropper",
+      "categories": "GNOME;GTK;Development;Graphics;Utility;WebDevelopment;",
+      "comment": "Pick and format colors",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.github.finefindus.eyedropper.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paint_tin",
+        "hue": 300,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "eyedropper/icon-1024.png"
+      }
+    },
+    {
+      "name": "Files",
+      "display": "Files",
+      "slug": "files",
+      "categories": "GNOME;GTK;Utility;Core;FileManager;",
+      "comment": "Access and organize files",
+      "exec": "nautilus",
+      "desktop": "org.gnome.Nautilus.desktop",
+      "design": {
+        "kind": "object",
+        "object": "chrome_folder",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "files/icon-1024.png"
+      }
+    },
+    {
+      "name": "Firefox",
+      "display": "Firefox",
+      "slug": "firefox",
+      "categories": "Network;WebBrowser;GTK;",
+      "comment": "Browse the Web",
+      "exec": "firefox",
+      "desktop": "firefox.desktop",
+      "design": {
+        "kind": "historical",
+        "source": "Firefox 24"
+      },
+      "files": {
+        "png": "firefox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Flatseal",
+      "display": "Flatseal",
+      "slug": "flatseal",
+      "categories": "Utility;",
+      "comment": "Manage Flatpak permissions",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.github.tchx84.Flatseal.desktop",
+      "design": {
+        "kind": "object",
+        "object": "shield",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "flatseal/icon-1024.png"
+      }
+    },
+    {
+      "name": "Fragments",
+      "display": "Fragments",
+      "slug": "fragments",
+      "categories": "GNOME;GTK;Utility;FileTransfer;P2P;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "de.haeckerfelix.Fragments.desktop",
+      "design": {
+        "kind": "object",
+        "object": "funnel",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "fragments/icon-1024.png"
+      }
+    },
+    {
+      "name": "Fretboard",
+      "display": "Fretboard",
+      "slug": "fretboard",
+      "categories": "Education;GTK;GNOME",
+      "comment": "Look up guitar chords",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "dev.bragefuglseth.Fretboard.desktop",
+      "design": {
+        "kind": "object",
+        "object": "tuning_fork",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "fretboard/icon-1024.png"
+      }
+    },
+    {
+      "name": "Gaphor",
+      "display": "Gaphor",
+      "slug": "gaphor",
+      "categories": "GTK;GNOME;Development;ProjectManagement;",
+      "comment": "The simple modeling tool",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gaphor.Gaphor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "blueprint",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gaphor/icon-1024.png"
+      }
+    },
+    {
+      "name": "GIMP",
+      "display": "GIMP",
+      "slug": "gimp",
+      "categories": "Graphics;2DGraphics;RasterGraphics;GTK;",
+      "comment": "Create images and edit photographs",
+      "exec": "gimp-3.2",
+      "desktop": "gimp.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paint_tube",
+        "hue": 28,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gimp/icon-1024.png"
+      }
+    },
+    {
+      "name": "Git Gui",
+      "display": "Git Gui",
+      "slug": "git-gui",
+      "categories": "Development;RevisionControl;",
+      "comment": "Git GUI",
+      "exec": "git",
+      "desktop": "git-gui.desktop",
+      "design": {
+        "kind": "object",
+        "object": "pipe_branch",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "git-gui/icon-1024.png"
+      }
+    },
+    {
+      "name": "GNOME System Monitor",
+      "display": "GNOME System Monitor",
+      "slug": "gnome-system-monitor",
+      "categories": "GNOME;GTK;System;Monitor;",
+      "comment": "View current processes and monitor system state",
+      "exec": "gnome-system-monitor",
+      "desktop": "gnome-system-monitor-kde.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gauge_cluster",
+        "hue": 32,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gnome-system-monitor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Google Chrome",
+      "display": "Google Chrome",
+      "slug": "google-chrome",
+      "categories": "Network;WebBrowser;",
+      "comment": "Access the Internet",
+      "exec": "/usr/bin/google-chrome-stable",
+      "desktop": "google-chrome.desktop",
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 48,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "google-chrome/icon-1024.png"
+      }
+    },
+    {
+      "name": "Gramps",
+      "display": "Gramps",
+      "slug": "gramps",
+      "categories": "Office;Database;",
+      "comment": "Manage genealogical information, perform genealogical research and ana",
+      "exec": "gramps",
+      "desktop": "org.gramps_project.Gramps.desktop",
+      "design": {
+        "kind": "object",
+        "object": "book",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gramps/icon-1024.png"
+      }
+    },
+    {
+      "name": "Graphs",
+      "display": "Graphs",
+      "slug": "graphs",
+      "categories": "Education;Science",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "se.sjoerd.Graphs.desktop",
+      "design": {
+        "kind": "object",
+        "object": "chart_recorder",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "graphs/icon-1024.png"
+      }
+    },
+    {
+      "name": "GTK Demo",
+      "display": "GTK Demo",
+      "slug": "gtk-demo",
+      "categories": "Development;GTK;",
+      "comment": "GTK code examples and demonstrations",
+      "exec": "gtk4-demo",
+      "desktop": "org.gtk.Demo4.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "gtk-demo/icon-1024.png"
+      }
+    },
+    {
+      "name": "HandBrake",
+      "display": "HandBrake",
+      "slug": "handbrake",
+      "categories": "GTK;AudioVideo;Video;",
+      "comment": "Transcodes DVD, Blu-ray, and other media",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "fr.handbrake.ghb.desktop",
+      "design": {
+        "kind": "object",
+        "object": "tape_cartridge",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "handbrake/icon-1024.png"
+      }
+    },
+    {
+      "name": "Help",
+      "display": "Help",
+      "slug": "help",
+      "categories": "GNOME;GTK;Core;Documentation;Utility;",
+      "comment": "Get help with GNOME",
+      "exec": "yelp",
+      "desktop": "org.gnome.Yelp.desktop",
+      "design": {
+        "kind": "object",
+        "object": "book",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "help/icon-1024.png"
+      }
+    },
+    {
+      "name": "Icon Editor",
+      "display": "Icon Editor",
+      "slug": "icon-editor",
+      "categories": "Development;GTK;",
+      "comment": "An application that edits icons",
+      "exec": "gtk4-icon-editor",
+      "desktop": "org.gtk.Shaper.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "icon-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Image Viewer",
+      "display": "Image Viewer",
+      "slug": "image-viewer",
+      "categories": "GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;",
+      "comment": "View and edit images",
+      "exec": "loupe",
+      "desktop": "org.gnome.Loupe.desktop",
+      "design": {
+        "kind": "object",
+        "object": "loupe",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "image-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Impression",
+      "display": "Impression",
+      "slug": "impression",
+      "categories": "GTK;GNOME;Utility;System;DiscBurning;",
+      "comment": "Create bootable drives",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.gitlab.adhami3310.Impression.desktop",
+      "design": {
+        "kind": "object",
+        "object": "usb_stick",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "impression/icon-1024.png"
+      }
+    },
+    {
+      "name": "Inkscape",
+      "display": "Inkscape",
+      "slug": "inkscape",
+      "categories": "Graphics;VectorGraphics;GTK;",
+      "comment": "Create and edit Scalable Vector Graphics images",
+      "exec": "inkscape",
+      "desktop": "org.inkscape.Inkscape.desktop",
+      "design": {
+        "kind": "object",
+        "object": "pen_nib",
+        "hue": 272,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "inkscape/icon-1024.png"
+      }
+    },
+    {
+      "name": "IntelliJ IDEA",
+      "display": "IntelliJ IDEA 2026.2.3",
+      "slug": "intellij-idea",
+      "categories": "Development;IDE;",
+      "comment": "The IDE for pro Java and Kotlin development",
+      "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/intellij-idea/bin/idea\"",
+      "desktop": "jetbrains-idea-9ab5d346-9ae8-47a6-aa61-d4a71fe71380.desktop",
+      "design": {
+        "kind": "hand-authored",
+        "source": "IntelliJ IDEA"
+      },
+      "files": {
+        "png": "intellij-idea/icon-1024.png"
+      }
+    },
+    {
+      "name": "JetBrains Toolbox",
+      "display": "JetBrains Toolbox",
+      "slug": "jetbrains-toolbox",
+      "categories": "Development",
+      "comment": "",
+      "exec": "/home/joe/Downloads/jetbrains-toolbox-3.6.4.86641/bin/jetbrains-toolbox",
+      "desktop": "jetbrains-toolbox.desktop",
+      "design": {
+        "kind": "object",
+        "object": "toolbox",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "jetbrains-toolbox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Kdenlive",
+      "display": "Kdenlive",
+      "slug": "kdenlive",
+      "categories": "Qt;KDE;AudioVideo;AudioVideoEditing;",
+      "comment": "Nonlinear video editor by KDE",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.kde.kdenlive.desktop",
+      "design": {
+        "kind": "object",
+        "object": "clapper",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "kdenlive/icon-1024.png"
+      }
+    },
+    {
+      "name": "KeePassXC",
+      "display": "KeePassXC",
+      "slug": "keepassxc",
+      "categories": "Utility;Security;Qt;",
+      "comment": "Community-driven port of the Windows application “KeePass Password Saf",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.keepassxc.KeePassXC.desktop",
+      "design": {
+        "kind": "object",
+        "object": "keyring",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "keepassxc/icon-1024.png"
+      }
+    },
+    {
+      "name": "kitty",
+      "display": "kitty",
+      "slug": "kitty",
+      "categories": "System;TerminalEmulator;",
+      "comment": "Fast, feature-rich, GPU based terminal",
+      "exec": "kitty",
+      "desktop": "kitty.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 278,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "kitty/icon-1024.png"
+      }
+    },
+    {
+      "name": "Krita",
+      "display": "Krita",
+      "slug": "krita",
+      "categories": "Qt;KDE;Graphics;2DGraphics;RasterGraphics;",
+      "comment": "Digital Painting",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.kde.krita.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paint_tin",
+        "hue": 306,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "krita/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice",
+      "display": "LibreOffice",
+      "slug": "libreoffice",
+      "categories": "Office;X-Red-Hat-Base;X-SuSE-Core-Office;",
+      "comment": "Launch applications to create text documents, spreadsheets, presentati",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-startcenter.desktop",
+      "design": {
+        "kind": "object",
+        "object": "documents",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Base",
+      "display": "LibreOffice Base",
+      "slug": "libreoffice-base",
+      "categories": "Office;Database;X-Red-Hat-Base;",
+      "comment": "Manage databases, create queries and reports to track and manage your",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-base.desktop",
+      "design": {
+        "kind": "object",
+        "object": "card_catalog",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-base/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Calc",
+      "display": "LibreOffice Calc",
+      "slug": "libreoffice-calc",
+      "categories": "Office;Spreadsheet;X-Red-Hat-Base;",
+      "comment": "Perform calculations, analyze information and manage lists in spreadsh",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-calc.desktop",
+      "design": {
+        "kind": "object",
+        "object": "ledger",
+        "hue": 112,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-calc/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Draw",
+      "display": "LibreOffice Draw",
+      "slug": "libreoffice-draw",
+      "categories": "Office;FlowChart;Graphics;2DGraphics;VectorGraphics;X-Red-Hat-Base;",
+      "comment": "Create and edit drawings, flow charts and logos.",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-draw.desktop",
+      "design": {
+        "kind": "object",
+        "object": "palette",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-draw/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Impress",
+      "display": "LibreOffice Impress",
+      "slug": "libreoffice-impress",
+      "categories": "Office;Presentation;X-Red-Hat-Base;",
+      "comment": "Create and edit presentations for slideshows, meetings and Web pages.",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-impress.desktop",
+      "design": {
+        "kind": "object",
+        "object": "slide_carousel",
+        "hue": 26,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-impress/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Math",
+      "display": "LibreOffice Math",
+      "slug": "libreoffice-math",
+      "categories": "Office;Spreadsheet;Education;Science;Math;X-Red-Hat-Base;",
+      "comment": "Create and edit scientific formulas and equations.",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-math.desktop",
+      "design": {
+        "kind": "object",
+        "object": "type_block",
+        "hue": 264,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-math/icon-1024.png"
+      }
+    },
+    {
+      "name": "LibreOffice Writer",
+      "display": "LibreOffice Writer",
+      "slug": "libreoffice-writer",
+      "categories": "Office;WordProcessor;X-Red-Hat-Base;",
+      "comment": "Create and edit text and graphics in letters, reports, documents and W",
+      "exec": "libreoffice",
+      "desktop": "libreoffice-writer.desktop",
+      "design": {
+        "kind": "object",
+        "object": "typewriter",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "libreoffice-writer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Lights Off",
+      "display": "Lights Off",
+      "slug": "lights-off",
+      "categories": "GNOME;GTK;Game;LogicGame;",
+      "comment": "Turn off all the lights",
+      "exec": "lightsoff",
+      "desktop": "org.gnome.LightsOff.desktop",
+      "design": {
+        "kind": "object",
+        "object": "lamps",
+        "hue": 42,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "lights-off/icon-1024.png"
+      }
+    },
+    {
+      "name": "LM-Studio",
+      "display": "LM-Studio",
+      "slug": "lm-studio",
+      "categories": "Development;Utility;",
+      "comment": "Use the chat UI or local server to experiment and develop with local L",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "ai.lmstudio.lm-studio.desktop",
+      "design": {
+        "kind": "object",
+        "object": "chip",
+        "hue": 264,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "lm-studio/icon-1024.png"
+      }
+    },
+    {
+      "name": "Logs",
+      "display": "Logs",
+      "slug": "logs",
+      "categories": "GTK;GNOME;System;Monitor;Utility;",
+      "comment": "View detailed event logs for the system",
+      "exec": "gnome-logs",
+      "desktop": "org.gnome.Logs.desktop",
+      "design": {
+        "kind": "object",
+        "object": "journal",
+        "hue": 38,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "logs/icon-1024.png"
+      }
+    },
+    {
+      "name": "Lorem",
+      "display": "Lorem",
+      "slug": "lorem",
+      "categories": "Utility;GTK;GNOME;",
+      "comment": "Generate placeholder text",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.design.Lorem.desktop",
+      "design": {
+        "kind": "object",
+        "object": "notes_pad",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "lorem/icon-1024.png"
+      }
+    },
+    {
+      "name": "Mahjongg",
+      "display": "Mahjongg",
+      "slug": "mahjongg",
+      "categories": "GNOME;GTK;Game;BoardGame;LogicGame;",
+      "comment": "Match tiles and clear the board",
+      "exec": "gnome-mahjongg",
+      "desktop": "org.gnome.Mahjongg.desktop",
+      "design": {
+        "kind": "object",
+        "object": "mahjong_tile",
+        "hue": 148,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mahjongg/icon-1024.png"
+      }
+    },
+    {
+      "name": "Maps",
+      "display": "Maps",
+      "slug": "maps",
+      "categories": "GNOME;GTK;Utility;",
+      "comment": "A simple maps application",
+      "exec": "gapplication",
+      "desktop": "org.gnome.Maps.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paper",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "maps/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft Edit",
+      "display": "Microsoft Edit",
+      "slug": "microsoft-edit",
+      "categories": "Utility;TextEditor;",
+      "comment": "A simple editor for simple needs",
+      "exec": "msedit",
+      "desktop": "com.microsoft.edit.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "microsoft-edit/icon-1024.png"
+      }
+    },
+    {
+      "name": "Mines",
+      "display": "Mines",
+      "slug": "mines",
+      "categories": "GNOME;GTK;Game;LogicGame;",
+      "comment": "Clear hidden mines from a minefield",
+      "exec": "gnome-mines",
+      "desktop": "org.gnome.Mines.desktop",
+      "design": {
+        "kind": "object",
+        "object": "naval_mine",
+        "hue": 4,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mines/icon-1024.png"
+      }
+    },
+    {
+      "name": "mpv Media Player",
+      "display": "mpv Media Player",
+      "slug": "mpv-media-player",
+      "categories": "AudioVideo;Audio;Video;Player;TV;",
+      "comment": "Play movies and songs",
+      "exec": "mpv",
+      "desktop": "mpv.desktop",
+      "design": {
+        "kind": "object",
+        "object": "optical_disc",
+        "hue": null,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "mpv-media-player/icon-1024.png"
+      }
+    },
+    {
+      "name": "Music",
+      "display": "Music",
+      "slug": "music",
+      "categories": "GNOME;GTK;AudioVideo;Player;Audio;",
+      "comment": "Play and organize your music collection",
+      "exec": "gnome-music",
+      "desktop": "org.gnome.Music.desktop",
+      "design": {
+        "kind": "object",
+        "object": "record_sleeve",
+        "hue": 340,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "music/icon-1024.png"
+      }
+    },
+    {
+      "name": "Myrlyn",
+      "display": "Myrlyn",
+      "slug": "myrlyn",
+      "categories": "System;Settings",
+      "comment": "Full root access (via sudo)",
+      "exec": "myrlyn-sudo",
+      "desktop": "myrlyn-sudo.desktop",
+      "design": {
+        "kind": "object",
+        "object": "crate",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "myrlyn/icon-1024.png"
+      }
+    },
+    {
+      "name": "Myrlyn (read‑only)",
+      "display": "Myrlyn (read‑only)",
+      "slug": "myrlyn-read-only",
+      "categories": "System;Settings",
+      "comment": "Read-only mode for non-privileged users",
+      "exec": "/usr/bin/myrlyn",
+      "desktop": "myrlyn-user.desktop",
+      "design": {
+        "kind": "object",
+        "object": "crate",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "myrlyn-read-only/icon-1024.png"
+      }
+    },
+    {
+      "name": "Newsflash",
+      "display": "Newsflash",
+      "slug": "newsflash",
+      "categories": "GNOME;GTK;Network;Feed;",
+      "comment": "Keep up with your feeds",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.gitlab.news_flash.NewsFlash.desktop",
+      "design": {
+        "kind": "object",
+        "object": "newspaper",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "newsflash/icon-1024.png"
+      }
+    },
+    {
+      "name": "Node Editor",
+      "display": "Node Editor",
+      "slug": "node-editor",
+      "categories": "Development;GTK;",
+      "comment": "An application that edits render nodes",
+      "exec": "gtk4-node-editor",
+      "desktop": "org.gtk.gtk4.NodeEditor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "node-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Nyxt",
+      "display": "Nyxt",
+      "slug": "nyxt",
+      "categories": "GTK;Network;WebBrowser;",
+      "comment": "Be Productive",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "engineer.atlas.Nyxt.desktop",
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 188,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "nyxt/icon-1024.png"
+      }
+    },
+    {
+      "name": "OBS Studio",
+      "display": "OBS Studio",
+      "slug": "obs-studio",
+      "categories": "AudioVideo;Recorder;",
+      "comment": "Free and Open Source Streaming/Recording Software",
+      "exec": "obs",
+      "desktop": "com.obsproject.Studio.desktop",
+      "design": {
+        "kind": "object",
+        "object": "camcorder",
+        "hue": 220,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "obs-studio/icon-1024.png"
+      }
+    },
+    {
+      "name": "openSUSE Welcome",
+      "display": "openSUSE Welcome",
+      "slug": "opensuse-welcome",
+      "categories": "GNOME;GTK;Documentation;Utility;",
+      "comment": "",
+      "exec": "opensuse-welcome",
+      "desktop": "org.opensuse.Welcome.desktop",
+      "design": {
+        "kind": "object",
+        "object": "service_bell",
+        "hue": 146,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "opensuse-welcome/icon-1024.png"
+      }
+    },
+    {
+      "name": "Package Sources",
+      "display": "Package Sources",
+      "slug": "package-sources",
+      "categories": "Settings;X-GNOME-Settings-Panel;",
+      "comment": "Enable or disable package repositories",
+      "exec": "gpk-prefs",
+      "desktop": "gpk-prefs.desktop",
+      "design": {
+        "kind": "object",
+        "object": "card_catalog",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "package-sources/icon-1024.png"
+      }
+    },
+    {
+      "name": "Package Updater",
+      "display": "Package Updater",
+      "slug": "package-updater",
+      "categories": "GNOME;GTK;System;",
+      "comment": "Update software installed on the system",
+      "exec": "gpk-update-viewer",
+      "desktop": "org.gnome.PackageUpdater.desktop",
+      "design": {
+        "kind": "object",
+        "object": "crate",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "package-updater/icon-1024.png"
+      }
+    },
+    {
+      "name": "Parental Controls",
+      "display": "Parental Controls",
+      "slug": "parental-controls",
+      "categories": "GTK;GNOME;System;",
+      "comment": "Set parental controls and monitor usage by users",
+      "exec": "malcontent-control",
+      "desktop": "org.freedesktop.MalcontentControl.desktop",
+      "design": {
+        "kind": "object",
+        "object": "shield",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "parental-controls/icon-1024.png"
+      }
+    },
+    {
+      "name": "Passwords and Keys",
+      "display": "Passwords and Keys",
+      "slug": "passwords-and-keys",
+      "categories": "GNOME;GTK;Security;Utility;DesktopSettings;X-XFCE-SettingsDialog;",
+      "comment": "Manage your passwords and encryption keys",
+      "exec": "seahorse",
+      "desktop": "org.gnome.seahorse.Application.desktop",
+      "design": {
+        "kind": "object",
+        "object": "keyring",
+        "hue": 32,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "passwords-and-keys/icon-1024.png"
+      }
+    },
+    {
+      "name": "Photos",
+      "display": "Photos",
+      "slug": "photos",
+      "categories": "GNOME;GTK;Core;Graphics;Photography;",
+      "comment": "Access, organize and share photos",
+      "exec": "gnome-photos",
+      "desktop": "org.gnome.Photos.desktop",
+      "design": {
+        "kind": "object",
+        "object": "photo_print",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "photos/icon-1024.png"
+      }
+    },
+    {
+      "name": "Print Editor",
+      "display": "Print Editor",
+      "slug": "print-editor",
+      "categories": "Development;GTK;",
+      "comment": "A simple editor demonstrating GTK printing",
+      "exec": "gtk4-print-editor",
+      "desktop": "org.gtk.PrintEditor4.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "print-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Prism Launcher",
+      "display": "Prism Launcher",
+      "slug": "prism-launcher",
+      "categories": "Game;ActionGame;AdventureGame;Simulation;PackageManager;",
+      "comment": "Discover, manage, and play Minecraft instances",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.prismlauncher.PrismLauncher.desktop",
+      "design": {
+        "kind": "object",
+        "object": "pickaxe",
+        "hue": 190,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "prism-launcher/icon-1024.png"
+      }
+    },
+    {
+      "name": "Proton VPN",
+      "display": "Proton VPN",
+      "slug": "proton-vpn",
+      "categories": "Network;",
+      "comment": "Proton VPN GUI client",
+      "exec": "protonvpn-app",
+      "desktop": "proton-vpn.desktop",
+      "design": {
+        "kind": "object",
+        "object": "padlock",
+        "hue": 264,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "proton-vpn/icon-1024.png"
+      }
+    },
+    {
+      "name": "qBittorrent",
+      "display": "qBittorrent",
+      "slug": "qbittorrent",
+      "categories": "Network;FileTransfer;P2P;Qt;",
+      "comment": "Download and share files over BitTorrent",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.qbittorrent.qBittorrent.desktop",
+      "design": {
+        "kind": "object",
+        "object": "magnet",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "qbittorrent/icon-1024.png"
+      }
+    },
+    {
+      "name": "qpwgraph",
+      "display": "qpwgraph",
+      "slug": "qpwgraph",
+      "categories": "AudioVideo;Audio;Video;Midi;X-Alsa;X-PipeWire;Qt;",
+      "comment": "qpwgraph is a PipeWire graph Qt GUI interface",
+      "exec": "qpwgraph",
+      "desktop": "org.rncbc.qpwgraph.desktop",
+      "design": {
+        "kind": "object",
+        "object": "patch_panel",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "qpwgraph/icon-1024.png"
+      }
+    },
+    {
+      "name": "Quadrapassel",
+      "display": "Quadrapassel",
+      "slug": "quadrapassel",
+      "categories": "GNOME;GTK;Game;BlocksGame;",
+      "comment": "Fit falling blocks together",
+      "exec": "quadrapassel",
+      "desktop": "org.gnome.Quadrapassel.desktop",
+      "design": {
+        "kind": "object",
+        "object": "tetromino",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "quadrapassel/icon-1024.png"
+      }
+    },
+    {
+      "name": "Remmina",
+      "display": "Remmina",
+      "slug": "remmina",
+      "categories": "GTK;GNOME;X-GNOME-NetworkSettings;Network;RemoteAccess;GTK;",
+      "comment": "Connect to remote desktops",
+      "exec": "remmina-file-wrapper",
+      "desktop": "org.remmina.Remmina.desktop",
+      "design": {
+        "kind": "object",
+        "object": "remote_desktop",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "remmina/icon-1024.png"
+      }
+    },
+    {
+      "name": "Remote Viewer",
+      "display": "Remote Viewer",
+      "slug": "remote-viewer",
+      "categories": "GNOME;GTK;Network;RemoteAccess;X-SuSE-YaST;",
+      "comment": "Access remote desktops",
+      "exec": "remote-viewer",
+      "desktop": "remote-viewer.desktop",
+      "design": {
+        "kind": "object",
+        "object": "remote_desktop",
+        "hue": 204,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "remote-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Resources",
+      "display": "Resources",
+      "slug": "resources",
+      "categories": "System;",
+      "comment": "Keep an eye on system resources",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "net.nokyan.Resources.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gauge",
+        "hue": 266,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "resources/icon-1024.png"
+      }
+    },
+    {
+      "name": "RetroArch",
+      "display": "RetroArch",
+      "slug": "retroarch",
+      "categories": "Game;Emulator;",
+      "comment": "Unified frontend for many game console emulators, frameworks and media",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.libretro.RetroArch.desktop",
+      "design": {
+        "kind": "object",
+        "object": "cartridge",
+        "hue": 0,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "retroarch/icon-1024.png"
+      }
+    },
+    {
+      "name": "RetroDECK",
+      "display": "RetroDECK",
+      "slug": "retrodeck",
+      "categories": "Emulator;Game;PackageManager",
+      "comment": "Platform for managing and playing retro games",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "net.retrodeck.retrodeck.desktop",
+      "design": {
+        "kind": "object",
+        "object": "cartridge",
+        "hue": 338,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "retrodeck/icon-1024.png"
+      }
+    },
+    {
+      "name": "RetroDECK Configurator",
+      "display": "RetroDECK Configurator",
+      "slug": "retrodeck-configurator",
+      "categories": "Emulator;Game;PackageManager",
+      "comment": "A handy multi-tool for managing all of RetroDECK",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "net.retrodeck.retrodeck.Configurator.desktop",
+      "design": {
+        "kind": "object",
+        "object": "volume_knob",
+        "hue": 338,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "retrodeck-configurator/icon-1024.png"
+      }
+    },
+    {
+      "name": "Reversi",
+      "display": "Reversi",
+      "slug": "reversi",
+      "categories": "GNOME;GTK;Game;BoardGame;",
+      "comment": "Dominate the board in a classic version of Reversi",
+      "exec": "iagno",
+      "desktop": "org.gnome.Reversi.desktop",
+      "design": {
+        "kind": "object",
+        "object": "reversi_discs",
+        "hue": 120,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "reversi/icon-1024.png"
+      }
+    },
+    {
+      "name": "Riff",
+      "display": "Riff",
+      "slug": "riff",
+      "categories": "GTK;GNOME;Music;AudioVideo;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "dev.diegovsky.Riff.desktop",
+      "design": {
+        "kind": "object",
+        "object": "cassette",
+        "hue": 262,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "riff/icon-1024.png"
+      }
+    },
+    {
+      "name": "Rofi",
+      "display": "Rofi",
+      "slug": "rofi",
+      "categories": "",
+      "comment": "",
+      "exec": "rofi",
+      "desktop": "rofi.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rofi/icon-1024.png"
+      }
+    },
+    {
+      "name": "Rofi Theme Selector",
+      "display": "Rofi Theme Selector",
+      "slug": "rofi-theme-selector",
+      "categories": "",
+      "comment": "",
+      "exec": "rofi-theme-selector",
+      "desktop": "rofi-theme-selector.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rofi-theme-selector/icon-1024.png"
+      }
+    },
+    {
+      "name": "RustDesk",
+      "display": "RustDesk",
+      "slug": "rustdesk",
+      "categories": "Network;RemoteAccess;GTK;",
+      "comment": "Remote Desktop",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.rustdesk.RustDesk.desktop",
+      "design": {
+        "kind": "object",
+        "object": "monitor",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "rustdesk/icon-1024.png"
+      }
+    },
+    {
+      "name": "Settings",
+      "display": "Settings",
+      "slug": "settings",
+      "categories": "GNOME;GTK;Settings;",
+      "comment": "",
+      "exec": "gnome-control-center",
+      "desktop": "org.gnome.Settings.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gears",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "settings/icon-1024.png"
+      }
+    },
+    {
+      "name": "Shortwave",
+      "display": "Shortwave",
+      "slug": "shortwave",
+      "categories": "GNOME;GTK;Audio;AudioVideo;",
+      "comment": "Listen to internet radio",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "de.haeckerfelix.Shortwave.desktop",
+      "design": {
+        "kind": "object",
+        "object": "radio",
+        "hue": 32,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "shortwave/icon-1024.png"
+      }
+    },
+    {
+      "name": "Signal",
+      "display": "Signal",
+      "slug": "signal",
+      "categories": "Network;InstantMessaging;Chat;",
+      "comment": "Private messaging from your desktop",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.signal.Signal.desktop",
+      "design": {
+        "kind": "hand-authored",
+        "source": "Signal"
+      },
+      "files": {
+        "png": "signal/icon-1024.png"
+      }
+    },
+    {
+      "name": "Slack",
+      "display": "Slack",
+      "slug": "slack",
+      "categories": "GNOME;GTK;Network;InstantMessaging;",
+      "comment": "Slack Desktop",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.slack.Slack.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 300,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "slack/icon-1024.png"
+      }
+    },
+    {
+      "name": "Software",
+      "display": "Software",
+      "slug": "software",
+      "categories": "GNOME;GTK;System;PackageManager;",
+      "comment": "Add, remove or update software on this computer",
+      "exec": "gnome-software",
+      "desktop": "org.gnome.Software.desktop",
+      "design": {
+        "kind": "object",
+        "object": "display_case",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "software/icon-1024.png"
+      }
+    },
+    {
+      "name": "Solanum",
+      "display": "Solanum",
+      "slug": "solanum",
+      "categories": "GTK;GNOME;Utility;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.Solanum.desktop",
+      "design": {
+        "kind": "object",
+        "object": "stopwatch",
+        "hue": 6,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "solanum/icon-1024.png"
+      }
+    },
+    {
+      "name": "Spotify",
+      "display": "Spotify",
+      "slug": "spotify",
+      "categories": "Audio;Music;Player;AudioVideo;",
+      "comment": "",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.spotify.Client.desktop",
+      "design": {
+        "kind": "object",
+        "object": "record_sleeve",
+        "hue": 132,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "spotify/icon-1024.png"
+      }
+    },
+    {
+      "name": "sqlitebrowser",
+      "display": "sqlitebrowser",
+      "slug": "sqlitebrowser",
+      "categories": "Application;Network;GNOME;GTK;System;X-SuSE-ServiceConfiguration;",
+      "comment": "",
+      "exec": "/usr/bin/sqlitebrowser",
+      "desktop": "sqlitebrowser.desktop",
+      "design": {
+        "kind": "object",
+        "object": "card_catalog",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "sqlitebrowser/icon-1024.png"
+      }
+    },
+    {
+      "name": "Steam",
+      "display": "Steam",
+      "slug": "steam",
+      "categories": "Network;FileTransfer;Game;",
+      "comment": "Application for managing and playing games on Steam",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.valvesoftware.Steam.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gamepad",
+        "hue": 218,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "steam/icon-1024.png"
+      }
+    },
+    {
+      "name": "Sudoku",
+      "display": "Sudoku",
+      "slug": "sudoku",
+      "categories": "GNOME;GTK;Game;LogicGame;",
+      "comment": "Test yourself in the classic puzzle",
+      "exec": "gnome-sudoku",
+      "desktop": "org.gnome.Sudoku.desktop",
+      "design": {
+        "kind": "object",
+        "object": "pencil_pad",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "sudoku/icon-1024.png"
+      }
+    },
+    {
+      "name": "Swell Foop",
+      "display": "Swell Foop",
+      "slug": "swell-foop",
+      "categories": "GNOME;GTK;Game;LogicGame;",
+      "comment": "Clear the screen by removing groups of colored and shaped tiles",
+      "exec": "swell-foop",
+      "desktop": "org.gnome.SwellFoop.desktop",
+      "design": {
+        "kind": "object",
+        "object": "game_tiles",
+        "hue": 300,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "swell-foop/icon-1024.png"
+      }
+    },
+    {
+      "name": "Switcheroo",
+      "display": "Switcheroo",
+      "slug": "switcheroo",
+      "categories": "GTK;GNOME;Graphics;ImageProcessing;Utility;",
+      "comment": "Convert and manipulate images",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.gitlab.adhami3310.Converter.desktop",
+      "design": {
+        "kind": "object",
+        "object": "lens_turret",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "switcheroo/icon-1024.png"
+      }
+    },
+    {
+      "name": "System Monitor",
+      "display": "System Monitor",
+      "slug": "system-monitor",
+      "categories": "GNOME;GTK;System;Monitor;",
+      "comment": "View current processes and monitor system state",
+      "exec": "gnome-system-monitor",
+      "desktop": "org.gnome.SystemMonitor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gauge_cluster",
+        "hue": 208,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "system-monitor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Telegram",
+      "display": "Telegram",
+      "slug": "telegram",
+      "categories": "Chat;Network;InstantMessaging;Qt;",
+      "comment": "New era of messaging",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.telegram.desktop.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paper_plane",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "telegram/icon-1024.png"
+      }
+    },
+    {
+      "name": "Text Editor",
+      "display": "Text Editor",
+      "slug": "text-editor",
+      "categories": "GNOME;GTK;Utility;TextEditor;",
+      "comment": "View and edit text files",
+      "exec": "gnome-text-editor",
+      "desktop": "org.gnome.TextEditor.desktop",
+      "design": {
+        "kind": "object",
+        "object": "notes_pad",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "text-editor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Text Pieces",
+      "display": "Text Pieces",
+      "slug": "text-pieces",
+      "categories": "Utility;TextTools;GNOME;GTK;",
+      "comment": "Developer's scratchpad",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.gitlab.liferooter.TextPieces.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 40,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "text-pieces/icon-1024.png"
+      }
+    },
+    {
+      "name": "TigerVNC",
+      "display": "TigerVNC",
+      "slug": "tigervnc",
+      "categories": "Network;RemoteAccess;",
+      "comment": "Connect to VNC server and display remote desktop",
+      "exec": "/usr/bin/vncviewer",
+      "desktop": "vncviewer.desktop",
+      "design": {
+        "kind": "object",
+        "object": "remote_desktop",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "tigervnc/icon-1024.png"
+      }
+    },
+    {
+      "name": "Totem",
+      "display": "Totem",
+      "slug": "totem",
+      "categories": "GTK;GNOME;AudioVideo;Player;Video;",
+      "comment": "Play movies",
+      "exec": "totem",
+      "desktop": "org.gnome.Totem.desktop",
+      "design": {
+        "kind": "object",
+        "object": "film_reel",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "totem/icon-1024.png"
+      }
+    },
+    {
+      "name": "Tour",
+      "display": "Tour",
+      "slug": "tour",
+      "categories": "GNOME;GTK;Documentation;Utility;",
+      "comment": "",
+      "exec": "gnome-tour",
+      "desktop": "org.gnome.Tour.desktop",
+      "design": {
+        "kind": "object",
+        "object": "paper",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "tour/icon-1024.png"
+      }
+    },
+    {
+      "name": "Tweaks",
+      "display": "Tweaks",
+      "slug": "tweaks",
+      "categories": "GNOME;GTK;Utility;",
+      "comment": "Tweak advanced GNOME settings",
+      "exec": "gnome-tweaks",
+      "desktop": "org.gnome.tweaks.desktop",
+      "design": {
+        "kind": "object",
+        "object": "gears",
+        "hue": 264,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "tweaks/icon-1024.png"
+      }
+    },
+    {
+      "name": "Valuta",
+      "display": "Valuta",
+      "slug": "valuta",
+      "categories": "Utility;GTK;GNOME;",
+      "comment": "Convert between currencies",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.idevecore.Valuta.desktop",
+      "design": {
+        "kind": "object",
+        "object": "balance",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "valuta/icon-1024.png"
+      }
+    },
+    {
+      "name": "Video Trimmer",
+      "display": "Video Trimmer",
+      "slug": "video-trimmer",
+      "categories": "GNOME;GTK;Video;AudioVideo;",
+      "comment": "Trim videos quickly",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.gitlab.YaLTeR.VideoTrimmer.desktop",
+      "design": {
+        "kind": "object",
+        "object": "clapper",
+        "hue": 196,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "video-trimmer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Virtual Machine Manager",
+      "display": "Virtual Machine Manager",
+      "slug": "virtual-machine-manager",
+      "categories": "System;Emulator;GTK;",
+      "comment": "Manage Virtual Machines for Xen and KVM",
+      "exec": "/usr/bin/virt-manager",
+      "desktop": "virt-manager.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_cubes",
+        "hue": 210,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "virtual-machine-manager/icon-1024.png"
+      }
+    },
+    {
+      "name": "VLC media player",
+      "display": "VLC media player",
+      "slug": "vlc-media-player",
+      "categories": "AudioVideo;Player;Recorder;AudioVideo;Video;",
+      "comment": "Read, capture, broadcast your multimedia streams",
+      "exec": "/usr/bin/vlc",
+      "desktop": "vlc.desktop",
+      "design": {
+        "kind": "object",
+        "object": "film_reel",
+        "hue": 26,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "vlc-media-player/icon-1024.png"
+      }
+    },
+    {
+      "name": "Volume Control",
+      "display": "Volume Control",
+      "slug": "volume-control",
+      "categories": "AudioVideo;Audio;Mixer;GTK;Settings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;",
+      "comment": "Adjust the volume level",
+      "exec": "pavucontrol",
+      "desktop": "org.pulseaudio.pavucontrol.desktop",
+      "design": {
+        "kind": "object",
+        "object": "volume_knob",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "volume-control/icon-1024.png"
+      }
+    },
+    {
+      "name": "Warehouse",
+      "display": "Warehouse",
+      "slug": "warehouse",
+      "categories": "GTK;System;Utility;",
+      "comment": "Manage all things Flatpak",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.flattool.Warehouse.desktop",
+      "design": {
+        "kind": "object",
+        "object": "pallet",
+        "hue": 30,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "warehouse/icon-1024.png"
+      }
+    },
+    {
+      "name": "Warp",
+      "display": "Warp",
+      "slug": "warp",
+      "categories": "Utility",
+      "comment": "Fast and secure file transfer",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "app.drey.Warp.desktop",
+      "design": {
+        "kind": "object",
+        "object": "cable_coil",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "warp/icon-1024.png"
+      }
+    },
+    {
+      "name": "Weather",
+      "display": "Weather",
+      "slug": "weather",
+      "categories": "GNOME;GTK;Utility;Core;",
+      "comment": "Show weather conditions and forecast",
+      "exec": "gapplication",
+      "desktop": "org.gnome.Weather.desktop",
+      "design": {
+        "kind": "object",
+        "object": "barometer",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "weather/icon-1024.png"
+      }
+    },
+    {
+      "name": "Web",
+      "display": "Web",
+      "slug": "web",
+      "categories": "Network;GNOME;GTK;WebBrowser;",
+      "comment": "Browse the web",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.gnome.Epiphany.desktop",
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 205,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "web/icon-1024.png"
+      }
+    },
+    {
+      "name": "Webfont Bundler",
+      "display": "Webfont Bundler",
+      "slug": "webfont-bundler",
+      "categories": "Utility;GTK;",
+      "comment": "Create @font-face kits easily",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.rafaelmardojai.WebfontKitGenerator.desktop",
+      "design": {
+        "kind": "object",
+        "object": "type_block",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "webfont-bundler/icon-1024.png"
+      }
+    },
+    {
+      "name": "WebStorm",
+      "display": "WebStorm 2026.2.3",
+      "slug": "webstorm",
+      "categories": "Development;IDE;",
+      "comment": "A JavaScript and TypeScript IDE",
+      "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm\"",
+      "desktop": "jetbrains-webstorm-6b78cee7-0e66-4710-9908-aca3fde58267.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 206,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "webstorm/icon-1024.png"
+      }
+    },
+    {
+      "name": "Welcome launcher",
+      "display": "Welcome launcher",
+      "slug": "welcome-launcher",
+      "categories": "Qt;System;Documentation",
+      "comment": "The openSUSE Welcome launcher utility.",
+      "exec": "/usr/bin/opensuse-welcome-launcher",
+      "desktop": "org.opensuse.opensuse_welcome_launcher.desktop",
+      "design": {
+        "kind": "object",
+        "object": "service_bell",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "welcome-launcher/icon-1024.png"
+      }
+    },
+    {
+      "name": "WezTerm",
+      "display": "WezTerm",
+      "slug": "wezterm",
+      "categories": "System;TerminalEmulator;Utility;",
+      "comment": "Wez's Terminal Emulator",
+      "exec": "wezterm",
+      "desktop": "org.wezfurlong.wezterm.desktop",
+      "design": {
+        "kind": "object",
+        "object": "terminal",
+        "hue": 246,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wezterm/icon-1024.png"
+      }
+    },
+    {
+      "name": "Widget Factory",
+      "display": "Widget Factory",
+      "slug": "widget-factory",
+      "categories": "Development;GTK;",
+      "comment": "A showcase for GTK widgets, designed for testing themes.",
+      "exec": "gtk4-widget-factory",
+      "desktop": "org.gtk.WidgetFactory4.desktop",
+      "design": {
+        "kind": "object",
+        "object": "type_block",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "widget-factory/icon-1024.png"
+      }
+    },
+    {
+      "name": "Wike",
+      "display": "Wike",
+      "slug": "wike",
+      "categories": "Network;GTK;",
+      "comment": "Search and read Wikipedia articles",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.github.hugolabe.Wike.desktop",
+      "design": {
+        "kind": "object",
+        "object": "book",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wike/icon-1024.png"
+      }
+    },
+    {
+      "name": "Wireshark",
+      "display": "Wireshark",
+      "slug": "wireshark",
+      "categories": "Network;Monitor;Qt;",
+      "comment": "Network traffic analyzer",
+      "exec": "wireshark",
+      "desktop": "org.wireshark.Wireshark.desktop",
+      "design": {
+        "kind": "object",
+        "object": "patch_panel",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wireshark/icon-1024.png"
+      }
+    },
+    {
+      "name": "Wireshark - Super User Mode",
+      "display": "Wireshark - Super User Mode",
+      "slug": "wireshark-super-user-mode",
+      "categories": "Network;Monitor;Qt;",
+      "comment": "Network traffic analyzer",
+      "exec": "xdg-su",
+      "desktop": "org.wireshark.Wireshark-su.desktop",
+      "design": {
+        "kind": "object",
+        "object": "patch_panel",
+        "hue": 0,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wireshark-super-user-mode/icon-1024.png"
+      }
+    },
+    {
+      "name": "Wordbook",
+      "display": "Wordbook",
+      "slug": "wordbook",
+      "categories": "Dictionary;Education;GTK;",
+      "comment": "Look up definitions for words",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "dev.mufeed.Wordbook.desktop",
+      "design": {
+        "kind": "object",
+        "object": "book_open",
+        "hue": 44,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "wordbook/icon-1024.png"
+      }
+    },
+    {
+      "name": "Workbench",
+      "display": "Workbench",
+      "slug": "workbench",
+      "categories": "WebDevelopment;Development;IDE;GNOME;GTK;",
+      "comment": "Learn and prototype with GNOME technologies",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "re.sonny.Workbench.desktop",
+      "design": {
+        "kind": "object",
+        "object": "glass_keycap",
+        "hue": 200,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "workbench/icon-1024.png"
+      }
+    },
+    {
+      "name": "YaST",
+      "display": "YaST",
+      "slug": "yast",
+      "categories": "Settings;System;X-SuSE-Core-System;X-SuSE-ControlCenter-System;X-GNOME-SystemSettings;",
+      "comment": "Manage system-wide settings",
+      "exec": "/usr/bin/xdg-su",
+      "desktop": "org.opensuse.YaST.desktop",
+      "design": {
+        "kind": "object",
+        "object": "toolbox",
+        "hue": 150,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "yast/icon-1024.png"
+      }
+    },
+    {
+      "name": "YaST Software",
+      "display": "YaST Software",
+      "slug": "yast-software",
+      "categories": "System;PackageManager;X-SuSE-ControlCenter-System;",
+      "comment": "Install/Remove Software",
+      "exec": "/usr/lib/YaST2/bin/sw_single_wrapper",
+      "desktop": "org.opensuse.yast.Packager.desktop",
+      "design": {
+        "kind": "object",
+        "object": "toolbox",
+        "hue": 142,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "yast-software/icon-1024.png"
+      }
+    },
+    {
+      "name": "ytDownloader",
+      "display": "ytDownloader",
+      "slug": "ytdownloader",
+      "categories": "Utility;",
+      "comment": "Download videos and audios from YouTube and other sites",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "io.github.aandrew_me.ytdn.desktop",
+      "design": {
+        "kind": "object",
+        "object": "funnel",
+        "hue": 10,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "ytdownloader/icon-1024.png"
+      }
+    },
+    {
+      "name": "ZapZap",
+      "display": "ZapZap",
+      "slug": "zapzap",
+      "categories": "Chat;Network;InstantMessaging;Qt;",
+      "comment": "WhatsApp Desktop for Linux",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "com.rtosta.zapzap.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 132,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "zapzap/icon-1024.png"
+      }
+    },
+    {
+      "name": "Zen Browser",
+      "display": "Zen Browser",
+      "slug": "zen-browser",
+      "categories": "Network;WebBrowser;",
+      "comment": "A fast, private and secure web browser built to improve your day-to-da",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "app.zen_browser.zen.desktop",
+      "design": {
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 212,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "zen-browser/icon-1024.png"
+      }
+    },
+    {
+      "name": "Zulip",
+      "display": "Zulip",
+      "slug": "zulip",
+      "categories": "Network;InstantMessaging;",
+      "comment": "Zulip Desktop Client for Linux",
+      "exec": "/usr/bin/flatpak",
+      "desktop": "org.zulip.Zulip.desktop",
+      "design": {
+        "kind": "object",
+        "object": "bubble",
+        "hue": 188,
+        "archetype": "still-life object"
+      },
+      "files": {
+        "png": "zulip/icon-1024.png"
+      }
+    }
+  ]
+}

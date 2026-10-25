@@ -1,0 +1,159 @@
+#+title: Skeu Icons
+#+options: toc:2
+
+A skeuomorphic icon theme for Linux desktops, plus the sources that produce it:
+enamelled faces over chrome rims, glass key-caps, leather, paper, milled
+aluminium — physical objects, not a squircle grid.
+
+#+attr_html: :width 100% :alt six icons from the pack on a paper gradient
+[[file:docs/hero.png]]
+
+* 1 223 icons across six freedesktop contexts, at 16, 22, 24, 32, 48, 64, 128,
+  256 and 512 px, plus =@2x= HiDPI copies and a =scalable/= SVG layer —
+  22 014 bitmaps and 1 083 vectors.
+* File-type icons for 377 extensions, each under both its mime name and the
+  =application-x-<ext>= fallback — see [[file:FILE-TYPES.org][FILE-TYPES.org]] for the scanned list.
+* Two extra sets outside the theme: 164 icons for the applications installed
+  here and 46 for personal projects.
+* Every icon is its own object: no icon mask, no flat redesign, no uniform
+  rounded-square grid.
+
+Open [[file:gallery.html][gallery.html]] to see everything (it renders straight from the theme, no
+server needed, with a size switcher and a light/dark/checker background).
+
+* Install
+
+#+begin_src sh
+./install.sh                # ~/.local/share/icons/skeu-icons
+sudo ./install.sh --system  # /usr/share/icons/skeu-icons
+./install.sh --uninstall
+#+end_src
+
+Then pick *Skeu Icons* in your desktop's icon settings (GNOME Tweaks,
+XFCE Appearance, KDE System Settings, …). Log out and back in if a launcher
+keeps its old icon.
+
+Manual install is the same two steps:
+
+#+begin_src sh
+cp -r skeu-icons ~/.local/share/icons/
+gtk-update-icon-cache -f -t ~/.local/share/icons/skeu-icons
+#+end_src
+
+* What it looks like
+
+** Applications
+
+Thirty-two of the 164 application icons: a chrome-rimmed folder, browsers and
+editors that keep their own marks, and the objects invented for the GTK/GNOME
+apps — a gramophone for Amberol, a cassette for Riff, a tuning fork, an
+oscilloscope, a prism, a paint tube, a fountain-pen nib, a horseshoe magnet, a
+pallet, glass cubes, a screen with a keyboard for VNC, a moored mine for Mines,
+a pencil pad for Sudoku.
+
+#+attr_html: :width 100% :alt app icons: files, browsers, editors, media, games, tools
+[[file:docs/apps.png]]
+
+** Projects
+
+The 46 project icons: a sheep for lambdock, a black widow for araneola, a padlock
+for bewaking, Lady Justice for veritas, a conductor for wikimusic, a chart
+recorder for symbanta, a gnu for guix, a snowflake for nixpkgs, an anchor for
+carvoeiro-water-fun.
+
+#+attr_html: :width 100% :alt project icons
+[[file:docs/projects.png]]
+
+** Contexts
+
+The theme proper: category medallions, place folders (14 colour variants),
+drives, phones, printers and network gear.
+
+#+attr_html: :width 100% :alt categories, places and devices from the theme
+[[file:docs/contexts.png]]
+
+* What's in the box
+
+| path                  | what it is                                                    |
+|-----------------------+---------------------------------------------------------------|
+| =skeu-icons/=         | the theme: 16…512 px + =@2x= + =scalable/=, =index.theme=     |
+| =gallery.html=        | single-file preview: every icon, every size, size switcher    |
+| =theme-manifest.json= | audit trail: shipped names, contexts, sizes, palette          |
+| =FILE-TYPES.org=      | every extension found in =$HOME=, its icon and file count     |
+| =app-icons/=          | 164 icons for installed GUI apps (PNG 16→1024)                |
+| =project-icons/=      | 46 icons for project folders (same sizes)                     |
+| =generated/=          | 1024 px masters for categories and devices                    |
+| =svg/=                | hand-drawn vector sources (1024×1024, real paths)             |
+| =docs/=               | the sheets this README shows, composed by =tools/make_doc_images.py= |
+| =tools/=              | the programmes that draw the artwork                          |
+| =install.sh=          | user/system installer with cache refresh                      |
+
+=app-icons/= and =project-icons/= are not part of the theme; copy one onto a
+launcher or a folder when you want that specific item to match.
+
+* Drawing the artwork
+
+There is no build system: the icons are committed, and the drawing tools are
+plain Python programmes you run when you want to redraw a set.
+
+#+begin_src sh
+python3 tools/render_skeu.py          # categories + devices + project icons
+python3 tools/make_app_icons.py       # app-icons/ for the apps installed here
+python3 tools/make_context_icons.py   # just the category and device masters
+python3 tools/make_doc_images.py      # docs/ sheets for this README
+python3 tools/make_alt_icons.py       # the Alt material variants -> svg/
+python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
+#+end_src
+
+=render_skeu.py= writes the 1024 px masters into =generated/= and a full PNG set
+per project; =make_app_icons.py= discovers the installed applications from their
+desktop entries, so the set follows the machine. The relief renderer itself
+lives in =tools/skeu/= (numpy + Pillow; =inkscape= for the handful of vector
+icons).
+
+* Coverage
+
+| context      | icons | notes                                                   |
+|--------------+------:+---------------------------------------------------------|
+| =apps=       |   322 | the full app set plus the hand-drawn icons              |
+| =places=     |   171 | folders, drives, network shares, 14 colour variants     |
+| =mimetypes=  |   618 | documents, media, archives, source code, 377 extensions |
+| =emblems=    |    17 | read-only, symbolic links, locked, shared …             |
+| =categories= |    27 | menu and application-group icons                        |
+| =devices=    |    68 | drives, phones, printers, USB, network hardware         |
+
+=status=, =actions= and =emotes= are deliberately absent: they are symbolic UI
+glyphs, and inventing skeuomorphic versions of them would break the illusion.
+=devices= is still partial (68 of the 87 names Adwaita ships); the rest need
+hardware artwork that has not been drawn yet, and missing names are listed in
+=theme-manifest.json= rather than faked.
+
+* Artwork policy
+
+* Neutral body, one accent: metal, glass, paper, leather or wood with a single
+  coloured gem or enamel detail covering roughly a tenth of the icon.
+* One key light from the upper left, contact shadows where parts meet, and a
+  soft cast shadow that fades before the canvas edge.
+* No monograms on coloured plates, no icon mask, no hairline detail — every
+  line is at least 3 px wide at 1024 px so it survives 32 px.
+* Apps get the object that matches their job: a terminal is a CRT shell, a
+  browser a steel desk globe, a mail client an envelope with a wax seal.
+  Related apps only share an object when the job is the same — 14 editors share
+  a key-cap family, but the seven music players do not share one sleeve.
+  See [[file:CUSTOM-ICONS.md][CUSTOM-ICONS.md]] for the rules and the measurements,
+  [[file:ICON-PROMPT.md][ICON-PROMPT.md]] for the drawing brief, and
+  [[file:app-icons/README.md][app-icons/README.md]] for the per-app object table.
+
+* Licence
+
+The artwork (=skeu-icons/=, =svg/=, =generated/=, =app-icons/=, =project-icons/=)
+and the scripts that draw it are released under the *Creative Commons
+Attribution-ShareAlike 4.0 International* licence — see [[file:LICENSE][LICENSE]].
+
+You are free to share and adapt them, including commercially, as long as you
+credit *Skeu Icons* and keep derivative packs under the same licence.
+
+Application names and their marks belong to their owners and are used only to
+describe which icon is which; a handful of icons in =svg/= reproduce marks that
+stay under their own licences (the credits are listed at the end of
+[[file:CUSTOM-ICONS.md][CUSTOM-ICONS.md]]).
