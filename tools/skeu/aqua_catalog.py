@@ -236,7 +236,7 @@ DEVICES: dict[str, tuple[Callable[..., None], dict]] = {
     "drive-harddisk-usb": (A.drive, {"ports": 1}),
     "drive-multidisk": (O.drive_multidisk, {}),
     "drive-optical": (O.drive_optical, {}),
-    "drive-removable-media": (A.drive, {"vents": False}),
+    "drive-removable-media": (O.drive_removable, {}),
     "input-dialpad": (O.dialpad, {}),
     "input-gaming": (O.gamepad, {}),
     "input-keyboard": (A.keyboard, {}),
@@ -248,7 +248,7 @@ DEVICES: dict[str, tuple[Callable[..., None], dict]] = {
     "media-optical": (O.optical_disc, {}),
     "media-optical-bd": (O.optical_disc, {"label": "bd"}),
     "media-optical-cd": (O.optical_disc, {"label": "cd"}),
-    "media-optical-cd-audio": (O.optical_disc, {"label": "cd"}),
+    "media-optical-cd-audio": (O.optical_disc, {"label": "audio"}),
     "media-optical-dvd": (O.optical_disc, {"label": "dvd"}),
     "media-removable": (O.removable_media, {}),
     "media-tape": (O.tape, {}),
@@ -264,7 +264,7 @@ DEVICES: dict[str, tuple[Callable[..., None], dict]] = {
     "phone-apple-iphone": (O.iphone, {}),
     "phone-old": (O.rollout_phone, {}),
     "printer": (O.printer, {}),
-    "printer-network": (O.printer, {}),
+    "printer-network": (O.printer_network, {}),
     "scanner": (O.scanner, {}),
     "tablet": (A.tablet, {}),
     "thunderbolt": (O.thunderbolt, {}),
@@ -285,7 +285,7 @@ EMOTES: dict[str, tuple[Callable[..., None], dict]] = {
     "emote-love": (O.face, {"extra": "heart", "eyes": "happy"}),
     "face-angel": (O.face, {"extra": "halo"}),
     "face-angry": (O.face, {"brows": "angry", "mouth": "frown"}),
-    "face-confused": (O.face, {"brows": "worried", "mouth": "wave"}),
+    "face-confused": (O.face, {"brows": "askew", "mouth": "crooked"}),
     "face-cool": (O.face, {"extra": "shades", "mouth": "smirk"}),
     "face-crying": (O.face, {"extra": "tears", "mouth": "frown"}),
     "face-devilish": (O.face, {"extra": "horns", "mouth": "smirk"}),
@@ -297,14 +297,14 @@ EMOTES: dict[str, tuple[Callable[..., None], dict]] = {
     "face-plain": (O.face, {"mouth": "flat"}),
     "face-raspberry": (O.face, {"mouth": "tongue"}),
     "face-sad": (O.face, {"brows": "worried", "mouth": "frown"}),
-    "face-shutmouth": (O.face, {"mouth": "flat"}),
+    "face-shutmouth": (O.face, {"eyes": "shut", "mouth": "small"}),
     "face-sick": (O.face, {"eyes": "lid", "mouth": "wave"}),
     "face-smile-big": (O.face, {"mouth": "big"}),
     "face-smile": (O.face, {}),
     "face-smirk": (O.face, {"mouth": "smirk"}),
     "face-surprise": (O.face, {"eyes": "wide", "mouth": "open"}),
     "face-tired": (O.face, {"eyes": "sleepy", "mouth": "flat"}),
-    "face-uncertain": (O.face, {"brows": "worried", "mouth": "wave"}),
+    "face-uncertain": (O.face, {"eyes": "wide", "mouth": "small"}),
     "face-wink": (O.face, {"eyes": "wink"}),
     "face-worried": (O.face, {"brows": "worried", "mouth": "wave"}),
     "face-yawn": (O.face, {"eyes": "sleepy", "mouth": "yawn"}),
@@ -326,7 +326,7 @@ LEGACY: dict[str, tuple[Callable[..., None], dict]] = {
     "battery-empty": (O.battery_status, {"level": 0.0}),
     "battery-empty-charging": (O.battery_status, {"level": 0.04, "bolt": True}),
     "battery-full": (O.battery_status, {"level": 1.0}),
-    "battery-full-charged": (O.battery_status, {"level": 1.0, "bolt": True}),
+    "battery-full-charged": (O.battery_status, {"level": 1.0, "charged": True}),
     "battery-full-charging": (O.battery_status, {"level": 1.0, "bolt": True}),
     "battery-good": (O.battery_status, {"level": 0.62}),
     "battery-good-charging": (O.battery_status, {"level": 0.62, "bolt": True}),
@@ -461,11 +461,11 @@ STATUS: dict[str, tuple[Callable[..., None], dict]] = {
     "bluetooth-disconnected": (O.bluetooth_state, {"kind": "disconnected"}),
     "bluetooth-hardware-disabled": (O.bluetooth_state,
                                     {"kind": "hardware-disabled"}),
-    "call-incoming": (G.call_start, {"angle": 135}),
-    "call-missed": (G.call_stop, {}),
-    "call-outgoing": (G.call_start, {"angle": -45}),
-    "camera-disabled": (O.camera_photo, {}),
-    "camera-hardware-disabled": (O.camera_photo, {}),
+    "call-incoming": (G.call_direction, {"kind": "incoming"}),
+    "call-missed": (G.call_direction, {"kind": "missed"}),
+    "call-outgoing": (G.call_direction, {"kind": "outgoing"}),
+    "camera-disabled": (O.camera_disabled, {}),
+    "camera-hardware-disabled": (O.camera_disabled, {}),
     "changes-allow": (O.changes, {"allow": True}),
     "changes-prevent": (O.changes, {"allow": False}),
     "channel-insecure": (O.channel_security, {"secure": False}),
@@ -509,10 +509,14 @@ STATUS: dict[str, tuple[Callable[..., None], dict]] = {
     "network-transmit-receive": (O.network_state, {"kind": "transmit-receive"}),
     "network-transmit": (O.network_state, {"kind": "transmit"}),
     "network-vpn": (O.network_state, {"kind": "vpn"}),
-    "network-vpn-acquiring": (O.network_state, {"kind": "vpn"}),
-    "network-vpn-disabled": (O.network_state, {"kind": "vpn"}),
-    "network-vpn-disconnected": (O.network_state, {"kind": "vpn"}),
-    "network-vpn-no-route": (O.network_state, {"kind": "vpn"}),
+    "network-vpn-acquiring": (O.network_state,
+                              {"kind": "vpn", "state": "acquiring"}),
+    "network-vpn-disabled": (O.network_state,
+                             {"kind": "vpn", "state": "disabled"}),
+    "network-vpn-disconnected": (O.network_state,
+                                 {"kind": "vpn", "state": "disconnected"}),
+    "network-vpn-no-route": (O.network_state,
+                             {"kind": "vpn", "state": "no-route"}),
     "night-light": (O.night_light, {}),
     "night-light-disabled": (O.night_light, {"off": True}),
     "non-starred": (A.star, {"filled": False}),
@@ -540,7 +544,7 @@ STATUS: dict[str, tuple[Callable[..., None], dict]] = {
     "system-lock-screen": (G.system_lock_screen, {}),
     "task-due": (O.task_status, {}),
     "task-past-due": (O.task_status, {"past": True}),
-    "thunderbolt-acquiring": (O.thunderbolt, {}),
+    "thunderbolt-acquiring": (O.thunderbolt, {"acquiring": True}),
     "touch-disabled": (O.touch_disabled, {}),
     "touchpad-disabled": (O.touch_disabled, {}),
     "user-available": (O.user_status, {"kind": "available"}),
@@ -613,7 +617,7 @@ def _battery_family() -> None:
              bolt=True)
         _add(f"battery-level-{percent}-plugged-in", O.battery_status, level=level,
              plug=True)
-    _add("battery-level-100-charged", O.battery_status, level=1.0, bolt=True)
+    _add("battery-level-100-charged", O.battery_status, level=1.0, charged=True)
 
 
 def _cellular_family() -> None:
@@ -626,7 +630,8 @@ def _cellular_family() -> None:
              strength=3, generation=generation.upper()
              if generation in ("2g", "3g", "4g", "5g") else generation[0].upper())
     _add("network-cellular-connected", O.cellular_signal, strength=4)
-    _add("network-cellular-acquiring", O.cellular_signal, strength=1)
+    _add("network-cellular-acquiring", O.cellular_signal, strength=1,
+         badge="acquiring")
     _add("network-cellular-disabled", O.cellular_signal, strength=0, badge="off")
     _add("network-cellular-hardware-disabled", O.cellular_signal, strength=0,
          badge="off")
@@ -639,7 +644,7 @@ def _wireless_family() -> None:
     for name, strength in levels.items():
         _add(f"network-wireless-signal-{name}", O.wifi_signal, strength=strength)
     _add("network-wireless-connected", O.wifi_signal, strength=3)
-    _add("network-wireless-acquiring", O.wifi_signal, strength=1)
+    _add("network-wireless-acquiring", O.wifi_badge, badge="acquiring")
     _add("network-wireless-disabled", O.wifi_badge, badge="off")
     _add("network-wireless-hardware-disabled", O.wifi_badge, badge="off")
     _add("network-wireless-encrypted", O.wifi_badge, badge="lock")
@@ -649,7 +654,8 @@ def _wireless_family() -> None:
 
 
 def _wired_family() -> None:
-    _add("network-wired-acquiring", O.network_wired)
+    _add("network-wired-acquiring", O.network_state,
+         kind="wired", state="acquiring")
     _add("network-wired-disconnected", O.network_state, kind="offline")
     _add("network-wired-no-route", O.network_state, kind="no-route")
 

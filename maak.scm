@@ -8,6 +8,7 @@
 ;;;     maak --list          # everything below, with its docstring
 ;;;     maak build           # gallery + docs sheets, then verify
 ;;;     maak gallery         # just rebuild gallery.html
+;;;     maak names           # link app/mimetype names after adding artwork
 ;;;     maak check           # index.theme, counts, gallery freshness
 ;;;
 ;;; The drawing programmes live in tools/ and need python3 with numpy and
@@ -21,7 +22,7 @@
   #:declarative? #t
   #:use-module (maak maak)
   ;; Only these are tasks; the helpers below stay private to the file.
-  #:export (default gallery docs build icons apps contexts projects alts
+  #:export (default gallery docs build icons apps names contexts projects alts
             report check symbolic variants install uninstall clean))
 
 ;; ====== Constants ======
@@ -87,6 +88,17 @@
   "Draw one icon per GUI application installed on this machine (slow)."
   (require-python)
   (tool "make_app_icons.py"))
+
+(define (names)
+  "Link every app name and file-type name the desktops ask for into the theme.
+
+Run this after adding artwork: a desktop asks for a desktop id, a WM class or a
+mimetype name, never for the slug an icon is filed under, and a missing name
+falls through to Adwaita.  Rebuild the variants afterwards - they inherit these
+links through the base theme."
+  (require-python)
+  (tool "make_theme_apps.py")
+  (tool "make_theme_mimes.py"))
 
 (define (contexts)
   "Redraw just the category and device masters into generated/."

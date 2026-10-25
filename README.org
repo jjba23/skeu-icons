@@ -8,12 +8,15 @@ aluminium — physical objects, not a squircle grid.
 #+attr_html: :width 100% :alt six icons from the pack on a paper gradient
 [[file:docs/hero.png]]
 
- 1 223 icons across six freedesktop contexts, at 16, 22, 24, 32, 48, 64, 128,
+ 1 618 icons across six freedesktop contexts, at 16, 22, 24, 32, 48, 64, 128,
   256 and 512 px, plus =@2x= HiDPI copies and a =scalable/= SVG layer —
-  22 014 bitmaps and 1 083 vectors.
+  29 124 bitmaps and 1 603 vectors.
 
  File-type icons for 377 extensions, each under both its mime name and the
   =application-x-<ext>= fallback — see [[file:FILE-TYPES.org][FILE-TYPES.org]] for the scanned list.
+  Every name a toolkit can ask for is present, including the family generics
+  (=package-x-generic=, =text-x-generic-template=, =x-content-x-generic= …)
+  that GIO falls back to when a specific type has no art of its own.
 
  Two extra sets outside the theme: 164 icons for the applications installed
   here and 46 for personal projects.
@@ -170,6 +173,7 @@ maak docs             # recompose the sheets in docs/ for this README
 maak build            # gallery + docs, then verify
 maak check            # index.theme, every directory, counts, gallery freshness
 maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
+maak names           # link the app names and file-type names the desktops ask for
 maak symbolic         # redraw the 646 symbolic icons + 487 plain scalable ones
 maak variants         # rebuild the accent and dark variant themes
 maak report           # rescan $HOME -> FILE-TYPES.org
@@ -182,6 +186,8 @@ Each task simply runs one script, so the scripts work on their own too:
 #+begin_src sh
 python3 tools/render_skeu.py          # categories + devices + project icons
 python3 tools/make_app_icons.py       # app-icons/ for the apps installed here
+python3 tools/make_theme_apps.py      # every app name a desktop asks for
+python3 tools/make_theme_mimes.py     # mimetype generics + near-miss aliases
 python3 tools/make_context_icons.py   # just the category and device masters
 python3 tools/make_gallery.py         # gallery.html (add --check to test freshness)
 python3 tools/make_doc_images.py      # docs/ sheets for this README
@@ -201,7 +207,15 @@ or to nothing.
 
 =render_skeu.py= writes the 1024 px masters into =generated/= and a full PNG set
 per project; =make_app_icons.py= discovers the installed applications from their
-desktop entries, so the set follows the machine. =make_gallery.py= reads the
+desktop entries, so the set follows the machine. =make_theme_apps.py= then
+puts each of those icons into =apps/= under every name a shell, dock or window
+manager may ask for - the desktop id, =Icon= value and =StartupWMClass= - as
+relative symlinks to the drawn artwork; without them =com.usebruno.Bruno= or
+=org.wezfurlong.wezterm= simply miss and the toolkit draws an Adwaita icon
+instead. =make_theme_mimes.py= does the same job for file types: it derives
+=package-x-generic= from the archive artwork, links the names that drifted
+(=application-vnd.rar= against =application-vnd-rar=), and points the
+compressed-tar names at the compressor's own drawing. =make_gallery.py= reads the
 theme directories and both =index.json= files, so a new icon shows up in the
 gallery after one run - =--check= is what =maak check= uses to catch a stale
 =gallery.html=. The relief renderer itself lives in =tools/skeu/= (numpy +
@@ -211,9 +225,9 @@ Pillow; =inkscape= for the handful of vector icons).
 
 | context      | icons | notes                                                   |
 |--------------+------:+---------------------------------------------------------|
-| =apps=       |   322 | the full app set plus the hand-drawn icons              |
+| =apps=       |   663 | 164 drawn icons, each linked under every name it is asked by |
 | =places=     |   171 | folders, drives, network shares, 14 colour variants     |
-| =mimetypes=  |   618 | documents, media, archives, source code, 377 extensions |
+| =mimetypes=  |   652 | documents, media, archives, source code, 377 extensions |
 | =emblems=    |    17 | read-only, symbolic links, locked, shared …             |
 | =categories= |    27 | menu and application-group icons                        |
 | =devices=    |    88 | drives, phones, printers, USB, network hardware          |

@@ -332,7 +332,10 @@ def _layer(size: int, path: str, width: float | None, scale: int):
                           scaled[0][0] + radius, scaled[0][1] + radius], fill=255)
             continue
         draw.line(scaled, fill=255, width=thickness, joint="curve")
-        for x, y in (scaled[0], scaled[-1]):
+        # A disc at every vertex, not just the ends: Pillow's curve joints leave
+        # thin notches between nearly collinear segments, and on a long bend they
+        # survive the trace as white hairlines across the stroke.
+        for x, y in scaled:
             draw.ellipse([x - radius, y - radius, x + radius, y + radius], fill=255)
     return mask
 
@@ -590,9 +593,13 @@ def arrow(g: Glyph, angle: float = 0.0, cx: float = 8.0, cy: float = 8.0,
     """The Aqua navigation arrow: a fat shaft with a rounded head.
 
     ``angle`` is clockwise, 0 = pointing right, 90 = down.
+
+    The template sits on the centre of the grid, so it has to be carried to
+    ``cx, cy`` *before* it is turned: rotating it in place about a point it is
+    not standing on threw the head off the canvas.
     """
-    points = rotate(grow(_ARROW, scale=scale), angle, cx, cy)
-    return g.solid(points, corner)
+    points = move(grow(_ARROW, scale=scale), cx - 8.0, cy - 8.0)
+    return g.solid(rotate(points, angle, cx, cy), corner)
 
 
 def chevron(g: Glyph, angle: float = 90.0, cx: float = 8.0, cy: float = 8.0,
@@ -884,7 +891,7 @@ def speaker(g: Glyph, cx: float = 5.2, cy: float = 8.0, waves: int = 0,
     body = [(2.1, 6.4), (4.2, 6.4), (7.0, 3.3), (7.0, 12.7), (4.2, 9.6), (2.1, 9.6)]
     g.solid(body, 0.7)
     for index in range(waves):
-        g.stroke(arc(7.2, cy, 2.0 + index * 2.1, -48, 48), STROKE - 0.1)
+        g.stroke(arc(7.2, cy, 1.9 + index * 1.8, -48, 48), STROKE - 0.1)
     if muted:
         g.line((9.9, 5.9), (13.2, 10.1), STROKE)
         g.line((9.9, 10.1), (13.2, 5.9), STROKE)

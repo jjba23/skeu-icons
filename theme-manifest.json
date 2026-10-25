@@ -43,18 +43,18 @@
     "brown",
     "graphite"
   ],
-  "icons": 1243,
+  "icons": 1618,
   "contexts": {
-    "apps": 322,
+    "apps": 663,
     "places": 171,
-    "mimetypes": 618,
+    "mimetypes": 652,
     "emblems": 17,
     "categories": 27,
     "devices": 88
   },
   "files": {
-    "bitmaps": 22014,
-    "vectors": 1083
+    "bitmaps": 29124,
+    "vectors": 1603
   },
   "pack_artwork": 92,
   "design_rules": {

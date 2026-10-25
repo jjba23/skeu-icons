@@ -134,6 +134,32 @@ def check(only: str | None = None, ink: str = "light") -> list[str]:
     return problems
 
 
+def audit() -> list[str]:
+    """Problems you can only see by looking: blanks and clipped drawings.
+
+    ``--check`` compares files to the catalogue, so a glyph that draws nothing,
+    or one whose ink runs off the 16 px tile, passes it happily.  Both read as
+    "the icon is broken" on screen, so they are checked here instead.
+    """
+    import numpy as np
+
+    problems: list[str] = []
+    for base, (glyph_fn, kwargs) in sorted(SYMBOLIC.items()):
+        glyph = aqua.Glyph()
+        glyph_fn(glyph, **kwargs)
+        ink = np.asarray(glyph.mask()) > 127
+        rows, columns = np.nonzero(ink)
+        if not len(rows):
+            problems.append(f"{base}: draws nothing")
+            continue
+        top, left = rows.min(), columns.min()
+        bottom, right = rows.max(), columns.max()
+        limit = 16 * aqua.RASTER - 1
+        if min(top, left) < 1 or max(bottom, right) > limit:
+            problems.append(f"{base}: ink runs off the tile")
+    return problems
+
+
 def sheet(target: Path, columns: int = 32, cell: int = 40) -> Path:
     """A PNG proof sheet of every glyph, rendered by one Inkscape call."""
     items = plan()
@@ -175,12 +201,23 @@ def main(argv: list[str] | None = None) -> int:
                         help="ink colour of the shipped SVG (default: light)")
     parser.add_argument("--check", action="store_true",
                         help="do not write; fail if anything is missing or stale")
+    parser.add_argument("--audit", action="store_true",
+                        help="report glyphs that draw nothing or run off the tile")
     parser.add_argument("--sheet", nargs="?", const="/tmp/skeu/symbolic.png",
                         metavar="PNG", help="write a proof sheet")
     args = parser.parse_args(argv)
 
     if args.sheet:
         sheet(Path(args.sheet))
+        return 0
+    if args.audit:
+        problems = audit()
+        for problem in problems:
+            print(f"  {problem}", file=sys.stderr)
+        if problems:
+            print(f"\n{len(problems)} glyph(s) need a look", file=sys.stderr)
+            return 1
+        print(f"ok: {len(SYMBOLIC)} glyphs are painted and inside the tile")
         return 0
     if args.check:
         problems = check(args.only, args.ink)

@@ -87,6 +87,11 @@ def discover() -> list[dict]:
             display = entry.get("Name", Path(path).stem)
             name = normalise(display)
             if name in apps:                     # first hit wins (system before flatpak)
+                # ... but every entry for the same program still contributes a
+                # desktop id, and shells ask for the icon by that id too.
+                stem = Path(path).stem
+                if stem not in apps[name]["desktops"]:
+                    apps[name]["desktops"].append(stem)
                 continue
             exec_line = (entry.get("Exec", "") or "").strip()
             apps[name] = {
@@ -96,7 +101,9 @@ def discover() -> list[dict]:
                 "comment": (entry.get("Comment", "") or "").split("\u2014")[0][:70].strip(),
                 "exec": exec_line.split()[0] if exec_line else "",
                 "icon": entry.get("Icon", ""),
+                "wmclass": entry.get("StartupWMClass", ""),
                 "desktop": Path(path).name,
+                "desktops": [Path(path).stem],
             }
     return [apps[k] for k in sorted(apps)]
 
@@ -244,7 +251,10 @@ def main(argv: list[str] | None = None) -> int:
             "categories": app["categories"],
             "comment": app["comment"],
             "exec": app["exec"],
+            "icon": app["icon"],
+            "wmclass": app["wmclass"],
             "desktop": app["desktop"],
+            "desktops": app["desktops"],
             "design": design_record(kind, builder, kwargs),
             "files": {"png": f"{slug}/icon-1024.png"},
         })

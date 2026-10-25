@@ -61,6 +61,48 @@ def _text_rows(g: Glyph, ys: list[float], x0: float = 4.9, x1: float = 11.4,
     _rows(g, ys, x0, x1, width)
 
 
+def question_mark(g: Glyph, cx: float = 8.0, cy: float = 7.0,
+                  scale: float = 1.0, width: float = 1.6,
+                  cut: bool = False) -> None:
+    """A question mark: a hook that turns inward, a stem, a dot.
+
+    The hook is one arc that keeps going past six o'clock on the right side.
+    An arc that stops at the top reads as a letter Y, which is exactly what the
+    mark looked like when this was written as a pair of short arcs.
+    """
+    radius = 2.4 * scale
+    start, end = 205.0, 425.0
+    turn = (cx + radius * math.cos(math.radians(end)),
+            cy + radius * math.sin(math.radians(end)))
+    inner = (cx, cy + 2.3 * scale)
+    if cut:
+        g.erase(A.arc(cx, cy, radius, start, end), width)
+        g.erase(A.polyline([turn, inner]), width)
+        g.hole(A.circ(cx, cy + 4.2 * scale, 0.9 * scale))
+    else:
+        g.stroke(A.arc(cx, cy, radius, start, end), width)
+        g.stroke(A.polyline([turn, inner]), width)
+        g.dot(cx, cy + 4.2 * scale, 0.9 * scale)
+
+
+def package_box(g: Glyph, cx: float = 8.0, cy: float = 8.8,
+                size: float = 5.0) -> None:
+    """A shipping carton seen from above the corner: lid, front and side."""
+    half, height = size, size * 0.86
+    top = [(cx, cy - half), (cx + half, cy - half * 0.52),
+           (cx, cy), (cx - half, cy - half * 0.52)]
+    left = [(cx - half, cy - half * 0.52), (cx, cy), (cx, cy + height),
+            (cx - half, cy + height - half * 0.52)]
+    right = [(cx + half, cy - half * 0.52), (cx, cy), (cx, cy + height),
+             (cx + half, cy + height - half * 0.52)]
+    g.stroke(A.polyline(top + [top[0]]), 1.2)
+    g.stroke(A.polyline(left + [left[0]]), 1.2)
+    g.stroke(A.polyline(right + [right[0]]), 1.2)
+    # The tape seam down the middle of the lid, painted rather than cut so it
+    # survives the outline it sits on.
+    g.line((cx, cy), (cx, cy + height), 1.0)
+
+
 # --------------------------------------------------------------------------- #
 # documents and files
 # --------------------------------------------------------------------------- #
@@ -117,8 +159,8 @@ def document_print(g: Glyph) -> None:
 def document_print_preview(g: Glyph) -> None:
     """A printer with a magnifier over the sheet it produced."""
     A.printer(g)
-    A.badge_hole(g, 11.6, 11.6, 3.9)
-    A.magnifier(g, 11.5, 11.4, 1.9, 1.35)
+    A.badge_hole(g, 11.0, 11.0, 3.6)
+    A.magnifier(g, 10.9, 10.9, 1.65, 1.3)
 
 
 def document_page_setup(g: Glyph) -> None:
@@ -314,10 +356,12 @@ def system_search(g: Glyph) -> None:
 
 
 def find_location(g: Glyph) -> None:
-    """A map pin over a locator: where am I."""
-    g.stroke(A.rpoly([(8.0, 14.0), (3.2, 8.0), (3.2, 6.2), (8.0, 2.2),
-                      (12.8, 6.2), (12.8, 8.0)], 1.4, True), STROKE)
-    return g.hole(A.circ(8.0, 7.0, 1.9))
+    """A locator: crosshair with a bore in the middle."""
+    g.ring(8.0, 8.0, 5.0, STROKE)
+    for tail, head in (((8.0, 1.0), (8.0, 3.4)), ((8.0, 12.6), (8.0, 15.0)),
+                       ((1.0, 8.0), (3.4, 8.0)), ((12.6, 8.0), (15.0, 8.0))):
+        g.line(tail, head, STROKE)
+    return g.dot(8.0, 8.0, 1.2)
 
 
 def mark_location(g: Glyph) -> None:
@@ -351,13 +395,17 @@ def error_correct(g: Glyph) -> None:
 
 
 def tools_check_spelling(g: Glyph) -> None:
-    """An ABC tick: spell check."""
-    g.stroke(A.polyline([(1.8, 10.6), (3.6, 4.4), (5.4, 10.6)]), STROKE)
-    g.line((2.6, 8.4), (4.6, 8.4), HAIRLINE + 0.2)
-    g.ring(9.3, 6.4, 2.3, STROKE)
-    g.stroke(A.polyline([(11.6, 6.0), (12.2, 11.0)]), STROKE)
-    g.stroke(A.polyline([(7.0, 11.0), (7.6, 6.0)]), STROKE)
-    return g.stroke(A.polyline([(11.4, 11.0), (12.4, 12.8), (14.6, 9.8)]), STROKE)
+    """An A over a squiggle: the spell-check mark.
+
+    Three letters plus a tick was four marks fighting for ten pixels and read
+    as a bowl of shapes.  One letter and the underline say it on their own.
+    """
+    g.stroke(A.polyline([(3.0, 10.2), (7.0, 2.4), (11.0, 10.2)]), STROKE + 0.4)
+    g.line((4.6, 7.4), (9.4, 7.4), STROKE + 0.2)
+    # A coarse squiggle: at 16 px a fine wave turns into a grey smear.
+    wave = [(2.0, 13.4), (4.4, 12.2), (6.8, 13.6), (9.2, 12.2), (11.6, 13.4),
+            (13.6, 12.6)]
+    return g.stroke(A.polyline(wave), 1.8)
 
 
 # --------------------------------------------------------------------------- #
@@ -454,10 +502,10 @@ def view_restore(g: Glyph) -> None:
 
 
 def view_pin(g: Glyph) -> None:
-    """A slanted pin with a round head: keep on top."""
-    g.stroke(A.polyline([(8.6, 13.8), (9.6, 9.4)]), STROKE)
-    g.solid([(6.4, 9.0), (7.6, 5.4), (6.2, 3.4), (11.0, 2.2), (12.2, 6.8),
-             (10.2, 7.4), (9.6, 10.4)], 0.7)
+    """A thumbtack: head, waist and needle."""
+    g.bar(5.4, 2.0, 5.2, 2.2, 1.1)
+    g.solid([(6.4, 4.6), (9.6, 4.6), (9.0, 8.8), (7.0, 8.8)], 0.5)
+    g.line((8.0, 8.8), (8.0, 13.8), 1.3)
 
 
 def view_mirror(g: Glyph) -> None:
@@ -587,13 +635,18 @@ def go_home(g: Glyph) -> None:
 
 
 def go_top(g: Glyph) -> None:
-    A.arrow(g, 270, 8.0, 6.4, 0.78)
-    g.bar(2.6, 1.9, 10.8, 2.0, 1.0)
+    """An up arrow stopped by the top of the list.
+
+    The arrow is short enough to clear the wall: a full-height arrow has its
+    head swallowed by the bar and the pair reads as a letter T.
+    """
+    A.arrow(g, 270, 8.0, 8.6, 0.68)
+    g.bar(2.6, 1.9, 10.8, 1.8, 0.9)
 
 
 def go_bottom(g: Glyph) -> None:
-    A.arrow(g, 90, 8.0, 9.6, 0.78)
-    g.bar(2.6, 12.1, 10.8, 2.0, 1.0)
+    A.arrow(g, 90, 8.0, 7.4, 0.68)
+    g.bar(2.6, 12.3, 10.8, 1.8, 0.9)
 
 
 # --------------------------------------------------------------------------- #
@@ -664,12 +717,13 @@ def object_flip_vertical(g: Glyph) -> None:
 
 def object_rotate(g: Glyph, left: bool = True) -> None:
     """A rounded arrow circling a solid block."""
-    g.bar(4.3, 4.3, 7.4, 7.4, 1.4)
+    g.bar(4.6, 4.6, 6.8, 6.8, 1.4)
     start, end = (-20, 250) if left else (-70, 200)
-    g.stroke(A.arc(8.0, 8.0, 6.3, start, end), STROKE)
-    tip = (13.9, 4.4) if left else (2.1, 4.4)
-    points = [(tip[0] + 0.2, tip[1] + 2.9), (tip[0] + 2.6, tip[1] + 0.0),
-              (tip[0] - 2.2, tip[1] - 1.4)]
+    g.stroke(A.arc(8.0, 8.0, 6.1, start, end), STROKE)
+    tip = (13.2, 4.6) if left else (2.8, 4.6)
+    step = 1 if left else -1
+    points = [(tip[0] + 0.2 * step, tip[1] + 2.8), (tip[0] + 2.4 * step, tip[1]),
+              (tip[0] - 2.0 * step, tip[1] - 1.3)]
     return g.solid(points, 0.5)
 
 
@@ -705,10 +759,13 @@ def mail_message_new(g: Glyph) -> None:
 
 
 def mail_send(g: Glyph) -> None:
-    """The Aqua paper plane: a folded dart with a cut seam."""
-    g.solid([(1.9, 7.1), (14.1, 2.1), (9.4, 13.9), (7.3, 9.1)], 0.9)
-    g.erase(A.polyline([(14.1, 2.1), (7.3, 9.1)]), 1.2)
-    return g.erase(A.polyline([(7.3, 9.1), (7.5, 12.3)]), 1.2)
+    """The Aqua paper plane: a dart split along its spine by one crease.
+
+    The seam has to stop where the two wings meet.  Carving it out to the tail
+    as well leaves nothing but two slivers at this size.
+    """
+    g.solid([(1.5, 7.3), (14.5, 1.8), (7.3, 8.4)], 0.45)
+    return g.solid([(7.9, 8.8), (14.5, 1.8), (9.1, 14.2)], 0.45)
 
 
 def mail_send_receive(g: Glyph) -> None:
@@ -785,12 +842,14 @@ def zoom_fit_best(g: Glyph) -> None:
 
 
 def zoom_original(g: Glyph) -> None:
-    """A lens with a 1:1 counter."""
+    """A lens with an equals sign: 1:1, the size it already is.
+
+    Two figures and a colon turn to mush in a 6 px bore; a single broad mark
+    is the only thing that survives the small sizes this icon lives at.
+    """
     A.magnifier(g, 6.6, 6.4, 4.4, STROKE)
-    g.erase(A.polyline([(5.6, 5.2), (6.5, 4.7)]), 1.15)
-    g.erase(A.polyline([(6.5, 4.7), (6.5, 8.0)]), 1.15)
-    g.erase(A.polyline([(8.6, 4.9), (9.4, 4.5)]), 1.15)
-    return g.erase(A.polyline([(9.4, 4.5), (9.4, 7.9)]), 1.15)
+    for y in (5.4, 7.6):
+        g.bar(4.6, y - 0.65, 4.0, 1.3, 0.65)
 
 
 # --------------------------------------------------------------------------- #
@@ -874,17 +933,48 @@ def camera_switch(g: Glyph) -> None:
     return g.solid([(9.3, 6.9), (9.9, 8.9), (7.8, 8.4)], 0.4)
 
 
-def call_start(g: Glyph, angle: float = 0.0) -> None:
-    """The Aqua handset: a rounded receiver with a sound arc."""
-    g.solid(A.rotate([(2.2, 6.4), (4.2, 2.8), (6.6, 3.6), (6.2, 6.2),
-                      (9.8, 9.8), (12.4, 9.4), (13.2, 11.8), (9.6, 13.8),
-                      (6.6, 12.4), (2.2, 8.0)], angle), 1.1)
+def handset(g: Glyph, cx: float = 8.0, cy: float = 8.0,
+            scale: float = 1.0) -> None:
+    """The telephone receiver: an upright grip, a quarter turn, a mouth grip.
+
+    Every phone glyph is this one shape - a vertical earpiece, a bend, a
+    horizontal mouthpiece - and it is what makes the mark read as a handset
+    instead of the horseshoe an upright U turned into.
+    """
+    def at(points):
+        return [(cx + scale * (x - 7.8), cy + scale * (y - 7.8))
+                for x, y in points]
+
+    path = [(12.2, 3.2), (12.2, 6.4)]
+    path += [(6.4 + 5.8 * math.cos(math.radians(a)),
+              6.4 + 5.8 * math.sin(math.radians(a))) for a in range(0, 91, 3)]
+    path += [(3.2, 12.2)]
+    g.stroke(A.polyline(at(path)), 3.0 * scale)
+
+
+def call_start(g: Glyph) -> None:
+    """A handset: the call is up."""
+    handset(g)
+
+
+def call_direction(g: Glyph, kind: str = "incoming") -> None:
+    """A handset in the corner with the arrow that says which way the call went.
+
+    Rotating the whole receiver by 135 degrees, as this used to do, put the
+    earpieces at odd angles and the icons stopped looking like phones.
+    """
+    handset(g, 6.0, 9.8, 0.74)
+    if kind == "missed":
+        _badge(g, 12.6, 3.6, 2.4)
+        _cut_cross(g, 12.6, 3.6, 1.1, 1.05)
+        return
+    A.arrow(g, 135 if kind == "incoming" else -45, 12.6, 3.6, 0.42)
 
 
 def call_stop(g: Glyph) -> None:
-    call_start(g)
-    g.erase(A.polyline([(2.4, 13.6), (13.6, 2.4)]), 1.9)
-    return g.stroke(A.polyline([(2.4, 13.6), (13.6, 2.4)]), STROKE)
+    """A handset behind a bar: hang up."""
+    handset(g)
+    A.slash(g, width=1.4, gap=0.9)
 
 
 def chat_message_new(g: Glyph) -> None:
@@ -1065,10 +1155,14 @@ def radio(g: Glyph, state: str = "off") -> None:
 
 
 def pan(g: Glyph, angle: float = 90.0) -> None:
-    """A solid pull-down triangle with a slim stem: the pan handle."""
-    A.triangle(g, angle, 8.0, 9.4, 4.6)
-    base = [(6.6, 2.4), (9.4, 2.4), (9.4, 6.4), (6.6, 6.4)]
-    return g.solid(A.rotate(base, angle - 90.0, 8.0, 9.4), 0.6)
+    """A solid pull-down triangle with a slim stem: the pan handle.
+
+    Centred a little high, because the stem swings a full half-turn around the
+    triangle: hung lower, "pan-up" lost its grip off the bottom of the tile.
+    """
+    A.triangle(g, angle, 8.0, 8.4, 4.2)
+    base = [(6.7, 2.9), (9.3, 2.9), (9.3, 6.2), (6.7, 6.2)]
+    return g.solid(A.rotate(base, angle - 90.0, 8.0, 8.4), 0.6)
 
 
 def focus(g: Glyph, kind: str = "windows") -> None:
@@ -1106,7 +1200,9 @@ def window_maximize(g: Glyph) -> None:
 
 
 def window_minimize(g: Glyph) -> None:
-    window_button(g, "minimize")
+    """A window folded down to its title bar: minimise."""
+    g.stroke(A.rr(1.9, 2.6, 12.2, 10.8, 1.4), STROKE)
+    g.bar(3.2, 10.2, 9.6, 1.8, 0.9)
 
 
 def window_close(g: Glyph) -> None:
@@ -1189,16 +1285,18 @@ def _emblem_projects(g: Glyph) -> None:
 
 
 def _emblem_share(g: Glyph) -> None:
-    for cx, cy in ((5.6, 9.0), (10.4, 6.4), (10.4, 11.6)):
-        g.dot(cx, cy, 1.4)
-    g.line((6.9, 8.4), (9.2, 7.0), 1.3)
-    g.line((6.9, 9.6), (9.2, 11.0), 1.3)
+    """Three linked dots, kept clear of the folder's own outline."""
+    for cx, cy in ((5.4, 9.4), (10.2, 7.0), (10.2, 11.8)):
+        g.dot(cx, cy, 1.35)
+    g.line((6.6, 8.8), (9.2, 7.4), 1.2)
+    g.line((6.6, 10.0), (9.2, 11.4), 1.2)
 
 
 def _emblem_remote(g: Glyph) -> None:
-    g.stroke(A.rr(4.2, 5.8, 7.6, 5.6, 0.9), 1.2)
-    g.erase(A.polyline([(4.2, 7.8), (11.8, 7.8)]), 1.5)
-    g.dot(5.6, 6.9, 0.7)
+    """A cloud on the folder face: the share lives somewhere else."""
+    for cx, cy, r in ((6.4, 10.0, 1.8), (8.9, 9.0, 2.4), (10.7, 10.1, 1.6)):
+        g.dot(cx, cy, r)
+    g.bar(5.0, 10.0, 6.6, 1.6, 0.8)
 
 
 def _emblem_search(g: Glyph) -> None:
@@ -1206,14 +1304,15 @@ def _emblem_search(g: Glyph) -> None:
 
 
 def _emblem_templates(g: Glyph) -> None:
-    g.stroke(A.rr(4.4, 5.4, 7.2, 6.8, 0.9), 1.2)
-    for y in (7.4, 9.2, 11.0):
-        g.erase(A.polyline([(5.6, y), (10.4, y)]), 1.0)
+    g.stroke(A.rr(4.6, 5.6, 6.6, 6.4, 0.8), 1.2)
+    for y in (7.4, 9.0, 10.6):
+        g.stroke(A.polyline([(5.8, y), (10.0, y)]), 1.0)
 
 
 def _emblem_desktop(g: Glyph) -> None:
-    g.stroke(A.rr(3.4, 5.0, 9.2, 6.4, 0.9), 1.2)
-    g.erase(A.rr(4.2, 5.8, 7.6, 4.8, 0.5))
+    g.stroke(A.rr(3.4, 4.8, 9.2, 6.2, 0.9), 1.2)
+    g.bar(7.0, 11.2, 2.0, 1.8, 0.5)
+    g.bar(5.0, 12.8, 6.0, 1.2, 0.6)
 
 
 def _emblem_applications(g: Glyph) -> None:
@@ -1316,13 +1415,15 @@ def place_folder_shared(g: Glyph) -> None:
 
 def mime_generic(g: Glyph, kind: str = "text") -> None:
     """The generic file sheet, with a band that names the family."""
+    if kind == "package":
+        package_box(g, 8.0, 8.0, 5.2)
+        return
     A.sheet(g, 2.8, 1.6, 9.2, 12.0)
     band = {
         "text": (4.6, 5.4, 8.0),
         "image": (4.6, 5.4, 8.0),
         "video": (4.6, 5.4, 8.0),
         "audio": (4.6, 5.4, 8.0),
-        "package": (4.6, 5.4, 8.0),
         "font": (4.6, 5.4, 8.0),
     }[kind]
     x, y, w = band
@@ -1336,9 +1437,6 @@ def mime_generic(g: Glyph, kind: str = "text") -> None:
     elif kind == "audio":
         g.bar(9.4, 7.6, 1.3, 4.0, 0.4)
         g.dot(7.8, 11.0, 1.7)
-    elif kind == "package":
-        g.stroke(A.polyline([(4.6, 8.6), (8.0, 10.4), (11.4, 8.6)]), 1.3)
-        g.stroke(A.polyline([(8.0, 8.0), (8.0, 11.6)]), 1.3)
     else:
         g.stroke(A.polyline([(5.4, 11.2), (6.4, 8.4), (8.0, 10.4), (9.6, 7.6),
                              (11.0, 11.2)]), 1.3)
@@ -1405,9 +1503,11 @@ def mime_special(g: Glyph, kind: str = "executable") -> None:
         g.erase(A.rr(3.2, 5.6, 6.0, 3.0, 0.6))
         return g.bar(4.6, 10.4, 2.0, 1.4, 0.5)
     if kind == "rss":
-        g.dot(4.0, 12.0, 1.5)
-        g.stroke(A.arc(4.0, 12.0, 4.0, 270, 360), 1.8)
-        return g.stroke(A.arc(4.0, 12.0, 8.0, 270, 360), 1.8)
+        # A feed is anchored in its corner, not centred: the arcs have to open
+        # away from the dot, and the dot sits at the foot of the two rings.
+        g.dot(3.0, 13.0, 1.4)
+        g.stroke(A.arc(3.0, 13.0, 4.2, 270, 360), 1.7)
+        return g.stroke(A.arc(3.0, 13.0, 8.2, 270, 360), 1.7)
     return None
 
 
