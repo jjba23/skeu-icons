@@ -86,6 +86,7 @@ drives, phones, printers and network gear.
 | =svg/=                | hand-drawn vector sources (1024×1024, real paths)             |
 | =docs/=               | the sheets this README shows, composed by =tools/make_doc_images.py= |
 | =tools/=              | the programmes that draw the artwork                          |
+| =maak.scm=            | the tasks that redraw and re-derive everything                |
 | =install.sh=          | user/system installer with cache refresh                      |
 
 =app-icons/= and =project-icons/= are not part of the theme; copy one onto a
@@ -120,22 +121,40 @@ badly.
 * Drawing the artwork
 
 There is no build system: the icons are committed, and the drawing tools are
-plain Python programmes you run when you want to redraw a set.
+plain Python programmes you run when you want to redraw a set. =maak.scm= puts
+the ones you will actually want behind named tasks:
+
+#+begin_src sh
+maak --list           # every task with its docstring
+maak gallery          # rebuild gallery.html from the icons on disk
+maak docs             # recompose the sheets in docs/ for this README
+maak build            # gallery + docs, then verify
+maak check            # index.theme, every directory, counts, gallery freshness
+maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
+maak report           # rescan $HOME -> FILE-TYPES.org
+maak install          # ~/.local/share/icons, with cache refresh
+#+end_src
+
+Each task simply runs one script, so the scripts work on their own too:
 
 #+begin_src sh
 python3 tools/render_skeu.py          # categories + devices + project icons
 python3 tools/make_app_icons.py       # app-icons/ for the apps installed here
 python3 tools/make_context_icons.py   # just the category and device masters
+python3 tools/make_gallery.py         # gallery.html (add --check to test freshness)
 python3 tools/make_doc_images.py      # docs/ sheets for this README
 python3 tools/make_alt_icons.py       # the Alt material variants -> svg/
 python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
+python3 tools/check_theme.py          # the checks behind maak check
 #+end_src
 
 =render_skeu.py= writes the 1024 px masters into =generated/= and a full PNG set
 per project; =make_app_icons.py= discovers the installed applications from their
-desktop entries, so the set follows the machine. The relief renderer itself
-lives in =tools/skeu/= (numpy + Pillow; =inkscape= for the handful of vector
-icons).
+desktop entries, so the set follows the machine. =make_gallery.py= reads the
+theme directories and both =index.json= files, so a new icon shows up in the
+gallery after one run - =--check= is what =maak check= uses to catch a stale
+=gallery.html=. The relief renderer itself lives in =tools/skeu/= (numpy +
+Pillow; =inkscape= for the handful of vector icons).
 
 * Coverage
 
