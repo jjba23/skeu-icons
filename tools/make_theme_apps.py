@@ -13,6 +13,13 @@ This step closes that gap: it copies any app icon the theme is missing into
 the artwork.  Existing artwork is never overwritten - the pack's hand-drawn
 Emacs and calculator keep their place, and only the links are added.
 
+A few programs are shown under *another* icon instead of the object drawn for
+them (``BORROWED``): the theme ships macOS artwork under its own names
+(``finder.png``, ``xcode.png``, ``terminal.png``), and those are what IntelliJ
+IDEA, Nautilus and every terminal emulator answer with.  For those apps the
+names are pointed at the borrowed artwork rather than at their own slug; the
+artwork itself is committed in the theme, so this step only writes links.
+
     python3 tools/make_theme_apps.py            # install + link
     python3 tools/make_theme_apps.py --check    # report gaps, write nothing
 """
@@ -40,6 +47,20 @@ ICONS = ROOT / "app-icons"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
 CONTEXT = "apps"
 
+#: Programs the pack shows under another icon than the one drawn for them.
+#: Keyed by app slug, valued by a committed file stem in ``apps/``.
+BORROWED: dict[str, str] = {
+    "intellij-idea": "xcode",     # JetBrains' IDE, shown as the Xcode icon
+    "files": "finder",            # Nautilus, shown as the Finder face
+}
+
+#: Every terminal emulator answers with the pack's one CRT terminal, so a
+#: machine with six emulators installed still shows a single terminal icon.
+TERMINAL_ART = "terminal"
+
+#: Names a launcher asks for when it wants "a terminal", not a named program.
+GENERIC_TERMINAL_NAMES = ("utilities-terminal",)
+
 
 def lookup_names(app: dict) -> list[str]:
     """Every name a shell or launcher may ask for, slug first."""
@@ -63,15 +84,24 @@ def lookup_names(app: dict) -> list[str]:
     return names
 
 
-def plan() -> list[tuple[str, list[str], bool]]:
-    """``[(slug, aliases, artwork_present), ...]`` for every discovered app."""
+def borrowed(app: dict) -> str:
+    """The theme icon this app answers with, when it is not its own artwork."""
+    if slugify(app["name"]) in BORROWED:
+        return BORROWED[slugify(app["name"])]
+    if "TerminalEmulator" in (app.get("categories") or ""):
+        return TERMINAL_ART
+    return ""
+
+
+def plan() -> list[tuple[str, list[str], bool, dict]]:
+    """``[(slug, names, artwork_present, app), ...]`` for every discovered app."""
     out = []
     for app in discover():
         slug = slugify(app["name"])
         if not (ICONS / slug / "icon-1024.png").is_file():
             continue
         names = lookup_names(app)
-        out.append((slug, names, (THEME / "48x48" / CONTEXT / f"{slug}.png").is_file()))
+        out.append((slug, names, (THEME / "48x48" / CONTEXT / f"{slug}.png").is_file(), app))
     return out
 
 
@@ -86,14 +116,19 @@ def owners() -> dict[str, str]:
     and the check would disagree with the build.
     """
     table: dict[str, str] = {}
-    for slug, names, _present in plan():
+    for slug, names, _present, _app in plan():
         for name in names:
             table.setdefault(name, slug)
     return table
 
 
-def link(path: Path, target: str, problems: list[str], write: bool) -> None:
-    """Make PATH a relative symlink to TARGET (a sibling), without clobbering art."""
+def link(path: Path, target: str, problems: list[str], write: bool,
+         replace: bool = False) -> None:
+    """Make PATH a relative symlink to TARGET (a sibling), without clobbering art.
+
+    ``replace`` is set for the names of a borrowed icon: those have to move off
+    the app's own artwork, so a real file in the way is the thing to replace.
+    """
     if path.is_symlink():
         if os.readlink(path) == target:
             return
@@ -103,8 +138,14 @@ def link(path: Path, target: str, problems: list[str], write: bool) -> None:
             problems.append(f"{path.relative_to(ROOT)}: points at {os.readlink(path)}")
             return
     elif path.exists():
-        # A real file: hand-drawn artwork, or another app's icon. Never replace it.
-        return
+        if not replace:
+            # A real file: hand-drawn artwork, or another app's icon. Never replace it.
+            return
+        if write:
+            path.unlink()
+        else:
+            problems.append(f"{path.relative_to(ROOT)}: artwork, not a link to {target}")
+            return
     if write:
         path.symlink_to(target)
 
@@ -113,28 +154,57 @@ def install(write: bool) -> tuple[int, int, list[str]]:
     problems: list[str] = []
     written = linked = 0
     owner = owners()
-    for slug, names, present in plan():
-        with Image.open(ICONS / slug / "icon-1024.png") as source:
-            master = source.convert("RGBA")
+    apps = plan()
+    for slug, names, present, app in apps:
+        art = borrowed(app)
+        master = None
+        if not art:
+            with Image.open(ICONS / slug / "icon-1024.png") as source:
+                master = source.convert("RGBA")
         for size in SIZES:
             for suffix, factor in (("", 1), ("@2x", 2)):
                 folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
-                target = folder / f"{slug}.png"
-                if not target.exists() or not present:
-                    if write:
-                        folder.mkdir(parents=True, exist_ok=True)
-                        resize(master, size * factor).save(target)
-                        written += 1
-                    else:
-                        problems.append(f"{target.relative_to(ROOT)}: missing")
-                for alias in names[1:]:
-                    if owner.get(alias) != slug:
+                if art:
+                    # The artwork is committed in the theme; only the names move.
+                    icon = folder / f"{art}.png"
+                    if not icon.is_file():
+                        problems.append(f"{icon.relative_to(ROOT)}: missing for {slug}")
                         continue
-                    alias_path = folder / f"{alias}.png"
+                    # The app's own name always moves; a shared alias stays
+                    # with the app that claimed it (see owners()).
+                    wanted = [name for name in names
+                              if name == slug or owner.get(name) == slug]
+                else:
+                    target = folder / f"{slug}.png"
+                    if not target.exists() or not present:
+                        if write:
+                            folder.mkdir(parents=True, exist_ok=True)
+                            resize(master, size * factor).save(target)
+                            written += 1
+                        else:
+                            problems.append(f"{target.relative_to(ROOT)}: missing")
+                    wanted = [alias for alias in names[1:] if owner.get(alias) == slug]
+                for name in wanted:
+                    alias_path = folder / f"{name}.png"
                     before = alias_path.is_symlink() or alias_path.exists()
-                    link(alias_path, f"{slug}.png", problems, write)
+                    link(alias_path, f"{art or slug}.png", problems, write, replace=bool(art))
                     if write and not before:
                         linked += 1
+
+    # "a terminal" is a name a launcher asks for without naming any program.
+    for size in SIZES:
+        for suffix in ("", "@2x"):
+            folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
+            if not (folder / f"{TERMINAL_ART}.png").is_file():
+                continue
+            for name in GENERIC_TERMINAL_NAMES:
+                if owner.get(name):
+                    continue
+                path = folder / f"{name}.png"
+                before = path.is_symlink() or path.exists()
+                link(path, f"{TERMINAL_ART}.png", problems, write)
+                if write and not before:
+                    linked += 1
     return written, linked, problems
 
 
@@ -148,7 +218,7 @@ def main(argv: list[str] | None = None) -> int:
     write = not args.check
     written, linked, problems = install(write)
     apps = plan()
-    aliases = sum(len(names) - 1 for _slug, names, _present in apps)
+    aliases = sum(len(names) - 1 for _slug, names, _present, _app in apps)
 
     if problems:
         for problem in problems[:40]:

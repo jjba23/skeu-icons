@@ -27,7 +27,9 @@ Checks, in order:
 * ``app-icons/`` and ``project-icons/`` match their ``index.json`` (count and
   every ``icon-<size>.png``), and ``theme-manifest.json`` matches the disk;
 * no ``.icns`` file has crept back in;
-* ``gallery.html`` is up to date with the icons on disk.
+* ``gallery.html`` is up to date with the icons on disk;
+* the counts ``README.org`` quotes still match the theme (see
+  ``tools/make_readme_counts.py``).
 """
 
 from __future__ import annotations
@@ -236,6 +238,14 @@ def check() -> list[str]:
             problems.append("gallery.html missing - run: python3 tools/make_gallery.py")
         elif OUT.read_text() != build():
             problems.append("gallery.html is stale - run: python3 tools/make_gallery.py")
+
+    # the counts README.org quotes are derived from the theme, not typed
+    try:
+        from make_readme_counts import drift
+    except Exception as error:  # noqa: BLE001
+        problems.append(f"cannot import tools/make_readme_counts.py: {error}")
+    else:
+        problems += drift()
 
     return problems
 

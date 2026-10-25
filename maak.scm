@@ -8,6 +8,7 @@
 ;;;     maak --list          # everything below, with its docstring
 ;;;     maak build           # gallery + docs sheets, then verify
 ;;;     maak gallery         # just rebuild gallery.html
+;;;     maak counts          # re-derive the counts README.org quotes
 ;;;     maak names           # link app/mimetype names after adding artwork
 ;;;     maak check           # index.theme, counts, gallery freshness
 ;;;
@@ -22,7 +23,7 @@
   #:declarative? #t
   #:use-module (maak maak)
   ;; Only these are tasks; the helpers below stay private to the file.
-  #:export (default gallery docs build icons apps names contexts projects alts
+  #:export (default gallery docs counts build icons apps names contexts projects alts
             report check mappings symbolic variants install uninstall clean))
 
 ;; ====== Constants ======
@@ -58,7 +59,7 @@
   (tool "make_gallery.py"))
 
 (define (symbolic)
-  "Redraw the symbolic layer (646 names) and the un-suffixed scalable icons."
+  "Redraw the symbolic layer and the un-suffixed scalable icons."
   (require-python)
   (tool "make_symbolic.py")
   (tool "make_plain.py"))
@@ -69,14 +70,23 @@
   (tool "make_variants.py"))
 
 (define (docs)
-  "Recompose the README sheets in docs/ (hero, apps, projects, contexts)."
+  "Recompose the README images in docs/: the sheets and the demo animation."
   (require-python)
-  (tool "make_doc_images.py"))
+  (tool "make_doc_images.py")
+  (tool "make_demo_gif.py"))
+
+(define (counts)
+  "Rewrite the icon, app and name counts README.org quotes from the theme.
+
+The numbers are derived from the tree, so a redraw cannot leave the README
+claiming yesterday's totals; `maak check` fails when one is stale."
+  (tool "make_readme_counts.py"))
 
 (define (build)
-  "Regenerate the gallery and the docs sheets, then verify the result."
+  "Regenerate the gallery, the docs images and the README counts, then verify."
   (gallery)
   (docs)
+  (counts)
   (check))
 
 (define (icons)
