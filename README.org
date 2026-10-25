@@ -174,7 +174,7 @@ maak build            # gallery + docs, then verify
 maak check            # index.theme, every directory, counts, gallery, file mapping
 maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
 maak names           # link the app names and file-type names the desktops ask for
-maak mappings        # ask GIO which icon real file names actually get
+maak mappings        # ask GIO which icon real files and desktop entries get
 maak symbolic         # redraw the 646 symbolic icons + 487 plain scalable ones
 maak variants         # rebuild the accent and dark variant themes
 maak report           # rescan $HOME -> FILE-TYPES.org
@@ -198,7 +198,7 @@ python3 tools/make_plain.py           # the un-suffixed scalable icons (487)
 python3 tools/make_variants.py        # the accent and dark variant themes
 python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
 python3 tools/check_theme.py          # the checks behind maak check
-python3 tools/check_mapping.py        # GIO + GTK: what each real file draws
+python3 tools/check_mapping.py        # GIO + GTK: what each file and app draws
 #+end_src
 
 =make_symbolic.py= writes one Aqua glyph per Adwaita symbol name, checked against
@@ -214,7 +214,11 @@ puts each of those icons into =apps/= under every name a shell, dock or window
 manager may ask for - the desktop id, =Icon= value and =StartupWMClass= - as
 relative symlinks to the drawn artwork; without them =com.usebruno.Bruno= or
 =org.wezfurlong.wezterm= simply miss and the toolkit draws an Adwaita icon
-instead.
+instead. =check_mapping.py= asks the machine's own desktop entries that same
+question: every installed program whose entry names an icon the pack draws must
+be answered by it, at every size and in both themes, and the entries the pack
+does not draw are counted rather than failed, because a YaST module or a
+Flatpak's own export is not the theme's business.
 
 Discovery only knows the machine that builds the pack, and the programs people
 run differ per distribution, so =tools/skeu/apps.py= also carries two tables
@@ -245,7 +249,7 @@ Pillow; =inkscape= for the handful of vector icons).
 
 | context      | icons | notes                                                   |
 |--------------+------:+---------------------------------------------------------|
-| =apps=       |   975 | 251 drawn icons, each linked under every name it is asked by |
+| =apps=       |   976 | 251 drawn icons, each linked under every name it is asked by |
 | =places=     |   171 | folders, drives, network shares, 14 colour variants     |
 | =mimetypes=  |   678 | documents, media, archives, source code, 377 extensions |
 | =emblems=    |    17 | read-only, symbolic links, locked, shared …             |

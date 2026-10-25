@@ -468,6 +468,8 @@ EXTRA_NAMES: dict[str, tuple[str, ...]] = {
     "Steam": ("com.valvesoftware.Steam"),
 
     "Inkscape": ("org.inkscape.Inkscape"),
+    "LibreOffice": ("libreoffice-startcenter", "org.libreoffice.LibreOffice",
+                    "org.libreoffice.LibreOffice.startcenter"),
     "Krita": ("krita", "org.kde.krita"),
     "Kdenlive": ("org.kde.kdenlive"),
     "HandBrake": ("fr.handbrake.ghb"),

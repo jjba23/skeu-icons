@@ -121,12 +121,13 @@ links through the base theme."
   (tool "report_file_types.py"))
 
 (define (mappings)
-  "Check that real file names find their artwork: .zip, .tar.gz, .flac, .docx …
+  "Check that real files and installed programs find their artwork.
 
-Each sample name is handed to GIO, exactly as a file manager does, and the icon
-chain it asks for is walked against the theme and looked up through GTK in both
-the light and the dark theme, at every size, so a name that drifted shows up
-here instead of as the wrong picture on someone's desktop."
+Sample file names - .zip, .tar.gz, .flac, .docx … - are handed to GIO exactly
+as a file manager does, and the installed desktop entries are read the way a
+launcher reads them; both chains are looked up through GTK in the light and the
+dark theme, at every size, so a name that drifted shows up here instead of as
+the wrong picture in a folder or a generic gear in the dock."
   (require-python)
   (tool "check_mapping.py"))
 

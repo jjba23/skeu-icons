@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Check that real file names actually find their artwork.
 
-The theme is a pile of names, and a file manager never asks for a name the way
-a human would: it asks GIO what ``archive.tar.gz`` *is*
+The theme is a pile of names, and nothing asks for a name the way a human
+would.  A file manager asks GIO what ``archive.tar.gz`` *is*
 (``application/x-compressed-tar``) and then asks the theme for a chain of icon
-names derived from that.  This programme walks the same path three times over -
-through GIO, through GTK's own icon lookup, and through the pixels - so a name
-that drifted shows up as "you get the carton" instead of as a mystery in
+names derived from that; a launcher asks for whatever the program wrote in its
+desktop entry - the desktop id, the ``Icon=`` value, the window class.  This
+programme walks both paths three times over - through GIO, through GTK's own
+icon lookup, and through the pixels - so a name that drifted shows up as "you
+get the carton" or "a generic gear in the dock" instead of as a mystery in
 Nautilus.
 
     python3 tools/check_mapping.py            # the table, then the problems
@@ -22,7 +24,9 @@ These are failures:
   not all of them, or GTK cannot find it at all, which is what a half-finished
   alias link or a stale ``index.theme`` entry looks like;
 * **a link points nowhere** - a dangling symlink in the theme;
-* **a file will not load** - the winning PNG or SVG is corrupt.
+* **an app name misses** - a name in the ``apps`` context is absent at some
+  size, GTK cannot load it, or a desktop entry declaring it gets something
+  else (a dock icon falling through to Adwaita is exactly this);
 
 A sample that resolves through the family generic when a specific name was
 expected is the interesting case: it means the artwork exists under a name GIO
@@ -36,6 +40,7 @@ reading the theme directories itself: the icons do not depend on it.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 import tempfile
 import xml.etree.ElementTree as ElementTree
@@ -47,6 +52,9 @@ DARK = ROOT / "skeu-icons-dark"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
 CONTEXTS = ("apps", "places", "mimetypes", "emblems", "categories", "devices")
 VARIANTS = ("skeu-icons", "skeu-icons-dark")
+APP_CONTEXT = "apps"
+SIZE_LABELS = (tuple(f"{s}x{s}" for s in SIZES) +
+               tuple(f"{s}x{s}@2x" for s in SIZES))
 
 #: ``(file name, what the winning icon name must contain)``.  The archive block
 #: is the one Adwaita historically got wrong, and the compound names
@@ -215,6 +223,128 @@ def parses(path: Path) -> bool:
         return False
 
 
+def app_names() -> set[str]:
+    """Every name the ``apps`` context ships; 48 px is the canonical size."""
+    return {path.stem for path in (THEME / "48x48" / APP_CONTEXT).glob("*.png")
+            if path.exists()}
+
+
+def desktop_entries() -> list[tuple[str, str, list[str]]]:
+    """``(desktop id, Icon=, names a shell may ask for)`` for real entries.
+
+    GIO reads the same files the desktop does, so this sees the installed
+    entries, their ``Icon=`` values and their ``StartupWMClass`` rather than a
+    table maintained next to the artwork.  Only the entries a launcher would
+    show are asked about - ``NoDisplay`` settings panels and system services
+    are not app icons.  An ``Icon=`` pointing at a file or at an absolute path
+    is not a name and is skipped; so is an entry with no icon at all.
+    """
+    from gi.repository import Gio
+
+    try:  # GLib 2.80 moved the desktop types into GioUnix
+        import gi
+
+        gi.require_version("GioUnix", "2.0")
+        from gi.repository import GioUnix
+
+        desktop_type = GioUnix.DesktopAppInfo
+    except Exception:  # noqa: BLE001
+        desktop_type = Gio.DesktopAppInfo
+
+    entries: list[tuple[str, str, list[str]]] = []
+    for info in Gio.AppInfo.get_all():
+        if not isinstance(info, desktop_type) or not info.should_show():
+            continue
+        identifier = info.get_id() or ""
+        candidates = [Path(identifier).stem] if identifier else []
+        icon = ""
+        for key in ("Icon", "StartupWMClass"):
+            value = (info.get_string(key) or "").strip()
+            if not value or "/" in value or value.startswith("."):
+                continue
+            if re.search(r"\.(png|svg|xpm)$", value):
+                continue
+            if key == "Icon":
+                icon = value
+            candidates.append(value)
+        candidates = [name for name in dict.fromkeys(candidates) if name]
+        if icon:
+            entries.append((identifier, icon, candidates))
+    return entries
+
+
+def check_apps(shipped: dict[str, dict], themes: dict) -> tuple[list[str], str]:
+    """Problems with the app names, and the line to print about them."""
+    problems: list[str] = []
+    claimed = app_names()
+
+    # 1. Every name the pack ships in apps/ must be complete and loadable.  A
+    #    dock asks for the desktop id or the Icon= value at whatever size it
+    #    wants, so a name that exists only at 48 px is a half-finished alias.
+    for name in sorted(claimed):
+        sizes = shipped.get(name, {})
+        missing = [label for label in SIZE_LABELS if label not in sizes]
+        if missing:
+            problems.append(
+                f"app {name}: missing at {len(missing)} size(s) "
+                f"(e.g. {missing[0]})")
+            continue
+        for theme_name, theme in themes.items():
+            if theme is None:
+                continue
+            found = gtk_lookup(theme, name, 48)
+            if found is None or ROOT not in found.parents:
+                problems.append(
+                    f"app {name}: GTK cannot load it from {theme_name}")
+            elif not parses(found):
+                problems.append(f"app {name}: {found.relative_to(ROOT)} does not open")
+
+    # 2. Every real desktop entry gets the same question, asked about the name
+    #    the entry actually puts on screen - its ``Icon=`` value, not its id.
+    #    A drawn name must be answered by that drawing; a stock name (a panel
+    #    asking for something-symbolic) must at least be found; anything else
+    #    is a program the pack does not draw here, counted but not failed.
+    answered = stock = 0
+    undrawn: list[str] = []
+    for identifier, icon, candidates in desktop_entries():
+        if icon in claimed:
+            answered += 1
+        elif icon in shipped:
+            stock += 1
+        else:
+            undrawn.append(f"{Path(identifier).stem} ({icon})")
+            continue
+        if themes["skeu-icons"] is None:
+            continue
+        found = gtk_lookup(themes["skeu-icons"], icon, 48)
+        if found is None or ROOT not in found.parents:
+            via = ("the drawn artwork" if icon in claimed
+                   else "the theme")
+            problems.append(
+                f"{identifier}: asks for {icon}, which {via} does not answer")
+        # The entry's id and window class are what a dock asks for once the
+        # window is open, so a claimed one among them must work too.
+        for name in candidates:
+            if name == icon or name not in claimed:
+                continue
+            if not gtk_lookup(themes["skeu-icons"], name, 48):
+                problems.append(
+                    f"{identifier}: asks by {name}, which GTK cannot load")
+
+    note = ""
+    if undrawn:
+        shown = ", ".join(undrawn[:3])
+        more = f" and {len(undrawn) - 3} more" if len(undrawn) > 3 else ""
+        note = (f"\n  {len(undrawn)} desktop entr{'y' if len(undrawn) == 1 else 'ies'}"
+                f" with no artwork here: {shown}{more}")
+    summary = (f"apps: {len(claimed)} drawn name(s), {answered} desktop "
+               f"entr{'y' if answered == 1 else 'ies'} answered by them, "
+               f"{stock} stock icon(s){note}")
+    # Both themes resolve a bitmap that only the light one ships, so the same
+    # broken file would otherwise be reported once per theme.
+    return list(dict.fromkeys(problems)), summary
+
+
 def check(quiet: bool = False) -> list[str]:
     """Problems with the mapping, as sentences."""
     try:
@@ -266,9 +396,7 @@ def check(quiet: bool = False) -> list[str]:
                     f"{expect!r}")
             if name in CONTAINERS and winner == "package-x-generic":
                 problems.append(f"{name}: falls back to the generic carton")
-            missing = [label for label in
-                       [f"{s}x{s}" for s in SIZES] +
-                       [f"{s}x{s}@2x" for s in SIZES]
+            missing = [label for label in SIZE_LABELS
                        if label not in sizes]
             if missing and "scalable" not in sizes:
                 problems.append(
@@ -300,6 +428,9 @@ def check(quiet: bool = False) -> list[str]:
                             f"{name}: {theme_name} resolves "
                             f"{symbolic_name} outside its own layer")
 
+    app_problems, app_summary = check_apps(shipped, themes)
+    problems += app_problems
+
     if not quiet:
         width = max(len(name) for name, _, _, _, _ in rows)
         mime_width = max(len(mime) for _, mime, _, _, _ in rows)
@@ -308,6 +439,7 @@ def check(quiet: bool = False) -> list[str]:
             note = "" if symbolic else "  (no symbolic sibling)"
             print(f"  {name:<{width}}  {mime:<{mime_width}}  {winner}"
                   f"{mark}{note}")
+        print(f"\n{app_summary}")
     return problems
 
 
@@ -325,8 +457,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"\n{len(problems)} mapping problem(s) found", file=sys.stderr)
         return 1
     if not args.quiet:
-        print(f"\nok: {len(SAMPLES)} sample file names map to the artwork "
-              f"the theme ships, at every size, in both themes")
+        print(f"ok: {len(SAMPLES)} sample file names and every app name map "
+              f"to the artwork the theme ships, at every size, in both themes")
     return 0
 
 
