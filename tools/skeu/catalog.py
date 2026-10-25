@@ -170,6 +170,8 @@ PROJECTS: list[tuple[str, str, object, dict]] = [
     ("heks-emacs", "Modular, reproducible Emacs configuration", T.book,
      dict(hue=272, glyph="gear")),
     ("heks-linux", "Modular programmable GNU/Linux system config", Mo.penguin, dict()),
+    ("heks-toon", "Keyboard reference, wallpapers and palettes for Heks GNU/Linux",
+     O.help_orb, dict(hue=208)),
     ("hygguile", "Cozy S-expression server-rendered UI library", Pr.mug, dict(hue=26)),
     ("iter-vitae", "Guile generator for beautiful CVs and resumes", T.paper,
      dict(hue=205, printed="portrait")),

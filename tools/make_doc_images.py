@@ -131,7 +131,7 @@ def projects_sheet() -> None:
         "veritas-el", "wikimusic", "symbanta", "symbanta-dashboard", "guix",
         "nixpkgs", "torikomi", "pingwing", "scriba", "lucidplan", "olive-css",
         "hygguile", "carvoeiro-water-fun", "jointhefreeworld", "heks-linux",
-        "heks-emacs", "heks-bash", "kracht", "skapa", "wolkenschloss", "wolk-jjba",
+        "heks-emacs", "heks-bash", "heks-toon", "kracht", "skapa", "wolkenschloss", "wolk-jjba",
         "mutastructura", "lenkesamler", "private-notes", "iter-vitae",
     ]
     entries = [(n, ROOT / "project-icons" / n / "icon-256.png")

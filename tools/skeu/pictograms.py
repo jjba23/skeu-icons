@@ -217,6 +217,13 @@ def _question(p: Pen):
     p.circle(0.50, 0.88, 0.075)
 
 
+def _question_bold(p: Pen):
+    """The same question mark with a mark that survives an orb at 16 px."""
+    p.arc(0.20, 0.08, 0.80, 0.62, 150, 20, 0.16)
+    p.line([(0.68, 0.48), (0.68, 0.58), (0.50, 0.67), (0.50, 0.73)], 0.16)
+    p.circle(0.50, 0.89, 0.095)
+
+
 def _cards(p: Pen):
     p.rect(0.20, 0.22, 0.58, 0.86, radius=0.06)
     p.rect(0.42, 0.14, 0.80, 0.78, radius=0.06, fill=0)
@@ -484,6 +491,7 @@ GLYPHS = {
     "sliders": _sliders,
     "download": _download,
     "question": _question,
+    "question-bold": _question_bold,
     "cards": _cards,
     "feather": _feather,
     "atom": _atom,

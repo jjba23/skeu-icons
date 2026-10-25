@@ -110,7 +110,8 @@ def grid_mask(box, cols: int, rows: int, gap: float) -> np.ndarray:
 
 
 def mark(c, name: str, cx: float, cy: float, width: float, material=None,
-         emboss: float = 4.0, alpha: float = 1.0, height: float | None = None) -> None:
+         emboss: float = 4.0, alpha: float = 1.0, height: float | None = None,
+         shadow: float = 0.62) -> None:
     """Emboss a pictogram (never printed flat on a colour field).
 
     The mark gets a real cast shadow into the face it sits on, which is what
@@ -118,7 +119,7 @@ def mark(c, name: str, cx: float, cy: float, width: float, material=None,
     """
     mask = glyph_mask(name, cx, cy, width, height)
     # a tight contact shadow, so the mark sits on the face rather than on top of it
-    c.multiply(blur(_shift_mask(mask, 3.0, 6.0), 4.0), 0.62 if alpha else 0.0)
+    c.multiply(blur(_shift_mask(mask, 3.0, 6.0), 4.0), shadow if alpha else 0.0)
     c.paint_mask(mask, material or M.embossed_white, emboss=emboss, soft=1.2, alpha=alpha)
 
 
@@ -180,7 +181,9 @@ def _inner_shadow(c, cx: float, cy: float, r: float, width: float, strength: flo
 
 def medallion(c, hue: float = 210, glyph: str = "gear", ring_kind: str = "chrome",
               r: float = 288.0, cy: float = CY, sat: float = 0.76, light: float = 0.50,
-              glyph_w: float | None = None, glyph_material=None) -> None:
+              glyph_w: float | None = None, glyph_material=None,
+              glyph_emboss: float = 16.0, glyph_shadow: float = 0.62,
+              highlight: float = 1.0) -> None:
     """A domed gem seated in a machined ring, with one embossed mark.
 
     The ring has thickness: an outer bezel that catches the key light, a knurled
@@ -230,23 +233,35 @@ def medallion(c, hue: float = 210, glyph: str = "gear", ring_kind: str = "chrome
     inside = np.clip(0.55 - (np.hypot(c.X - cx, c.Y - cy) - r), 0.0, 1.0) * c.alpha
     halo = np.exp(-(((c.X - (cx - r * 0.30)) / (r * 0.46)) ** 2
                     + ((c.Y - (cy - r * 0.50)) / (r * 0.30)) ** 2)) * inside
-    c.rgb += halo[..., None] * 0.20
+    c.rgb += halo[..., None] * 0.20 * highlight
     spark = np.exp(-(((c.X - (cx - r * 0.34)) / (r * 0.10)) ** 2
                     + ((c.Y - (cy - r * 0.56)) / (r * 0.065)) ** 2)) * inside
-    c.rgb += spark[..., None] * 0.55
+    c.rgb += spark[..., None] * 0.55 * highlight
     bounce = np.exp(-(((c.X - (cx + r * 0.14)) / (r * 0.40)) ** 2
                      + ((c.Y - (cy + r * 0.70)) / (r * 0.20)) ** 2)) * inside
-    c.rgb += bounce[..., None] * 0.12
+    c.rgb += bounce[..., None] * 0.12 * highlight
     c.paint(ring(cx, cy, r - 1, 2.5), M.flat("#07223c"), profile=("bevel", 2, 3),
             alpha=0.45)
 
     mark(c, glyph, cx, cy + r * 0.01, glyph_w or r * 0.70,
-         material=glyph_material, emboss=16.0)
+         material=glyph_material, emboss=glyph_emboss, shadow=glyph_shadow)
 
 
 def gem_disc(c, hue: float = 205, glyph: str = "star", r: float = 330.0) -> None:
     """A flatter gem, for the 'other'/abstract categories."""
     medallion(c, hue=hue, glyph=glyph, ring_kind="chrome", r=r, sat=0.66, light=0.52)
+
+
+def help_orb(c, hue: float = 208, cy: float = CY) -> None:
+    """The old Mac Help crystal: a blue glass sphere in a chrome rim.
+
+    A project icon for a reference window, not a flat question badge: the orb is
+    a real dome with a raised white question mark, and the chrome seat catches
+    the key light.  The bold mark is deliberate so it still reads at 16 px.
+    """
+    medallion(c, hue=hue, glyph="question-bold", ring_kind="chrome", r=292.0,
+              cy=cy, sat=0.64, light=0.38, glyph_w=440.0, glyph_emboss=10.0,
+              glyph_shadow=0.28, highlight=0.65)
 
 
 # --------------------------------------------------------------------------- #

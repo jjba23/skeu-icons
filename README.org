@@ -261,10 +261,11 @@ Reversi stones.
 
 ** Projects
 
-A selection of the 46 project icons: a sheep for lambdock, a black widow for
-araneola, a padlock for bewaking, Lady Justice for veritas, a conductor for
-wikimusic, a chart recorder for symbanta, a gnu for guix, a snowflake for
-nixpkgs, an anchor for carvoeiro-water-fun.
+A selection of the 47 project icons: a sheep for lambdock, a black widow for
+araneola, a padlock for bewaking, Lady Justice for veritas, a chrome-rimmed
+help orb for heks-toon, a conductor for wikimusic, a chart recorder for
+symbanta, a gnu for guix, a snowflake for nixpkgs, an anchor for
+carvoeiro-water-fun.
 
 #+attr_html: :width 100% :alt project icons
 [[file:docs/projects.png]]
@@ -355,7 +356,7 @@ badly.
 | =gallery.html=        | single-file preview: every icon, every size, size switcher    |
 | =theme-manifest.json= | audit trail: shipped names, contexts, sizes, palette          |
 | =app-icons/=          | 251 GUI app icons — installed here plus the roster (PNG 16→1024) |
-| =project-icons/=      | 46 icons for project folders (same sizes)                     |
+| =project-icons/=      | 47 icons for project folders (same sizes)                     |
 | =generated/=          | 1024 px masters for categories and devices                    |
 | =svg/=                | hand-drawn vector sources (1024×1024, real paths)             |
 | =docs/=               | the sheets and the demo this README shows                     |
@@ -366,7 +367,7 @@ badly.
 
 =app-icons/= and =project-icons/= are not part of the theme; copy one onto a
 launcher or a folder when you want that specific item to match. Two extra sets
-live there: 164 icons for the applications installed here and 46 for personal
+live there: 164 icons for the applications installed here and 47 for personal
 projects.
 
 * Drawing and checking the artwork

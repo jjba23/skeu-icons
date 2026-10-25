@@ -1,8 +1,8 @@
 {
   "generator": "tools/render_skeu.py",
   "style": "skeuomorphic, no icon mask",
-  "count": 46,
-  "objects": 41,
+  "count": 47,
+  "objects": 42,
   "icons": [
     {
       "name": "araneola",
@@ -137,6 +137,15 @@
       "object": "penguin",
       "files": {
         "png": "heks-linux/icon-1024.png"
+      }
+    },
+    {
+      "name": "heks-toon",
+      "slug": "heks-toon",
+      "purpose": "Keyboard reference, wallpapers and palettes for Heks GNU/Linux",
+      "object": "help_orb",
+      "files": {
+        "png": "heks-toon/icon-1024.png"
       }
     },
     {

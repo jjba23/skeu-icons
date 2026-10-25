@@ -1,15 +1,15 @@
 # Project icons — one skeuomorphic icon per project
 
-46 projects, 41 distinct objects: no icon mask, no rounded-square grid, no flat gradient, no
+47 projects, 42 distinct objects: no icon mask, no rounded-square grid, no flat gradient, no
 monogram on a coloured plate. Each icon is one thing you could pick up — a metronome for
 the CI orchestrator, a combination lock for the secrets tool, Lady Justice for the test
-framework, a conductor for the music encyclopaedia — lit by one key light and finished
-with a two-layer cast shadow.
+framework, a chrome-rimmed help orb for heks-toon, a conductor for the music encyclopaedia —
+lit by one key light and finished with a two-layer cast shadow.
 
 ```
 project-icons/
   index.json              name, slug, purpose, object per project
-  contact-sheet.png       all 46 at 256 px
+  contact-sheet.png       all 47 at 256 px
   <slug>/
     icon-16.png … icon-1024.png
 ```
@@ -38,6 +38,7 @@ metal, enamel/glass/paper/leather/wood shaders, and contact shadows where parts 
 | `heks-bash` | terminal | Declarative Bash config driven by Guile |
 | `heks-emacs` | book | Modular, reproducible Emacs configuration |
 | `heks-linux` | penguin | Modular programmable GNU/Linux system config |
+| `heks-toon` | help_orb | Keyboard reference, wallpapers and palettes for Heks GNU/Linux |
 | `hygguile` | mug | Cozy S-expression server-rendered UI library |
 | `iter-vitae` | paper | Guile generator for beautiful CVs and resumes |
 | `jointhefreeworld` | browser_globe | Homepage, blog and movement site built from Org |
