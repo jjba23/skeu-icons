@@ -7,7 +7,7 @@
     "/home/joe/.local/share/applications",
     "/home/joe/.local/share/flatpak/exports/share/applications"
   ],
-  "count": 251,
+  "count": 298,
   "objects": [
     "1Password",
     "Emacs",
@@ -15,6 +15,53 @@
     "IntelliJ IDEA",
     "Signal",
     "address_book",
+    "apps/activity-monitor.png",
+    "apps/address-book.png",
+    "apps/adium.png",
+    "apps/airport-utility.png",
+    "apps/aperture.png",
+    "apps/audio-midi-setup.png",
+    "apps/betterzip.png",
+    "apps/bluetooth-file-exchange.png",
+    "apps/boot-camp-assistant.png",
+    "apps/cleanmymac.png",
+    "apps/colorsync-utility.png",
+    "apps/digitalcolor-meter.png",
+    "apps/directory-utility.png",
+    "apps/disk-utility.png",
+    "apps/dvd-player.png",
+    "apps/facebook.png",
+    "apps/facetime.png",
+    "apps/font-book.png",
+    "apps/game-center.png",
+    "apps/garageband.png",
+    "apps/grab.png",
+    "apps/grapher.png",
+    "apps/ibooks-author.png",
+    "apps/ical.png",
+    "apps/imovie.png",
+    "apps/iphoto.png",
+    "apps/keychain-access.png",
+    "apps/keynote.png",
+    "apps/microsoft-excel.png",
+    "apps/microsoft-messenger.png",
+    "apps/microsoft-outlook.png",
+    "apps/microsoft-powerpoint.png",
+    "apps/microsoft-word.png",
+    "apps/migration-assistant.png",
+    "apps/network-utility.png",
+    "apps/pages.png",
+    "apps/quicktime-player.png",
+    "apps/remote-desktop-connection.png",
+    "apps/safari.png",
+    "apps/screen-sharing.png",
+    "apps/script-editor.png",
+    "apps/system-image-utility.png",
+    "apps/system-information.png",
+    "apps/system-preferences.png",
+    "apps/textedit.png",
+    "apps/twitter.png",
+    "apps/voiceover-utility.png",
     "balance",
     "barometer",
     "blueprint",
@@ -165,6 +212,72 @@
       }
     },
     {
+      "name": "Activity Monitor",
+      "display": "Activity Monitor",
+      "slug": "activity-monitor",
+      "categories": "System;Monitor",
+      "comment": "",
+      "exec": "",
+      "icon": "activity-monitor",
+      "wmclass": "",
+      "desktop": "activity-monitor.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/activity-monitor.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the oscilloscope trace",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "activity-monitor/icon-1024.png"
+      }
+    },
+    {
+      "name": "Address Book",
+      "display": "Address Book",
+      "slug": "address-book",
+      "categories": "Network;ContactManager",
+      "comment": "",
+      "exec": "",
+      "icon": "address-book",
+      "wmclass": "",
+      "desktop": "address-book.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/address-book.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the address book with the @ tab",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "address-book/icon-1024.png"
+      }
+    },
+    {
+      "name": "Adium",
+      "display": "Adium",
+      "slug": "adium",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "adium",
+      "wmclass": "",
+      "desktop": "adium.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/adium.png",
+        "era": "Leopard (10.5)",
+        "credit": "the green duck",
+        "licence": "fan-art"
+      },
+      "files": {
+        "png": "adium/icon-1024.png"
+      }
+    },
+    {
       "name": "Advanced Network Configuration",
       "display": "Advanced Network Configuration",
       "slug": "advanced-network-configuration",
@@ -180,6 +293,28 @@
       },
       "files": {
         "png": "advanced-network-configuration/icon-1024.png"
+      }
+    },
+    {
+      "name": "AirPort Utility",
+      "display": "AirPort Utility",
+      "slug": "airport-utility",
+      "categories": "Network;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "airport-utility",
+      "wmclass": "",
+      "desktop": "airport-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/airport-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the radar sweep",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "airport-utility/icon-1024.png"
       }
     },
     {
@@ -255,6 +390,28 @@
       },
       "files": {
         "png": "anki/icon-1024.png"
+      }
+    },
+    {
+      "name": "Aperture",
+      "display": "Aperture",
+      "slug": "aperture",
+      "categories": "Graphics;Photography",
+      "comment": "",
+      "exec": "",
+      "icon": "aperture",
+      "wmclass": "",
+      "desktop": "aperture.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/aperture.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the lens barrel",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "aperture/icon-1024.png"
       }
     },
     {
@@ -336,6 +493,50 @@
       }
     },
     {
+      "name": "Audio MIDI Setup",
+      "display": "Audio MIDI Setup",
+      "slug": "audio-midi-setup",
+      "categories": "AudioVideo;Audio",
+      "comment": "",
+      "exec": "",
+      "icon": "audio-midi-setup",
+      "wmclass": "",
+      "desktop": "audio-midi-setup.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/audio-midi-setup.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the MIDI keyboard and speaker",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "audio-midi-setup/icon-1024.png"
+      }
+    },
+    {
+      "name": "BetterZip",
+      "display": "BetterZip",
+      "slug": "betterzip",
+      "categories": "Utility;Archiving",
+      "comment": "",
+      "exec": "",
+      "icon": "betterzip",
+      "wmclass": "",
+      "desktop": "betterzip.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/betterzip.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the cardboard box with the zip pull",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "betterzip/icon-1024.png"
+      }
+    },
+    {
       "name": "Binary",
       "display": "Binary",
       "slug": "binary",
@@ -411,6 +612,28 @@
       }
     },
     {
+      "name": "Bluetooth File Exchange",
+      "display": "Bluetooth File Exchange",
+      "slug": "bluetooth-file-exchange",
+      "categories": "Network;FileTransfer",
+      "comment": "",
+      "exec": "",
+      "icon": "bluetooth-file-exchange",
+      "wmclass": "",
+      "desktop": "bluetooth-file-exchange.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/bluetooth-file-exchange.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the two arrows around the rune",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "bluetooth-file-exchange/icon-1024.png"
+      }
+    },
+    {
       "name": "Bluetooth Manager",
       "display": "Bluetooth Manager",
       "slug": "bluetooth-manager",
@@ -426,6 +649,28 @@
       },
       "files": {
         "png": "bluetooth-manager/icon-1024.png"
+      }
+    },
+    {
+      "name": "Boot Camp Assistant",
+      "display": "Boot Camp Assistant",
+      "slug": "boot-camp-assistant",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "boot-camp-assistant",
+      "wmclass": "",
+      "desktop": "boot-camp-assistant.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/boot-camp-assistant.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the partitioned drive",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "boot-camp-assistant/icon-1024.png"
       }
     },
     {
@@ -771,6 +1016,28 @@
       }
     },
     {
+      "name": "CleanMyMac",
+      "display": "CleanMyMac",
+      "slug": "cleanmymac",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "cleanmymac",
+      "wmclass": "",
+      "desktop": "cleanmymac.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/cleanmymac.png",
+        "era": "Mavericks (10.9)",
+        "credit": "CleanMyMac 2, the broom",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "cleanmymac/icon-1024.png"
+      }
+    },
+    {
       "name": "Clocks",
       "display": "Clocks",
       "slug": "clocks",
@@ -804,6 +1071,28 @@
       },
       "files": {
         "png": "color-profile-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "ColorSync Utility",
+      "display": "ColorSync Utility",
+      "slug": "colorsync-utility",
+      "categories": "Graphics;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "colorsync-utility",
+      "wmclass": "",
+      "desktop": "colorsync-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/colorsync-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the three overlapping primaries",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "colorsync-utility/icon-1024.png"
       }
     },
     {
@@ -1053,6 +1342,50 @@
       }
     },
     {
+      "name": "DigitalColor Meter",
+      "display": "DigitalColor Meter",
+      "slug": "digitalcolor-meter",
+      "categories": "Graphics;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "digitalcolor-meter",
+      "wmclass": "",
+      "desktop": "digitalcolor-meter.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/digitalcolor-meter.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the eyedropper over the swatch",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "digitalcolor-meter/icon-1024.png"
+      }
+    },
+    {
+      "name": "Directory Utility",
+      "display": "Directory Utility",
+      "slug": "directory-utility",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "directory-utility",
+      "wmclass": "",
+      "desktop": "directory-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/directory-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the network node tree",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "directory-utility/icon-1024.png"
+      }
+    },
+    {
       "name": "Discord",
       "display": "Discord",
       "slug": "discord",
@@ -1107,6 +1440,28 @@
       },
       "files": {
         "png": "disk-usage-analyzer/icon-1024.png"
+      }
+    },
+    {
+      "name": "Disk Utility",
+      "display": "Disk Utility",
+      "slug": "disk-utility",
+      "categories": "System;Filesystem",
+      "comment": "",
+      "exec": "",
+      "icon": "disk-utility",
+      "wmclass": "",
+      "desktop": "disk-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/disk-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the drive with the first-aid cross",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "disk-utility/icon-1024.png"
       }
     },
     {
@@ -1242,6 +1597,28 @@
       },
       "files": {
         "png": "dropbox/icon-1024.png"
+      }
+    },
+    {
+      "name": "DVD Player",
+      "display": "DVD Player",
+      "slug": "dvd-player",
+      "categories": "AudioVideo;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "dvd-player",
+      "wmclass": "",
+      "desktop": "dvd-player.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/dvd-player.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the player puck",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "dvd-player/icon-1024.png"
       }
     },
     {
@@ -1430,6 +1807,50 @@
       }
     },
     {
+      "name": "Facebook",
+      "display": "Facebook",
+      "slug": "facebook",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "facebook",
+      "wmclass": "",
+      "desktop": "facebook.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/facebook.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the 2011 f on its blue tile",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "facebook/icon-1024.png"
+      }
+    },
+    {
+      "name": "FaceTime",
+      "display": "FaceTime",
+      "slug": "facetime",
+      "categories": "Network;VideoConference",
+      "comment": "",
+      "exec": "",
+      "icon": "facetime",
+      "wmclass": "",
+      "desktop": "facetime.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/facetime.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the video camera on the glass tile",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "facetime/icon-1024.png"
+      }
+    },
+    {
       "name": "Falkon",
       "display": "Falkon",
       "slug": "falkon",
@@ -1545,6 +1966,28 @@
       }
     },
     {
+      "name": "Font Book",
+      "display": "Font Book",
+      "slug": "font-book",
+      "categories": "Graphics;Font",
+      "comment": "",
+      "exec": "",
+      "icon": "font-book",
+      "wmclass": "",
+      "desktop": "font-book.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/font-book.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the type specimen book",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "font-book/icon-1024.png"
+      }
+    },
+    {
       "name": "foot",
       "display": "foot",
       "slug": "foot",
@@ -1602,6 +2045,28 @@
       }
     },
     {
+      "name": "Game Center",
+      "display": "Game Center",
+      "slug": "game-center",
+      "categories": "Game",
+      "comment": "",
+      "exec": "",
+      "icon": "game-center",
+      "wmclass": "",
+      "desktop": "game-center.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/game-center.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the board-game table",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "game-center/icon-1024.png"
+      }
+    },
+    {
       "name": "Gaphor",
       "display": "Gaphor",
       "slug": "gaphor",
@@ -1617,6 +2082,28 @@
       },
       "files": {
         "png": "gaphor/icon-1024.png"
+      }
+    },
+    {
+      "name": "GarageBand",
+      "display": "GarageBand",
+      "slug": "garageband",
+      "categories": "AudioVideo;Audio",
+      "comment": "",
+      "exec": "",
+      "icon": "garageband",
+      "wmclass": "",
+      "desktop": "garageband.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/garageband.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the electric guitar",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "garageband/icon-1024.png"
       }
     },
     {
@@ -1845,6 +2332,28 @@
       }
     },
     {
+      "name": "Grab",
+      "display": "Grab",
+      "slug": "grab",
+      "categories": "Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "grab",
+      "wmclass": "",
+      "desktop": "grab.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/grab.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the camera on the tripod stand",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "grab/icon-1024.png"
+      }
+    },
+    {
       "name": "Gramps",
       "display": "Gramps",
       "slug": "gramps",
@@ -1860,6 +2369,28 @@
       },
       "files": {
         "png": "gramps/icon-1024.png"
+      }
+    },
+    {
+      "name": "Grapher",
+      "display": "Grapher",
+      "slug": "grapher",
+      "categories": "Education;Math",
+      "comment": "",
+      "exec": "",
+      "icon": "grapher",
+      "wmclass": "",
+      "desktop": "grapher.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/grapher.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the rainbow surface plot",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "grapher/icon-1024.png"
       }
     },
     {
@@ -1977,6 +2508,50 @@
       }
     },
     {
+      "name": "iBooks Author",
+      "display": "iBooks Author",
+      "slug": "ibooks-author",
+      "categories": "Office;WordProcessor",
+      "comment": "",
+      "exec": "",
+      "icon": "ibooks-author",
+      "wmclass": "",
+      "desktop": "ibooks-author.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/ibooks-author.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the open book and pencil",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "ibooks-author/icon-1024.png"
+      }
+    },
+    {
+      "name": "iCal",
+      "display": "iCal",
+      "slug": "ical",
+      "categories": "Office;Calendar",
+      "comment": "",
+      "exec": "",
+      "icon": "ical",
+      "wmclass": "",
+      "desktop": "ical.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/ical.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the tear-off desk calendar",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "ical/icon-1024.png"
+      }
+    },
+    {
       "name": "Icon Editor",
       "display": "Icon Editor",
       "slug": "icon-editor",
@@ -2010,6 +2585,28 @@
       },
       "files": {
         "png": "image-viewer/icon-1024.png"
+      }
+    },
+    {
+      "name": "iMovie",
+      "display": "iMovie",
+      "slug": "imovie",
+      "categories": "AudioVideo;Video",
+      "comment": "",
+      "exec": "",
+      "icon": "imovie",
+      "wmclass": "",
+      "desktop": "imovie.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/imovie.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the star on its clapper",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "imovie/icon-1024.png"
       }
     },
     {
@@ -2083,6 +2680,28 @@
       },
       "files": {
         "png": "intellij-idea/icon-1024.png"
+      }
+    },
+    {
+      "name": "iPhoto",
+      "display": "iPhoto",
+      "slug": "iphoto",
+      "categories": "Graphics;Photography",
+      "comment": "",
+      "exec": "",
+      "icon": "iphoto",
+      "wmclass": "",
+      "desktop": "iphoto.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/iphoto.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the camera-lens aperture",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "iphoto/icon-1024.png"
       }
     },
     {
@@ -2200,6 +2819,50 @@
       },
       "files": {
         "png": "keepassxc/icon-1024.png"
+      }
+    },
+    {
+      "name": "Keychain Access",
+      "display": "Keychain Access",
+      "slug": "keychain-access",
+      "categories": "System;Security",
+      "comment": "",
+      "exec": "",
+      "icon": "keychain-access",
+      "wmclass": "",
+      "desktop": "keychain-access.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/keychain-access.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the ring of keys",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "keychain-access/icon-1024.png"
+      }
+    },
+    {
+      "name": "Keynote",
+      "display": "Keynote",
+      "slug": "keynote",
+      "categories": "Office;Presentation",
+      "comment": "",
+      "exec": "",
+      "icon": "keynote",
+      "wmclass": "",
+      "desktop": "keynote.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/keynote.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the lectern and its slide",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "keynote/icon-1024.png"
       }
     },
     {
@@ -2659,6 +3322,94 @@
       }
     },
     {
+      "name": "Microsoft Excel",
+      "display": "Microsoft Excel",
+      "slug": "microsoft-excel",
+      "categories": "Office;Spreadsheet",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-excel",
+      "wmclass": "",
+      "desktop": "microsoft-excel.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/microsoft-excel.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "Excel 2011, the green X",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "microsoft-excel/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft Messenger",
+      "display": "Microsoft Messenger",
+      "slug": "microsoft-messenger",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-messenger",
+      "wmclass": "",
+      "desktop": "microsoft-messenger.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/microsoft-messenger.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the two blue figures",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "microsoft-messenger/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft Outlook",
+      "display": "Microsoft Outlook",
+      "slug": "microsoft-outlook",
+      "categories": "Office;Email",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-outlook",
+      "wmclass": "",
+      "desktop": "microsoft-outlook.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/microsoft-outlook.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "Outlook 2011, the yellow O",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "microsoft-outlook/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft PowerPoint",
+      "display": "Microsoft PowerPoint",
+      "slug": "microsoft-powerpoint",
+      "categories": "Office;Presentation",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-powerpoint",
+      "wmclass": "",
+      "desktop": "microsoft-powerpoint.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/microsoft-powerpoint.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "PowerPoint 2011, the orange P",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "microsoft-powerpoint/icon-1024.png"
+      }
+    },
+    {
       "name": "Microsoft Teams",
       "display": "Microsoft Teams",
       "slug": "microsoft-teams",
@@ -2677,6 +3428,50 @@
       },
       "files": {
         "png": "microsoft-teams/icon-1024.png"
+      }
+    },
+    {
+      "name": "Microsoft Word",
+      "display": "Microsoft Word",
+      "slug": "microsoft-word",
+      "categories": "Office;WordProcessor",
+      "comment": "",
+      "exec": "",
+      "icon": "microsoft-word",
+      "wmclass": "",
+      "desktop": "microsoft-word.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/microsoft-word.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "Word 2011, the blue W",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "microsoft-word/icon-1024.png"
+      }
+    },
+    {
+      "name": "Migration Assistant",
+      "display": "Migration Assistant",
+      "slug": "migration-assistant",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "migration-assistant",
+      "wmclass": "",
+      "desktop": "migration-assistant.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/migration-assistant.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the two machines with the transfer arrow",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "migration-assistant/icon-1024.png"
       }
     },
     {
@@ -2851,6 +3646,28 @@
       },
       "files": {
         "png": "neovide/icon-1024.png"
+      }
+    },
+    {
+      "name": "Network Utility",
+      "display": "Network Utility",
+      "slug": "network-utility",
+      "categories": "Network;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "network-utility",
+      "wmclass": "",
+      "desktop": "network-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/network-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the RJ-45 plug",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "network-utility/icon-1024.png"
       }
     },
     {
@@ -3061,6 +3878,28 @@
       },
       "files": {
         "png": "package-updater/icon-1024.png"
+      }
+    },
+    {
+      "name": "Pages",
+      "display": "Pages",
+      "slug": "pages",
+      "categories": "Office;WordProcessor",
+      "comment": "",
+      "exec": "",
+      "icon": "pages",
+      "wmclass": "",
+      "desktop": "pages.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/pages.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the ink bottle and fountain pen",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "pages/icon-1024.png"
       }
     },
     {
@@ -3331,6 +4170,28 @@
       }
     },
     {
+      "name": "QuickTime Player",
+      "display": "QuickTime Player",
+      "slug": "quicktime-player",
+      "categories": "AudioVideo;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "quicktime-player",
+      "wmclass": "",
+      "desktop": "quicktime-player.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/quicktime-player.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the blue glass Q",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "quicktime-player/icon-1024.png"
+      }
+    },
+    {
       "name": "qutebrowser",
       "display": "qutebrowser",
       "slug": "qutebrowser",
@@ -3388,6 +4249,28 @@
       },
       "files": {
         "png": "remmina/icon-1024.png"
+      }
+    },
+    {
+      "name": "Remote Desktop Connection",
+      "display": "Remote Desktop Connection",
+      "slug": "remote-desktop-connection",
+      "categories": "Network;RemoteAccess",
+      "comment": "",
+      "exec": "",
+      "icon": "remote-desktop-connection",
+      "wmclass": "",
+      "desktop": "remote-desktop-connection.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/remote-desktop-connection.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the dish over the client window",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "remote-desktop-connection/icon-1024.png"
       }
     },
     {
@@ -3634,6 +4517,50 @@
       }
     },
     {
+      "name": "Safari",
+      "display": "Safari",
+      "slug": "safari",
+      "categories": "Network;WebBrowser",
+      "comment": "",
+      "exec": "",
+      "icon": "safari",
+      "wmclass": "",
+      "desktop": "safari.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/safari.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the compass, Safari 6",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "safari/icon-1024.png"
+      }
+    },
+    {
+      "name": "Screen Sharing",
+      "display": "Screen Sharing",
+      "slug": "screen-sharing",
+      "categories": "Network;RemoteAccess",
+      "comment": "",
+      "exec": "",
+      "icon": "screen-sharing",
+      "wmclass": "",
+      "desktop": "screen-sharing.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/screen-sharing.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the display with the broadcast mark",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "screen-sharing/icon-1024.png"
+      }
+    },
+    {
       "name": "Scribus",
       "display": "Scribus",
       "slug": "scribus",
@@ -3652,6 +4579,28 @@
       },
       "files": {
         "png": "scribus/icon-1024.png"
+      }
+    },
+    {
+      "name": "Script Editor",
+      "display": "Script Editor",
+      "slug": "script-editor",
+      "categories": "Development;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "script-editor",
+      "wmclass": "",
+      "desktop": "script-editor.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/script-editor.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the scroll and quill",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "script-editor/icon-1024.png"
       }
     },
     {
@@ -3974,6 +4923,50 @@
       }
     },
     {
+      "name": "System Image Utility",
+      "display": "System Image Utility",
+      "slug": "system-image-utility",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "system-image-utility",
+      "wmclass": "",
+      "desktop": "system-image-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/system-image-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the disc image on its stack",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "system-image-utility/icon-1024.png"
+      }
+    },
+    {
+      "name": "System Information",
+      "display": "System Information",
+      "slug": "system-information",
+      "categories": "System;Monitor",
+      "comment": "",
+      "exec": "",
+      "icon": "system-information",
+      "wmclass": "",
+      "desktop": "system-information.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/system-information.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the stethoscope over the board",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "system-information/icon-1024.png"
+      }
+    },
+    {
       "name": "System Monitor",
       "display": "System Monitor",
       "slug": "system-monitor",
@@ -3989,6 +4982,28 @@
       },
       "files": {
         "png": "system-monitor/icon-1024.png"
+      }
+    },
+    {
+      "name": "System Preferences",
+      "display": "System Preferences",
+      "slug": "system-preferences",
+      "categories": "System;Settings",
+      "comment": "",
+      "exec": "",
+      "icon": "system-preferences",
+      "wmclass": "",
+      "desktop": "system-preferences.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/system-preferences.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the brushed-steel gear panel",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "system-preferences/icon-1024.png"
       }
     },
     {
@@ -4064,6 +5079,28 @@
       },
       "files": {
         "png": "text-pieces/icon-1024.png"
+      }
+    },
+    {
+      "name": "TextEdit",
+      "display": "TextEdit",
+      "slug": "textedit",
+      "categories": "Office;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "textedit",
+      "wmclass": "",
+      "desktop": "textedit.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/textedit.png",
+        "era": "Mavericks (10.9)",
+        "credit": "the sheet with the fountain pen",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "textedit/icon-1024.png"
       }
     },
     {
@@ -4265,6 +5302,28 @@
       }
     },
     {
+      "name": "Twitter",
+      "display": "Twitter",
+      "slug": "twitter",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "twitter",
+      "wmclass": "",
+      "desktop": "twitter.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/twitter.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the 2011 bird on its blue tile",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "twitter/icon-1024.png"
+      }
+    },
+    {
       "name": "Unity Hub",
       "display": "Unity Hub",
       "slug": "unity-hub",
@@ -4442,6 +5501,28 @@
       },
       "files": {
         "png": "vmware-workstation/icon-1024.png"
+      }
+    },
+    {
+      "name": "VoiceOver Utility",
+      "display": "VoiceOver Utility",
+      "slug": "voiceover-utility",
+      "categories": "Utility;Accessibility",
+      "comment": "",
+      "exec": "",
+      "icon": "voiceover-utility",
+      "wmclass": "",
+      "desktop": "voiceover-utility.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/voiceover-utility.png",
+        "era": "Mountain Lion (10.8)",
+        "credit": "the speaking figure",
+        "licence": "apple"
+      },
+      "files": {
+        "png": "voiceover-utility/icon-1024.png"
       }
     },
     {

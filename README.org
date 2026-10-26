@@ -4,14 +4,14 @@
 #+email: jjbigorra@gmail.com
 #+language: en
 #+options: toc:2 num:nil
-#+html_head: <meta name="description" content="A skeuomorphic icon theme for Linux desktops: ~1 900 icon names across six freedesktop contexts, thirty themes, symbolic and accent variants." />
+#+html_head: <meta name="description" content="A skeuomorphic icon theme for Linux desktops: ~2 000 icon names across six freedesktop contexts, thirty themes, symbolic and accent variants." />
 
 [[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/source-Codeberg-2185d0.svg]]
 [[https://codeberg.org/jjba23/skeu-icons/src/branch/trunk/LICENSE][https://img.shields.io/badge/licence-CC--BY--SA--4.0-f5c542.svg]]
 [[https://codeberg.org/jjba23/skeu-icons/src/branch/trunk/gallery.html][https://img.shields.io/badge/gallery-every%20icon-8a6d3b.svg]]
 [[https://codeberg.org/jjba23/guix-jointhefreeworld][https://img.shields.io/badge/Guix-channel-6f4e9c.svg]]
 [[https://codeberg.org/jjba23/nix-jointhefreeworld][https://img.shields.io/badge/Nix-flake-5277c3.svg]]
-[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/icons-~1%20900-informational.svg]]
+[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/icons-~2%20000-informational.svg]]
 [[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/themes-~30-informational.svg]]
 
 A skeuomorphic icon theme for Linux desktops, plus the sources that produce it:
@@ -39,10 +39,11 @@ fourteen enamels.
 - *Objects, not masks.*  No icon mask, no uniform rounded-square grid, no flat
   redesign: each icon is built from material, light and a little story. The
   terminal is a CRT shell, the browser a steel desk globe, the mail client an
-  envelope with a wax seal — except for the four programs whose own era icon
-  *is* the object (Chrome, VLC, GIMP and Terminal), which keep the mark they
-  shipped with. See [[#what-it-looks-like][Applications]].
-- *Complete, not curated.*  ~1 900 icon names across all six freedesktop
+  envelope with a wax seal — except for the programs whose own era icon *is*
+  the object (Chrome, VLC, GIMP, Terminal, and the forty-seven-strong OS X era
+  ensemble), which keep the mark they shipped with. See
+  [[#what-it-looks-like][Applications]].
+- *Complete, not curated.*  ~2 000 icon names across all six freedesktop
   contexts, at nine sizes plus =@2x= and a =scalable/= layer. It is a drop-in
   replacement, not a set of showcase folders.
 - *Thirty themes from one install.*  Pick an enamel (red, orange, yellow, lime,
@@ -250,7 +251,7 @@ SVGs as plain artwork.
 
 ** Applications
 
-Twenty-four of the ~250 application icons: a chrome-rimmed paper stack for Files,
+Twenty-four of the ~300 application icons: a chrome-rimmed paper stack for Files,
 browsers and editors that keep their own marks, and the objects invented for the
 GTK/GNOME apps — a gramophone for Amberol, a cassette for Riff, a tuning fork
 for Fretboard, headphones for Euphonica, a screen with a keyboard for both VNC
@@ -258,13 +259,21 @@ clients, a cardboard box for Boxes, glass cubes for the virtual machine manager,
 a moored mine for Mines, a pencil pad for Sudoku, and the Mahjongg tiles and
 Reversi stones.
 
-Four applications do not get an invented object, because the icon they actually
+Some applications do not get an invented object, because the icon they actually
 shipped with in their own era is the object: Chrome keeps the glossy orb it wore
 until 2011, VLC its 2008 traffic cone, GIMP Wilber holding the paintbrush, and
-Terminal the graphite =>_= window of Leopard and Snow Leopard. They live in
-[[file:library/][=library/=]] as the upstream artwork — with their own credits and
-licences, recorded in [[file:library/README.org][=library/README.org=]] — and
+Terminal the graphite =>_= window of Leopard and Snow Leopard. Alongside them
+sits the OS X era ensemble — forty-seven icons from Leopard, Mountain Lion and
+Mavericks: Safari, iCal, iPhoto, iMovie, GarageBand, Pages, Keynote, Aperture,
+QuickTime, and the utilities (Disk Utility, Keychain Access, System
+Preferences, Activity Monitor, Migration Assistant, Grab, the AirPort and
+ColourSync tools), plus Office 2011 and a few third-party marks of the day.
+They live in [[file:library/][=library/=]] as the upstream artwork — with their own
+credits and licences, recorded in [[file:library/README.org][=library/README.org=]] — and
 =make_app_icons.py= renders them at every size instead of drawing.
+
+#+attr_html: :width 100% :alt the OS X era ensemble
+[[file:docs/era.png]]
 
 #+attr_html: :width 100% :alt app icons: files, browsers, editors, media, games, tools
 [[file:docs/apps.png]]
@@ -292,14 +301,14 @@ drives, phones, printers and network gear.
 
 | context      | icons | notes                                                   |
 |--------------+------:+---------------------------------------------------------|
-| =apps=       | ~950 | ~250 drawn icons, each linked under every name it is asked by |
+| =apps=       | ~1000 | ~300 drawn icons, each linked under every name it is asked by |
 | =places=     | ~170 | folders, drives, network shares, 14 colour variants     |
 | =mimetypes=  | ~700 | documents, media, archives, source code, ~400 extensions |
 | =emblems=    | ~20 | read-only, symbolic links, locked, shared …             |
 | =categories= | ~30 | menu and application-group icons                        |
 | =devices=    | ~90 | drives, phones, printers, USB, network hardware           |
 
-That is ~1 900 names, shipped at 16, 22, 24, 32, 48, 64, 128, 256 and 512 px with
+That is ~2 000 names, shipped at 16, 22, 24, 32, 48, 64, 128, 256 and 512 px with
 =@2x= twins, plus the =scalable/= SVGs — ~130 directories declared in
 =index.theme=. File-type icons cover ~400 extensions, each under both its MIME
 name and the =application-x-<ext>= fallback; =maak report= rescans =$HOME= and
@@ -365,11 +374,11 @@ badly.
 | =skeu-icons/=         | the theme: 16…512 px + =@2x= + =scalable/=, =index.theme=     |
 | =gallery.html=        | single-file preview: every icon, every size, size switcher    |
 | =theme-manifest.json= | audit trail: shipped names, contexts, sizes, palette          |
-| =app-icons/=          | ~250 GUI app icons — installed here plus the roster (PNG 16→1024) |
+| =app-icons/=          | ~300 GUI app icons — installed here plus the roster (PNG 16→1024) |
 | =project-icons/=      | ~50 icons for project folders (same sizes)                     |
 | =generated/=          | 1024 px masters for categories and devices                    |
 | =svg/=                | hand-drawn vector sources (1024×1024, real paths)             |
-| =library/=            | era artwork for four apps, with its own credits and licences   |
+| =library/=            | era artwork for 51 apps, with its own credits and licences    |
 | =docs/=               | the sheets and the demo this README shows                     |
 | =tools/=              | the programmes that draw the artwork                          |
 | =maak.scm=            | the tasks that redraw and re-derive everything                |
@@ -495,10 +504,12 @@ so the README cannot show an icon the pack no longer ships.
   browser a steel desk globe, a mail client an envelope with a wax seal.
   Related apps only share an object when the job is the same — 14 editors share
   a key-cap family, but the seven music players do not share one sleeve.
-- One documented exception: four apps keep the artwork they shipped with in
-  their own era (Chrome's orb, VLC's cone, Wilber, the Leopard Terminal). That
-  art is third-party in =library/=, credited and licensed per file, and it is
-  the only artwork here that this pack did not draw.
+- One documented exception: 51 apps keep the artwork they shipped with in
+  their own era — the four marks (Chrome's orb, VLC's cone, Wilber, the
+  Leopard Terminal) and the OS X era ensemble from Leopard through Mavericks.
+  That art is third-party in =library/=, credited per file and, for the Apple
+  marks, owned by Apple; it is the only artwork here that this pack did not
+  draw.
 
 The per-app object table, the category rules and the notes on how a family stays
 recognisable are in [[file:app-icons/README.md][app-icons/README.md]].
@@ -561,11 +572,14 @@ describe which icon is which; a handful of icons in =svg/= reproduce marks that
 stay under their own licences, and [[file:app-icons/README.md][app-icons/README.md]]
 records that the generated artwork is the pack's own.
 
-The four era icons in [[file:library/][=library/=]] are *not* CC BY-SA 4.0: each one
-keeps the licence it was published under (public domain for Chrome, GPL for the
-VLC cone, Wilber and the Mac4Lin terminal), and
-[[file:library/README.org][=library/README.org=]] lists author, source and
-licence per file. Everything outside that directory is this pack's own work.
+Nothing in [[file:library/][=library/=]] is CC BY-SA 4.0, because none of it is this pack's
+to license. The four marks keep the licence they were published under (public
+domain for Chrome, GPL for the VLC cone, Wilber and the Mac4Lin terminal), and
+the OS X era ensemble is the vendors' own artwork — Safari's compass is
+Apple's, Word's W is Microsoft's — shipped as a reference set for a theme that
+dresses a desktop as that era. [[file:library/README.org][=library/README.org=]]
+lists author, source and mark owner per file, and says how to drop the whole
+set if you need to. Everything outside that directory is this pack's own work.
 
 * Thanks
 

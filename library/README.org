@@ -1,27 +1,32 @@
 #+title: Historical artwork
-#+subtitle: the era icons four applications are better off with
+#+subtitle: the era icons this pack does not draw
 #+author: Josep Bigorra
 
 Almost every icon in this pack is drawn from primitives, because a folder is a
-folder and a film reel is a film reel.  Four applications are the exception.
+folder and a film reel is a film reel.  Some applications are the exception.
 Their old icons *are* the object: Chrome's glass orb, VLC's traffic cone,
-Wilber holding a brush, the graphite Terminal window of OS X.  A drawing of
-those would be a drawing of a logo, so the pack ships the era artwork itself and
-re-colours nothing.
+Wilber holding a brush, the graphite Terminal window of OS X, Safari's compass
+or iCal's tear-off calendar.  A drawing of those would be a drawing of a logo,
+so the pack ships the era artwork itself and re-colours nothing.
 
-=make_app_icons.py= renders each file below at every size instead of calling a
-drawing function; the table in =HISTORY= in that script is the only place they
-are wired up.  Nothing here is traced, filtered or restyled: the files are the
-upstream artwork, at the size upstream published them.
+=make_app_icons.py= renders each file here at every size instead of calling a
+drawing function; nothing is traced, filtered or restyled.  Two kinds of file
+live here:
 
-* What is here
+- the four *marks* below, freely licensed and fetched from Wikimedia Commons or
+  a GPL icon set;
+- the *OS X era ensemble* in =apps/= — the icons Leopard, Mountain Lion and
+  Mavericks actually shipped, Apple's own included, catalogued in
+  =artwork.json=.
 
-| file               | application  | era                                        | licence            |
-|--------------------+--------------+--------------------------------------------+--------------------|
-| =google-chrome.svg= | Google Chrome | March 2011, the last glossy orb (Chrome 10) | public domain (1) |
-| =vlc.svg=          | VLC          | 2008 cone, the icon VideoLAN shipped from 2005 on | GPL (2)     |
-| =gimp.svg=         | GIMP         | Wilber with the paintbrush, the GNOME-era logo | GPL (3)         |
-| =terminal.png=     | Terminal     | Leopard / Snow Leopard graphite =>_= window | GPL (4)           |
+* The four marks
+
+| file                | application  | era                                           | licence            |
+|---------------------+--------------+-----------------------------------------------+--------------------|
+| =google-chrome.svg= | Google Chrome | March 2011, the last glossy orb (Chrome 10)  | public domain (1)  |
+| =vlc.svg=           | VLC          | 2008 cone, the icon VideoLAN shipped from 2005 on | GPL (2)       |
+| =gimp.svg=          | GIMP         | Wilber with the paintbrush, the GNOME-era logo | GPL (3)           |
+| =terminal.png=      | Terminal     | Leopard / Snow Leopard graphite =>_= window  | GPL (4)            |
 
 1. =Google_Chrome_icon_(March_2011).svg=, Wikimedia Commons, 512 × 512.  The
    file is simple geometric shapes and wordless, so Commons hosts it as
@@ -33,24 +38,101 @@ upstream artwork, at the size upstream published them.
    GNU General Public Licence, distributed with the GIMP package.
 4. =Terminal.png= from the Mac4Lin 1.0 icon set (2008), 128 × 128, GNU General
    Public Licence — a free recreation of Apple's Leopard Terminal icon rather
-   than Apple's own file, so the pack stays redistributable.  It is the only
-   source under 256 px, which is why the Terminal is the one icon here that is
-   upsampled above 128 px.
+   than Apple's own file, so the pack stays redistributable.  It is one of the
+   two sources under 256 px, which is why the Terminal is upsampled above
+   128 px.
 
-Apple's Finder face and Xcode hammer in the theme are original drawings, not
-library files; so are the other eight hundred applications.
+* The OS X era ensemble
+
+Forty-seven applications people remember from Leopard through Mavericks —
+Safari, iCal, Address Book, iPhoto, iMovie and GarageBand; Pages, Keynote and
+Aperture; QuickTime and DVD Player; the utilities (Disk Utility, Keychain
+Access, System Preferences, Activity Monitor, Migration Assistant, Grab, the
+AirPort, ColourSync, DigitalColor and VoiceOver tools); Office 2011 and
+Microsoft Messenger; and a few third-party icons of the day.  Their artwork is
+the file Apple (or the vendor) published, resampled, never redrawn.
+
+The catalogue is =artwork.json=: one record per icon with the era it belongs to,
+which pack it came from, the size it was published at, and who owns it.
+=make_app_icons.py= reads it into =HISTORY=, so adding an icon means dropping a
+PNG in =apps/= and a record in the JSON, never touching the drawing code.
+
+| file                          | application            | era           | native | mark owner  |
+|-------------------------------+------------------------+---------------+--------+-------------|
+| =adium.png=                   | Adium                  | Leopard       | 128 px | Adium (GPL) |
+| =activity-monitor.png=        | Activity Monitor       | Mountain Lion | 256 px | Apple Inc.  |
+| =airport-utility.png=         | AirPort Utility        | Mountain Lion | 256 px | Apple Inc.  |
+| =aperture.png=                | Aperture               | Mountain Lion | 256 px | Apple Inc.  |
+| =audio-midi-setup.png=        | Audio MIDI Setup       | Mountain Lion | 256 px | Apple Inc.  |
+| =bluetooth-file-exchange.png= | Bluetooth File Exchange| Mountain Lion | 256 px | Apple Inc.  |
+| =boot-camp-assistant.png=     | Boot Camp Assistant    | Mountain Lion | 256 px | Apple Inc.  |
+| =colorsync-utility.png=       | ColorSync Utility      | Mountain Lion | 256 px | Apple Inc.  |
+| =digitalcolor-meter.png=      | DigitalColor Meter     | Mountain Lion | 256 px | Apple Inc.  |
+| =directory-utility.png=       | Directory Utility      | Mountain Lion | 256 px | Apple Inc.  |
+| =disk-utility.png=            | Disk Utility           | Mountain Lion | 256 px | Apple Inc.  |
+| =facebook.png=                | Facebook               | Mountain Lion | 256 px | Meta        |
+| =game-center.png=             | Game Center            | Mountain Lion | 256 px | Apple Inc.  |
+| =garageband.png=              | GarageBand             | Mountain Lion | 256 px | Apple Inc.  |
+| =grab.png=                    | Grab                   | Mountain Lion | 256 px | Apple Inc.  |
+| =grapher.png=                 | Grapher                | Mountain Lion | 256 px | Apple Inc.  |
+| =ibooks-author.png=           | iBooks Author          | Mountain Lion | 256 px | Apple Inc.  |
+| =imovie.png=                  | iMovie                 | Mountain Lion | 256 px | Apple Inc.  |
+| =iphoto.png=                  | iPhoto                 | Mountain Lion | 256 px | Apple Inc.  |
+| =keychain-access.png=         | Keychain Access        | Mountain Lion | 256 px | Apple Inc.  |
+| =keynote.png=                 | Keynote                | Mountain Lion | 256 px | Apple Inc.  |
+| =microsoft-excel.png=         | Microsoft Excel        | Mountain Lion | 256 px | Microsoft   |
+| =microsoft-messenger.png=     | Microsoft Messenger    | Mountain Lion | 256 px | Microsoft   |
+| =microsoft-outlook.png=       | Microsoft Outlook      | Mountain Lion | 256 px | Microsoft   |
+| =microsoft-powerpoint.png=    | Microsoft PowerPoint   | Mountain Lion | 256 px | Microsoft   |
+| =microsoft-word.png=          | Microsoft Word         | Mountain Lion | 256 px | Microsoft   |
+| =migration-assistant.png=     | Migration Assistant    | Mountain Lion | 256 px | Apple Inc.  |
+| =network-utility.png=         | Network Utility        | Mountain Lion | 256 px | Apple Inc.  |
+| =pages.png=                   | Pages                  | Mountain Lion | 256 px | Apple Inc.  |
+| =remote-desktop-connection.png= | Remote Desktop Connection | Mountain Lion | 256 px | Microsoft |
+| =safari.png=                  | Safari                 | Mountain Lion | 256 px | Apple Inc.  |
+| =screen-sharing.png=          | Screen Sharing         | Mountain Lion | 256 px | Apple Inc.  |
+| =script-editor.png=           | Script Editor          | Mountain Lion | 256 px | Apple Inc.  |
+| =system-image-utility.png=    | System Image Utility   | Mountain Lion | 256 px | Apple Inc.  |
+| =system-information.png=      | System Information     | Mountain Lion | 256 px | Apple Inc.  |
+| =twitter.png=                 | Twitter                | Mountain Lion | 256 px | X (Twitter) |
+| =voiceover-utility.png=       | VoiceOver Utility      | Mountain Lion | 256 px | Apple Inc.  |
+| =address-book.png=            | Address Book           | Mavericks     | 512 px | Apple Inc.  |
+| =betterzip.png=               | BetterZip              | Mavericks     | 512 px | MacItBetter |
+| =cleanmymac.png=              | CleanMyMac             | Mavericks     | 512 px | MacPaw      |
+| =dvd-player.png=              | DVD Player             | Mavericks     | 512 px | Apple Inc.  |
+| =facetime.png=                | FaceTime               | Mavericks     | 512 px | Apple Inc.  |
+| =font-book.png=               | Font Book              | Mavericks     | 512 px | Apple Inc.  |
+| =ical.png=                    | iCal                   | Mavericks     | 512 px | Apple Inc.  |
+| =quicktime-player.png=        | QuickTime Player       | Mavericks     | 512 px | Apple Inc.  |
+| =system-preferences.png=      | System Preferences     | Mavericks     | 512 px | Apple Inc.  |
+| =textedit.png=                | TextEdit               | Mavericks     | 512 px | Apple Inc.  |
+
+Three of the sources are smaller than the sizes the pack ships: the Adium duck
+is 128 px, and everything from the Mountain Lion set is 256 px, so those icons
+are upsampled to 512 and 1024.  They are marked here rather than hidden: the
+artwork is the artwork.
 
 * Licence of this directory
 
-The four files keep the licences in the table above; they are *not* CC BY-SA
-4.0 like the rest of the pack.  Each one is credited to its author and source,
-and the pack's own artwork in =skeu-icons/=, =app-icons/= and =svg/= is
-unaffected.  If you redistribute the pack, the licences travel with these four
-files.
+Nothing in =library/= is CC BY-SA 4.0 like the rest of the pack, and it cannot
+be: the marks belong to their owners.  The four files at the top keep the
+licences in their table (public domain for Chrome, GPL for the VLC cone,
+Wilber and the Mac4Lin terminal).  The era ensemble in =apps/= is *not*
+free artwork — Safari's compass is Apple's, Word's W is Microsoft's, BetterZip's
+box is MacItBetter's — and is included as a reference set for a theme that
+dresses a desktop as that era, the way a wallpaper pack ships a photograph it
+did not take.  Redistributing the pack redistributes those marks; if that is a
+problem for your use, delete =library/apps/= and remove the =apps= records from
+=artwork.json=, and every one of those applications falls back to the pack's own
+drawing.
+
+The pack's own artwork in =skeu-icons/=, =app-icons/=, =generated/= and =svg/=
+is unaffected.
 
 * Why not draw them
 
-A drawn VLC cone is a cone; a drawn Wilber is a blob with eyes.  The point of
+A drawn VLC cone is a cone; a drawn Wilber is a blob with eyes; a drawn Safari
+compass is the pack's own browser globe, which it already has.  The point of
 this directory is that the icon people remember from the era is the icon they
 get.  Every other application in the pack is still a painted object — see
 =Artwork policy= in the top-level README.

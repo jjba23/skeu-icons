@@ -1,8 +1,9 @@
 # Application icons
 
-One skeuomorphic icon per GUI application — 251 of them: the 164 installed on the machine that built
+One skeuomorphic icon per GUI application — ~300 of them: the ~160 installed on the machine that built
 this set, discovered from the freedesktop desktop entries, plus a roster of programs that a desktop is
-likely to have whether or not that machine does (Chromium, VS Code, Obsidian, Lutris, GParted, …).
+likely to have whether or not that machine does (Chromium, VS Code, Obsidian, Lutris, GParted, …), plus
+the OS X era ensemble of Leopard-through-Mavericks apps.
 
 ```
 app-icons/
@@ -67,11 +68,15 @@ with a tight contact shadow and a cast shadow that fades before the canvas edge.
    tenth of the icon, so the set stays bright and mostly colourless next to the neutral body it sits on.
 5. **Detail where it belongs** — knurling, screws, seams, wire binding, stitching, printed rules: at
    least 3 px wide at 1024 px so it survives the 32 px render.
-6. **Era artwork where the mark is the object.**  Four apps are not drawn at all: `Google Chrome`
-   keeps its 2011 orb, `VLC media player` its 2008 cone, `GIMP` Wilber with the brush, and
-   `Console` (the shared terminal icon) the graphite `>_` window of Leopard. `make_app_icons.py`
-   renders them from `library/` at every size; `library/README.org` records each file's author,
-   source and licence, and they are the only icons here this pack did not draw.
+6. **Era artwork where the mark is the object.**  Fifty-one apps are not drawn at all: `Google
+   Chrome` keeps its 2011 orb, `VLC media player` its 2008 cone, `GIMP` Wilber with the brush,
+   `Console` (the shared terminal icon) the graphite `>_` window of Leopard, and forty-seven others
+   carry the icon they shipped with in Leopard, Mountain Lion or Mavericks — Safari's compass,
+   iCal's calendar, iPhoto, iMovie, GarageBand, Pages, Keynote, Aperture, QuickTime, the system
+   utilities, Office 2011, and a few third-party marks. `make_app_icons.py` renders them from
+   `library/` at every size, reading the era and credit from `library/artwork.json`;
+   `library/README.org` lists each file's owner and licence, and they are the only icons here this
+   pack did not draw.
 
 The mapping lives in `tools/skeu/apps.py` (`APP_ICONS`), one line per app:
 
@@ -97,4 +102,9 @@ disc. `design()` in that module is the whole policy.
 * At 16 px an icon reduces to its silhouette plus one internal shape; anything finer is detail that
   only appears from 32 px up.
 * Icons are generated artwork in the pack's skeuomorphic style; app names and marks belong to their
-  owners, and the artwork itself is released under CC BY-SA 4.0 (see [`LICENSE`](../LICENSE)).
+  owners, and the artwork itself is released under CC BY-SA 4.0 (see [`LICENSE`](../LICENSE)) —
+  except the era files in [`library/`](../library/README.org), which stay with their owners and are
+  not covered by that licence.
+* The era ensemble is built whether or not the app is installed: it is in `ROSTER` in
+  `tools/skeu/apps.py` with the bundle identifiers a launcher, a `.app` bundle or a Wine prefix asks
+  for (`com.apple.Safari`, `com.microsoft.Word`, `com.adiumX.adiumX`).

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Compose the images the README shows.
 
-The pack ships thousands of icons; the README needs five contact sheets that
+The pack ships thousands of icons; the README needs six contact sheets that
 load quickly on Codeberg, so this script renders them from the *built* artwork
 rather than from a design tool:
 
@@ -15,6 +15,7 @@ already produced.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -124,6 +125,20 @@ def apps_sheet() -> None:
     sheet.save(OUT / "apps.png", optimize=True)
 
 
+def era_sheet() -> None:
+    """The OS X era ensemble: the icons Leopard through Mavericks shipped."""
+    records = json.loads((ROOT / "library" / "artwork.json").read_text())
+    entries = [(r["name"], ROOT / "app-icons" / r["slug"] / "icon-256.png") for r in records]
+    entries = [(label, path) for label, path in entries if path.exists()]
+    cols = 8
+    cell, icon = 190, 148
+    rows = (len(entries) + cols - 1) // cols
+    sheet = background(cols * cell + 40, rows * cell + 60)
+    draw = ImageDraw.Draw(sheet)
+    grid(sheet, draw, entries, x0=20, y0=26, cell=cell, cols=cols, icon=icon)
+    sheet.save(OUT / "era.png", optimize=True)
+
+
 def projects_sheet() -> None:
     names = [
         "skeu-icons", "maak", "maak-el",
@@ -201,7 +216,7 @@ def hero_sheet() -> None:
 
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
-    for build in (hero_sheet, apps_sheet, projects_sheet, contexts_sheet):
+    for build in (hero_sheet, apps_sheet, era_sheet, projects_sheet, contexts_sheet):
         build()
         print(f"  {build.__name__.replace('_sheet', '')}: ok", file=sys.stderr)
     total = sum(p.stat().st_size for p in OUT.glob("*.png"))

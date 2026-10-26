@@ -144,11 +144,31 @@ REUSE = {
 #: actually shipped in its own era.  The files are used as they are - an SVG is
 #: re-rendered at every size, a bitmap resampled - so each one keeps its own
 #: licence and credit; see ``library/README.org``.
-HISTORY: dict[str, Path] = {
-    "Google Chrome": LIBRARY / "google-chrome.svg",   # the March 2011 glossy orb
-    "VLC media player": LIBRARY / "vlc.svg",          # the 2008 traffic cone
-    "GIMP": LIBRARY / "gimp.svg",                     # Wilber with the brush
-    "Console": LIBRARY / "terminal.png",              # the OS X graphite window
+#:
+#: The four marks above are single files; the OS X era ensemble is the
+#: ``library/artwork.json`` catalogue, which also carries the era, credit and
+#: licence of every bitmap in ``library/apps``.
+def _history() -> dict[str, Path]:
+    table = {
+        "Google Chrome": LIBRARY / "google-chrome.svg",   # the March 2011 glossy orb
+        "VLC media player": LIBRARY / "vlc.svg",          # the 2008 traffic cone
+        "GIMP": LIBRARY / "gimp.svg",                     # Wilber with the brush
+        "Console": LIBRARY / "terminal.png",              # the OS X graphite window
+    }
+    catalogue = LIBRARY / "artwork.json"
+    if catalogue.is_file():
+        for record in json.loads(catalogue.read_text()):
+            table[record["name"]] = LIBRARY / record["file"]
+    return table
+
+
+HISTORY: dict[str, Path] = _history()
+
+#: The catalogue record for each historical bitmap, for the index entry.
+HISTORY_INFO: dict[str, dict] = {
+    record["name"]: record
+    for record in (json.loads((LIBRARY / "artwork.json").read_text())
+                   if (LIBRARY / "artwork.json").is_file() else [])
 }
 
 
@@ -218,12 +238,18 @@ def contact_sheet(entries: list[dict], columns: int = 10) -> None:
     sheet.save(OUT / "contact-sheet.png")
 
 
-def design_record(kind: str, builder, kwargs: dict) -> dict:
+def design_record(kind: str, builder, kwargs: dict, name: str = "") -> dict:
     if kind == "hand-authored":
         return {"kind": "hand-authored", "source": builder}
     if kind == "historical":
-        return {"kind": "historical",
-                "source": str(Path(builder).relative_to(LIBRARY))}
+        record = {"kind": "historical",
+                  "source": str(Path(builder).relative_to(LIBRARY))}
+        info = HISTORY_INFO.get(name)
+        if info:
+            record["era"] = info["era"]
+            record["credit"] = info["credit"]
+            record["licence"] = info["licence"]
+        return record
     return {
         "kind": "object",
         "object": getattr(builder, "__name__", "object"),
@@ -293,7 +319,7 @@ def main(argv: list[str] | None = None) -> int:
             "wmclass": app["wmclass"],
             "desktop": app["desktop"],
             "desktops": app["desktops"],
-            "design": design_record(kind, builder, kwargs),
+            "design": design_record(kind, builder, kwargs, app["name"]),
             "files": {"png": f"{slug}/icon-1024.png"},
         })
 
