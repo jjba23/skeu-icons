@@ -16,11 +16,16 @@ stale gallery does.  If a sentence the script knows about has been reworded it
 says which one instead of silently skipping it, and it writes nothing at all
 until every count it quotes has a home.
 
-Two counts stay hand-written because the theme cannot prove them: the 377 file
+Every number it writes is an approximation (``~1 900``, ``~500``): the theme
+gains names between releases, so a sentence that quotes an exact count is wrong
+the moment the next icon lands.  ``approximate()`` is the one place that decides
+how coarse that is.
+
+Two counts stay hand-written because the theme cannot prove them: the file
 extensions (the ``application-x-<ext>`` fallbacks are many more than there are
-extensions) and the 164 icons drawn for the applications installed on this
-machine (``app-icons/index.json`` is a snapshot of that machine's launcher
-entries, not a property of the pack).
+extensions) and the icons drawn for the applications installed on this machine
+(``app-icons/index.json`` is a snapshot of that machine's launcher entries, not a
+property of the pack).
 """
 
 from __future__ import annotations
@@ -92,9 +97,27 @@ def counts() -> dict:
     }
 
 
+def approximate(number: int) -> int:
+    """The nearest count worth printing.
+
+    The README quotes approximations on purpose: the tree gains names every
+    week, and a sentence that says "1 914" is wrong the moment the next icon
+    lands, while "~1 900" stays true for a release.  Coarser as the numbers get
+    bigger - tens below 200, fifties below a thousand, hundreds above - so the
+    per-context rows stay useful and the totals read like round numbers.
+    """
+    if number < 200:
+        step = 10
+    elif number < 1000:
+        step = 50
+    else:
+        step = 100
+    return int(round(number / step)) * step
+
+
 def grouped(number: int) -> str:
-    """``1914`` as the README writes it: ``1 914``."""
-    return f"{number:,}".replace(",", " ")
+    """``1914`` as the README writes it: ``~1 900``."""
+    return "~" + f"{approximate(number):,}".replace(",", " ")
 
 
 def badged(number: int) -> str:
@@ -104,19 +127,19 @@ def badged(number: int) -> str:
 
 def cell(match: re.Match[str], number: int) -> str:
     """Right-align a count in the table cell the match already lines up."""
-    prefix, digits = match.group(1), match.group(2)
-    width = len(prefix) - len(prefix.rstrip(" ")) + len(digits)
-    return prefix.rstrip(" ") + str(number).rjust(width) + match.group(3)
+    prefix = match.group(1)
+    return prefix.rstrip(" ") + f" ~{approximate(number)}" + match.group(3)
 
 
 def plain_number(match: re.Match[str], number: int) -> str:
     """Replace the number in a run of prose, keeping the sentence around it."""
-    return f"{match.group(1)}{number}{match.group(3)}"
+    return f"{match.group(1)}~{approximate(number)}{match.group(3)}"
 
 
 def two_numbers(match: re.Match[str], first: int, second: int) -> str:
     """A sentence that names two counts (the ``maak`` task comment)."""
-    return f"{match.group(1)}{first}{match.group(3)}{second}{match.group(5)}"
+    return (f"{match.group(1)}~{approximate(first)}{match.group(3)}"
+            f"~{approximate(second)}{match.group(5)}")
 
 
 def slots(values: dict) -> list[tuple[str, str, callable]]:
@@ -131,83 +154,83 @@ def slots(values: dict) -> list[tuple[str, str, callable]]:
     found: list[tuple[str, str, callable]] = [
         # the one-line description, the badge, the intro bullet and the total
         ("meta description",
-         r"(A skeuomorphic icon theme for Linux desktops: )([\d ]+)( icon names across six freedesktop contexts)",
+         r"(A skeuomorphic icon theme for Linux desktops: )(~?[\d ]+)( icon names across six freedesktop contexts)",
          lambda m: f"{m.group(1)}{grouped(names)}{m.group(3)}"),
         ("icons badge",
-         r"(img\.shields\.io/badge/icons-)([\d%]+)(-informational\.svg)",
+         r"(img\.shields\.io/badge/icons-)(~?[\d%]+)(-informational\.svg)",
          lambda m: f"{m.group(1)}{badged(names)}{m.group(3)}"),
         ("intro bullet",
-         r"(\*Complete, not curated\.\*\s+)([\d ]+)( icon names across all six freedesktop)",
+         r"(\*Complete, not curated\.\*\s+)(~?[\d ]+)( icon names across all six freedesktop)",
          lambda m: f"{m.group(1)}{grouped(names)}{m.group(3)}"),
         ("totals sentence",
-         r"(That is )([\d ]+)( names, shipped at )",
+         r"(That is )(~?[\d ]+)( names, shipped at )",
          lambda m: f"{m.group(1)}{grouped(names)}{m.group(3)}"),
         ("themes badge",
-         r"(img\.shields\.io/badge/themes-)(\d+)(-informational\.svg)",
+         r"(img\.shields\.io/badge/themes-)(~?\d+)(-informational\.svg)",
          lambda m: plain_number(m, themes)),
         # the six contexts and the total they add up to
         ("directories declared",
-         r"(=scalable/= SVGs — )(\d+)( directories declared in)",
+         r"(=scalable/= SVGs — )(~?\d+)( directories declared in)",
          lambda m: plain_number(m, values["directories"])),
         # the drawn application and project icons
         ("app icons drawn",
-         r"(\| )(\d+)( drawn icons, each linked under every name it is asked by)",
+         r"(\| )(~?\d+)( drawn icons, each linked under every name it is asked by)",
          lambda m: plain_number(m, apps)),
         ("app icons size",
-         r"(Twenty-four of the )(\d+)( application icons)",
+         r"(Twenty-four of the )(~?\d+)( application icons)",
          lambda m: plain_number(m, apps)),
         ("app-icons row",
-         r"(\| =app-icons/=\s+\|\s+)(\d+)( GUI app icons)",
+         r"(\| =app-icons/=\s+\|\s*)(~?\d+)( GUI app icons)",
          lambda m: cell(m, apps)),
         ("project icons size",
-         r"(A selection of the )(\d+)( project icons)",
+         r"(A selection of the )(~?\d+)( project icons)",
          lambda m: plain_number(m, projects)),
         ("project-icons row",
-         r"(\| =project-icons/=\s+\|\s+)(\d+)( icons for project folders)",
+         r"(\| =project-icons/=\s+\|\s*)(~?\d+)( icons for project folders)",
          lambda m: cell(m, projects)),
         ("project icons installed",
-         r"(and )(\d+)( for personal)",
+         r"(and )(~?\d+)( for personal)",
          lambda m: plain_number(m, projects)),
         # the symbolic layer: its total, its per-context rows, and the plain
         # scalable layer drawn beside it
         ("symbolic bullet",
-         r"(A )(\d+)(-name symbolic layer)",
+         r"(A )(~?\d+)(-name symbolic layer)",
          lambda m: plain_number(m, symbolic)),
         ("symbolic copies",
-         r"(of fourteen copies of )(\d+)( files)",
+         r"(of fourteen copies of )(~?\d+)( files)",
          lambda m: plain_number(m, symbolic)),
         ("symbolic table",
-         r"(\| =symbolic/<context>=\s+\|\s+)(\d+)(\s+\|)",
+         r"(\| =symbolic/<context>=\s+\|\s*)(~?\d+)(\s+\|)",
          lambda m: cell(m, symbolic)),
         ("symbolic task",
-         r"(redraw the )(\d+)( symbolic icons \+ )(\d+)( plain scalable ones)",
+         r"(redraw the )(~?\d+)( symbolic icons \+ )(~?\d+)( plain scalable ones)",
          lambda m: two_numbers(m, symbolic, plain)),
         ("symbolic script",
-         r"(the symbolic layer \()(\d+)( names\))",
+         r"(the symbolic layer \()(~?\d+)( names\))",
          lambda m: plain_number(m, symbolic)),
         ("plain scalable bullet",
-         r"(plus )(\d+)( plain scalable icons)",
+         r"(plus )(~?\d+)( plain scalable icons)",
          lambda m: plain_number(m, plain)),
         ("plain scalable script",
-         r"(the un-suffixed scalable icons \()(\d+)(\))",
+         r"(the un-suffixed scalable icons \()(~?\d+)(\))",
          lambda m: plain_number(m, plain)),
         ("plain actions row",
-         r"(\| =scalable/actions=\s+\|\s+)(\d+)(\s+\|)",
+         r"(\| =scalable/actions=\s+\|\s*)(~?\d+)(\s+\|)",
          lambda m: cell(m, values["plain"]["actions"])),
         ("plain status row",
-         r"(\| =scalable/status=\s+\|\s+)(\d+)(\s+\|)",
+         r"(\| =scalable/status=\s+\|\s*)(~?\d+)(\s+\|)",
          lambda m: cell(m, values["plain"]["status"])),
         ("plain emotes row",
-         r"(\| =scalable/emotes=\s+\|\s+)(\d+)(\s+\|)",
+         r"(\| =scalable/emotes=\s+\|\s*)(~?\d+)(\s+\|)",
          lambda m: cell(m, values["plain"]["emotes"])),
         ("plain ui/legacy row",
-         r"(\| =scalable/ui=, =legacy=\s+\|\s+)(\d+)(\s+\|)",
+         r"(\| =scalable/ui=, =legacy=\s+\|\s*)(~?\d+)(\s+\|)",
          lambda m: cell(m, values["plain"]["ui"] + values["plain"]["legacy"])),
     ]
     for context in CONTEXTS:
         found.append((
             f"{context} row",
-            rf"(\| ={context}=\s+\|\s+)(\d+)(\s+\|)",
+            rf"(\| ={context}=\s+\|\s*)(~?\d+)(\s+\|)",
             lambda m, context=context: cell(m, values["contexts"][context]),
         ))
     return found

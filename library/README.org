@@ -1,0 +1,56 @@
+#+title: Historical artwork
+#+subtitle: the era icons four applications are better off with
+#+author: Josep Bigorra
+
+Almost every icon in this pack is drawn from primitives, because a folder is a
+folder and a film reel is a film reel.  Four applications are the exception.
+Their old icons *are* the object: Chrome's glass orb, VLC's traffic cone,
+Wilber holding a brush, the graphite Terminal window of OS X.  A drawing of
+those would be a drawing of a logo, so the pack ships the era artwork itself and
+re-colours nothing.
+
+=make_app_icons.py= renders each file below at every size instead of calling a
+drawing function; the table in =HISTORY= in that script is the only place they
+are wired up.  Nothing here is traced, filtered or restyled: the files are the
+upstream artwork, at the size upstream published them.
+
+* What is here
+
+| file               | application  | era                                        | licence            |
+|--------------------+--------------+--------------------------------------------+--------------------|
+| =google-chrome.svg= | Google Chrome | March 2011, the last glossy orb (Chrome 10) | public domain (1) |
+| =vlc.svg=          | VLC          | 2008 cone, the icon VideoLAN shipped from 2005 on | GPL (2)     |
+| =gimp.svg=         | GIMP         | Wilber with the paintbrush, the GNOME-era logo | GPL (3)         |
+| =terminal.png=     | Terminal     | Leopard / Snow Leopard graphite =>_= window | GPL (4)           |
+
+1. =Google_Chrome_icon_(March_2011).svg=, Wikimedia Commons, 512 × 512.  The
+   file is simple geometric shapes and wordless, so Commons hosts it as
+   ineligible for copyright; Chrome, the Chrome name and the mark are Google's
+   trademarks, used here the way an icon theme uses any application's mark.
+2. =VLC.svg=, Wikimedia Commons, 48 × 48 (vector), illustration by Richard C. G.
+   Øiestad for VideoLAN, GNU General Public Licence.
+3. =The_GIMP_icon_-_gnome.svg=, Wikimedia Commons, 316 × 316, Tuomas Kuosmanen,
+   GNU General Public Licence, distributed with the GIMP package.
+4. =Terminal.png= from the Mac4Lin 1.0 icon set (2008), 128 × 128, GNU General
+   Public Licence — a free recreation of Apple's Leopard Terminal icon rather
+   than Apple's own file, so the pack stays redistributable.  It is the only
+   source under 256 px, which is why the Terminal is the one icon here that is
+   upsampled above 128 px.
+
+Apple's Finder face and Xcode hammer in the theme are original drawings, not
+library files; so are the other eight hundred applications.
+
+* Licence of this directory
+
+The four files keep the licences in the table above; they are *not* CC BY-SA
+4.0 like the rest of the pack.  Each one is credited to its author and source,
+and the pack's own artwork in =skeu-icons/=, =app-icons/= and =svg/= is
+unaffected.  If you redistribute the pack, the licences travel with these four
+files.
+
+* Why not draw them
+
+A drawn VLC cone is a cone; a drawn Wilber is a blob with eyes.  The point of
+this directory is that the icon people remember from the era is the icon they
+get.  Every other application in the pack is still a painted object — see
+=Artwork policy= in the top-level README.

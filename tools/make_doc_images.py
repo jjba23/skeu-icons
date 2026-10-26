@@ -100,9 +100,9 @@ def grid(sheet: Image.Image, draw: ImageDraw.ImageDraw, entries, *, x0: int, y0:
 
 def apps_sheet() -> None:
     names = [
-        ("Files", "files"), ("Firefox", "firefox"), ("kitty", "kitty"),
-        ("Emacs", "emacs"), ("GIMP", "gimp"), ("Inkscape", "inkscape"),
-        ("Telegram", "telegram"), ("Spotify", "spotify"),
+        ("Files", "files"), ("Firefox", "firefox"), ("Google Chrome", "google-chrome"),
+        ("Emacs", "emacs"), ("GIMP", "gimp"), ("VLC", "vlc-media-player"),
+        ("Telegram", "telegram"), ("Terminal", "console"),
         ("Amberol", "amberol"), ("Riff", "riff"), ("Fretboard", "fretboard"),
         ("Euphonica", "euphonica"), ("Remmina", "remmina"), ("TigerVNC", "tigervnc"),
         ("Boxes", "boxes"), ("Virtual Machine Manager", "virtual-machine-manager"),

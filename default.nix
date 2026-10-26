@@ -12,7 +12,7 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "skeu-icons";
-  version = "1.5.1";
+  version = "1.8.0";
 
   src = ./.;
 

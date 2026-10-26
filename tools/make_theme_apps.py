@@ -54,9 +54,12 @@ BORROWED: dict[str, str] = {
     "files": "finder",            # Nautilus, shown as the Finder face
 }
 
-#: Every terminal emulator answers with the pack's one CRT terminal, so a
-#: machine with six emulators installed still shows a single terminal icon.
+#: Every terminal emulator answers with the pack's one terminal, so a machine
+#: with six emulators installed still shows a single terminal icon.  That shared
+#: artwork *is* the icon drawn for TERMINAL_SOURCE, so the two stay the same
+#: picture whenever this step writes one of them.
 TERMINAL_ART = "terminal"
+TERMINAL_SOURCE = "console"
 
 #: Names a launcher asks for when it wants "a terminal", not a named program.
 GENERIC_TERMINAL_NAMES = ("utilities-terminal",)
@@ -137,7 +140,12 @@ def link(path: Path, target: str, problems: list[str], write: bool,
         else:
             problems.append(f"{path.relative_to(ROOT)}: points at {os.readlink(path)}")
             return
-    elif path.exists():
+    elif not path.exists():
+        if not write:
+            problems.append(f"{path.relative_to(ROOT)}: missing, expected a link "
+                            f"to {target}")
+            return
+    else:
         if not replace:
             # A real file: hand-drawn artwork, or another app's icon. Never replace it.
             return
@@ -190,6 +198,25 @@ def install(write: bool) -> tuple[int, int, list[str]]:
                     link(alias_path, f"{art or slug}.png", problems, write, replace=bool(art))
                     if write and not before:
                         linked += 1
+
+    # The shared terminal artwork is the icon drawn for the terminal archetype,
+    # so keep it equal to TERMINAL_SOURCE's own drawing: one emulator's icon
+    # changing means all of them change, instead of a stale committed copy
+    # sitting under terminal.png for years.
+    source = ICONS / TERMINAL_SOURCE / "icon-1024.png"
+    if source.is_file():
+        with Image.open(source) as drawn:
+            master = drawn.convert("RGBA")
+        for size in SIZES:
+            for suffix, factor in (("", 1), ("@2x", 2)):
+                folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
+                if folder.is_dir():
+                    if write:
+                        resize(master, size * factor).save(
+                            folder / f"{TERMINAL_ART}.png")
+                    elif not (folder / f"{TERMINAL_ART}.png").is_file():
+                        problems.append(
+                            f"{folder.relative_to(ROOT)}/{TERMINAL_ART}.png: missing")
 
     # "a terminal" is a name a launcher asks for without naming any program.
     for size in SIZES:

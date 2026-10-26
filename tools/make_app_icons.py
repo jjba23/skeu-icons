@@ -10,7 +10,9 @@ key-cap, a film reel - lit and shadowed by the relief renderer in :mod:`skeu`.  
 monograms on coloured discs.
 
 Apps that already have a hand-authored icon in ``svg/`` (Emacs, IntelliJ IDEA, Signal, 1Password)
-reuse it instead of being re-invented.
+reuse it instead of being re-invented.  A few applications are better served by the
+icon they actually shipped in their own era; those live in ``library/`` and are
+rendered verbatim (see ``library/README.org`` for their provenance and licences).
 
     python3 tools/make_app_icons.py                # discover + build everything
     python3 tools/make_app_icons.py --list         # print the app table only
@@ -43,6 +45,7 @@ from skeu.apps import design, extra_names, roster_apps  # noqa: E402
 
 OUT = ROOT / "app-icons"
 SVG_SRC = ROOT / "svg"
+LIBRARY = ROOT / "library"
 
 SIZES = (16, 32, 64, 128, 256, 512, 1024)
 
@@ -138,8 +141,15 @@ REUSE = {
 }
 
 #: Historical artwork that beats anything drawn from scratch: the icon the app
-#: actually shipped in its own era, recoloured into this pack's material palette.
-HISTORY: dict[str, Path] = {}
+#: actually shipped in its own era.  The files are used as they are - an SVG is
+#: re-rendered at every size, a bitmap resampled - so each one keeps its own
+#: licence and credit; see ``library/README.org``.
+HISTORY: dict[str, Path] = {
+    "Google Chrome": LIBRARY / "google-chrome.svg",   # the March 2011 glossy orb
+    "VLC media player": LIBRARY / "vlc.svg",          # the 2008 traffic cone
+    "GIMP": LIBRARY / "gimp.svg",                     # Wilber with the brush
+    "Console": LIBRARY / "terminal.png",              # the OS X graphite window
+}
 
 
 def choose(app: dict) -> tuple[str, object, dict]:
@@ -171,13 +181,21 @@ def build_one(item: tuple[str, str, object, dict, bool]) -> str:
     if stale.is_file():
         stale.unlink()
 
-    if isinstance(builder, Path):                      # hand-authored SVG
-        target = folder / "icon.svg"
+    if isinstance(builder, Path) and builder.suffix.lower() == ".svg":
+        target = folder / "icon.svg"                 # hand-authored or historical SVG
         shutil.copy2(builder, target)
         if not svg_only:
             for size in SIZES:
                 render_svg(target, size, folder / f"icon-{size}.png")
         return slug
+
+    if isinstance(builder, Path):                      # historical bitmap
+        with Image.open(builder) as art:
+            master = art.convert("RGBA")
+            if not svg_only:
+                for size in SIZES:
+                    resize(master, size).save(folder / f"icon-{size}.png")
+            return slug
 
     image = render(builder, kwargs, seed=seed_for(slug))
     if not svg_only:

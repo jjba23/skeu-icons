@@ -58,8 +58,10 @@
     "gauge_cluster",
     "gears",
     "gem_disc",
+    "gimp.svg",
     "glass_cubes",
     "glass_keycap",
+    "google-chrome.svg",
     "gramophone",
     "headphones",
     "journal",
@@ -81,7 +83,6 @@
     "oscilloscope",
     "padlock",
     "paint_tin",
-    "paint_tube",
     "palette",
     "pallet",
     "paper",
@@ -111,6 +112,7 @@
     "stopwatch",
     "tape_cartridge",
     "terminal",
+    "terminal.png",
     "tetromino",
     "toolbox",
     "tuning_fork",
@@ -118,6 +120,7 @@
     "typewriter",
     "usb_stick",
     "vise",
+    "vlc.svg",
     "volume_knob",
     "webcam",
     "wire_cube",
@@ -828,12 +831,15 @@
       "categories": "System;TerminalEmulator;Utility;GTK;GNOME;",
       "comment": "",
       "exec": "kgx",
+      "icon": "org.gnome.Console",
+      "wmclass": "",
       "desktop": "org.gnome.Console.desktop",
+      "desktops": [
+        "org.gnome.Console"
+      ],
       "design": {
-        "kind": "object",
-        "object": "terminal",
-        "hue": 208,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "terminal.png"
       },
       "files": {
         "png": "console/icon-1024.png"
@@ -1683,12 +1689,15 @@
       "categories": "Graphics;2DGraphics;RasterGraphics;GTK;",
       "comment": "Create images and edit photographs",
       "exec": "gimp-3.2",
+      "icon": "gimp",
+      "wmclass": "gimp",
       "desktop": "gimp.desktop",
+      "desktops": [
+        "gimp"
+      ],
       "design": {
-        "kind": "object",
-        "object": "paint_tube",
-        "hue": 28,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "gimp.svg"
       },
       "files": {
         "png": "gimp/icon-1024.png"
@@ -1800,12 +1809,15 @@
       "categories": "Network;WebBrowser;",
       "comment": "Access the Internet",
       "exec": "/usr/bin/google-chrome-stable",
+      "icon": "google-chrome",
+      "wmclass": "google-chrome",
       "desktop": "google-chrome.desktop",
+      "desktops": [
+        "google-chrome"
+      ],
       "design": {
-        "kind": "object",
-        "object": "browser_globe",
-        "hue": 48,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "google-chrome.svg"
       },
       "files": {
         "png": "google-chrome/icon-1024.png"
@@ -4397,12 +4409,15 @@
       "categories": "AudioVideo;Player;Recorder;AudioVideo;Video;",
       "comment": "Read, capture, broadcast your multimedia streams",
       "exec": "/usr/bin/vlc",
+      "icon": "vlc",
+      "wmclass": "",
       "desktop": "vlc.desktop",
+      "desktops": [
+        "vlc"
+      ],
       "design": {
-        "kind": "object",
-        "object": "film_reel",
-        "hue": 26,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "vlc.svg"
       },
       "files": {
         "png": "vlc-media-player/icon-1024.png"

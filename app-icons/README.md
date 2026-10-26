@@ -67,6 +67,11 @@ with a tight contact shadow and a cast shadow that fades before the canvas edge.
    tenth of the icon, so the set stays bright and mostly colourless next to the neutral body it sits on.
 5. **Detail where it belongs** — knurling, screws, seams, wire binding, stitching, printed rules: at
    least 3 px wide at 1024 px so it survives the 32 px render.
+6. **Era artwork where the mark is the object.**  Four apps are not drawn at all: `Google Chrome`
+   keeps its 2011 orb, `VLC media player` its 2008 cone, `GIMP` Wilber with the brush, and
+   `Console` (the shared terminal icon) the graphite `>_` window of Leopard. `make_app_icons.py`
+   renders them from `library/` at every size; `library/README.org` records each file's author,
+   source and licence, and they are the only icons here this pack did not draw.
 
 The mapping lives in `tools/skeu/apps.py` (`APP_ICONS`), one line per app:
 

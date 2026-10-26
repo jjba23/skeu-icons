@@ -49,6 +49,7 @@ every theme lives in the same parent directory, in the pack and in
 from __future__ import annotations
 
 import argparse
+import functools
 import os
 import shutil
 import sys
@@ -127,7 +128,30 @@ def accent_overrides(accent: str) -> list[tuple[str, str]]:
     return links
 
 
-def neutral_places_links() -> list[tuple[str, str]]:
+@functools.lru_cache(maxsize=None)
+def folder_aliases(folder: str) -> dict[bytes, list[str]]:
+    """``{bitmap bytes: [``folder*`` names]}`` for one of the base places directories.
+
+    Several places names are the folder artwork under a second name -
+    ``inode-directory`` and ``user-home`` are ``folder.png``, ``user-desktop``
+    is ``folder-desktop.png`` - so the bytes say which accent bitmap each one
+    should borrow.  A bitmap can answer to more than one name (``folder-home``
+    is ``folder`` too), and only some of those names have accent artwork, so
+    keep them all and let the caller pick a name the accent ships.
+    """
+    aliases: dict[bytes, list[str]] = {}
+    directory = BASE / folder
+    if not directory.is_dir():
+        return aliases
+    for path in sorted(directory.iterdir()):
+        if path.stem.startswith("folder"):
+            aliases.setdefault(path.read_bytes(), []).append(path.name)
+    for names in aliases.values():
+        names.sort(key=lambda name: (name != "folder.png", len(name)))
+    return aliases
+
+
+def neutral_places_links(accent: str) -> list[tuple[str, str]]:
     """``[(variant relative path, base relative path)]`` for the non-folder places.
 
     The accent map owns every ``folder`` name, so the handful of places the pack
@@ -136,6 +160,11 @@ def neutral_places_links() -> list[tuple[str, str]]:
     directories.  Leaving them to ``Inherits=`` lets their ``-symbolic`` twins
     answer first, which is how ``application/x.systemd-home`` ended up drawing
     the monochrome home glyph.
+
+    A mirrored name whose bitmap is a folder's own artwork follows the accent
+    instead, or every directory in the accent theme comes out in the base blue:
+    ``inode-directory`` is what GIO asks for when it draws a directory, and it,
+    ``user-home`` and ``user-desktop`` are all just folder bitmaps renamed.
     """
     links: list[tuple[str, str]] = []
     for size in SIZES:
@@ -144,17 +173,27 @@ def neutral_places_links() -> list[tuple[str, str]]:
             directory = BASE / folder
             if not directory.is_dir():
                 continue
+            aliases = folder_aliases(folder)
             for path in sorted(directory.iterdir()):
                 if path.stem.startswith("folder"):
                     continue
-                links.append((f"{folder}/{path.name}",
-                              f"{BASE_DIR}/{folder}/{path.name}"))
+                for source in aliases.get(path.read_bytes(), ()):
+                    stem = Path(source).stem
+                    rest = "" if stem == "folder" else f"-{stem[len('folder-'):]}"
+                    coloured = directory / f"folder-{accent}{rest}{path.suffix}"
+                    if coloured.is_file():
+                        links.append((f"{folder}/{path.name}",
+                                      f"{BASE_DIR}/{folder}/{coloured.name}"))
+                        break
+                else:
+                    links.append((f"{folder}/{path.name}",
+                                  f"{BASE_DIR}/{folder}/{path.name}"))
     return links
 
 
 def variant_links(accent: str) -> list[tuple[str, str]]:
     """Every file a variant places itself: the accent tree plus the neutral places."""
-    return accent_overrides(accent) + neutral_places_links()
+    return accent_overrides(accent) + neutral_places_links(accent)
 
 
 def base_sections() -> tuple[list[str], list[str], dict[str, str]]:
@@ -389,7 +428,8 @@ def check() -> list[str]:
         text = index.read_text()
         if f"Name={name}" not in text:
             problems.append(f"{directory}/index.theme: Name= is not {name!r}")
-        expected_links = {r for r, _d in variant_links(accent)} if accent else set()
+        wanted = dict(variant_links(accent)) if accent else {}
+        expected_links = set(wanted)
         owned = {str(Path(relative).parent) for relative in expected_links}
         links: set[str] = set()
         mirrors: set[str] = set()
@@ -412,6 +452,12 @@ def check() -> list[str]:
             problems.append(f"{directory}/{want}: accent symlink missing")
         for extra in sorted(links - expected_links):
             problems.append(f"{directory}/{extra}: symlink not in the accent map")
+        for relative in sorted(expected_links & links):
+            link = target / relative
+            want = os.path.relpath(ROOT / wanted[relative], link.parent)
+            if os.readlink(link) != want:
+                problems.append(f"{directory}/{relative}: points at "
+                                f"{os.readlink(link)}, expected {want}")
         expected_mirrors = (set(inherited_dirs()) - owned
                            - (ACCENT_SKIP if accent else set()))
         for want in sorted(expected_mirrors - mirrors):

@@ -4,15 +4,15 @@
 #+email: jjbigorra@gmail.com
 #+language: en
 #+options: toc:2 num:nil
-#+html_head: <meta name="description" content="A skeuomorphic icon theme for Linux desktops: 1 914 icon names across six freedesktop contexts, thirty themes, symbolic and accent variants." />
+#+html_head: <meta name="description" content="A skeuomorphic icon theme for Linux desktops: ~1 900 icon names across six freedesktop contexts, thirty themes, symbolic and accent variants." />
 
 [[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/source-Codeberg-2185d0.svg]]
 [[https://codeberg.org/jjba23/skeu-icons/src/branch/trunk/LICENSE][https://img.shields.io/badge/licence-CC--BY--SA--4.0-f5c542.svg]]
 [[https://codeberg.org/jjba23/skeu-icons/src/branch/trunk/gallery.html][https://img.shields.io/badge/gallery-every%20icon-8a6d3b.svg]]
 [[https://codeberg.org/jjba23/guix-jointhefreeworld][https://img.shields.io/badge/Guix-channel-6f4e9c.svg]]
 [[https://codeberg.org/jjba23/nix-jointhefreeworld][https://img.shields.io/badge/Nix-flake-5277c3.svg]]
-[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/icons-1%20914-informational.svg]]
-[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/themes-30-informational.svg]]
+[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/icons-~1%20900-informational.svg]]
+[[https://codeberg.org/jjba23/skeu-icons][https://img.shields.io/badge/themes-~30-informational.svg]]
 
 A skeuomorphic icon theme for Linux desktops, plus the sources that produce it:
 enamelled faces over chrome rims, glass key-caps, leather, paper, milled
@@ -39,8 +39,10 @@ fourteen enamels.
 - *Objects, not masks.*  No icon mask, no uniform rounded-square grid, no flat
   redesign: each icon is built from material, light and a little story. The
   terminal is a CRT shell, the browser a steel desk globe, the mail client an
-  envelope with a wax seal.
-- *Complete, not curated.*  1 914 icon names across all six freedesktop
+  envelope with a wax seal — except for the four programs whose own era icon
+  *is* the object (Chrome, VLC, GIMP and Terminal), which keep the mark they
+  shipped with. See [[#what-it-looks-like][Applications]].
+- *Complete, not curated.*  ~1 900 icon names across all six freedesktop
   contexts, at nine sizes plus =@2x= and a =scalable/= layer. It is a drop-in
   replacement, not a set of showcase folders.
 - *Thirty themes from one install.*  Pick an enamel (red, orange, yellow, lime,
@@ -51,8 +53,8 @@ fourteen enamels.
   =Icon= values; file managers ask GIO for a MIME chain. The pack links all of
   them, and [[#drawing-and-checking-the-artwork][a check]] proves it against your
   own installed programs instead of trusting a table.
-- *Monochrome where monochrome belongs.*  A 646-name symbolic layer for the
-  Adwaita contract, plus 487 plain scalable icons so that a toolbar asking for
+- *Monochrome where monochrome belongs.*  A ~650-name symbolic layer for the
+  Adwaita contract, plus ~500 plain scalable icons so that a toolbar asking for
   =list-add= gets an answer instead of falling through to =AdwaitaLegacy=.
 - *Real bitmaps at real sizes.*  16, 22, 24, 32, 48, 64, 128, 256 and 512 px are
   shipped as PNGs (with =@2x= twins), because launchers and docks that upscale a
@@ -238,7 +240,7 @@ artwork: =skeu-icons-pink/48x48/places/folder.png= is a link to
 through =Inherits=skeu-icons=. The light-ink symbolic layer is stored once, in
 =skeu-icons-dark/symbolic=, and every =-dark= variant reaches it through one
 relative directory link, so fourteen dark variants cost fourteen links instead
-of fourteen copies of 646 files.
+of fourteen copies of ~650 files.
 
 A toolkit recolours a =-symbolic= icon itself, which is why the ink matters
 mostly to file managers, Qt applications and anything that renders one of those
@@ -248,7 +250,7 @@ SVGs as plain artwork.
 
 ** Applications
 
-Twenty-four of the 251 application icons: a chrome-rimmed paper stack for Files,
+Twenty-four of the ~250 application icons: a chrome-rimmed paper stack for Files,
 browsers and editors that keep their own marks, and the objects invented for the
 GTK/GNOME apps — a gramophone for Amberol, a cassette for Riff, a tuning fork
 for Fretboard, headphones for Euphonica, a screen with a keyboard for both VNC
@@ -256,12 +258,20 @@ clients, a cardboard box for Boxes, glass cubes for the virtual machine manager,
 a moored mine for Mines, a pencil pad for Sudoku, and the Mahjongg tiles and
 Reversi stones.
 
+Four applications do not get an invented object, because the icon they actually
+shipped with in their own era is the object: Chrome keeps the glossy orb it wore
+until 2011, VLC its 2008 traffic cone, GIMP Wilber holding the paintbrush, and
+Terminal the graphite =>_= window of Leopard and Snow Leopard. They live in
+[[file:library/][=library/=]] as the upstream artwork — with their own credits and
+licences, recorded in [[file:library/README.org][=library/README.org=]] — and
+=make_app_icons.py= renders them at every size instead of drawing.
+
 #+attr_html: :width 100% :alt app icons: files, browsers, editors, media, games, tools
 [[file:docs/apps.png]]
 
 ** Projects
 
-A selection of the 47 project icons: a sheep for lambdock, a black widow for
+A selection of the ~50 project icons: a sheep for lambdock, a black widow for
 araneola, a padlock for bewaking, Lady Justice for veritas, a chrome-rimmed
 help orb for heks-toon, a conductor for wikimusic, a chart recorder for
 symbanta, a gnu for guix, a snowflake for nixpkgs, an anchor for
@@ -282,16 +292,16 @@ drives, phones, printers and network gear.
 
 | context      | icons | notes                                                   |
 |--------------+------:+---------------------------------------------------------|
-| =apps=       |   933 | 251 drawn icons, each linked under every name it is asked by |
-| =places=     |   171 | folders, drives, network shares, 14 colour variants     |
-| =mimetypes=  |   678 | documents, media, archives, source code, 377 extensions |
-| =emblems=    |    17 | read-only, symbolic links, locked, shared …             |
-| =categories= |    27 | menu and application-group icons                        |
-| =devices=    |    88 | drives, phones, printers, USB, network hardware           |
+| =apps=       | ~950 | ~250 drawn icons, each linked under every name it is asked by |
+| =places=     | ~170 | folders, drives, network shares, 14 colour variants     |
+| =mimetypes=  | ~700 | documents, media, archives, source code, ~400 extensions |
+| =emblems=    | ~20 | read-only, symbolic links, locked, shared …             |
+| =categories= | ~30 | menu and application-group icons                        |
+| =devices=    | ~90 | drives, phones, printers, USB, network hardware           |
 
-That is 1 914 names, shipped at 16, 22, 24, 32, 48, 64, 128, 256 and 512 px with
-=@2x= twins, plus the =scalable/= SVGs — 128 directories declared in
-=index.theme=. File-type icons cover 377 extensions, each under both its MIME
+That is ~1 900 names, shipped at 16, 22, 24, 32, 48, 64, 128, 256 and 512 px with
+=@2x= twins, plus the =scalable/= SVGs — ~130 directories declared in
+=index.theme=. File-type icons cover ~400 extensions, each under both its MIME
 name and the =application-x-<ext>= fallback; =maak report= rescans =$HOME= and
 writes the list to =FILE-TYPES.org= when you want to see what your own machine
 asks for.
@@ -305,11 +315,11 @@ covered too, drawn rather than modelled:
 
 | layer                        | icons | what it is                                     |
 |------------------------------+------:+------------------------------------------------|
-| =symbolic/<context>=         |   646 | one Aqua glyph per Adwaita =-symbolic= name      |
-| =scalable/actions=           |   166 | the same glyphs without the suffix               |
-| =scalable/status=            |   218 | volume, network, battery, security, accounts      |
-| =scalable/emotes=            |    26 | the Aqua faces                                   |
-| =scalable/ui=, =legacy=      |    77 | window widgets and Adwaita compatibility names   |
+| =symbolic/<context>=         | ~650 | one Aqua glyph per Adwaita =-symbolic= name      |
+| =scalable/actions=           | ~170 | the same glyphs without the suffix               |
+| =scalable/status=            | ~200 | volume, network, battery, security, accounts      |
+| =scalable/emotes=            | ~30 | the Aqua faces                                   |
+| =scalable/ui=, =legacy=      | ~80 | window widgets and Adwaita compatibility names   |
 
 =actions=, =status=, =emotes= and =ui= used to fall through to AdwaitaLegacy
 because the pack drew no artwork for them. They are the one place where a
@@ -355,10 +365,11 @@ badly.
 | =skeu-icons/=         | the theme: 16…512 px + =@2x= + =scalable/=, =index.theme=     |
 | =gallery.html=        | single-file preview: every icon, every size, size switcher    |
 | =theme-manifest.json= | audit trail: shipped names, contexts, sizes, palette          |
-| =app-icons/=          | 251 GUI app icons — installed here plus the roster (PNG 16→1024) |
-| =project-icons/=      | 47 icons for project folders (same sizes)                     |
+| =app-icons/=          | ~250 GUI app icons — installed here plus the roster (PNG 16→1024) |
+| =project-icons/=      | ~50 icons for project folders (same sizes)                     |
 | =generated/=          | 1024 px masters for categories and devices                    |
 | =svg/=                | hand-drawn vector sources (1024×1024, real paths)             |
+| =library/=            | era artwork for four apps, with its own credits and licences   |
 | =docs/=               | the sheets and the demo this README shows                     |
 | =tools/=              | the programmes that draw the artwork                          |
 | =maak.scm=            | the tasks that redraw and re-derive everything                |
@@ -367,7 +378,7 @@ badly.
 
 =app-icons/= and =project-icons/= are not part of the theme; copy one onto a
 launcher or a folder when you want that specific item to match. Two extra sets
-live there: 164 icons for the applications installed here and 47 for personal
+live there: 164 icons for the applications installed here and ~50 for personal
 projects.
 
 * Drawing and checking the artwork
@@ -389,7 +400,7 @@ maak check            # index.theme, every directory, counts, gallery freshness
 maak icons apps       # redraw the artwork (categories/devices/projects, then apps)
 maak names            # link the app names and file-type names the desktops ask for
 maak mappings         # ask GIO which icon real files and desktop entries get
-maak symbolic         # redraw the 646 symbolic icons + 487 plain scalable ones
+maak symbolic         # redraw the ~650 symbolic icons + ~500 plain scalable ones
 maak variants         # rebuild the accent and dark variant themes
 maak report           # rescan $HOME -> FILE-TYPES.org
 maak install          # ~/.local/share/icons, with cache refresh
@@ -409,8 +420,8 @@ python3 tools/make_doc_images.py      # docs/ sheets for this README
 python3 tools/make_demo_gif.py        # docs/demo.gif, the animation at the top
 python3 tools/make_readme_counts.py   # the counts here (add --check to test them)
 python3 tools/make_alt_icons.py       # the Alt material variants -> svg/
-python3 tools/make_symbolic.py        # the symbolic layer (646 names)
-python3 tools/make_plain.py           # the un-suffixed scalable icons (487)
+python3 tools/make_symbolic.py        # the symbolic layer (~650 names)
+python3 tools/make_plain.py           # the un-suffixed scalable icons (~500)
 python3 tools/make_variants.py        # the accent and dark variant themes
 python3 tools/report_file_types.py    # rescan $HOME -> FILE-TYPES.org
 python3 tools/check_theme.py          # the checks behind maak check
@@ -484,6 +495,10 @@ so the README cannot show an icon the pack no longer ships.
   browser a steel desk globe, a mail client an envelope with a wax seal.
   Related apps only share an object when the job is the same — 14 editors share
   a key-cap family, but the seven music players do not share one sleeve.
+- One documented exception: four apps keep the artwork they shipped with in
+  their own era (Chrome's orb, VLC's cone, Wilber, the Leopard Terminal). That
+  art is third-party in =library/=, credited and licensed per file, and it is
+  the only artwork here that this pack did not draw.
 
 The per-app object table, the category rules and the notes on how a family stays
 recognisable are in [[file:app-icons/README.md][app-icons/README.md]].
@@ -545,6 +560,12 @@ Application names and their marks belong to their owners and are used only to
 describe which icon is which; a handful of icons in =svg/= reproduce marks that
 stay under their own licences, and [[file:app-icons/README.md][app-icons/README.md]]
 records that the generated artwork is the pack's own.
+
+The four era icons in [[file:library/][=library/=]] are *not* CC BY-SA 4.0: each one
+keeps the licence it was published under (public domain for Chrome, GPL for the
+VLC cone, Wilber and the Mac4Lin terminal), and
+[[file:library/README.org][=library/README.org=]] lists author, source and
+licence per file. Everything outside that directory is this pack's own work.
 
 * Thanks
 
