@@ -42,6 +42,11 @@ CONTRACT = Path(__file__).resolve().parent / "symbolic-names.txt"
 #: artwork is drawn to rather than a tightening of it.
 MARGIN = 0.9
 
+#: How far the traced outline may sit from the paint it came from, in grid
+#: units.  Tracing follows pixel corners and simplifies the staircase within
+#: ``aqua.SMOOTH`` raster pixels, so a couple of those is the whole allowance.
+TRACE_DRIFT = 3 / aqua.RASTER
+
 INK = {"light": aqua.INK_LIGHT, "dark": aqua.INK_DARK}
 
 
@@ -139,6 +144,15 @@ def check(only: str | None = None, ink: str = "light") -> list[str]:
     return problems
 
 
+def outline_bounds(loops: list[list[tuple[float, float]]]):
+    """``(left, top, right, bottom)`` of traced contours, or None if empty."""
+    xs = [x for loop in loops for x, _y in loop]
+    ys = [y for loop in loops for _x, y in loop]
+    if not xs:
+        return None
+    return min(xs), min(ys), max(xs), max(ys)
+
+
 def audit() -> list[str]:
     """Problems you can only see by looking: blanks, clipped and jammed drawings.
 
@@ -147,6 +161,12 @@ def audit() -> list[str]:
     pixel short of the edge passes it happily.  All three read as "the icon is
     broken" on screen - the last one because the stroke is anti-aliased into
     the boundary and looks cut - so they are checked here instead.
+
+    The traced outline is also measured against the paint it came from: the
+    shipped path must occupy the same box as the mask.  ``--check`` cannot see
+    a tracer that reads a bitmap's rows as columns, because both sides of the
+    comparison run through the tracer; every icon comes out a quarter turn
+    left and the ``.svg`` files still agree with the catalogue.
     """
     import numpy as np
 
@@ -166,6 +186,18 @@ def audit() -> list[str]:
             problems.append(f"{base}: ink {left:.2f}..{right:.2f} x {top:.2f}.."
                             f"{bottom:.2f} crowds the tile edge "
                             f"(keep inside {MARGIN}..{16 - MARGIN:g})")
+        outline = outline_bounds(glyph.contours())
+        if outline is None:
+            problems.append(f"{base}: paints ink but traces to no path")
+            continue
+        drift = max(abs(outline[i] - painted) for i, painted in
+                    enumerate((left, top, right, bottom)))
+        if drift > TRACE_DRIFT:
+            problems.append(f"{base}: traced path {outline[0]:.2f}..{outline[2]:.2f}"
+                            f" x {outline[1]:.2f}..{outline[3]:.2f} does not match "
+                            f"the paint {left:.2f}..{right:.2f} x {top:.2f}.."
+                            f"{bottom:.2f} (off by {drift:.2f}, allowed "
+                            f"{TRACE_DRIFT:.2f})")
     return problems
 
 
@@ -211,7 +243,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true",
                         help="do not write; fail if anything is missing or stale")
     parser.add_argument("--audit", action="store_true",
-                        help="report glyphs that draw nothing or run off the tile")
+                        help="report glyphs that draw nothing, run off the tile, "
+                             "or whose traced path does not match the paint")
     parser.add_argument("--sheet", nargs="?", const="/tmp/skeu/symbolic.png",
                         metavar="PNG", help="write a proof sheet")
     args = parser.parse_args(argv)
@@ -226,8 +259,8 @@ def main(argv: list[str] | None = None) -> int:
         if problems:
             print(f"\n{len(problems)} glyph(s) need a look", file=sys.stderr)
             return 1
-        print(f"ok: {len(SYMBOLIC)} glyphs are painted and inside the "
-              f"{MARGIN}..{16 - MARGIN:g} margin")
+        print(f"ok: {len(SYMBOLIC)} glyphs are painted inside the "
+              f"{MARGIN}..{16 - MARGIN:g} margin and trace back to the same box")
         return 0
     if args.check:
         problems = check(args.only, args.ink)

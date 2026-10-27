@@ -24,7 +24,10 @@ symbolic icon.
 
 Coordinates are a 16x16 grid with the artwork kept inside a 0.9 px margin, so a
 round cap never lands on the edge and nothing has to be anti-aliased into it.
-``make_symbolic.py --audit`` is what enforces that margin.
+``make_symbolic.py --audit`` is what enforces that margin, and it measures every
+traced outline against the mask it was traced from: ``--check`` compares the
+files with the catalogue, so it cannot tell a tracer that reads rows as columns
+from a correct one, because both sides of that comparison come out turned.
 """
 
 from __future__ import annotations
@@ -452,7 +455,10 @@ def trace(mask) -> list[list[Point]]:
         contour = first[:-1] + second[:-1]
         if len(contour) < 3 or abs(_area(contour)) < SPECK:
             continue
-        loops.append([(x / RASTER, y / RASTER) for x, y in contour])
+        # The walk yields pixel corners as (row, column); a glyph is drawn in
+        # (x, y).  Reading them straight across transposed every icon about
+        # the diagonal, which on screen reads as a quarter turn to the left.
+        loops.append([(column / RASTER, row / RASTER) for row, column in contour])
     return loops
 
 
