@@ -1265,3 +1265,116 @@ def dual_display(c, hue: float = 212, cy: float = CY) -> None:
         c.paint(RRect(cx + dx, cy + 96, 42, 120, 8), M.chrome, profile=("bevel", 4, 6))
         c.paint(RRect(cx + dx, cy + 168, 156, 28, 13), M.chrome,
                 profile=("bevel", 4, 6), contact=0.15)
+
+
+# --------------------------------------------------------------------------- #
+# the sky: the era's weather icon
+# --------------------------------------------------------------------------- #
+
+#: The cumulus in front: three puffs over a flat base, as offsets and radii
+#: from the cloud's own centre.  A tuple, not three ``lobe()`` calls, because
+#: ``_cloud_mask`` has to know which puffs are the outer two to place the base.
+CUMULUS = ((-132.0, 14.0, 100.0), (-18.0, -46.0, 132.0), (120.0, 6.0, 108.0))
+
+#: The bank of haze behind: flatter and wider than the cumulus, so the two read
+#: as two kinds of cloud and not as the same sticker twice.
+HAZE = ((-104.0, 10.0, 66.0), (10.0, -6.0, 80.0), (100.0, 16.0, 58.0))
+
+
+def _cloud_mask(cx: float, cy: float, scale: float = 1.0, lobes=CUMULUS,
+                base: float = 54.0) -> np.ndarray:
+    """A cloud - puffs over a flat base - as a 1024 px mask.
+
+    The puffs and the base are one silhouette rather than a shape laid under
+    other shapes: the round-ended bar at the bottom is placed so that each
+    outer puff is internally *tangent* to its end circle, so the outline runs
+    from the puff's flank into the bar's shoulder without a corner.  Drawing a
+    plain rectangle under the puffs instead leaves the outer puff overhanging
+    the rectangle's side by a few pixels - invisible at 512 px, a notch at 128.
+
+    ``base`` is how far below the cloud's centre the bar's centre line sits,
+    which is also its radius: the ends are exact semicircles.
+    """
+    img, draw, s = _scaled_mask(3)
+    puffs = [(cx + dx * scale, cy + dy * scale, r * scale) for dx, dy, r in lobes]
+    for x, y, r in puffs:
+        draw.ellipse([(x - r) * s, (y - r) * s, (x + r) * s, (y + r) * s], fill=255)
+    radius = base * scale
+    line = cy + base * scale
+    ends = []
+    for (x, y, r), sign in ((min(puffs, key=lambda p: p[0]), -1.0),
+                            (max(puffs, key=lambda p: p[0]), 1.0)):
+        # the tangent point is on the line through the two centres, so the end
+        # centre sits ``r - radius`` from the puff, as far sideways as the drop
+        # down to the bar allows
+        reach = max(0.0, r - radius)
+        drop = line - y
+        half = math.sqrt(max(0.0, reach * reach - drop * drop))
+        ends.append((x + sign * half, line))
+    (x0, _), (x1, _) = ends
+    if x1 - x0 < 2.0 * radius:                     # never collapse the bar
+        middle = (x0 + x1) / 2.0
+        x0, x1 = middle - radius, middle + radius
+    draw.rounded_rectangle([x0 * s, (line - radius) * s, x1 * s, (line + radius) * s],
+                           radius=radius * s, fill=255)
+    return _mask_of(img, s)
+
+
+def _under_shade(mask: np.ndarray, start: float = 0.40,
+                 reach: float = 0.60) -> np.ndarray:
+    """A feather over the lower part of MASK, for the belly of a cloud.
+
+    The shading a cloud casts into itself is what makes it a body rather than
+    a cut-out, and a material's own vertical ramp cannot do it here: a masked
+    paint is handed the whole canvas as its bounds, so its ramp is spread over
+    1024 px instead of over the cloud.
+    """
+    rows = np.where((mask > 0.5).any(axis=1))[0]
+    if rows.size == 0:
+        return mask * 0.0
+    y0, y1 = float(rows[0]), float(rows[-1])
+    span = max(1.0, y1 - y0)
+    ys = np.arange(mask.shape[0], dtype=np.float32)[:, None]
+    ramp = np.clip((ys - (y0 + start * span)) / (reach * span), 0.0, 1.0)
+    return mask * ramp
+
+
+def weather(c, hue: float = 205, cy: float = CY) -> None:
+    """The era's weather icon: a square of sky, a sun and two clouds.
+
+    Before weather was an application it was a Dashboard widget, and the tile
+    people remember is not a dial but a panel of sky.  So this draws the widget
+    - an aluminium frame around enamelled sky, a warm sun with its halo in one
+    corner, a cumulus on the lower half and a bank of haze above and behind it
+    - rather than an instrument standing in for the weather.
+
+    The two clouds are told apart the way distance tells them apart: the haze
+    is smaller, cooler, greyer and softer-edged, and the cumulus in front
+    covers its lower right, so the pair reads as two depths and not as one
+    shape copied at two sizes.  The cumulus itself is white with a blue-grey
+    belly, the shadow it casts into its own underside.
+    """
+    cx = CX
+    tile = RRect(cx, cy, 720, 664, 118)
+    c.paint(Moved(tile, 0, 28), M.aluminium, profile=("bevel", 12, 18))
+    c.paint(tile, M.aluminium, profile=("bevel", 18, 26), shadow=True, contact=0.22)
+    sky = RRect(cx, cy - 6, 666, 610, 92)
+    c.paint(sky, M.enamel, profile=("bevel", 6, 12), hue=hue, sat=0.55, light=0.60,
+            contact=0.30)
+    # the sun, high in the corner, with the halo of a bright day
+    sx, sy = cx + 132, cy - 158
+    glow(c, sx, sy, 300, 42, strength=0.40)
+    c.paint(Circle(sx, sy, 112), M.lamp, profile=("sphere", 96), hue=43,
+            contact=0.26)
+    # the weather coming in: haze, further off, so cooler and lower in contrast
+    # than the cloud in front, and set where the cumulus crosses its lower right
+    haze = _cloud_mask(cx - 138, cy - 112, 0.58, HAZE, 34.0)
+    c.paint_mask(haze, M.ceramic, emboss=3, soft=4.5, alpha=0.80,
+                 hue=hue, sat=0.13, light=0.88)
+    # the cumulus, with the soft shadow that keeps it off the flat sky
+    cumulus = _cloud_mask(cx - 34, cy + 84, 0.88)
+    c.paint_mask(_cloud_mask(cx - 34, cy + 96, 0.88), M.flat("#2c3a4a"),
+                 emboss=0, soft=10.0, alpha=0.24)
+    c.paint_mask(cumulus, M.ceramic, emboss=12, soft=2.2, sat=0.04, light=0.98)
+    c.multiply(_under_shade(cumulus, 0.46), 0.27, hsl(hue, 0.28, 0.70))
+    c.multiply(_under_shade(haze, 0.50), 0.16, hsl(hue, 0.24, 0.72))

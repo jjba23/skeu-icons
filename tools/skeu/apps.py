@@ -117,7 +117,9 @@ APP_ICONS: dict[str, tuple] = {
     "Proton VPN": (O.padlock, dict(hue=264, body="steel")),
     "KeePassXC": (T.keyring, dict(hue=206)),
     "Passwords and Keys": (T.keyring, dict(hue=32)),
-    "Weather": (D.barometer, dict(hue=200)),
+    # The era's weather was a Dashboard widget, not an instrument: a square of
+    # sky with the sun and a cloud in it, which is what people remember.
+    "Weather": (O.weather, dict(hue=205)),
     "Volume Control": (D.volume_knob, dict(hue=200)),
     "Volume": (D.volume_knob, dict(hue=206)),
     # --- type and text
@@ -525,6 +527,83 @@ ROSTER: dict[str, tuple[str, tuple[str, ...]]] = {
     "CleanMyMac": ("System;Utility", ("cleanmymac", "com.macpaw.CleanMyMac2")),
     "Adium": ("Network;InstantMessaging", ("adium", "com.adiumX.adiumX")),
 
+    # --- the everyday Mac applications -------------------------------------- #
+    # The ones a desktop dressed as OS X actually launches: the bubbles, the
+    # stamp, the drive, the pad, the disc and the silver rocket.  Their artwork
+    # is in ``library/apps``, so a Linux program mapped onto them (see
+    # ``BORROWED`` in tools/make_theme_apps.py) and the Mac app itself answer
+    # with the same picture.
+    "Messages": ("Network;InstantMessaging", ("messages", "com.apple.MobileSMS",
+                                              "com.apple.iChat")),
+    "Mail": ("Network;Email", ("mail", "com.apple.mail", "com.apple.Mail")),
+    "Disks": ("System;Filesystem", ("disks",)),
+    "Finder": ("System;FileManager", ("finder", "com.apple.finder")),
+    "Preview": ("Office;Viewer;Graphics", ("preview", "com.apple.Preview")),
+    "Notes": ("Office;TextEditor", ("notes", "com.apple.Notes")),
+    "iTunes": ("AudioVideo;Audio;Player", ("itunes", "com.apple.iTunes")),
+    "Dictionary": ("Office;Dictionary;Education", ("dictionary",
+                                                    "com.apple.Dictionary")),
+    "Launchpad": ("System;Utility", ("launchpad", "com.apple.launchpad.launcher")),
+    "Time Machine": ("System;Utility", ("time-machine",
+                                         "com.apple.backup.launcher")),
+    "App Store": ("System;PackageManager", ("app-store", "com.apple.AppStore")),
+    "Xcode": ("Development;IDE", ("xcode", "com.apple.dt.Xcode")),
+
+    # --- the suite and the era utilities ------------------------------------ #
+    # The creative suite (Adobe CS2, and the Macromedia 8 that preceded it), a
+    # disc burner, a DVD transcoder, the search hat, the Classic environment,
+    # the projector cone, the robot and the blue marble.  None of these is a
+    # Mac-only curiosity: a Linux program stands in for most of them - see
+    # ``BORROWED`` and ``BORROWED_NAMES`` in tools/make_theme_apps.py - so an
+    # image editor answers with the butterfly and a burning program with the
+    # toaster.  The rest are catalogue entries, the way VoiceOver Utility and
+    # Migration Assistant already are: the era icon people remember, kept so a
+    # desktop dressed as OS X can resolve it.
+    "Photoshop CS2": ("Graphics;RasterGraphics", (
+        "photoshop", "photoshop-cs2", "com.adobe.Photoshop", "adobe-photoshop")),
+    "Illustrator CS2": ("Graphics;VectorGraphics", (
+        "illustrator", "illustrator-cs2", "com.adobe.illustrator",
+        "adobe-illustrator")),
+    "InDesign CS2": ("Graphics;Publishing", (
+        "indesign", "indesign-cs2", "com.adobe.InDesign", "adobe-indesign")),
+    "Dreamweaver 8": ("Development;WebDevelopment", (
+        "dreamweaver", "dreamweaver-8", "com.macromedia.dreamweaver")),
+    "Flash 8": ("Graphics;2DGraphics", (
+        "flash", "flash-8", "flashplayer", "com.macromedia.Flash")),
+    "Fireworks 8": ("Graphics;WebDevelopment", (
+        "fireworks", "fireworks-8", "com.macromedia.fireworks")),
+    "Roxio Toast": ("Utility;DiscBurning", ("roxio-toast", "toast")),
+    "Roxio Popcorn": ("AudioVideo;Video", ("roxio-popcorn", "popcorn")),
+    "Sherlock": ("Network;Utility", ("sherlock", "com.apple.Sherlock")),
+    "Classic": ("System;Emulator", ("classic", "com.apple.Classic")),
+    "Front Row": ("AudioVideo;TV", ("front-row", "frontrow",
+                                      "com.apple.FrontRow")),
+    "Automator": ("Utility;Automation", ("automator", "com.apple.Automator")),
+    "Google Earth": ("Science;Geoscience", ("google-earth", "googleearth",
+                                             "google-earth-pro",
+                                             "com.google.GoogleEarth")),
+    "LimeWire": ("Network;P2P", ("limewire", "com.limewire.LimeWire")),
+
+    # --- the era's everyday tools ------------------------------------------ #
+    # What the era put in the Dock and the Utilities folder: the desk
+    # calculator, the chess set, the alarm clock, the photo booth, the printer,
+    # the yellow note pad and Apple's X11.  Every one of them is also a job a
+    # Linux desktop does, so the program that does it borrows the icon - the
+    # calculator, the games menu's chess set, the webcam booth, the printer
+    # settings, the scratch pad (see ``BORROWED``, ``EXTRA_NAMES`` and
+    # ``BORROWED_NAMES`` in tools/make_theme_apps.py).  Their artwork is in
+    # ``library/apps`` like the rest of the ensemble.
+    "Calculator": ("Utility;Calculator", ("calculator", "com.apple.calculator")),
+    "Chess": ("Game;BoardGame", ("chess", "com.apple.Chess")),
+    "Clock": ("Utility;Clock", ("clock", "com.apple.clock")),
+    "Photo Booth": ("AudioVideo;Recorder", ("photo-booth",
+                                             "com.apple.PhotoBooth")),
+    "Printer": ("System;Settings;HardwareSettings",
+                ("printer", "printer-setup-utility", "com.apple.print.center",
+                 "com.apple.PrintUtility")),
+    "Stickies": ("Utility;TextEditor", ("stickies", "com.apple.Stickies")),
+    "X11": ("System;Utility", ("x11", "org.xquartz.X11", "com.apple.x11")),
+
 }
 
 
@@ -533,7 +612,10 @@ ROSTER: dict[str, tuple[str, tuple[str, ...]]] = {
 #: the new one - ``gnome-calculator`` for a calculator, ``eog`` for the image
 #: viewer - so the pack answers to both instead of to whichever it saw first.
 EXTRA_NAMES: dict[str, tuple[str, ...]] = {
-    "Calculator": ("gnome-calculator", "kcalc", "galculator", "qalculate-gtk"),
+    "Calculator": ("gnome-calculator", "kcalc", "galculator", "qalculate-gtk",
+                   "org.gnome.Calculator", "mate-calc", "xfce4-calculator"),
+    "Chess": ("gnome-chess", "glchess", "pychess", "xboard", "stockfish"),
+    "Clock": ("gnome-clocks", "kclock", "alarm-clock-applet"),
     "Files": ("nautilus", "org.gnome.files"),
     "Software": ("gnome-software", "snap-store", "ubuntu-software", "plasma-discover"),
     "Image Viewer": ("eog", "org.gnome.eog", "gpicview"),

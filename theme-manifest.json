@@ -43,39 +43,89 @@
     "brown",
     "graphite"
   ],
-  "icons": 2019,
+  "icons": 2225,
   "contexts": {
-    "apps": 1038,
-    "places": 171,
+    "apps": 1241,
+    "places": 174,
     "mimetypes": 678,
     "emblems": 17,
     "categories": 27,
     "devices": 88
   },
   "files": {
-    "bitmaps": 36198,
-    "vectors": 2276
+    "bitmaps": 38844,
+    "vectors": 2280
   },
   "app_roster": {
-    "programs": 298,
-    "drawn_here": 164,
-    "roster_only": 134,
-    "names": 436,
+    "programs": 323,
+    "drawn_here": 246,
+    "roster_only": 77,
+    "names": 465,
     "source": "tools/skeu/apps.py (APP_ICONS, ROSTER, EXTRA_NAMES), linked by tools/make_theme_apps.py",
-    "why": "a build machine only knows its own desktop files, so the pack also ships the programs people actually run on other distributions - and the OS X era ensemble almost nobody runs here at all"
+    "why": "a build machine only knows its own desktop files, so the pack also ships the programs people actually run on other distributions - and the OS X era ensemble and the creative suite, which almost nobody runs here at all"
+  },
+  "own_artwork": {
+    "names": [
+      "lambdock",
+      "org.jointhefreeworld.lambdock",
+      "heks-toon"
+    ],
+    "source": "tools/make_app_icons.py (OWN_ARTWORK), enforced by tools/make_theme_apps.py",
+    "why": "a named icon is looked up in the theme before the hicolor fallback, so a file here would shadow the artwork these programs install with themselves; nothing is drawn or linked under these names, and an older build's copies are cleared"
   },
   "era_artwork": {
-    "icons": 47,
+    "icons": 80,
     "catalogue": "library/artwork.json",
     "eras": [
       "Leopard (10.5)",
+      "Leopard – Mavericks",
+      "Lion – Mavericks",
+      "Mavericks (10.9)",
       "Mountain Lion (10.8)",
-      "Mavericks (10.9)"
+      "Mountain Lion – Mavericks",
+      "Panther – Leopard (10.3 – 10.5)",
+      "Panther – Tiger (10.3 – 10.4)",
+      "Tiger – Leopard (10.4 – 10.5)",
+      "Tiger – Snow Leopard (10.4 – 10.6)"
     ],
     "source": "library/apps, rendered verbatim by tools/make_app_icons.py (HISTORY)",
-    "licence": "the vendors' own marks, not CC BY-SA - see library/README.org"
+    "licence": "the vendors' own marks, not CC BY-SA - see library/README.org",
+    "packs": [
+      "500+ Mountain Lion Icons",
+      "Leopard Huge Icon Pack",
+      "Leopard icon pack",
+      "Mac-OS-X-Cheetah icon set",
+      "macOS Mavericks theme",
+      "skeu-icons macOS era set"
+    ],
+    "native_px": [
+      128,
+      256,
+      512
+    ]
   },
   "pack_artwork": 92,
+  "volume_artwork": {
+    "icons": 36,
+    "colourways": 8,
+    "maps": 45,
+    "catalogue": "library/volumes.json",
+    "native_px": [
+      128
+    ],
+    "source": "library/volumes, installed into the devices context by tools/make_theme_devices.py",
+    "licence": "the vendors' own marks, not CC BY-SA - see library/README.org"
+  },
+  "place_artwork": {
+    "icons": 2,
+    "names": 3,
+    "catalogue": "library/places.json",
+    "native_px": [
+      128
+    ],
+    "source": "library/places, installed into the places context by tools/make_theme_places.py",
+    "licence": "the vendors' own marks, not CC BY-SA - see library/README.org"
+  },
   "design_rules": {
     "mask": "none",
     "light": "single key light from the upper left",

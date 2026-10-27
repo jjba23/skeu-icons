@@ -5,7 +5,13 @@
 by the relief renderer (:mod:`skeu`) as physical objects and written to
 ``generated/<slug>.png`` (1024 px), which is where the theme keeps its
 category and device masters.  ``--install`` then distributes those masters into
-the theme at every size it ships, ``@2x`` included:
+the theme at every size it ships, ``@2x`` included.
+
+One class of device is not drawn here.  The volumes, drives and peripherals
+Apple published artwork for - a USB stick, an external drive, a mounted
+network volume, the labelled CDs and DVDs, the keyboard, the mouse - are
+installed from ``library/volumes`` by ``make_theme_devices.py``, and ``install``
+leaves those names to it.  Everything the era never drew still comes from here:
 
     skeu-icons/48x48/devices/phone-old.png
     skeu-icons/48x48@2x/devices/phone-old.png
@@ -45,11 +51,25 @@ def render_objects(table, label: str) -> None:
 
 
 def install(table, context: str) -> int:
-    """Write every master in TABLE into the theme's size set for CONTEXT."""
-    from render_skeu import resize
+    """Write every master in TABLE into the theme's size set for CONTEXT.
+
+    A name a later step dresses in era artwork is skipped: the volume, drive
+    and peripheral icons in ``VOLUMES`` come from ``library/volumes`` and are
+    installed by ``make_theme_devices.py``, and writing the drawn master here
+    would put the look-alike back over them.  Ask that step which names it
+    owns rather than keeping a second list that can drift.
+    """
+    from render_skeu import resize, save_png
+
+    claimed: frozenset[str] = frozenset()
+    if context == "devices":
+        from make_theme_devices import claimed as volume_names
+        claimed = volume_names()
 
     written = 0
     for slug in sorted(table):
+        if slug in claimed:
+            continue
         master = OUT / f"{slug}.png"
         if not master.is_file():
             print(f"  no master: {master.relative_to(ROOT)}", file=sys.stderr)
@@ -60,7 +80,7 @@ def install(table, context: str) -> int:
             for suffix, factor in (("", 1), ("@2x", 2)):
                 target = THEME / f"{size}x{size}{suffix}" / context / f"{slug}.png"
                 target.parent.mkdir(parents=True, exist_ok=True)
-                resize(image, size * factor).save(target)
+                save_png(resize(image, size * factor), target)
                 written += 1
     return written
 

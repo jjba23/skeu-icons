@@ -1,23 +1,13 @@
 [
   {
-    "name": "Safari",
-    "slug": "safari",
-    "file": "apps/safari.png",
+    "name": "Activity Monitor",
+    "slug": "activity-monitor",
+    "file": "apps/activity-monitor.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the compass, Safari 6",
+    "credit": "the oscilloscope trace",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "iCal",
-    "slug": "ical",
-    "file": "apps/ical.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the tear-off desk calendar",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
   },
   {
     "name": "Address Book",
@@ -30,61 +20,21 @@
     "pack": "macOS Mavericks theme"
   },
   {
-    "name": "QuickTime Player",
-    "slug": "quicktime-player",
-    "file": "apps/quicktime-player.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the blue glass Q",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
+    "name": "Adium",
+    "slug": "adium",
+    "file": "apps/adium.png",
+    "era": "Leopard (10.5)",
+    "credit": "the green duck",
+    "licence": "Adium (GPL)",
+    "native": 128,
+    "pack": "Leopard icon pack"
   },
   {
-    "name": "iPhoto",
-    "slug": "iphoto",
-    "file": "apps/iphoto.png",
+    "name": "AirPort Utility",
+    "slug": "airport-utility",
+    "file": "apps/airport-utility.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the camera-lens aperture",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "iMovie",
-    "slug": "imovie",
-    "file": "apps/imovie.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the star on its clapper",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "GarageBand",
-    "slug": "garageband",
-    "file": "apps/garageband.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the electric guitar",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Pages",
-    "slug": "pages",
-    "file": "apps/pages.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the ink bottle and fountain pen",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Keynote",
-    "slug": "keynote",
-    "file": "apps/keynote.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the lectern and its slide",
+    "credit": "the radar sweep",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
@@ -100,131 +50,51 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Activity Monitor",
-    "slug": "activity-monitor",
-    "file": "apps/activity-monitor.png",
+    "name": "App Store",
+    "slug": "app-store",
+    "file": "apps/app-store.png",
+    "era": "Lion – Mavericks",
+    "credit": "the pencil, brush and ruler as an A",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Audio MIDI Setup",
+    "slug": "audio-midi-setup",
+    "file": "apps/audio-midi-setup.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the oscilloscope trace",
+    "credit": "the MIDI keyboard and speaker",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Disk Utility",
-    "slug": "disk-utility",
-    "file": "apps/disk-utility.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the drive with the first-aid cross",
+    "name": "Automator",
+    "slug": "automator",
+    "file": "apps/automator.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the little robot with the ray gun, Automator",
     "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
   },
   {
-    "name": "System Preferences",
-    "slug": "system-preferences",
-    "file": "apps/system-preferences.png",
+    "name": "BetterZip",
+    "slug": "betterzip",
+    "file": "apps/betterzip.png",
     "era": "Mavericks (10.9)",
-    "credit": "the brushed-steel gear panel",
-    "licence": "Apple Inc.",
+    "credit": "the cardboard box with the zip pull",
+    "licence": "MacItBetter",
     "native": 512,
     "pack": "macOS Mavericks theme"
   },
   {
-    "name": "System Information",
-    "slug": "system-information",
-    "file": "apps/system-information.png",
+    "name": "Bluetooth File Exchange",
+    "slug": "bluetooth-file-exchange",
+    "file": "apps/bluetooth-file-exchange.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the stethoscope over the board",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Network Utility",
-    "slug": "network-utility",
-    "file": "apps/network-utility.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the RJ-45 plug",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Keychain Access",
-    "slug": "keychain-access",
-    "file": "apps/keychain-access.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the ring of keys",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Font Book",
-    "slug": "font-book",
-    "file": "apps/font-book.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the type specimen book",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "TextEdit",
-    "slug": "textedit",
-    "file": "apps/textedit.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the sheet with the fountain pen",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "Grapher",
-    "slug": "grapher",
-    "file": "apps/grapher.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the rainbow surface plot",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "DVD Player",
-    "slug": "dvd-player",
-    "file": "apps/dvd-player.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the player puck",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "FaceTime",
-    "slug": "facetime",
-    "file": "apps/facetime.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the video camera on the glass tile",
-    "licence": "Apple Inc.",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "Game Center",
-    "slug": "game-center",
-    "file": "apps/game-center.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the board-game table",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "AirPort Utility",
-    "slug": "airport-utility",
-    "file": "apps/airport-utility.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the radar sweep",
+    "credit": "the two arrows around the rune",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
@@ -240,44 +110,54 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Script Editor",
-    "slug": "script-editor",
-    "file": "apps/script-editor.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the scroll and quill",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
+    "name": "Calculator",
+    "slug": "calculator",
+    "file": "apps/calculator.png",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "credit": "the silver desk calculator with the dark display",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
   },
   {
-    "name": "iBooks Author",
-    "slug": "ibooks-author",
-    "file": "apps/ibooks-author.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the open book and pencil",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
+    "name": "Chess",
+    "slug": "chess",
+    "file": "apps/chess.png",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "credit": "the white knight on its board",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
   },
   {
-    "name": "Bluetooth File Exchange",
-    "slug": "bluetooth-file-exchange",
-    "file": "apps/bluetooth-file-exchange.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the two arrows around the rune",
+    "name": "Classic",
+    "slug": "classic",
+    "file": "apps/classic.png",
+    "era": "Panther – Tiger (10.3 – 10.4)",
+    "credit": "the brushed nine, the Classic environment",
     "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
   },
   {
-    "name": "Audio MIDI Setup",
-    "slug": "audio-midi-setup",
-    "file": "apps/audio-midi-setup.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "the MIDI keyboard and speaker",
-    "licence": "Apple Inc.",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
+    "name": "CleanMyMac",
+    "slug": "cleanmymac",
+    "file": "apps/cleanmymac.png",
+    "era": "Mavericks (10.9)",
+    "credit": "CleanMyMac 2, the broom",
+    "licence": "MacPaw",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Clock",
+    "slug": "clock",
+    "file": "apps/clock.png",
+    "era": "Tiger – Leopard (10.4 – 10.5)",
+    "credit": "the twin-bell alarm clock every desktop of the era wore",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
   },
   {
     "name": "ColorSync Utility",
@@ -288,6 +168,16 @@
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Dictionary",
+    "slug": "dictionary",
+    "file": "apps/dictionary.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the red Dictionary book",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
   },
   {
     "name": "DigitalColor Meter",
@@ -310,6 +200,146 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
+    "name": "Disk Utility",
+    "slug": "disk-utility",
+    "file": "apps/disk-utility.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the drive with the first-aid cross",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Disks",
+    "slug": "disks",
+    "file": "apps/disks.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the external drive on its cable",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Dreamweaver 8",
+    "slug": "dreamweaver-8",
+    "file": "apps/dreamweaver-8.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the green sphere with the d, Dreamweaver 8",
+    "licence": "Macromedia",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "DVD Player",
+    "slug": "dvd-player",
+    "file": "apps/dvd-player.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the player puck",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Facebook",
+    "slug": "facebook",
+    "file": "apps/facebook.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the 2011 f on its blue tile",
+    "licence": "Meta",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "FaceTime",
+    "slug": "facetime",
+    "file": "apps/facetime.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the video camera on the glass tile",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Finder",
+    "slug": "finder",
+    "file": "apps/finder.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the two-faced Finder square",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Fireworks 8",
+    "slug": "fireworks-8",
+    "file": "apps/fireworks-8.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the yellow sphere with the fw mark, Fireworks 8",
+    "licence": "Macromedia",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Flash 8",
+    "slug": "flash-8",
+    "file": "apps/flash-8.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the red F, Flash 8",
+    "licence": "Macromedia",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Font Book",
+    "slug": "font-book",
+    "file": "apps/font-book.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the type specimen book",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Front Row",
+    "slug": "front-row",
+    "file": "apps/front-row.png",
+    "era": "Tiger – Leopard (10.4 – 10.5)",
+    "credit": "the aluminium remote, Front Row",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Game Center",
+    "slug": "game-center",
+    "file": "apps/game-center.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the board-game table",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "GarageBand",
+    "slug": "garageband",
+    "file": "apps/garageband.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the electric guitar",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Google Earth",
+    "slug": "google-earth",
+    "file": "apps/google-earth.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the blue marble, Google Earth",
+    "licence": "Google LLC",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
     "name": "Grab",
     "slug": "grab",
     "file": "apps/grab.png",
@@ -320,54 +350,144 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Migration Assistant",
-    "slug": "migration-assistant",
-    "file": "apps/migration-assistant.png",
+    "name": "Grapher",
+    "slug": "grapher",
+    "file": "apps/grapher.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the two machines with the transfer arrow",
+    "credit": "the rainbow surface plot",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Screen Sharing",
-    "slug": "screen-sharing",
-    "file": "apps/screen-sharing.png",
+    "name": "iBooks Author",
+    "slug": "ibooks-author",
+    "file": "apps/ibooks-author.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the display with the broadcast mark",
+    "credit": "the open book and pencil",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "System Image Utility",
-    "slug": "system-image-utility",
-    "file": "apps/system-image-utility.png",
+    "name": "iCal",
+    "slug": "ical",
+    "file": "apps/ical.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the tear-off desk calendar",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Illustrator CS2",
+    "slug": "illustrator-cs2",
+    "file": "apps/illustrator-cs2.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the orange flower, Illustrator CS2",
+    "licence": "Adobe Systems",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "iMovie",
+    "slug": "imovie",
+    "file": "apps/imovie.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the disc image on its stack",
+    "credit": "the star on its clapper",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "VoiceOver Utility",
-    "slug": "voiceover-utility",
-    "file": "apps/voiceover-utility.png",
+    "name": "InDesign CS2",
+    "slug": "indesign-cs2",
+    "file": "apps/indesign-cs2.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the orange butterfly, InDesign CS2",
+    "licence": "Adobe Systems",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "iPhoto",
+    "slug": "iphoto",
+    "file": "apps/iphoto.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the speaking figure",
+    "credit": "the camera-lens aperture",
     "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Microsoft Word",
-    "slug": "microsoft-word",
-    "file": "apps/microsoft-word.png",
+    "name": "iTunes",
+    "slug": "itunes",
+    "file": "apps/itunes.png",
+    "era": "Mountain Lion – Mavericks",
+    "credit": "the blue quaver on the silver disc",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Keychain Access",
+    "slug": "keychain-access",
+    "file": "apps/keychain-access.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "Word 2011, the blue W",
-    "licence": "Microsoft",
+    "credit": "the ring of keys",
+    "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Keynote",
+    "slug": "keynote",
+    "file": "apps/keynote.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the lectern and its slide",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Launchpad",
+    "slug": "launchpad",
+    "file": "apps/launchpad.png",
+    "era": "Lion – Mavericks",
+    "credit": "the rocket on brushed metal",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "LimeWire",
+    "slug": "limewire",
+    "file": "apps/limewire.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the lime, LimeWire",
+    "licence": "Lime Wire LLC",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Mail",
+    "slug": "mail",
+    "file": "apps/mail.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the stamped airmail envelope",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Messages",
+    "slug": "messages",
+    "file": "apps/messages.png",
+    "era": "Mountain Lion – Mavericks",
+    "credit": "the two speech bubbles",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
   },
   {
     "name": "Microsoft Excel",
@@ -375,26 +495,6 @@
     "file": "apps/microsoft-excel.png",
     "era": "Mountain Lion (10.8)",
     "credit": "Excel 2011, the green X",
-    "licence": "Microsoft",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Microsoft PowerPoint",
-    "slug": "microsoft-powerpoint",
-    "file": "apps/microsoft-powerpoint.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "PowerPoint 2011, the orange P",
-    "licence": "Microsoft",
-    "native": 256,
-    "pack": "500+ Mountain Lion Icons"
-  },
-  {
-    "name": "Microsoft Outlook",
-    "slug": "microsoft-outlook",
-    "file": "apps/microsoft-outlook.png",
-    "era": "Mountain Lion (10.8)",
-    "credit": "Outlook 2011, the yellow O",
     "licence": "Microsoft",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
@@ -410,6 +510,126 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
+    "name": "Microsoft Outlook",
+    "slug": "microsoft-outlook",
+    "file": "apps/microsoft-outlook.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "Outlook 2011, the yellow O",
+    "licence": "Microsoft",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Microsoft PowerPoint",
+    "slug": "microsoft-powerpoint",
+    "file": "apps/microsoft-powerpoint.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "PowerPoint 2011, the orange P",
+    "licence": "Microsoft",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Microsoft Word",
+    "slug": "microsoft-word",
+    "file": "apps/microsoft-word.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "Word 2011, the blue W",
+    "licence": "Microsoft",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Migration Assistant",
+    "slug": "migration-assistant",
+    "file": "apps/migration-assistant.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the two machines with the transfer arrow",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Network Utility",
+    "slug": "network-utility",
+    "file": "apps/network-utility.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the RJ-45 plug",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Notes",
+    "slug": "notes",
+    "file": "apps/notes.png",
+    "era": "Mountain Lion – Mavericks",
+    "credit": "the stitched yellow notepad",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Pages",
+    "slug": "pages",
+    "file": "apps/pages.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the ink bottle and fountain pen",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Photo Booth",
+    "slug": "photo-booth",
+    "file": "apps/photo-booth.png",
+    "era": "Tiger – Leopard (10.4 – 10.5)",
+    "credit": "the curtain, the stool and the strip of prints",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "name": "Photoshop CS2",
+    "slug": "photoshop-cs2",
+    "file": "apps/photoshop-cs2.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the blue feather, Photoshop CS2",
+    "licence": "Adobe Systems",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Preview",
+    "slug": "preview",
+    "file": "apps/preview.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the photo print under the loupe",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
+  },
+  {
+    "name": "Printer",
+    "slug": "printer",
+    "file": "apps/printer.png",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "credit": "the sheet-fed office printer; Apple shipped it as Printer Setup Utility",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "name": "QuickTime Player",
+    "slug": "quicktime-player",
+    "file": "apps/quicktime-player.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the blue glass Q",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
     "name": "Remote Desktop Connection",
     "slug": "remote-desktop-connection",
     "file": "apps/remote-desktop-connection.png",
@@ -418,6 +638,126 @@
     "licence": "Microsoft",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Roxio Popcorn",
+    "slug": "roxio-popcorn",
+    "file": "apps/roxio-popcorn.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the popcorn bucket, Popcorn 3",
+    "licence": "Roxio",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Roxio Toast",
+    "slug": "roxio-toast",
+    "file": "apps/roxio-toast.png",
+    "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+    "credit": "the toaster with the discs, Toast Titanium",
+    "licence": "Roxio",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Safari",
+    "slug": "safari",
+    "file": "apps/safari.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the compass, Safari 6",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Screen Sharing",
+    "slug": "screen-sharing",
+    "file": "apps/screen-sharing.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the display with the broadcast mark",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Script Editor",
+    "slug": "script-editor",
+    "file": "apps/script-editor.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the scroll and quill",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "Sherlock",
+    "slug": "sherlock",
+    "file": "apps/sherlock.png",
+    "era": "Panther – Tiger (10.3 – 10.4)",
+    "credit": "the deerstalker and glass, Sherlock 3",
+    "licence": "Apple Inc.",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Stickies",
+    "slug": "stickies",
+    "file": "apps/stickies.png",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "credit": "the yellow note with the turned corner",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "name": "System Image Utility",
+    "slug": "system-image-utility",
+    "file": "apps/system-image-utility.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the disc image on its stack",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "System Information",
+    "slug": "system-information",
+    "file": "apps/system-information.png",
+    "era": "Mountain Lion (10.8)",
+    "credit": "the stethoscope over the board",
+    "licence": "Apple Inc.",
+    "native": 256,
+    "pack": "500+ Mountain Lion Icons"
+  },
+  {
+    "name": "System Preferences",
+    "slug": "system-preferences",
+    "file": "apps/system-preferences.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the brushed-steel gear panel",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "TextEdit",
+    "slug": "textedit",
+    "file": "apps/textedit.png",
+    "era": "Mavericks (10.9)",
+    "credit": "the sheet with the fountain pen",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "macOS Mavericks theme"
+  },
+  {
+    "name": "Time Machine",
+    "slug": "time-machine",
+    "file": "apps/time-machine.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the clock dial with the counterweight",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
   },
   {
     "name": "Twitter",
@@ -430,43 +770,33 @@
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "Facebook",
-    "slug": "facebook",
-    "file": "apps/facebook.png",
+    "name": "VoiceOver Utility",
+    "slug": "voiceover-utility",
+    "file": "apps/voiceover-utility.png",
     "era": "Mountain Lion (10.8)",
-    "credit": "the 2011 f on its blue tile",
-    "licence": "Meta",
+    "credit": "the speaking figure",
+    "licence": "Apple Inc.",
     "native": 256,
     "pack": "500+ Mountain Lion Icons"
   },
   {
-    "name": "BetterZip",
-    "slug": "betterzip",
-    "file": "apps/betterzip.png",
-    "era": "Mavericks (10.9)",
-    "credit": "the cardboard box with the zip pull",
-    "licence": "MacItBetter",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "CleanMyMac",
-    "slug": "cleanmymac",
-    "file": "apps/cleanmymac.png",
-    "era": "Mavericks (10.9)",
-    "credit": "CleanMyMac 2, the broom",
-    "licence": "MacPaw",
-    "native": 512,
-    "pack": "macOS Mavericks theme"
-  },
-  {
-    "name": "Adium",
-    "slug": "adium",
-    "file": "apps/adium.png",
-    "era": "Leopard (10.5)",
-    "credit": "the green duck",
-    "licence": "Adium (GPL)",
+    "name": "X11",
+    "slug": "x11",
+    "file": "apps/x11.png",
+    "era": "Tiger – Leopard (10.4 – 10.5)",
+    "credit": "the black tile the X11 application opened with",
+    "licence": "Apple Inc. (theme reproduction)",
     "native": 128,
-    "pack": "Leopard icon pack"
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "name": "Xcode",
+    "slug": "xcode",
+    "file": "apps/xcode.png",
+    "era": "Leopard – Mavericks",
+    "credit": "the hammer in the blue key-cap",
+    "licence": "Apple Inc.",
+    "native": 512,
+    "pack": "skeu-icons macOS era set"
   }
 ]

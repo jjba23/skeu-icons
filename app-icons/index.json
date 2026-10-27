@@ -7,7 +7,7 @@
     "/home/joe/.local/share/applications",
     "/home/joe/.local/share/flatpak/exports/share/applications"
   ],
-  "count": 298,
+  "count": 328,
   "objects": [
     "1Password",
     "Emacs",
@@ -20,29 +20,50 @@
     "apps/adium.png",
     "apps/airport-utility.png",
     "apps/aperture.png",
+    "apps/app-store.png",
     "apps/audio-midi-setup.png",
+    "apps/automator.png",
     "apps/betterzip.png",
     "apps/bluetooth-file-exchange.png",
     "apps/boot-camp-assistant.png",
+    "apps/calculator.png",
+    "apps/chess.png",
+    "apps/classic.png",
     "apps/cleanmymac.png",
+    "apps/clock.png",
     "apps/colorsync-utility.png",
+    "apps/dictionary.png",
     "apps/digitalcolor-meter.png",
     "apps/directory-utility.png",
     "apps/disk-utility.png",
+    "apps/disks.png",
+    "apps/dreamweaver-8.png",
     "apps/dvd-player.png",
     "apps/facebook.png",
     "apps/facetime.png",
+    "apps/finder.png",
+    "apps/fireworks-8.png",
+    "apps/flash-8.png",
     "apps/font-book.png",
+    "apps/front-row.png",
     "apps/game-center.png",
     "apps/garageband.png",
+    "apps/google-earth.png",
     "apps/grab.png",
     "apps/grapher.png",
     "apps/ibooks-author.png",
     "apps/ical.png",
+    "apps/illustrator-cs2.png",
     "apps/imovie.png",
+    "apps/indesign-cs2.png",
     "apps/iphoto.png",
+    "apps/itunes.png",
     "apps/keychain-access.png",
     "apps/keynote.png",
+    "apps/launchpad.png",
+    "apps/limewire.png",
+    "apps/mail.png",
+    "apps/messages.png",
     "apps/microsoft-excel.png",
     "apps/microsoft-messenger.png",
     "apps/microsoft-outlook.png",
@@ -50,20 +71,31 @@
     "apps/microsoft-word.png",
     "apps/migration-assistant.png",
     "apps/network-utility.png",
+    "apps/notes.png",
     "apps/pages.png",
+    "apps/photo-booth.png",
+    "apps/photoshop-cs2.png",
+    "apps/preview.png",
+    "apps/printer.png",
     "apps/quicktime-player.png",
     "apps/remote-desktop-connection.png",
+    "apps/roxio-popcorn.png",
+    "apps/roxio-toast.png",
     "apps/safari.png",
     "apps/screen-sharing.png",
     "apps/script-editor.png",
+    "apps/sherlock.png",
+    "apps/stickies.png",
     "apps/system-image-utility.png",
     "apps/system-information.png",
     "apps/system-preferences.png",
     "apps/textedit.png",
+    "apps/time-machine.png",
     "apps/twitter.png",
     "apps/voiceover-utility.png",
+    "apps/x11.png",
+    "apps/xcode.png",
     "balance",
-    "barometer",
     "blueprint",
     "book",
     "book_open",
@@ -79,7 +111,6 @@
     "cartridge",
     "cassette",
     "chart_recorder",
-    "chess_knight",
     "chip",
     "chrome_folder",
     "clapper",
@@ -88,7 +119,6 @@
     "colorimeter",
     "connector",
     "crate",
-    "desk_calculator",
     "display_case",
     "documents",
     "dongle",
@@ -169,6 +199,7 @@
     "vise",
     "vlc.svg",
     "volume_knob",
+    "weather",
     "webcam",
     "wire_cube",
     "zip_disc"
@@ -415,6 +446,28 @@
       }
     },
     {
+      "name": "App Store",
+      "display": "App Store",
+      "slug": "app-store",
+      "categories": "System;PackageManager",
+      "comment": "",
+      "exec": "",
+      "icon": "app-store",
+      "wmclass": "",
+      "desktop": "app-store.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/app-store.png",
+        "era": "Lion – Mavericks",
+        "credit": "the pencil, brush and ruler as an A",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "app-store/icon-1024.png"
+      }
+    },
+    {
       "name": "Ardour",
       "display": "Ardour",
       "slug": "ardour",
@@ -512,6 +565,28 @@
       },
       "files": {
         "png": "audio-midi-setup/icon-1024.png"
+      }
+    },
+    {
+      "name": "Automator",
+      "display": "Automator",
+      "slug": "automator",
+      "categories": "Utility;Automation",
+      "comment": "",
+      "exec": "",
+      "icon": "automator",
+      "wmclass": "",
+      "desktop": "automator.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/automator.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the little robot with the ray gun, Automator",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "automator/icon-1024.png"
       }
     },
     {
@@ -815,12 +890,18 @@
       "categories": "GNOME;GTK;Utility;Calculator;",
       "comment": "Perform arithmetic, scientific or financial calculations",
       "exec": "gnome-calculator",
+      "icon": "org.gnome.Calculator",
+      "wmclass": "",
       "desktop": "org.gnome.Calculator.desktop",
+      "desktops": [
+        "org.gnome.Calculator"
+      ],
       "design": {
-        "kind": "object",
-        "object": "desk_calculator",
-        "hue": 206,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "apps/calculator.png",
+        "era": "Panther – Leopard (10.3 – 10.5)",
+        "credit": "the silver desk calculator with the dark display",
+        "licence": "Apple Inc. (theme reproduction)"
       },
       "files": {
         "png": "calculator/icon-1024.png"
@@ -983,12 +1064,18 @@
       "categories": "GNOME;GTK;Game;BoardGame;",
       "comment": "Play the classic two-player board game of chess",
       "exec": "gnome-chess",
+      "icon": "org.gnome.Chess",
+      "wmclass": "",
       "desktop": "org.gnome.Chess.desktop",
+      "desktops": [
+        "org.gnome.Chess"
+      ],
       "design": {
-        "kind": "object",
-        "object": "chess_knight",
-        "hue": null,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "apps/chess.png",
+        "era": "Panther – Leopard (10.3 – 10.5)",
+        "credit": "the white knight on its board",
+        "licence": "Apple Inc. (theme reproduction)"
       },
       "files": {
         "png": "chess/icon-1024.png"
@@ -1016,6 +1103,28 @@
       }
     },
     {
+      "name": "Classic",
+      "display": "Classic",
+      "slug": "classic",
+      "categories": "System;Emulator",
+      "comment": "",
+      "exec": "",
+      "icon": "classic",
+      "wmclass": "",
+      "desktop": "classic.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/classic.png",
+        "era": "Panther – Tiger (10.3 – 10.4)",
+        "credit": "the brushed nine, the Classic environment",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "classic/icon-1024.png"
+      }
+    },
+    {
       "name": "CleanMyMac",
       "display": "CleanMyMac",
       "slug": "cleanmymac",
@@ -1035,6 +1144,28 @@
       },
       "files": {
         "png": "cleanmymac/icon-1024.png"
+      }
+    },
+    {
+      "name": "Clock",
+      "display": "Clock",
+      "slug": "clock",
+      "categories": "Utility;Clock",
+      "comment": "",
+      "exec": "",
+      "icon": "clock",
+      "wmclass": "",
+      "desktop": "clock.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/clock.png",
+        "era": "Tiger – Leopard (10.4 – 10.5)",
+        "credit": "the twin-bell alarm clock every desktop of the era wore",
+        "licence": "Apple Inc. (theme reproduction)"
+      },
+      "files": {
+        "png": "clock/icon-1024.png"
       }
     },
     {
@@ -1342,6 +1473,28 @@
       }
     },
     {
+      "name": "Dictionary",
+      "display": "Dictionary",
+      "slug": "dictionary",
+      "categories": "Office;Dictionary;Education",
+      "comment": "",
+      "exec": "",
+      "icon": "dictionary",
+      "wmclass": "",
+      "desktop": "dictionary.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/dictionary.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the red Dictionary book",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "dictionary/icon-1024.png"
+      }
+    },
+    {
       "name": "DigitalColor Meter",
       "display": "DigitalColor Meter",
       "slug": "digitalcolor-meter",
@@ -1471,12 +1624,18 @@
       "categories": "GNOME;GTK;Utility;X-GNOME-Utilities;",
       "comment": "Manage Drives and Media",
       "exec": "gnome-disks",
+      "icon": "org.gnome.DiskUtility",
+      "wmclass": "",
       "desktop": "org.gnome.DiskUtility.desktop",
+      "desktops": [
+        "org.gnome.DiskUtility"
+      ],
       "design": {
-        "kind": "object",
-        "object": "drive",
-        "hue": null,
-        "archetype": "still-life object"
+        "kind": "historical",
+        "source": "apps/disks.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the external drive on its cable",
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "disks/icon-1024.png"
@@ -1576,6 +1735,28 @@
       },
       "files": {
         "png": "dolphin/icon-1024.png"
+      }
+    },
+    {
+      "name": "Dreamweaver 8",
+      "display": "Dreamweaver 8",
+      "slug": "dreamweaver-8",
+      "categories": "Development;WebDevelopment",
+      "comment": "",
+      "exec": "",
+      "icon": "dreamweaver",
+      "wmclass": "",
+      "desktop": "dreamweaver.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/dreamweaver-8.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the green sphere with the d, Dreamweaver 8",
+        "licence": "Macromedia"
+      },
+      "files": {
+        "png": "dreamweaver-8/icon-1024.png"
       }
     },
     {
@@ -1932,6 +2113,28 @@
       }
     },
     {
+      "name": "Finder",
+      "display": "Finder",
+      "slug": "finder",
+      "categories": "System;FileManager",
+      "comment": "",
+      "exec": "",
+      "icon": "finder",
+      "wmclass": "",
+      "desktop": "finder.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/finder.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the two-faced Finder square",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "finder/icon-1024.png"
+      }
+    },
+    {
       "name": "Firefox",
       "display": "Firefox",
       "slug": "firefox",
@@ -1945,6 +2148,50 @@
       },
       "files": {
         "png": "firefox/icon-1024.png"
+      }
+    },
+    {
+      "name": "Fireworks 8",
+      "display": "Fireworks 8",
+      "slug": "fireworks-8",
+      "categories": "Graphics;WebDevelopment",
+      "comment": "",
+      "exec": "",
+      "icon": "fireworks",
+      "wmclass": "",
+      "desktop": "fireworks.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/fireworks-8.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the yellow sphere with the fw mark, Fireworks 8",
+        "licence": "Macromedia"
+      },
+      "files": {
+        "png": "fireworks-8/icon-1024.png"
+      }
+    },
+    {
+      "name": "Flash 8",
+      "display": "Flash 8",
+      "slug": "flash-8",
+      "categories": "Graphics;2DGraphics",
+      "comment": "",
+      "exec": "",
+      "icon": "flash",
+      "wmclass": "",
+      "desktop": "flash.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/flash-8.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the red F, Flash 8",
+        "licence": "Macromedia"
+      },
+      "files": {
+        "png": "flash-8/icon-1024.png"
       }
     },
     {
@@ -2042,6 +2289,28 @@
       },
       "files": {
         "png": "fretboard/icon-1024.png"
+      }
+    },
+    {
+      "name": "Front Row",
+      "display": "Front Row",
+      "slug": "front-row",
+      "categories": "AudioVideo;TV",
+      "comment": "",
+      "exec": "",
+      "icon": "front-row",
+      "wmclass": "",
+      "desktop": "front-row.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/front-row.png",
+        "era": "Tiger – Leopard (10.4 – 10.5)",
+        "credit": "the aluminium remote, Front Row",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "front-row/icon-1024.png"
       }
     },
     {
@@ -2311,6 +2580,28 @@
       }
     },
     {
+      "name": "Google Earth",
+      "display": "Google Earth",
+      "slug": "google-earth",
+      "categories": "Science;Geoscience",
+      "comment": "",
+      "exec": "",
+      "icon": "google-earth",
+      "wmclass": "",
+      "desktop": "google-earth.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/google-earth.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the blue marble, Google Earth",
+        "licence": "Google LLC"
+      },
+      "files": {
+        "png": "google-earth/icon-1024.png"
+      }
+    },
+    {
       "name": "GParted",
       "display": "GParted",
       "slug": "gparted",
@@ -2570,6 +2861,28 @@
       }
     },
     {
+      "name": "Illustrator CS2",
+      "display": "Illustrator CS2",
+      "slug": "illustrator-cs2",
+      "categories": "Graphics;VectorGraphics",
+      "comment": "",
+      "exec": "",
+      "icon": "illustrator",
+      "wmclass": "",
+      "desktop": "illustrator.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/illustrator-cs2.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the orange flower, Illustrator CS2",
+        "licence": "Adobe Systems"
+      },
+      "files": {
+        "png": "illustrator-cs2/icon-1024.png"
+      }
+    },
+    {
       "name": "Image Viewer",
       "display": "Image Viewer",
       "slug": "image-viewer",
@@ -2625,6 +2938,28 @@
       },
       "files": {
         "png": "impression/icon-1024.png"
+      }
+    },
+    {
+      "name": "InDesign CS2",
+      "display": "InDesign CS2",
+      "slug": "indesign-cs2",
+      "categories": "Graphics;Publishing",
+      "comment": "",
+      "exec": "",
+      "icon": "indesign",
+      "wmclass": "",
+      "desktop": "indesign.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/indesign-cs2.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the orange butterfly, InDesign CS2",
+        "licence": "Adobe Systems"
+      },
+      "files": {
+        "png": "indesign-cs2/icon-1024.png"
       }
     },
     {
@@ -2702,6 +3037,28 @@
       },
       "files": {
         "png": "iphoto/icon-1024.png"
+      }
+    },
+    {
+      "name": "iTunes",
+      "display": "iTunes",
+      "slug": "itunes",
+      "categories": "AudioVideo;Audio;Player",
+      "comment": "",
+      "exec": "",
+      "icon": "itunes",
+      "wmclass": "",
+      "desktop": "itunes.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/itunes.png",
+        "era": "Mountain Lion – Mavericks",
+        "credit": "the blue quaver on the silver disc",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "itunes/icon-1024.png"
       }
     },
     {
@@ -2923,6 +3280,28 @@
       }
     },
     {
+      "name": "Launchpad",
+      "display": "Launchpad",
+      "slug": "launchpad",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "launchpad",
+      "wmclass": "",
+      "desktop": "launchpad.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/launchpad.png",
+        "era": "Lion – Mavericks",
+        "credit": "the rocket on brushed metal",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "launchpad/icon-1024.png"
+      }
+    },
+    {
       "name": "LibreOffice",
       "display": "LibreOffice",
       "slug": "libreoffice",
@@ -3088,6 +3467,28 @@
       }
     },
     {
+      "name": "LimeWire",
+      "display": "LimeWire",
+      "slug": "limewire",
+      "categories": "Network;P2P",
+      "comment": "",
+      "exec": "",
+      "icon": "limewire",
+      "wmclass": "",
+      "desktop": "limewire.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/limewire.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the lime, LimeWire",
+        "licence": "Lime Wire LLC"
+      },
+      "files": {
+        "png": "limewire/icon-1024.png"
+      }
+    },
+    {
       "name": "LM-Studio",
       "display": "LM-Studio",
       "slug": "lm-studio",
@@ -3223,6 +3624,28 @@
       }
     },
     {
+      "name": "Mail",
+      "display": "Mail",
+      "slug": "mail",
+      "categories": "Network;Email",
+      "comment": "",
+      "exec": "",
+      "icon": "mail",
+      "wmclass": "",
+      "desktop": "mail.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/mail.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the stamped airmail envelope",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "mail/icon-1024.png"
+      }
+    },
+    {
       "name": "Maps",
       "display": "Maps",
       "slug": "maps",
@@ -3280,6 +3703,28 @@
       },
       "files": {
         "png": "mega/icon-1024.png"
+      }
+    },
+    {
+      "name": "Messages",
+      "display": "Messages",
+      "slug": "messages",
+      "categories": "Network;InstantMessaging",
+      "comment": "",
+      "exec": "",
+      "icon": "messages",
+      "wmclass": "",
+      "desktop": "messages.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/messages.png",
+        "era": "Mountain Lion – Mavericks",
+        "credit": "the two speech bubbles",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "messages/icon-1024.png"
       }
     },
     {
@@ -3728,6 +4173,28 @@
       }
     },
     {
+      "name": "Notes",
+      "display": "Notes",
+      "slug": "notes",
+      "categories": "Office;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "notes",
+      "wmclass": "",
+      "desktop": "notes.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/notes.png",
+        "era": "Mountain Lion – Mavericks",
+        "credit": "the stitched yellow notepad",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "notes/icon-1024.png"
+      }
+    },
+    {
       "name": "Nyxt",
       "display": "Nyxt",
       "slug": "nyxt",
@@ -3981,6 +4448,28 @@
       }
     },
     {
+      "name": "Photo Booth",
+      "display": "Photo Booth",
+      "slug": "photo-booth",
+      "categories": "AudioVideo;Recorder",
+      "comment": "",
+      "exec": "",
+      "icon": "photo-booth",
+      "wmclass": "",
+      "desktop": "photo-booth.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/photo-booth.png",
+        "era": "Tiger – Leopard (10.4 – 10.5)",
+        "credit": "the curtain, the stool and the strip of prints",
+        "licence": "Apple Inc. (theme reproduction)"
+      },
+      "files": {
+        "png": "photo-booth/icon-1024.png"
+      }
+    },
+    {
       "name": "Photos",
       "display": "Photos",
       "slug": "photos",
@@ -3996,6 +4485,28 @@
       },
       "files": {
         "png": "photos/icon-1024.png"
+      }
+    },
+    {
+      "name": "Photoshop CS2",
+      "display": "Photoshop CS2",
+      "slug": "photoshop-cs2",
+      "categories": "Graphics;RasterGraphics",
+      "comment": "",
+      "exec": "",
+      "icon": "photoshop",
+      "wmclass": "",
+      "desktop": "photoshop.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/photoshop-cs2.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the blue feather, Photoshop CS2",
+        "licence": "Adobe Systems"
+      },
+      "files": {
+        "png": "photoshop-cs2/icon-1024.png"
       }
     },
     {
@@ -4017,6 +4528,28 @@
       },
       "files": {
         "png": "postman/icon-1024.png"
+      }
+    },
+    {
+      "name": "Preview",
+      "display": "Preview",
+      "slug": "preview",
+      "categories": "Office;Viewer;Graphics",
+      "comment": "",
+      "exec": "",
+      "icon": "preview",
+      "wmclass": "",
+      "desktop": "preview.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/preview.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the photo print under the loupe",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "preview/icon-1024.png"
       }
     },
     {
@@ -4056,6 +4589,28 @@
       },
       "files": {
         "png": "print-settings/icon-1024.png"
+      }
+    },
+    {
+      "name": "Printer",
+      "display": "Printer",
+      "slug": "printer",
+      "categories": "System;Settings;HardwareSettings",
+      "comment": "",
+      "exec": "",
+      "icon": "printer",
+      "wmclass": "",
+      "desktop": "printer.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/printer.png",
+        "era": "Panther – Leopard (10.3 – 10.5)",
+        "credit": "the sheet-fed office printer; Apple shipped it as Printer Setup Utility",
+        "licence": "Apple Inc. (theme reproduction)"
+      },
+      "files": {
+        "png": "printer/icon-1024.png"
       }
     },
     {
@@ -4478,6 +5033,50 @@
       }
     },
     {
+      "name": "Roxio Popcorn",
+      "display": "Roxio Popcorn",
+      "slug": "roxio-popcorn",
+      "categories": "AudioVideo;Video",
+      "comment": "",
+      "exec": "",
+      "icon": "roxio-popcorn",
+      "wmclass": "",
+      "desktop": "roxio-popcorn.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/roxio-popcorn.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the popcorn bucket, Popcorn 3",
+        "licence": "Roxio"
+      },
+      "files": {
+        "png": "roxio-popcorn/icon-1024.png"
+      }
+    },
+    {
+      "name": "Roxio Toast",
+      "display": "Roxio Toast",
+      "slug": "roxio-toast",
+      "categories": "Utility;DiscBurning",
+      "comment": "",
+      "exec": "",
+      "icon": "roxio-toast",
+      "wmclass": "",
+      "desktop": "roxio-toast.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/roxio-toast.png",
+        "era": "Tiger – Snow Leopard (10.4 – 10.6)",
+        "credit": "the toaster with the discs, Toast Titanium",
+        "licence": "Roxio"
+      },
+      "files": {
+        "png": "roxio-toast/icon-1024.png"
+      }
+    },
+    {
       "name": "RStudio",
       "display": "RStudio",
       "slug": "rstudio",
@@ -4619,6 +5218,28 @@
       },
       "files": {
         "png": "settings/icon-1024.png"
+      }
+    },
+    {
+      "name": "Sherlock",
+      "display": "Sherlock",
+      "slug": "sherlock",
+      "categories": "Network;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "sherlock",
+      "wmclass": "",
+      "desktop": "sherlock.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/sherlock.png",
+        "era": "Panther – Tiger (10.3 – 10.4)",
+        "credit": "the deerstalker and glass, Sherlock 3",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "sherlock/icon-1024.png"
       }
     },
     {
@@ -4845,6 +5466,28 @@
       },
       "files": {
         "png": "steam/icon-1024.png"
+      }
+    },
+    {
+      "name": "Stickies",
+      "display": "Stickies",
+      "slug": "stickies",
+      "categories": "Utility;TextEditor",
+      "comment": "",
+      "exec": "",
+      "icon": "stickies",
+      "wmclass": "",
+      "desktop": "stickies.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/stickies.png",
+        "era": "Panther – Leopard (10.3 – 10.5)",
+        "credit": "the yellow note with the turned corner",
+        "licence": "Apple Inc. (theme reproduction)"
+      },
+      "files": {
+        "png": "stickies/icon-1024.png"
       }
     },
     {
@@ -5182,6 +5825,28 @@
       },
       "files": {
         "png": "tilix/icon-1024.png"
+      }
+    },
+    {
+      "name": "Time Machine",
+      "display": "Time Machine",
+      "slug": "time-machine",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "time-machine",
+      "wmclass": "",
+      "desktop": "time-machine.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/time-machine.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the clock dial with the counterweight",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "time-machine/icon-1024.png"
       }
     },
     {
@@ -5607,11 +6272,16 @@
       "categories": "GNOME;GTK;Utility;Core;",
       "comment": "Show weather conditions and forecast",
       "exec": "gapplication",
+      "icon": "org.gnome.Weather",
+      "wmclass": "",
       "desktop": "org.gnome.Weather.desktop",
+      "desktops": [
+        "org.gnome.Weather"
+      ],
       "design": {
         "kind": "object",
-        "object": "barometer",
-        "hue": 200,
+        "object": "weather",
+        "hue": 205,
         "archetype": "still-life object"
       },
       "files": {
@@ -5835,6 +6505,50 @@
       },
       "files": {
         "png": "workbench/icon-1024.png"
+      }
+    },
+    {
+      "name": "X11",
+      "display": "X11",
+      "slug": "x11",
+      "categories": "System;Utility",
+      "comment": "",
+      "exec": "",
+      "icon": "x11",
+      "wmclass": "",
+      "desktop": "x11.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/x11.png",
+        "era": "Tiger – Leopard (10.4 – 10.5)",
+        "credit": "the black tile the X11 application opened with",
+        "licence": "Apple Inc. (theme reproduction)"
+      },
+      "files": {
+        "png": "x11/icon-1024.png"
+      }
+    },
+    {
+      "name": "Xcode",
+      "display": "Xcode",
+      "slug": "xcode",
+      "categories": "Development;IDE",
+      "comment": "",
+      "exec": "",
+      "icon": "xcode",
+      "wmclass": "",
+      "desktop": "xcode.desktop",
+      "desktops": [],
+      "design": {
+        "kind": "historical",
+        "source": "apps/xcode.png",
+        "era": "Leopard – Mavericks",
+        "credit": "the hammer in the blue key-cap",
+        "licence": "Apple Inc."
+      },
+      "files": {
+        "png": "xcode/icon-1024.png"
       }
     },
     {

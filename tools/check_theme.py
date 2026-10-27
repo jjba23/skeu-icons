@@ -17,6 +17,11 @@ Checks, in order:
 * the six contexts carry the same icon names at every fixed size;
 * the symbolic layer matches ``tools/symbolic-names.txt`` exactly, name for name
   and byte for byte (see ``tools/make_symbolic.py``), and carries no extras;
+* the volumes, drives and peripherals dressed as the era drew them carry that
+  artwork at every size, in the scalable tree as well as the bitmaps (see
+  ``tools/make_theme_devices.py``);
+* the places the era drew - the wastebasket, empty and full - carry that
+  artwork too (see ``tools/make_theme_places.py``);
 * the accent/lightness variants in ``skeu-icons-green`` and
   ``skeu-icons-green-dark`` are intact: index.theme, accent symlinks, no
   dangling links, and the full light-ink symbolic set;
@@ -212,6 +217,8 @@ def check() -> list[str]:
     try:
         from make_plain import check as check_plain
         from make_symbolic import check as check_symbolic
+        from make_theme_devices import check as check_devices
+        from make_theme_places import check as check_places
         from make_variants import check as check_variants
     except Exception as error:  # noqa: BLE001
         problems.append(f"cannot import the generators: {error}")
@@ -219,6 +226,8 @@ def check() -> list[str]:
         problems += check_symbolic()
         problems += check_plain()
         problems += check_variants()
+        problems += check_devices()
+        problems += check_places()
 
     # what a file manager actually asks for, walked through GIO
     try:

@@ -1,0 +1,326 @@
+[
+  {
+    "stem": "battery-dead",
+    "file": "volumes/battery-dead.png",
+    "credit": "the cell with the cross: a battery that has run out",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "bluetooth",
+    "file": "volumes/bluetooth.png",
+    "credit": "the Bluetooth rune levitating in its blue orb",
+    "era": "Tiger – Leopard (10.4 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "camcorder",
+    "file": "volumes/camcorder.png",
+    "credit": "the camcorder with the flip screen",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "camera",
+    "file": "volumes/camera.png",
+    "credit": "the compact camera",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "desktop-computer",
+    "file": "volumes/desktop-computer.png",
+    "credit": "the all-in-one on its foot",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "display",
+    "file": "volumes/display.png",
+    "credit": "the cinema display",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "ethernet",
+    "file": "volumes/ethernet.png",
+    "credit": "the purple globe with the RJ-45 socket",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "firewire-drive",
+    "file": "volumes/firewire-drive.png",
+    "credit": "the orange external drive with the 1394 mark",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "flash-sd",
+    "file": "volumes/flash-sd.png",
+    "credit": "the SD card",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "flash-sm",
+    "file": "volumes/flash-sm.png",
+    "credit": "the SmartMedia card",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "floppy",
+    "file": "volumes/floppy.png",
+    "credit": "the 3.5 inch floppy",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "game-controller",
+    "file": "volumes/game-controller.png",
+    "credit": "the two-stick game pad",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "graphics-tablet",
+    "file": "volumes/graphics-tablet.png",
+    "credit": "the graphics tablet and its stylus",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "harddisk",
+    "file": "volumes/harddisk.png",
+    "credit": "the bare mechanism of an internal drive",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "ipod",
+    "file": "volumes/ipod.png",
+    "credit": "the iPod with its screen lit",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "keyboard",
+    "file": "volumes/keyboard.png",
+    "credit": "the aluminium keyboard",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "laptop",
+    "file": "volumes/laptop.png",
+    "credit": "the aluminium notebook, lid open on the purple desktop",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "stem": "microphone",
+    "file": "volumes/microphone.png",
+    "credit": "the studio microphone in its shock mount",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "modem",
+    "file": "volumes/modem.png",
+    "credit": "the dial-up box",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "mouse",
+    "file": "volumes/mouse.png",
+    "credit": "the pill mouse with the scroll ball",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "network-drive",
+    "file": "volumes/network-drive.png",
+    "credit": "the blue globe on its base: a mounted network volume",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "network-mount",
+    "file": "volumes/network-mount.png",
+    "credit": "the globe drive, the way a server shows in the sidebar",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "optical",
+    "file": "volumes/optical.png",
+    "credit": "the plain silver disc",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "optical-audio",
+    "file": "volumes/optical-audio.png",
+    "credit": "the audio CD, with the notes on it",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "optical-dvd",
+    "file": "volumes/optical-dvd.png",
+    "credit": "the video disc, labelled DVD",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "optical-r",
+    "file": "volumes/optical-r.png",
+    "credit": "the write-once disc, labelled CD-R",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "pda",
+    "file": "volumes/pda.png",
+    "credit": "the Palm handheld",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "phone",
+    "file": "volumes/phone.png",
+    "credit": "the candybar phone",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "printer",
+    "file": "volumes/printer.png",
+    "credit": "the sheet-fed office printer",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "stem": "removable-drive",
+    "file": "volumes/removable-drive.png",
+    "credit": "the white volume with the orange USB symbol",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "removable-harddisk",
+    "file": "volumes/removable-harddisk.png",
+    "credit": "the orange external drive",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "scanner",
+    "file": "volumes/scanner.png",
+    "credit": "the flatbed scanner",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "usb-stick",
+    "file": "volumes/usb-stick.png",
+    "credit": "the orange USB stick",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "webcam",
+    "file": "volumes/webcam.png",
+    "credit": "the webcam on its foot",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "wireless",
+    "file": "volumes/wireless.png",
+    "credit": "the purple globe with the aerial",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  },
+  {
+    "stem": "zip-disk",
+    "file": "volumes/zip-disk.png",
+    "credit": "the Zip cartridge",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Leopard Huge Icon Pack"
+  }
+]

@@ -29,6 +29,12 @@ editor should not be a pixel-for-pixel copy of the first program's tile - so
 ``ALTS`` cuts colourways out of committed artwork and writes them beside it at
 every size.
 
+A program that ships its own icon is not part of any of this.  Its names are in
+``OWN_ARTWORK`` (see ``make_app_icons.py``), and this step does not answer for
+them: it links nothing under those names and takes back anything an earlier
+build wrote, because a theme is looked up before the hicolor fallback, and a
+file here would shadow the artwork that program ships with itself.
+
     python3 tools/make_theme_apps.py            # install + link
     python3 tools/make_theme_apps.py --check    # report gaps, write nothing
 """
@@ -47,8 +53,8 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from make_app_icons import discover  # noqa: E402
-from render_skeu import resize, slugify  # noqa: E402
+from make_app_icons import OWN_ARTWORK, discover  # noqa: E402
+from render_skeu import resize, save_png, slugify  # noqa: E402
 
 THEME = ROOT / "skeu-icons"
 ICONS = ROOT / "app-icons"
@@ -59,29 +65,163 @@ CONTEXT = "apps"
 
 #: Programs the pack shows under another icon than the one drawn for them, the
 #: way a desktop dressed as OS X would dress them: iMovie for a video editor,
-#: Disk Utility for a partitioner, Time Machine for a backup tool.  Keyed by app
-#: slug, valued by a committed file stem in ``apps/``.
+#: Mail for a mail client, Game Center for a game.  Keyed by app slug, valued by
+#: a committed file stem in ``apps/``.
+#:
+#: A family is spread over its colourways (see ``ALTS``) so that four editors on
+#: one machine do not become four pixel-identical stars: the first program takes
+#: the artwork as Apple drew it, the next two take the colourways cut from it.
 BORROWED: dict[str, str] = {
-    "kdenlive": "imovie",              # a video editor, shown as iMovie
-    "shotcut": "imovie",               # ... and so is the other open one
-    "terminator": "terminal-red",      # the emulator that splits panes
-    "totem": "quicktime-player",       # a film player, shown as QuickTime
-    "celluloid": "quicktime-player",
-    "ardour": "garageband",            # a DAW, shown as GarageBand
-    "lmms": "garageband",
-    "calendar": "ical",                # the tear-off desk calendar
-    "joplin": "notes",                 # a notes app, shown as the OS X pad
-    "document-viewer": "preview",      # a page viewer, shown as Preview
-    "okular": "preview",
-    "timeshift": "time-machine",       # a backup tool, shown as Time Machine
-    "d-j-dup-backups": "time-machine",
-    "gparted": "disk-utility",         # a partitioner, shown as Disk Utility
-    "disks": "disk-utility",
-    "settings": "system-preferences",  # the settings panel
+    # --- video editing: iMovie, gold / rose / blue -------------------------- #
+    "kdenlive": "imovie",
+    "openshot": "imovie",
+    "shotcut": "imovie-alt-2",
+    # --- film players and DAWs --------------------------------------------- #
+    "totem": "quicktime-player",
+    "celluloid": "quicktime-player-alt",
+    "ardour": "garageband",
+    "lmms": "garageband-alt",
+    # --- file managers: the Finder face, blue / green / violet -------------- #
+    "files": "finder",
+    "nemo": "finder",
+    "dolphin": "finder-alt",
+    "caja": "finder-alt",
+    "thunar": "finder-alt-2",
+    "pcmanfm": "finder-alt-2",
+    # --- games: Game Center, blue / teal / magenta ------------------------- #
+    # The chess set is the exception: the era drew a chess set of its own (see
+    # ``CATEGORY_KEEP``), so the board game keeps the knight and everything
+    # else in the menu is Game Center.
+    "quadrapassel": "game-center",
+    "swell-foop": "game-center",
+    "mines": "game-center-alt",
+    "reversi": "game-center-alt",
+    "lights-off": "game-center-alt",
+    "mahjongg": "game-center-alt-2",
+    "sudoku": "game-center-alt-2",
+    # --- chat: iMessage, green / blue / violet ----------------------------- #
+    "telegram": "messages",
+    "element": "messages",
+    "zulip": "messages",
+    "emblem": "messages",
+    "discord": "messages-alt",
+    "mattermost": "messages-alt",
+    "zapzap": "messages-alt",
+    "skype": "messages-alt",
+    "slack": "messages-alt-2",
+    "rocket-chat": "messages-alt-2",
+    "dialect": "messages-alt-2",
+    # --- mail: the airmail stamp, brass / teal / violet -------------------- #
+    "thunderbird": "mail",
+    "evolution": "mail-alt",
+    "geary": "mail-alt-2",
+    # --- video calls ------------------------------------------------------- #
+    "zoom": "facetime",
+    "microsoft-teams": "facetime-alt",
+    # --- drives and disks -------------------------------------------------- #
+    "impression": "disks-alt",     # the USB writer, on a blue drive
+    "gparted": "disk-utility",     # a partitioner, shown as Disk Utility
+    # --- pictures: iPhoto -------------------------------------------------- #
+    "image-viewer": "iphoto",
+    "shotwell": "iphoto-alt",
+    "gwenview": "iphoto-alt-2",
+    # --- notes: the stitched pad, yellow / green / pink -------------------- #
+    "joplin": "notes",
+    "obsidian": "notes-alt",
+    "logseq": "notes-alt-2",
+    # --- music: the silver disc, blue / red / gold -------------------------- #
+    "music": "itunes",
+    "rhythmbox": "itunes-alt",
+    "elisa": "itunes-alt-2",
+    # --- reference and the web --------------------------------------------- #
+    "wordbook": "dictionary",
+    "web": "safari",
+    # --- viewers, backups, software, settings ------------------------------ #
+    "document-viewer": "preview",
+    "okular": "preview-alt",
+    "timeshift": "time-machine",
+    "d-j-dup-backups": "time-machine-alt",
+    "software": "app-store",
+    "discover": "app-store-alt",
+    "settings": "system-preferences",
+    "tweaks": "system-preferences-alt",
+    # --- monitors, the calendar, the clock and the scratch pad ------------- #
     "gnome-system-monitor": "activity-monitor",
-    "system-monitor": "activity-monitor",
-    "software": "app-store",           # the package centre as the App Store
-    "intellij-idea": "xcode",          # JetBrains' IDE, shown as the Xcode icon
+    "system-monitor": "activity-monitor-alt",
+    "btop": "activity-monitor-alt-2",
+    "resources": "system-information",
+    "calendar": "ical",
+    "clocks": "clock",
+    "text-pieces": "stickies",
+    # --- the desk calculator, the camera booth and the printer ------------- #
+    # The era drew all three, and every desktop has a program that does the
+    # same job; see the "everyday tools" block in ``ROSTER``, tools/skeu/apps.py.
+    "cheese": "photo-booth",
+    "print-settings": "printer",
+    "print-editor": "printer-alt",
+    # --- the office suite: the page, the slide and the spreadsheet -------- #
+    "libreoffice-writer": "pages",
+    "abiword": "pages-alt",
+    "libreoffice-impress": "keynote",
+    "libreoffice-math": "grapher",
+    "libreoffice-calc": "microsoft-excel",
+    "gnumeric": "microsoft-excel-alt",
+    # --- passwords: the ring of keys --------------------------------------- #
+    "1password": "keychain-access",
+    "keepassxc": "keychain-access",
+    "bitwarden": "keychain-access-alt",
+    "passwords-and-keys": "keychain-access-alt-2",
+    # --- archives and remote machines -------------------------------------- #
+    "file-roller": "betterzip",
+    "ark": "betterzip-alt",
+    "remmina": "remote-desktop-connection",
+    "rustdesk": "remote-desktop-connection-alt",
+    "tigervnc": "screen-sharing",
+    "remote-viewer": "screen-sharing-alt",
+    "connections": "screen-sharing-alt-2",
+    # --- the darkroom, the colour meter and the network tap ---------------- #
+    "darktable": "aperture",
+    "rawtherapee": "aperture-alt",
+    "eyedropper": "digitalcolor-meter",
+    "color-profile-viewer": "colorsync-utility",
+    "wireshark": "network-utility",
+    "wireshark-super-user-mode": "network-utility-alt",
+    # --- the library, the type case and the graph paper -------------------- #
+    "calibre": "ibooks-author",
+    "webfont-bundler": "font-book",
+    "graphs": "grapher-alt",
+    "disk-usage-analyzer": "disks-alt",
+    # --- another operating system on the same machine ---------------------- #
+    "virtualbox": "boot-camp-assistant",
+    "vmware-workstation": "boot-camp-assistant-alt",
+    "virtual-machine-manager": "boot-camp-assistant-alt-2",
+    # --- the file sender, the way Bluetooth File Exchange did it ------------ #
+    "warp": "bluetooth-file-exchange-alt",
+    # --- one IDE and one pane splitter ------------------------------------- #
+    "intellij-idea": "xcode",
+    "terminator": "terminal-red",
+    # --- the graphics suite: the feather, the flower, the butterfly -------- #
+    "krita": "photoshop-cs2",
+    "inkscape": "illustrator-cs2",
+    "libreoffice-draw": "illustrator-cs2-alt",
+    "scribus": "indesign-cs2",
+    # --- authoring for the web: the sphere with the d, the spark ----------- #
+    "workbench": "dreamweaver-8",
+    "curtail": "fireworks-8",
+    # --- burning a disc, transcoding a film -------------------------------- #
+    "brasero": "roxio-toast",
+    "k3b": "roxio-toast-alt",
+    "impression": "roxio-toast-alt-2",
+    "handbrake": "roxio-popcorn",
+    # --- an emulator is the Classic environment ---------------------------- #
+    "boxes": "classic",
+    "qemu": "classic-alt",
+    # --- peer to peer: the lime --------------------------------------------- #
+    "transmission": "limewire",
+    "qbittorrent": "limewire-alt",
+    "fragments": "limewire-alt-2",
+    # --- the blue marble --------------------------------------------------- #
+    "maps": "google-earth",
 }
 
 #: Every terminal emulator answers with the pack's one terminal, so a machine
@@ -101,10 +241,12 @@ BORROWED_CATEGORIES: tuple[tuple[str, str], ...] = (
 )
 
 #: Programs in a mapped category that keep the object drawn for them: a game
-#: store, an emulator or a Wine prefix is a shelf, not a game.
+#: store, an emulator or a Wine prefix is a shelf, not a game.  ``chess`` is
+#: here for the other reason - the era drew a chess set of its own, so the
+#: board game keeps its knight while the rest of the menu is Game Center.
 CATEGORY_KEEP: frozenset[str] = frozenset({
     "steam", "lutris", "heroic", "prism-launcher", "cartridges", "retroarch",
-    "retrodeck", "retrodeck-configurator", "bottles", "wine",
+    "retrodeck", "retrodeck-configurator", "bottles", "wine", "chess",
 })
 
 #: Names a launcher asks for that no desktop entry on this machine declares - a
@@ -115,9 +257,72 @@ BORROWED_NAMES: dict[str, str] = {
     "tmux": "terminal-red",
     "lightworks": "imovie-alt",
     "openshot": "imovie",
-    "lambdock": "launchpad",
-    "lambdock-launchpad": "launchpad",
-    "org.jointhefreeworld.lambdock": "launchpad",
+    # One name of the dock's own, and not the dock: its launcher asks for the
+    # *button* it draws, which is the one place a Launchpad tile is wanted.  The
+    # names the dock itself answers to are in OWN_ARTWORK and stay unclaimed.
+    "lambdock-launchpad": "launchpad-alt",
+    # --- searching, the way Sherlock did it -------------------------------- #
+    "catfish": "sherlock",
+    "gnome-search-tool": "sherlock-alt",
+    "recoll": "sherlock-alt-2",
+    # --- two more vector editors and two more DVD tools -------------------- #
+    "karbon": "illustrator-cs2-alt-2",
+    "karbon14": "illustrator-cs2-alt-2",
+    "winff": "roxio-popcorn-alt",
+    "dvdrip": "roxio-popcorn-alt-2",
+    # --- animating, authoring for the web ---------------------------------- #
+    "synfig": "flash-8",
+    "synfigstudio": "flash-8-alt",
+    "pencil2d": "flash-8-alt-2",
+    "bluefish": "dreamweaver-8-alt",
+    "bluegriffon": "dreamweaver-8-alt-2",
+    "kompozer": "dreamweaver-8",
+    # --- the media centre: the remote on the sofa table -------------------- #
+    "kodi": "front-row",
+    "mythtv": "front-row-alt",
+    # --- the desk calculator, the alarm clock, the scratch pad ------------- #
+    # Names no desktop entry here declares, so they are mapped straight to the
+    # era artwork they borrow: another distribution's calculator, another
+    # clock, another sticky note.
+    "qalculate-qt": "calculator-alt",
+    "mate-calc": "calculator-alt-2",
+    "xfce4-calculator": "calculator-alt-2",
+    "kclock": "clock-alt",
+    "alarm-clock-applet": "clock-alt",
+    "xpad": "stickies-alt",
+    "knotes": "stickies-alt",
+    # --- the screenshot the era took with Grab ----------------------------- #
+    "gnome-screenshot": "grab",
+    "flameshot": "grab-alt",
+    "spectacle": "grab-alt-2",
+    # --- another archive manager, another chess set ------------------------ #
+    "xarchiver": "betterzip-alt-2",
+    "engrampa": "betterzip-alt-2",
+    "peazip": "betterzip-alt-2",
+    "pychess": "chess-alt",
+    "xboard": "chess-alt-2",
+    "stockfish": "chess-alt-2",
+    "guvcview": "photo-booth-alt",
+    "kamoso": "photo-booth-alt",
+    "system-config-printer": "printer-alt",
+    "gcolor2": "digitalcolor-meter-alt",
+    "gcolor3": "digitalcolor-meter-alt",
+    "gnome-color-chooser": "digitalcolor-meter-alt",
+    "proton-pass": "keychain-access-alt-3",
+    "mythfrontend": "front-row-alt",
+    "jellyfin": "front-row-alt-2",
+    "plex-media-player": "front-row",
+    # --- an emulator, and a clone of one ----------------------------------- #
+    "dosbox": "classic-alt-2",
+    "scummvm": "classic",
+    # --- automation, and the filesharing of the era ------------------------ #
+    "autokey": "automator",
+    "actiona": "automator-alt",
+    "amule": "limewire-alt",
+    "nicotine": "limewire-alt-2",
+    # --- the globe, and the globe as a desktop app -------------------------- #
+    "marble": "google-earth-alt",
+    "qgis": "google-earth-alt-2",
 }
 
 #: Colourways of borrowed artwork, written into the theme beside it so a second
@@ -127,9 +332,124 @@ BORROWED_NAMES: dict[str, str] = {
 #: keeps its shading), ``tint`` keeps its luminance and puts everything on one
 #: hue, which is what turns graphite window chrome burgundy without taking the
 #: white prompt with it.
+#:
+#: Two colourways per family: the artwork as Apple drew it, then two answers to
+#: the question "this program is the same kind of thing, why is its tile
+#: identical?".  They are cut from the catalogued artwork in ``library/apps``
+#: (or, for the pack's own drawings, from the theme), never redrawn by hand.
 ALTS: dict[str, tuple[str, float, float, str]] = {
-    "imovie-alt": ("imovie", -52, 0.95, "shift"),
+    # --- chat, mail, calls -------------------------------------------------- #
+    "messages-alt": ("messages", 212, 1.0, "tint"),        # the blue iMessage
+    "messages-alt-2": ("messages", 55, 0.95, "shift"),     # violet bubbles
+    "mail-alt": ("mail", 100, 0.95, "shift"),              # teal stamp
+    "mail-alt-2": ("mail", -100, 0.95, "shift"),           # violet stamp
+    "facetime-alt": ("facetime", -100, 0.95, "shift"),     # green lens
+    # --- drives ------------------------------------------------------------ #
+    "disks-alt": ("disks", 212, 1.0, "tint"),              # blue drive
+    "disks-alt-2": ("disks", 25, 1.0, "tint"),             # brass drive
+    # --- pictures, notes, music, reference --------------------------------- #
+    "iphoto-alt": ("iphoto", 100, 0.95, "shift"),
+    "iphoto-alt-2": ("iphoto", 180, 0.95, "shift"),
+    "notes-alt": ("notes", 100, 0.95, "shift"),            # green pad
+    "notes-alt-2": ("notes", -100, 0.95, "shift"),         # pink pad
+    "itunes-alt": ("itunes", 150, 0.95, "shift"),          # red quaver
+    "itunes-alt-2": ("itunes", -150, 0.95, "shift"),       # gold quaver
+    "dictionary-alt": ("dictionary", -100, 0.95, "shift"),  # violet book
+    "dictionary-alt-2": ("dictionary", 55, 0.95, "shift"),  # gold book
+    # --- the Finder and the games ------------------------------------------ #
+    "finder-alt": ("finder", -100, 0.95, "shift"),         # green face
+    "finder-alt-2": ("finder", 55, 0.95, "shift"),         # violet face
+    "game-center-alt": ("game-center", 100, 0.95, "shift"),
+    "game-center-alt-2": ("game-center", -100, 0.95, "shift"),
+    # --- media production --------------------------------------------------- #
+    "imovie-alt": ("imovie", -52, 0.95, "shift"),          # rose star
+    "imovie-alt-2": ("imovie", 150, 0.95, "shift"),        # blue star
+    "garageband-alt": ("garageband", -100, 0.95, "shift"),  # violet guitar
+    "quicktime-player-alt": ("quicktime-player", 100, 0.95, "shift"),
+    # --- system ------------------------------------------------------------ #
     "terminal-red": ("terminal", 356, 1.0, "tint"),
+    "activity-monitor-alt": ("activity-monitor", 100, 0.95, "shift"),
+    "time-machine-alt": ("time-machine", 100, 0.95, "shift"),
+    "time-machine-alt-2": ("time-machine", -100, 0.95, "shift"),
+    "preview-alt": ("preview", 28, 1.0, "tint"),            # sepia print
+    "preview-alt-2": ("preview", 205, 1.0, "tint"),         # cyan print
+    "app-store-alt": ("app-store", 100, 0.95, "shift"),
+    "app-store-alt-2": ("app-store", -100, 0.95, "shift"),
+    "system-preferences-alt": ("system-preferences", 100, 0.95, "shift"),
+    "launchpad-alt": ("launchpad", 212, 1.0, "tint"),      # blue disc
+    "launchpad-alt-2": ("launchpad", 20, 1.0, "tint"),     # copper disc
+    "xcode-alt": ("xcode", 100, 0.95, "shift"),
+    "xcode-alt-2": ("xcode", -100, 0.95, "shift"),
+    # --- the graphics suite: a feather, a flower and a butterfly, recoloured #
+    # The suits marks are spheres, petals and wings, so ``shift`` keeps the
+    # gloss that makes them read as glass and only turns the hue.
+    "photoshop-cs2-alt": ("photoshop-cs2", 150, 0.95, "shift"),       # red feather
+    "photoshop-cs2-alt-2": ("photoshop-cs2", -80, 0.95, "shift"),     # green feather
+    "illustrator-cs2-alt": ("illustrator-cs2", -100, 0.95, "shift"),  # magenta flower
+    "illustrator-cs2-alt-2": ("illustrator-cs2", 150, 0.95, "shift"), # blue flower
+    "indesign-cs2-alt": ("indesign-cs2", 150, 0.95, "shift"),         # green butterfly
+    "indesign-cs2-alt-2": ("indesign-cs2", -100, 0.95, "shift"),      # violet butterfly
+    # --- authoring for the web --------------------------------------------- #
+    "dreamweaver-8-alt": ("dreamweaver-8", 100, 0.95, "shift"),       # teal sphere
+    "dreamweaver-8-alt-2": ("dreamweaver-8", -100, 0.95, "shift"),    # crimson sphere
+    "flash-8-alt": ("flash-8", 150, 0.95, "shift"),                  # green F
+    "flash-8-alt-2": ("flash-8", 205, 1.0, "tint"),                  # blue F
+    "fireworks-8-alt": ("fireworks-8", 150, 0.95, "shift"),          # blue spark
+    "fireworks-8-alt-2": ("fireworks-8", -100, 0.95, "shift"),       # magenta spark
+    # --- burning, transcoding, searching, the Classic environment ---------- #
+    "roxio-toast-alt": ("roxio-toast", 60, 0.95, "shift"),           # violet discs
+    "roxio-toast-alt-2": ("roxio-toast", -60, 0.95, "shift"),        # green discs
+    "roxio-popcorn-alt": ("roxio-popcorn", 100, 0.95, "shift"),      # green bucket
+    "roxio-popcorn-alt-2": ("roxio-popcorn", -100, 0.95, "shift"),   # violet bucket
+    "sherlock-alt": ("sherlock", 205, 1.0, "tint"),                  # blue tweed
+    "sherlock-alt-2": ("sherlock", 30, 1.0, "tint"),                 # amber tweed
+    "classic-alt": ("classic", 205, 1.0, "tint"),                    # blue nine
+    "classic-alt-2": ("classic", 275, 1.0, "tint"),                  # violet nine
+    # --- the media centre, the robot, the globe, the lime ------------------ #
+    "front-row-alt": ("front-row", 205, 1.0, "tint"),                # blue remote
+    "front-row-alt-2": ("front-row", 25, 1.0, "tint"),               # amber remote
+    "automator-alt": ("automator", 205, 1.0, "tint"),                # blue robot
+    "automator-alt-2": ("automator", 25, 1.0, "tint"),               # copper robot
+    "google-earth-alt": ("google-earth", 150, 0.95, "shift"),        # red marble
+    "google-earth-alt-2": ("google-earth", -100, 0.95, "shift"),     # green marble
+    "limewire-alt": ("limewire", 100, 0.95, "shift"),                # cyan lime
+    "limewire-alt-2": ("limewire", 150, 0.95, "shift"),              # violet lime
+    # --- the everyday tools of the era, and the jobs they stand in for ---- #
+    # A calculator, a chess set, a clock, a note pad and a printer are all
+    # metal or glass bodies with a little colour on them, so ``tint`` is what
+    # gives the second program of a kind its own tile without turning the
+    # keys, the knight or the paper with it.
+    "calculator-alt": ("calculator", 212, 1.0, "tint"),               # blue keys
+    "calculator-alt-2": ("calculator", 25, 1.0, "tint"),              # brass keys
+    "chess-alt": ("chess", 205, 1.0, "tint"),                        # the blue set
+    "chess-alt-2": ("chess", 25, 1.0, "tint"),                       # the amber set
+    "clock-alt": ("clock", 205, 1.0, "tint"),                        # chrome again, colder
+    "stickies-alt": ("stickies", 205, 1.0, "tint"),                  # a blue note
+    "photo-booth-alt": ("photo-booth", 205, 1.0, "tint"),            # blue curtain
+    "printer-alt": ("printer", 205, 1.0, "tint"),                    # the office printer, cooled
+    "grab-alt": ("grab", 205, 1.0, "tint"),
+    "grab-alt-2": ("grab", 28, 1.0, "tint"),
+    "grapher-alt": ("grapher", 100, 0.95, "shift"),                  # teal graph
+    # --- the office suite, the key ring and the archive box --------------- #
+    "pages-alt": ("pages", 100, 0.95, "shift"),                      # teal page
+    "microsoft-excel-alt": ("microsoft-excel", 150, 0.95, "shift"),  # green X
+    "keychain-access-alt": ("keychain-access", 212, 1.0, "tint"),
+    "keychain-access-alt-2": ("keychain-access", 100, 0.95, "shift"),
+    "keychain-access-alt-3": ("keychain-access", 25, 1.0, "tint"),
+    "betterzip-alt": ("betterzip", 205, 1.0, "tint"),                # blue box
+    "betterzip-alt-2": ("betterzip", 25, 1.0, "tint"),               # brass box
+    # --- the darkroom, the meter, the network tap, the VM ----------------- #
+    "aperture-alt": ("aperture", 150, 0.95, "shift"),                # the lens, greener
+    "digitalcolor-meter-alt": ("digitalcolor-meter", 205, 1.0, "tint"),
+    "network-utility-alt": ("network-utility", 100, 0.95, "shift"),  # teal trace
+    "activity-monitor-alt-2": ("activity-monitor", 25, 1.0, "tint"),
+    "boot-camp-assistant-alt": ("boot-camp-assistant", 100, 0.95, "shift"),
+    "boot-camp-assistant-alt-2": ("boot-camp-assistant", -100, 0.95, "shift"),
+    # --- the remote screen and the file sender ---------------------------- #
+    "remote-desktop-connection-alt": ("remote-desktop-connection", 100, 0.95, "shift"),
+    "screen-sharing-alt": ("screen-sharing", 100, 0.95, "shift"),
+    "screen-sharing-alt-2": ("screen-sharing", -100, 0.95, "shift"),
+    "bluetooth-file-exchange-alt": ("bluetooth-file-exchange", 205, 1.0, "tint"),
 }
 
 #: Names a launcher asks for when it wants "a terminal", not a named program.
@@ -218,7 +538,7 @@ def write_alts(problems: list[str], write: bool) -> int:
                 target = THEME / f"{size}x{size}{suffix}" / CONTEXT / f"{stem}.png"
                 if write:
                     target.parent.mkdir(parents=True, exist_ok=True)
-                    resize(master, size * factor).save(target)
+                    save_png(resize(master, size * factor), target)
                     written += 1
                 elif not target.is_file():
                     problems.append(f"{target.relative_to(ROOT)}: missing, expected "
@@ -240,7 +560,7 @@ def refresh_terminal(problems: list[str], write: bool) -> int:
             folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
             if write:
                 folder.mkdir(parents=True, exist_ok=True)
-                resize(master, size * factor).save(folder / f"{TERMINAL_ART}.png")
+                save_png(resize(master, size * factor), folder / f"{TERMINAL_ART}.png")
                 written += 1
             elif not (folder / f"{TERMINAL_ART}.png").is_file():
                 problems.append(
@@ -314,11 +634,77 @@ def link(path: Path, target: str, problems: list[str], write: bool,
         path.symlink_to(target)
 
 
-def install(write: bool) -> tuple[int, int, list[str]]:
+def install_artwork(slug: str, present: bool, problems: list[str], write: bool) -> int:
+    """Write one app's own drawing into the theme at every size.
+
+    Returns the number of files written.  Kept apart from the linking loop so
+    that the artwork a colourway is cut from is on disk before the colourway
+    is (see ``install``).
+    """
+    with Image.open(ICONS / slug / "icon-1024.png") as source:
+        master = source.convert("RGBA")
+    written = 0
+    for size in SIZES:
+        for suffix, factor in (("", 1), ("@2x", 2)):
+            folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
+            target = folder / f"{slug}.png"
+            if target.exists() and present:
+                continue
+            if write:
+                folder.mkdir(parents=True, exist_ok=True)
+                save_png(resize(master, size * factor), target)
+                written += 1
+            else:
+                problems.append(f"{target.relative_to(ROOT)}: missing")
+    return written
+
+
+def prune_own_artwork(problems: list[str], write: bool) -> int:
+    """Take the theme's answer back off the names in ``OWN_ARTWORK``.
+
+    Returns the number of files cleared.  The scalable wrapper goes with the
+    bitmaps: leaving it would keep the icon answering in the toolkits that
+    prefer a scalable file, which is most of them, so the program's own icon
+    would stay hidden exactly where it was.
+    """
+    cleared = 0
+    for name in sorted(OWN_ARTWORK):
+        paths = [THEME / f"{size}x{size}{suffix}" / CONTEXT / f"{name}.png"
+                 for size in SIZES for suffix in ("", "@2x")]
+        paths.append(THEME / "scalable" / CONTEXT / f"{name}.svg")
+        for path in paths:
+            if not (path.is_symlink() or path.exists()):
+                continue
+            if write:
+                path.unlink()
+                cleared += 1
+            else:
+                problems.append(f"{path.relative_to(ROOT)}: the theme answers for {name}, "
+                                f"which ships its own icon - run make_theme_apps.py")
+    return cleared
+
+
+def install(write: bool) -> tuple[int, int, int, list[str]]:
     problems: list[str] = []
     written = linked = 0
     owner = owners()
     apps = plan()
+
+    # Before anything is linked: a name this step is not allowed to answer for
+    # comes off the theme, so a rebuild cannot leave an override in place.
+    cleared = prune_own_artwork(problems, write)
+
+    # The artwork goes in first, for every app that answers with its own
+    # drawing.  Two later steps read it back: a colourway is cut from a
+    # borrowed icon's bitmap (``write_alts``) and a name points at one, so
+    # without this pass adding an icon took two runs - the first to install
+    # the artwork, the second to link the names and cut the alts that needed
+    # it.  A borrowed app needs nothing here: its artwork is another app's,
+    # and arrives with that one.
+    for slug, _names, present, app in apps:
+        if borrowed(app):
+            continue
+        written += install_artwork(slug, present, problems, write)
 
     # The shared terminal artwork is the icon drawn for the terminal archetype,
     # so keep it equal to TERMINAL_SOURCE's own drawing: one emulator's icon
@@ -330,12 +716,17 @@ def install(write: bool) -> tuple[int, int, list[str]]:
 
     for slug, names, present, app in apps:
         art = borrowed(app)
-        master = None
-        if not art:
-            with Image.open(ICONS / slug / "icon-1024.png") as source:
-                master = source.convert("RGBA")
+        # A name the colourway table dresses is left to the loop at the end of
+        # this function, which runs *after* this one and points it at the
+        # alternate artwork instead.  Linking - or in check mode reporting - the
+        # base target here would be describing a state the build only passes
+        # through: the name is written twice in one run, so a check that looked
+        # at the first target failed on every name the table has an alternate
+        # for, however correct the tree on disk was.  The names in OWN_ARTWORK
+        # are left alone for the other reason: they are not the theme's to link.
+        dressed = frozenset(BORROWED_NAMES) | OWN_ARTWORK
         for size in SIZES:
-            for suffix, factor in (("", 1), ("@2x", 2)):
+            for suffix in ("", "@2x"):
                 folder = THEME / f"{size}x{size}{suffix}" / CONTEXT
                 if art:
                     # The artwork is committed in the theme; only the names move.
@@ -346,17 +737,11 @@ def install(write: bool) -> tuple[int, int, list[str]]:
                     # The app's own name always moves; a shared alias stays
                     # with the app that claimed it (see owners()).
                     wanted = [name for name in names
-                              if name == slug or owner.get(name) == slug]
+                              if name not in dressed
+                              and (name == slug or owner.get(name) == slug)]
                 else:
-                    target = folder / f"{slug}.png"
-                    if not target.exists() or not present:
-                        if write:
-                            folder.mkdir(parents=True, exist_ok=True)
-                            resize(master, size * factor).save(target)
-                            written += 1
-                        else:
-                            problems.append(f"{target.relative_to(ROOT)}: missing")
-                    wanted = [alias for alias in names[1:] if owner.get(alias) == slug]
+                    wanted = [alias for alias in names[1:]
+                              if alias not in dressed and owner.get(alias) == slug]
                 for name in wanted:
                     alias_path = folder / f"{name}.png"
                     before = alias_path.is_symlink() or alias_path.exists()
@@ -393,7 +778,7 @@ def install(write: bool) -> tuple[int, int, list[str]]:
                 link(path, f"{art}.png", problems, write, replace=True)
                 if write and not before:
                     linked += 1
-    return written, linked, problems
+    return written, linked, cleared, problems
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -404,7 +789,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     write = not args.check
-    written, linked, problems = install(write)
+    written, linked, cleared, problems = install(write)
     apps = plan()
     aliases = sum(len(names) - 1 for _slug, names, _present, _app in apps)
 
@@ -417,7 +802,8 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if write:
         print(f"apps: {len(apps)} icon(s), {written} bitmap(s), "
-              f"{aliases} alias name(s) in the theme")
+              f"{aliases} alias name(s) in the theme"
+              + (f", {cleared} own-artwork name(s) cleared" if cleared else ""))
     else:
         print(f"ok: {len(apps)} app icon(s) and {aliases} alias name(s) are in the theme")
     return 0

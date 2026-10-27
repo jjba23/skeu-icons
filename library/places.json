@@ -1,0 +1,20 @@
+[
+  {
+    "stem": "user-trash",
+    "file": "places/user-trash.png",
+    "credit": "the wire-mesh wastebasket, empty",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  },
+  {
+    "stem": "user-trash-full",
+    "file": "places/user-trash-full.png",
+    "credit": "the same basket with the day's paper in it",
+    "era": "Panther – Leopard (10.3 – 10.5)",
+    "licence": "Apple Inc. (theme reproduction)",
+    "native": 128,
+    "pack": "Mac-OS-X-Cheetah icon set"
+  }
+]

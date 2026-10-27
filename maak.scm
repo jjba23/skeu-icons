@@ -10,6 +10,7 @@
 ;;;     maak gallery         # just rebuild gallery.html
 ;;;     maak counts          # re-derive the counts README.org quotes
 ;;;     maak names           # link app/mimetype names after adding artwork
+;;;     maak volumes         # install the era's drive and device artwork
 ;;;     maak check           # index.theme, counts, gallery freshness
 ;;;
 ;;; The drawing programmes live in tools/ and need python3 with numpy and
@@ -23,8 +24,9 @@
   #:declarative? #t
   #:use-module (maak maak)
   ;; Only these are tasks; the helpers below stay private to the file.
-  #:export (default gallery docs counts build icons apps names contexts projects alts
-            report check mappings symbolic variants install uninstall clean))
+  #:export (default gallery docs counts build icons apps names contexts volumes
+            places projects alts report check mappings symbolic variants install
+            uninstall clean))
 
 ;; ====== Constants ======
 
@@ -111,9 +113,33 @@ links through the base theme."
   (tool "make_theme_mimes.py"))
 
 (define (contexts)
-  "Redraw just the category and device masters into generated/."
+  "Redraw just the category and device masters into generated/.
+
+The volumes, drives and peripherals that Apple published artwork for are not
+among them; those come from library/volumes and are installed by `volumes'."
   (require-python)
   (tool "make_context_icons.py"))
+
+(define (volumes)
+  "Dress the volume, drive and peripheral icons in the era's artwork.
+
+USB sticks, external drives, mounted network volumes, the labelled discs, the
+keyboard, the mouse and the rest are installed from library/volumes into the
+devices context at every size, scalable tree included, so a plugged-in key on
+the desktop looks like the key Leopard drew.  Everything the era never drew
+keeps the pack's own drawing.  Run it after `contexts'."
+  (require-python)
+  (tool "make_theme_devices.py"))
+
+(define (places)
+  "Dress the wastebasket (and anything else the era drew) in its own artwork.
+
+Apple's wire-mesh basket, empty and full, is installed from library/places
+into the places context at every size, scalable tree included: a desktop
+dressed as Leopard wants the mesh bin rather than a look-alike, and the bin is
+the one place icon whose shape carries the meaning."
+  (require-python)
+  (tool "make_theme_places.py"))
 
 (define (projects)
   "Redraw the project-icons/ set from tools/skeu/catalog.py."

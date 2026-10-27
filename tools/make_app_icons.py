@@ -172,6 +172,31 @@ HISTORY_INFO: dict[str, dict] = {
 }
 
 
+#: Programs that ship their own icon, and are therefore not the pack's to draw
+#: or to answer for.  A named icon is looked up in the theme *before* the
+#: hicolor fallback, so a file under one of these names shadows the program's
+#: own artwork in every toolkit that consults the theme first - a dock wearing a
+#: Launchpad clone, a tool wearing a drawn stand-in.  The names below are the
+#: spellings those programs are looked up under, so the guard covers the desktop
+#: id and the plain name alike; nothing here is drawn, linked or left behind.
+OWN_ARTWORK: frozenset[str] = frozenset({
+    "lambdock",
+    "org.jointhefreeworld.lambdock",
+    "heks-toon",
+})
+
+
+def owns_own_artwork(app: dict) -> bool:
+    """Whether APP ships its own icon, and so is not the pack's to draw.
+
+    Matched on the slug the program would be filed under as well as on every
+    name its desktop entries declare, so an app that arrives under a desktop id
+    or a window class is covered too.
+    """
+    names = {slugify(app["name"])} | set(app.get("names") or ())
+    return bool(names & OWN_ARTWORK)
+
+
 def choose(app: dict) -> tuple[str, object, dict]:
     """Return ``(kind, builder-or-source, kwargs)`` for one application."""
     if app["name"] in REUSE:
@@ -266,7 +291,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--jobs", type=int, default=min(10, os.cpu_count() or 1))
     args = parser.parse_args(argv)
 
-    apps = discover()
+    apps = [app for app in discover() if not owns_own_artwork(app)]
     plan: list[tuple[dict, str, str, object, dict]] = []
     for app in apps:
         kind, builder, kwargs = choose(app)

@@ -7,7 +7,10 @@ folder and a film reel is a film reel.  Some applications are the exception.
 Their old icons *are* the object: Chrome's glass orb, VLC's traffic cone,
 Wilber holding a brush, the graphite Terminal window of OS X, Safari's compass
 or iCal's tear-off calendar.  A drawing of those would be a drawing of a logo,
-so the pack ships the era artwork itself and re-colours nothing.
+so the pack ships the era artwork itself instead of a drawing of it.  (The
+theme does cut *colourways* of that artwork for the second and third program
+of a kind - see =Colourways= below - but the files in this directory are the
+artwork as published and are never edited.)
 
 =make_app_icons.py= renders each file here at every size instead of calling a
 drawing function; nothing is traced, filtered or restyled.  Two kinds of file
@@ -17,7 +20,14 @@ live here:
   a GPL icon set;
 - the *OS X era ensemble* in =apps/= — the icons Leopard, Mountain Lion and
   Mavericks actually shipped, Apple's own included, catalogued in
-  =artwork.json=.
+  =artwork.json=;
+- the *volumes* in =volumes/= — the drives, discs, cards and peripherals of the
+  same era, catalogued in =volumes.json= and installed into the theme's devices
+  context rather than its applications one, because a USB key plugged into a
+  desktop is a volume, not a program;
+- the *places* in =places/= — the one place icon that is an object rather than
+  a folder, the wire-mesh wastebasket, empty and full, catalogued in
+  =places.json=.
 
 * The four marks
 
@@ -44,13 +54,17 @@ live here:
 
 * The OS X era ensemble
 
-Forty-seven applications people remember from Leopard through Mavericks —
+Eighty applications people remember from Panther through Snow Leopard —
 Safari, iCal, Address Book, iPhoto, iMovie and GarageBand; Pages, Keynote and
 Aperture; QuickTime and DVD Player; the utilities (Disk Utility, Keychain
 Access, System Preferences, Activity Monitor, Migration Assistant, Grab, the
-AirPort, ColourSync, DigitalColor and VoiceOver tools); Office 2011 and
-Microsoft Messenger; and a few third-party icons of the day.  Their artwork is
-the file Apple (or the vendor) published, resampled, never redrawn.
+AirPort, ColourSync, DigitalColor and VoiceOver tools); the day-to-day tools
+(Calculator, Chess, Clock, Photo Booth, Printer, Stickies and X11); Office 2011
+and Microsoft Messenger; the creative suite (Photoshop, Illustrator, InDesign,
+Dreamweaver, Flash and Fireworks); the one-off tools of the era (Sherlock, the
+Classic environment, Front Row, Automator, Toast, Popcorn, Google Earth and
+LimeWire); and a few third-party icons of the day.  Their artwork is the file
+Apple (or the vendor) published, resampled, never redrawn.
 
 The catalogue is =artwork.json=: one record per icon with the era it belongs to,
 which pack it came from, the size it was published at, and who owns it.
@@ -107,10 +121,210 @@ PNG in =apps/= and a record in the JSON, never touching the drawing code.
 | =system-preferences.png=      | System Preferences     | Mavericks     | 512 px | Apple Inc.  |
 | =textedit.png=                | TextEdit               | Mavericks     | 512 px | Apple Inc.  |
 
-Three of the sources are smaller than the sizes the pack ships: the Adium duck
-is 128 px, and everything from the Mountain Lion set is 256 px, so those icons
-are upsampled to 512 and 1024.  They are marked here rather than hidden: the
-artwork is the artwork.
+** The everyday applications
+
+The icons a desktop actually launches, and the ones a Linux program is most
+often mapped onto (see =BORROWED= in =tools/make_theme_apps.py=).  They came to
+the pack inside its own macOS set rather than from one of the named packs above,
+which is why their =pack= field says so; the era column names the span in which
+Apple drew them this way, so "Leopard - Mavericks" is one picture kept across
+six releases, not one release's file.
+
+| file             | application | era                       | native | mark owner |
+|------------------|-------------|---------------------------|--------|------------|
+| =messages.png=   | Messages    | Mountain Lion - Mavericks | 512 px | Apple Inc. |
+| =mail.png=       | Mail        | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =disks.png=      | Disks       | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =notes.png=      | Notes       | Mountain Lion - Mavericks | 512 px | Apple Inc. |
+| =itunes.png=     | iTunes      | Mountain Lion - Mavericks | 512 px | Apple Inc. |
+| =dictionary.png= | Dictionary  | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =finder.png=     | Finder      | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =preview.png=    | Preview     | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =launchpad.png=  | Launchpad   | Lion - Mavericks          | 512 px | Apple Inc. |
+| =time-machine.png= | Time Machine | Leopard - Mavericks       | 512 px | Apple Inc. |
+| =app-store.png=  | App Store   | Lion - Mavericks          | 512 px | Apple Inc. |
+| =xcode.png=      | Xcode       | Leopard - Mavericks       | 512 px | Apple Inc. |
+
+These twelve are 512 px, the size the set was imported at, so the theme
+upsamples them to 1024 the way it does the 256 px Mountain Lion icons.
+
+** The everyday tools
+
+The rest of what the era put in the Dock and the Utilities folder, and the part
+of it a Linux desktop actually has a twin for.  Each one is the object Apple
+drew for that job, and each is borrowed rather than shown twice on the same
+desktop: =gnome-calculator=, =kcalc=, =galculator= and the rest of the
+calculators wear the silver calculator, the games menu's chess set wears the
+knight (while the other games are Game Center), =clocks= the alarm clock,
+=cheese= the photo booth, =print-settings= the printer, =text-pieces= the note
+pad and =xterm= Apple's X11.  The rules are in =BORROWED=, =BORROWED_NAMES= and
+=EXTRA_NAMES= in =tools/make_theme_apps.py=.
+
+| file              | application | era                             | native | mark owner |
+|-------------------+-------------+---------------------------------+--------+------------|
+| =calculator.png=  | Calculator  | Panther – Leopard (10.3 – 10.5) | 128 px | Apple Inc. |
+| =chess.png=       | Chess       | Panther – Leopard (10.3 – 10.5) | 128 px | Apple Inc. |
+| =clock.png=       | Clock       | Tiger – Leopard (10.4 – 10.5)   | 128 px | Apple Inc. |
+| =photo-booth.png= | Photo Booth | Tiger – Leopard (10.4 – 10.5)   | 128 px | Apple Inc. |
+| =printer.png=     | Printer     | Panther – Leopard (10.3 – 10.5) | 128 px | Apple Inc. |
+| =stickies.png=    | Stickies    | Panther – Leopard (10.3 – 10.5) | 128 px | Apple Inc. |
+| =x11.png=         | X11         | Tiger – Leopard (10.4 – 10.5)   | 128 px | Apple Inc. |
+
+=Printer= is what Apple shipped as Printer Setup Utility; =Clock= is the
+twin-bell alarm clock of the era rather than an application's mark, which is
+why its era starts at Tiger: the widget and the object came with Dashboard and
+stayed through Leopard.  All seven are 128 px, the size these packs published.
+
+** The suite and the tools of the era
+
+Apple's own tools and the third-party programs of the day.  The suite is here
+because a Linux desktop has an image editor, a vector editor, a layout program
+and a web author, and the era had a face for each of them — a feather, a
+flower, a butterfly, a sphere with a =d=; the rest are here because the era
+would not look like the era without the deerstalker, the toaster and the little
+robot.  Their =era= column is the span in which the vendor published that
+picture, so the Macromedia =8= suite and the CS2 that followed it appear under
+their own names on purpose: they are two different pictures, and the pack keeps
+both.
+
+| file                  | application     | era                                | native | mark owner    |
+|---------------+------------------+-------------------------------+---------------+------------|
+| =photoshop-cs2.png=   | Photoshop CS2   | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Adobe Systems |
+| =illustrator-cs2.png= | Illustrator CS2 | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Adobe Systems |
+| =indesign-cs2.png=    | InDesign CS2    | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Adobe Systems |
+| =dreamweaver-8.png=   | Dreamweaver 8   | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Macromedia    |
+| =flash-8.png=         | Flash 8         | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Macromedia    |
+| =fireworks-8.png=     | Fireworks 8     | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Macromedia    |
+| =roxio-toast.png=     | Roxio Toast     | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Roxio         |
+| =roxio-popcorn.png=   | Roxio Popcorn   | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Roxio         |
+| =sherlock.png=        | Sherlock        | Panther – Tiger (10.3 – 10.4)      | 128 px | Apple Inc.    |
+| =classic.png=         | Classic         | Panther – Tiger (10.3 – 10.4)      | 128 px | Apple Inc.    |
+| =front-row.png=       | Front Row       | Tiger – Leopard (10.4 – 10.5)      | 512 px | Apple Inc.    |
+| =automator.png=       | Automator       | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Apple Inc.    |
+| =google-earth.png=    | Google Earth    | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Google LLC    |
+| =limewire.png=        | LimeWire        | Tiger – Snow Leopard (10.4 – 10.6) | 128 px | Lime Wire LLC |
+
+Most of them are answers a Linux program can borrow (see =BORROWED= and
+=BORROWED_NAMES= in =tools/make_theme_apps.py=): =krita= wears the feather,
+=inkscape= the flower, =scribus= the butterfly, =brasero=, =k3b= and
+=impression= the toaster and its two colourways, =transmission=,
+=qbittorrent= and =fragments= the lime.  The rest are catalogue entries the way
+VoiceOver Utility already was: the icon people remember, kept so a desktop
+dressed as OS X resolves it.
+
+Some of the sources are smaller than the sizes the pack ships: the Adium duck
+is 128 px, everything from the Mountain Lion set is 256 px and the everyday
+twelve are 512 px, so those icons are upsampled to 1024.  The suite, the era
+tools and every volume are 128 px — the smallest sources here, upsampled the
+furthest, eightfold at the theme's largest size.  At the sizes a desktop
+actually draws (16-128 px) they are at or below native, and the three sizes
+above that are a courtesy rather than a claim.  They are marked here rather
+than hidden: the artwork is the artwork.
+
+* The volumes and the peripherals
+
+The devices context is not an application list: it is what a file manager puts
+beside a mounted USB key, an inserted DVD, a printer or a camera.  The pack
+draws most of those objects itself, but the era's *volumes* are as recognisable
+as its application icons — the white removable medium with the orange USB
+symbol, the orange stick, the bare mechanism of an internal drive, the blue
+globe of a mounted network volume, the labelled CD and DVD — and a desktop
+dressed as Leopard wants the picture Apple drew when a key is plugged in.
+
+Their catalogue is =volumes.json=, in the same shape as =artwork.json=, and
+=tools/make_theme_devices.py= installs them over the drawn masters at every size
+and into the scalable tree.  The table below is the whole trade: the =answers
+for= column names the freedesktop device names each picture lands on, so a
+volume list, an eject menu and a sidebar all resolve to the same artwork.
+
+| file                     | the object                                             | answers for                            | native | mark owner |
+|----------------------+------------------------------------------------------+----------------+--------+-------------|
+| =battery-dead.png=       | the cell with the cross: a battery that has run out    | =battery-caution=                      | 128 px | Apple Inc. |
+| =bluetooth.png=          | the Bluetooth rune levitating in its blue orb          | =bluetooth=, =network-bluetooth=       | 128 px | Apple Inc. |
+| =camcorder.png=          | the camcorder with the flip screen                     | =camera-video=                         | 128 px | Apple Inc. |
+| =camera.png=             | the compact camera                                     | =camera-photo=                         | 128 px | Apple Inc. |
+| =desktop-computer.png=   | the all-in-one on its foot                             | =computer=                             | 128 px | Apple Inc. |
+| =laptop.png=             | the aluminium notebook, lid open on its desktop        | =computer-laptop=                      | 128 px | Apple Inc. |
+| =display.png=            | the cinema display                                     | =video-display=                        | 128 px | Apple Inc. |
+| =ethernet.png=           | the purple globe with the RJ-45 socket                 | =network-wired=                        | 128 px | Apple Inc. |
+| =firewire-drive.png=     | the orange external drive with the 1394 mark           | =drive-harddisk-ieee1394=              | 128 px | Apple Inc. |
+| =flash-sd.png=           | the SD card                                            | =media-flash-sd-mmc=                   | 128 px | Apple Inc. |
+| =flash-sm.png=           | the SmartMedia card                                    | =media-flash-smart-media=              | 128 px | Apple Inc. |
+| =floppy.png=             | the 3.5 inch floppy                                    | =media-floppy=                         | 128 px | Apple Inc. |
+| =game-controller.png=    | the two-stick game pad                                 | =input-gaming=                         | 128 px | Apple Inc. |
+| =graphics-tablet.png=    | the graphics tablet and its stylus                     | =input-tablet=                         | 128 px | Apple Inc. |
+| =harddisk.png=           | the bare mechanism of an internal drive                | =drive-harddisk=                       | 128 px | Apple Inc. |
+| =ipod.png=               | the iPod with its screen lit                           | =multimedia-player=                    | 128 px | Apple Inc. |
+| =keyboard.png=           | the aluminium keyboard                                 | =input-keyboard=                       | 128 px | Apple Inc. |
+| =microphone.png=         | the studio microphone in its shock mount               | =audio-input-microphone=, =microphone= | 128 px | Apple Inc. |
+| =modem.png=              | the dial-up box                                        | =modem=                                | 128 px | Apple Inc. |
+| =mouse.png=              | the pill mouse with the scroll ball                    | =input-mouse=                          | 128 px | Apple Inc. |
+| =network-drive.png=      | the blue globe on its base: a mounted network volume   | =network-server=                       | 128 px | Apple Inc. |
+| =network-mount.png=      | the globe drive, the way a server shows in the sidebar | =network-workgroup=                    | 128 px | Apple Inc. |
+| =optical.png=            | the plain silver disc                                  | =media-optical=                        | 128 px | Apple Inc. |
+| =optical-audio.png=      | the audio CD, with the notes on it                     | =media-optical-cd-audio=               | 128 px | Apple Inc. |
+| =optical-dvd.png=        | the video disc, labelled DVD                           | =media-optical-dvd=                    | 128 px | Apple Inc. |
+| =optical-r.png=          | the write-once disc, labelled CD-R                     | =media-optical-cd=                     | 128 px | Apple Inc. |
+| =pda.png=                | the Palm handheld                                      | =pda=                                  | 128 px | Apple Inc. |
+| =phone.png=              | the candybar phone                                     | =phone=                                | 128 px | Apple Inc. |
+| =printer.png=            | the sheet-fed office printer                           | =printer=, =printer-network=           | 128 px | Apple Inc. |
+| =removable-drive.png=    | the white volume with the orange USB symbol            | =drive-removable-media=                | 128 px | Apple Inc. |
+| =removable-harddisk.png= | the orange external drive                              | =drive-harddisk-usb=                   | 128 px | Apple Inc. |
+| =scanner.png=            | the flatbed scanner                                    | =scanner=                              | 128 px | Apple Inc. |
+| =usb-stick.png=          | the orange USB stick                                   | =drive-removable-media-usb=            | 128 px | Apple Inc. |
+| =webcam.png=             | the webcam on its foot                                 | =camera-web=                           | 128 px | Apple Inc. |
+| =wireless.png=           | the purple globe with the aerial                       | =network-wireless=                     | 128 px | Apple Inc. |
+| =zip-disk.png=           | the Zip cartridge                                      | =media-zip=                            | 128 px | Apple Inc. |
+
+Eight further names in that column are *colourways*, cut at build time from the
+catalogued picture beside them in the same way the application colourways are:
+=harddisk-alt= for the startup volume, =removable-drive-alt= for the second
+kind of removable medium, =usb-stick-alt= for the second stick,
+=display-alt= for the second screen, =ipod-alt= for the second portable player,
+=flash-sd-alt= for the generic flash card, =printer-alt= for the shared
+printer and =bluetooth-alt= for the radio beside it.  They are what keeps
+=media-flash= from being a copy of =media-flash-sd-mmc=.
+
+Everything the era never drew keeps the pack's own drawing: an SSD, a Blu-ray,
+a tape, a USB hub, a RAID enclosure, a fingerprint pad, an optical drive (the
+period drew the *disc*, not the bay it goes in).  The full list of what is
+traded and what is not is =VOLUMES= in =tools/make_theme_devices.py=.
+
+* The wastebasket
+
+The places context is folders, with one exception: the bin.  No desktop wants
+a folder icon where the trash is, and the era drew that object unmistakably -
+the wire-mesh basket on its ring, and the same basket with the day's paper
+crumpled into it.  =places.json= catalogues the two pictures and
+=tools/make_theme_places.py= installs them at every size, into the scalable tree
+as well, under the spec name =user-trash= and the older spelling
+=user-trash-empty= as well as =user-trash-full=:
+
+| file                   | the object                              | answers for                                  | native | mark owner |
+|------------------------+-----------------------------------------+----------------------------------------------+--------+------------|
+| =user-trash.png=       | the wire-mesh wastebasket, empty        | =user-trash=, =user-trash-empty=             | 128 px | Apple Inc. |
+| =user-trash-full.png=  | the same basket with the paper in it    | =user-trash-full=                            | 128 px | Apple Inc. |
+
+A theme that ships no =user-trash= at all is worse than one that ships a
+look-alike: toolkits fall through to hicolor and draw a grey box.  That is why
+this one line of place artwork is worth its own catalogue.
+
+* Colourways
+
+One catalogued picture is often asked for by several programs at once: four
+video editors, four terminals, six file managers, eight small games.  Showing
+four identical gold stars would be honest but useless, so the theme cuts
+*colourways* of the catalogued artwork - =messages-alt= is the same speech
+bubbles in the modern blue, =finder-alt= the same face in green, =terminal-red=
+the pack's own terminal on red glass - and the mappings spread a family over
+them.
+
+The rules live in =ALTS= in =tools/make_theme_apps.py= and are two operations:
+=shift= turns the artwork's own hues, keeping its shading and its white parts;
+=tint= keeps its luminance and puts everything on one hue, which is what turns
+graphite chrome red without turning the prompt pink with it.  The files here are
+untouched by that: a colourway is generated at build time from the copy the
+theme ships, so the catalogue stays the artwork as it was published.
 
 * Licence of this directory
 
@@ -124,7 +338,15 @@ dresses a desktop as that era, the way a wallpaper pack ships a photograph it
 did not take.  Redistributing the pack redistributes those marks; if that is a
 problem for your use, delete =library/apps/= and remove the =apps= records from
 =artwork.json=, and every one of those applications falls back to the pack's own
-drawing.
+drawing.  The volumes in =volumes/= are the same: they are a theme pack's
+reproduction of the drive and device artwork of that era, and deleting the
+directory and the records in =volumes.json= returns every volume to the object
+the pack drew for it.
+
+The places in =places/= are the same trade: the wastebasket is a theme pack's
+reproduction of the era's object, and deleting the directory and the records in
+=places.json= puts the pack's own bin back (see =PLACES= in
+=tools/make_theme_places.py=).
 
 The pack's own artwork in =skeu-icons/=, =app-icons/=, =generated/= and =svg/=
 is unaffected.

@@ -38,6 +38,38 @@ def slugify(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
 
+def save_png(image: Image.Image, path: Path) -> None:
+    """Write one PNG in the theme, through a temporary name beside it.
+
+    The pack dedupes artwork that is byte-for-byte the same with *hard links*:
+    a ``.zip`` file type shares one inode with the ``zip`` application icon, a
+    kind of disc shares one with the menu category that used to look like it,
+    and two sizes that land on the same pixel grid share one too.  A hard link
+    is not a copy - opening the path for writing truncates the inode, and every
+    other name pointing at it changes with it.  So a name that must be able to
+    differ from its neighbour (a volume dressed as the era drew it, a title
+    that lost its printed word) is written under a fresh name and renamed over
+    the target, which gives it an inode of its own.
+
+    ``make_file_type_labels.py`` learned this the hard way for the file-type
+    titles; this is the same trick, for everything that redraws a theme icon.
+    """
+    temporary = path.with_name(path.name + ".new")
+    image.save(temporary, format="PNG")
+    temporary.replace(path)
+
+
+def save_text(text: str, path: Path) -> None:
+    """Write a text asset in the theme, through a temporary name beside it.
+
+    The scalable tree is hard-linked the same way the bitmaps are, so a
+    generated ``.svg`` needs the same treatment as ``save_png``.
+    """
+    temporary = path.with_name(path.name + ".new")
+    temporary.write_text(text)
+    temporary.replace(path)
+
+
 def render(builder, kwargs: dict, seed: int) -> Image.Image:
     canvas = Canvas(seed=seed)
     builder(canvas, **kwargs)
