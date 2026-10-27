@@ -43,9 +43,9 @@
     "brown",
     "graphite"
   ],
-  "icons": 2011,
+  "icons": 2019,
   "contexts": {
-    "apps": 1030,
+    "apps": 1038,
     "places": 171,
     "mimetypes": 678,
     "emblems": 17,
@@ -67,7 +67,11 @@
   "era_artwork": {
     "icons": 47,
     "catalogue": "library/artwork.json",
-    "eras": ["Leopard (10.5)", "Mountain Lion (10.8)", "Mavericks (10.9)"],
+    "eras": [
+      "Leopard (10.5)",
+      "Mountain Lion (10.8)",
+      "Mavericks (10.9)"
+    ],
     "source": "library/apps, rendered verbatim by tools/make_app_icons.py (HISTORY)",
     "licence": "the vendors' own marks, not CC BY-SA - see library/README.org"
   },
