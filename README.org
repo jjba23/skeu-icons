@@ -274,11 +274,16 @@ creative suite (Photoshop, Illustrator, InDesign, Dreamweaver, Flash and
 Fireworks), the one-off tools of the era (Sherlock, Classic, Front Row,
 Automator, Toast, Popcorn, Google Earth and LimeWire) and a few third-party
 marks of the day.
-Several of them answer for more than one Linux
-program at once, so the theme also ships *colourways* of that artwork (a green
-Finder face, the blue iMessage bubbles, a terminal on red glass) and spreads a
-family over them instead of repeating one tile; the recipes are in
-=tools/make_theme_apps.py= and the catalogue is never edited to make one.
+Several of them answer for more than one Linux program at once, so the theme also ships *colourways* of that artwork (a green, violet, teal, amber and rose
+Finder face, a teal and a violet airmail stamp) and spreads a family over them
+instead of repeating one tile; the recipes are in =tools/make_theme_apps.py= and
+the catalogue is never edited to make one.  What a colourway may *not* do is
+stand in for art the pack already has: the seven GNOME games were three Game
+Center tiles between them and ten terminal emulators were one CRT, so games now
+answer with their own mahjong tile, tetromino, rack of stones, pad of squares
+and moored mine, and each emulator answers with its own drawn machine.  The
+result is a grid in which no two Linux programs share a tile — every remaining
+pair is a Mac application and the Linux program that does its job.
 They live in [[file:library/][=library/=]] as the upstream artwork — with their own
 credits and licences, recorded in [[file:library/README.org][=library/README.org=]] — and
 =make_app_icons.py= renders them at every size instead of drawing.
@@ -295,7 +300,8 @@ A selection of the ~50 project icons: a sheep for lambdock, a black widow for
 araneola, a padlock for bewaking, Lady Justice for veritas, a chrome-rimmed
 help orb for heks-toon, a conductor for wikimusic, a chart recorder for
 symbanta, a gnu for guix, a snowflake for nixpkgs, an anchor for
-carvoeiro-water-fun.
+carvoeiro-water-fun, and a chrome sieve for sift — loose fragments in, lined-up
+threads out, which is what a formatter does.
 
 #+attr_html: :width 100% :alt project icons
 [[file:docs/projects.png]]
@@ -534,7 +540,10 @@ so the README cannot show an icon the pack no longer ships.
 * Artwork policy
 
 - Neutral body, one accent: metal, glass, paper, leather or wood with a single
-  coloured gem or enamel detail covering roughly a tenth of the icon.
+  coloured gem or enamel detail covering roughly a tenth of the icon.  The
+  accent is painted by the object itself, so two programs handed two different
+  hues are two different pictures — an enamelled nameplate on a terminal's chin,
+  a painted rim on a gear train, a coloured card in a catalogue drawer.
 - One key light from the upper left, contact shadows where parts meet, and a
   soft cast shadow that fades before the canvas edge.
 - No monograms on coloured plates, no icon mask, no hairline detail — every

@@ -1,6 +1,6 @@
 # Application icons
 
-One skeuomorphic icon per GUI application — ~300 of them: the ~160 installed on the machine that built
+One skeuomorphic icon per GUI application — 328 of them: the 164 installed on the machine that built
 this set, discovered from the freedesktop desktop entries, plus a roster of programs that a desktop is
 likely to have whether or not that machine does (Chromium, VS Code, Obsidian, Lutris, GParted, …), plus
 the OS X era ensemble of Leopard-through-Mavericks apps.
@@ -68,15 +68,16 @@ with a tight contact shadow and a cast shadow that fades before the canvas edge.
    tenth of the icon, so the set stays bright and mostly colourless next to the neutral body it sits on.
 5. **Detail where it belongs** — knurling, screws, seams, wire binding, stitching, printed rules: at
    least 3 px wide at 1024 px so it survives the 32 px render.
-6. **Era artwork where the mark is the object.**  Fifty-one apps are not drawn at all: `Google
+6. **Era artwork where the mark is the object.**  Eighty-nine apps are not drawn at all: `Google
    Chrome` keeps its 2011 orb, `VLC media player` its 2008 cone, `GIMP` Wilber with the brush,
-   `Console` (the shared terminal icon) the graphite `>_` window of Leopard, and forty-seven others
+   `Console` (the shared terminal icon) the graphite `>_` window of Leopard, and eighty-four others
    carry the icon they shipped with in Leopard, Mountain Lion or Mavericks — Safari's compass,
    iCal's calendar, iPhoto, iMovie, GarageBand, Pages, Keynote, Aperture, QuickTime, the system
    utilities, Office 2011, and a few third-party marks. `make_app_icons.py` renders them from
    `library/` at every size, reading the era and credit from `library/artwork.json`;
    `library/README.org` lists each file's owner and licence, and they are the only icons here this
-   pack did not draw.
+   pack did not draw.  The five remaining files are hand-authored vectors from `svg/` (1Password,
+   Emacs, IntelliJ IDEA, Signal).
 
 The mapping lives in `tools/skeu/apps.py` (`APP_ICONS`), one line per app:
 
@@ -92,13 +93,22 @@ disc. `design()` in that module is the whole policy.
 ## Notes
 
 * `Emacs (Client)` deliberately shares the Emacs icon; `Myrlyn (read‑only)` shares Myrlyn's design
-  (different slug, so both exist).
+  (different slug, so both exist) — the two documented cases.
 * Runs of related apps share an object family only where the function is identical (terminals are
-  CRTs, editors key-caps) — the differences are the glyph struck into the key, the material, the shape
-  of the cap and the accent. Related applications keep that family resemblance on purpose: terminals
-  look alike. Everything else was split apart: the seven music players no longer share one sleeve, the six
-  puzzle games no longer share one tile rack, and the four remote-desktop clients are screens with
-  keyboards rather than four identical monitors.
+  CRTs, editors key-caps) — the differences are the glyph struck into the key, the material, the
+  shape of the cap and the accent. Related applications keep that family resemblance on purpose:
+  terminals look alike. Everything else was split apart: the seven music players no longer share one
+  sleeve, the six puzzle games no longer share one tile rack, and the four remote-desktop clients are
+  screens with keyboards rather than four identical monitors.
+* **The accent is always painted.** Every builder that takes a `hue` puts it on the object — an
+  enamelled nameplate on a terminal's chin, a painted rim on the gear train, a leather tag on a
+  keyring, a label card in a catalogue drawer, a coloured bar in a key-cap's plinth. That is what
+  makes two apps with two hues two pictures instead of one picture twice; a builder that accepted a
+  hue and ignored it was the bug behind most of the look-alike pairs this set used to have.
+* Where one object is right for several programs, the *object* carries the difference rather than the
+  colour alone: the card catalogue takes `drawers=` and `wood=` (a two-drawer oak cabinet is not a
+  four-drawer mahogany one), the type block takes a glyph and an enamel face, and the speech bubble
+  takes a shape, a tail, a seam and a second bubble.
 * At 16 px an icon reduces to its silhouette plus one internal shape; anything finer is detail that
   only appears from 32 px up.
 * Icons are generated artwork in the pack's skeuomorphic style; app names and marks belong to their

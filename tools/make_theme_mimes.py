@@ -76,6 +76,8 @@ ALIASES: dict[str, str] = {
     "application-x-bzip3-compressed-tar": "application-x-bzip-compressed-tar.png",
     "application-vnd.rar": "application-vnd-rar.png",
     "application-vnd.bzip3": "application-x-bzip.png",
+    "application-x-bzip1": "application-x-bzip.png",
+    "application-x-bzip3": "application-x-bzip.png",
     # Mail archives are text files of messages; the drawn sheet beats Adwaita's
     # emblem, which is the only other name in their chain.
     "application-mbox": "text-x-generic.png",

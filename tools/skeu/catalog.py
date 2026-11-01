@@ -199,6 +199,8 @@ PROJECTS: list[tuple[str, str, object, dict]] = [
     ("pingwing", "Artanis/Guile notification nexus service", D.envelope, dict(hue=206)),
     ("private-notes", "Personal Org-mode notes vault", T.journal, dict(hue=30)),
     ("scriba", "Structured logging library for GNU Guile", Pr.inkwell, dict(hue=204)),
+    ("sift", "Dialect-aware formatter, linter and LSP for Scheme, Emacs Lisp and "
+     "Common Lisp: what goes in loose comes out lined up", Pr.sieve, dict(hue=204)),
     ("skapa", "Lisp-powered project scaffolding and templates", Pr.drafting_compass,
      dict(hue=204)),
     ("skeu-icons", "Skeuomorphic icon set with build tools", T.tile_stack, dict(hue=204)),

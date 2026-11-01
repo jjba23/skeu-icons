@@ -141,7 +141,7 @@ def era_sheet() -> None:
 
 def projects_sheet() -> None:
     names = [
-        "skeu-icons", "maak", "maak-el",
+        "skeu-icons", "maak", "maak-el", "sift",
         "lambdock", "araneola", "bewaking", "byggsteg", "consceal", "veritas",
         "veritas-el", "wikimusic", "symbanta", "symbanta-dashboard", "guix",
         "nixpkgs", "torikomi", "pingwing", "scriba", "lucidplan", "olive-css",

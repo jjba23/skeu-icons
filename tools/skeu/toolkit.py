@@ -62,6 +62,11 @@ def documents(c, hue: float = 45, cy: float = CY) -> None:
                           (cx - 120, cy - 270), (cx - 118, cy - 160),
                           (cx - 160, cy - 140)], 12.0)
     c.paint_mask(clip, M.chrome, emboss=4.0)
+    # one enamel filing tab on the front sheet: the accent that tells two
+    # offices apart without touching the paper.
+    c.paint(Rotated(RRect(cx - 196, cy + 66, 56, 168, 10), -5, cx, cy), M.enamel,
+            profile=("bevel", 6, 9), hue=hue, sat=0.66, light=0.48,
+            shadow=True, contact=0.18)
 
 
 def paper(c, hue: float = 45, printed: str = "lines", fold: bool = True, w: float = 520,
@@ -112,7 +117,12 @@ def paper(c, hue: float = 45, printed: str = "lines", fold: bool = True, w: floa
 
 
 def _map_print(c, box, hue: float = 150) -> None:
-    """A printed map: land, water, roads, a red route and a pin."""
+    """A printed map: land, water, roads, a red route and a pin.
+
+    The two ground colours are mixed from ``hue`` - a green map, a blue one and
+    a sepia one are the same print, and a map of a different country should not
+    be the same sheet of paper.
+    """
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     c.paint(RRect((x0 + x1) / 2, (y0 + y1) / 2, w, h, 4), M.paper,
@@ -121,12 +131,14 @@ def _map_print(c, box, hue: float = 150) -> None:
                  (x0 + w * 0.62, y0 + h * 0.26), (x0 + w, y0 + h * 0.18),
                  (x1, y1), (x0 + w * 0.30, y1), (x0 + w * 0.18, y0 + h * 0.62),
                  (x0, y0 + h * 0.58)], rounding=6)
-    c.paint(land, M.flat("#e6e3d2"), profile=("flat",), alpha=0.9)
+    c.paint(land, lambda ctx, **k: M.flat(tuple(hsl(hue, 0.16, 0.90)))(ctx, **k),
+            profile=("flat",), alpha=0.92)
     water = Poly([(x0 + w * 0.44, y0 + h * 0.02), (x0 + w * 0.70, y0 - h * 0.02),
                   (x1 + 20, y0 - 20), (x1 + 20, y0 + h * 0.20),
                   (x0 + w * 0.66, y0 + h * 0.30)], rounding=8)
     c.paint(water & RRect((x0 + x1) / 2, (y0 + y1) / 2, w, h, 3),
-            M.flat("#bcd6e8"), profile=("flat",), alpha=0.85)
+            lambda ctx, **k: M.flat(tuple(hsl((hue + 180) % 360, 0.30, 0.76)))(ctx, **k),
+            profile=("flat",), alpha=0.88)
     # roads, then the route in the one accent
     c.paint_mask(polyline_mask([(x0 + 20, y0 + h * 0.78), (x0 + w * 0.34, y0 + h * 0.60),
                                 (x0 + w * 0.58, y0 + h * 0.72), (x1 - 24, y0 + h * 0.54)],
@@ -307,13 +319,17 @@ def crate(c, hue: float = 26, sealed: bool = False, cy: float = CY) -> None:
         mark(c, "box", cx, cy, 170, M.brass, emboss=3.0)
 
 
-def type_block(c, hue: float = 210, cy: float = CY) -> None:
+def type_block(c, hue: float = 210, glyph: str = "code", cy: float = CY) -> None:
+    """A printer's type block: steel body, one enamelled face, a struck glyph."""
     cx = CX
     body = RRect(cx, cy, 520, 440, 12)
     c.paint(Moved(body, 0, 20), M.steel, profile=("bevel", 8, 12))
     c.paint(body, M.steel, profile=("bevel", 14, 18), shadow=True, contact=0.22)
-    c.paint(RRect(cx, cy - 20, 400, 300, 8), M.gunmetal, profile=("bevel", 6, 8), contact=0.3)
-    mark(c, "code", cx, cy - 10, 280, M.chrome, emboss=7.0)
+    # the face is inked in the accent, so two blocks of the same shape are still
+    # two different blocks - and the glyph says which kind of type it carries.
+    c.paint(RRect(cx, cy - 20, 400, 300, 8), M.enamel, profile=("bevel", 6, 8),
+            hue=hue, sat=0.36, light=0.30, contact=0.3)
+    mark(c, glyph, cx, cy - 10, 280, M.chrome, emboss=7.0)
     for x in (cx - 230, cx + 230):
         screw(c, x, cy + 180, 11)
 
@@ -332,17 +348,25 @@ def tile_stack(c, hue: float = 205, cy: float = CY) -> None:
 
 
 def keycap(c, glyph: str = "prompt", hue: float = 210, cy: float = CY) -> None:
+    """One ivory key: the chin strip is enamelled in the accent."""
     cx = CX
     body = RRect(cx, cy, 380, 380, 60)
     c.paint(Moved(body, 0, 30), M.ivory, profile=("bevel", 12, 16))
     c.paint(body, M.ivory, profile=("bevel", 26, 34), shadow=True, contact=0.22)
     c.paint(RRect(cx, cy - 10, 300, 300, 44), M.ivory, profile=("bevel", 10, 14), contact=0.2)
+    c.paint(RRect(cx, cy + 140, 232, 34, 10), M.enamel, profile=("bevel", 5, 7),
+            hue=hue, sat=0.60, light=0.46, contact=0.2)
     mark(c, glyph, cx, cy - 10, 170, lambda ctx, **k: M.engraved(ctx, light=0.42, **k),
          emboss=2.6)
 
 
 def keycaps(c, hue: float = 210, cy: float = CY) -> None:
+    """Three ivory keys over one enamelled plate (the keyboard preferences)."""
     cx = CX
+    plate = RRect(cx, cy + 250, 800 - 60, 90, 26)
+    c.paint(Moved(plate, 0, 18), M.steel, profile=("bevel", 8, 12))
+    c.paint(plate, M.enamel, profile=("bevel", 14, 20), hue=hue, sat=0.42, light=0.42,
+            shadow=True, contact=0.24)
     for i, dx in enumerate((-210, 0, 210)):
         body = Rotated(RRect(cx + dx, cy + (0 if i == 1 else 40), 300, 300, 46), (i - 1) * 6,
                        cx + dx, cy)
@@ -364,6 +388,10 @@ def spoons(c, hue: float = 40, cy: float = CY) -> None:
         c.paint(bowl, M.brass, profile=("sphere", r * 0.62), shadow=True, contact=0.25)
         c.paint(Circle(cx + dx, cy + dy - 6, r * 0.66), M.brass, profile=("sphere", r * 0.5),
                 contact=0.3)
+        # the enamel lining is the one colour on an otherwise all-brass nest
+        c.paint(Circle(cx + dx, cy + dy - 6, r * 0.50), M.enamel,
+                profile=("sphere", r * 0.4), hue=(hue + i * 14) % 360, sat=0.55,
+                light=0.50, contact=0.16)
         c.paint(ring(cx + dx, cy + dy - 6, r * 0.66, 8), M.brass, profile=("bevel", 4, 5),
                 contact=0.2)
 
@@ -459,6 +487,7 @@ def globe(c, hue: float = 205, cy: float = CY) -> None:
 
 
 def keyring(c, hue: float = 205, cy: float = CY) -> None:
+    """A chrome ring, two brass keys and a leather fob in the accent hue."""
     cx = CX
     c.paint(Rotated(ring(cx - 40, cy - 210, 96, 22), 0, 0, 0), M.chrome,
             profile=("bevel", 6, 8), shadow=True, contact=0.2)
@@ -472,6 +501,15 @@ def keyring(c, hue: float = 205, cy: float = CY) -> None:
             c.paint(Rotated(Capsule(cx + dx + 20, cy + 80 + j * 34, cx + dx + 74,
                                     cy + 80 + j * 34, 8), rot, cx + dx, cy), M.brass,
                     profile=("bevel", 3, 4))
+    # a dyed leather fob on a brass eyelet: the one coloured part of the bunch
+    fob = Capsule(cx + 182, cy - 70, cx + 204, cy + 158, 34)
+    c.paint(Moved(fob, 0, 14), M.flat("#2b231a"), profile=("bevel", 6, 9))
+    c.paint(fob, M.leather, profile=("bevel", 12, 18), hue=hue, sat=0.62, light=0.34,
+            shadow=True, contact=0.22)
+    c.paint(ring(cx + 182, cy - 70, 22, 11), M.brass, profile=("bevel", 4, 6),
+            contact=0.2)
+    c.paint(Rotated(ring(cx + 196, cy + 30, 18, 6), -8, cx + 196, cy + 30), M.engraved,
+            profile=("bevel", 2, 3), alpha=0.22)
 
 
 # --------------------------------------------------------------------------- #
@@ -490,6 +528,8 @@ def desktop_box(c, hue: float = 210, cy: float = CY) -> None:
             contact=0.15)
     c.paint_mask(stripe_mask((cx - 150, cy + 100, cx + 150, cy + 140), 3, 4.0),
             M.flat("#20242b"), emboss=1.4, alpha=0.5)
+    c.paint(Capsule(cx - 250, cy - 70, cx - 90, cy - 70, 9), M.enamel,
+            profile=("bevel", 4, 6), hue=hue, sat=0.50, light=0.44, contact=0.16)
     c.paint(Capsule(cx + 220, cy - 120, cx + 220, cy - 120, 7), M.lamp,
             profile=("sphere", 5), hue=140)
     for x in (cx - 240, cx + 240):
@@ -537,6 +577,8 @@ def network_switch(c, hue: float = 210, cy: float = CY) -> None:
     for i in range(4):
         c.paint(Capsule(cx - 200 + i * 130, cy - 80, cx - 200 + i * 130, cy - 80, 7),
                 M.lamp, profile=("sphere", 6), hue=140 if i % 2 == 0 else 45)
+    c.paint(RRect(cx, cy + 140, 600, 22, 8), M.enamel, profile=("bevel", 4, 6),
+            hue=hue, sat=0.46, light=0.40, contact=0.16)
     c.paint(Capsule(cx, cy - 140, cx, cy - 190, 10), M.chrome, profile=("bevel", 4, 5))
 
 
@@ -548,6 +590,8 @@ def modem(c, hue: float = 210, cy: float = CY) -> None:
     for i in range(3):
         c.paint(Capsule(cx - 160 + i * 90, cy - 40, cx - 160 + i * 90, cy - 40, 8),
                 M.lamp, profile=("sphere", 6), hue=(140, 45, 200)[i])
+    c.paint(RRect(cx - 60, cy + 130, 380, 20, 8), M.enamel, profile=("bevel", 4, 6),
+            hue=hue, sat=0.46, light=0.40, contact=0.14)
     c.paint(RRect(cx + 180, cy + 40, 100, 66, 8), M.rubber, profile=("bevel", 5, 6),
             contact=0.2)
     c.paint(Capsule(cx - 120, cy + 160, cx - 260, cy + 300, 16), M.rubber,
@@ -561,6 +605,8 @@ def dock(c, hue: float = 210, cy: float = CY) -> None:
     c.paint(base, M.aluminium, profile=("bevel", 18, 26), shadow=True, contact=0.22)
     slot = RRect(cx, cy + 190, 280, 26, 10)
     c.paint(slot, M.gunmetal, profile=("bevel", 5, 7), contact=0.3)
+    c.paint(Capsule(cx - 230, cy + 200, cx - 90, cy + 200, 8), M.enamel,
+            profile=("bevel", 4, 5), hue=hue, sat=0.50, light=0.44, contact=0.16)
     c.paint(RRect(cx, cy + 40, 150, 240, 16), M.chrome, profile=("bevel", 10, 14),
             shadow=True, contact=0.2)
     c.paint(Capsule(cx, cy - 80, cx, cy - 80, 10), M.lamp, profile=("sphere", 7), hue=140)
@@ -577,6 +623,15 @@ def funnel(c, hue: float = 200, cy: float = CY, paper_sheet: bool = True) -> Non
     c.paint(bowl, M.chrome, profile=("bevel", 20, 26), shadow=True, contact=0.22)
     c.paint(RRect(cx, cy - 200, 600, 56, 24), M.aluminium, profile=("bevel", 14, 18),
             contact=0.25)
+    # an enamel collar where the funnel narrows, and an enamelled spout: the
+    # accent on the one part that is the same on every funnel, so two funnels
+    # are still two funnels
+    c.paint(RRect(cx, cy + 186, 164, 34, 10), M.enamel, profile=("bevel", 6, 9),
+            hue=hue, sat=0.58, light=0.46, shadow=True, contact=0.2)
+    c.paint(RRect(cx, cy + 268, 140, 150, 18), M.enamel, profile=("bevel", 10, 16),
+            hue=hue, sat=0.52, light=0.50, shadow=True, contact=0.22)
+    c.paint(Capsule(cx - 30, cy + 220, cx - 30, cy + 320, 5), M.flat("#ffffff"),
+            profile=("bevel", 2, 3), alpha=0.30)
     if paper_sheet:
         sheet = Rotated(RRect(cx - 40, cy - 260, 330, 180, 6), -10, cx, cy - 260)
         c.paint(sheet, M.paper, profile=("flat",), shadow=True, contact=0.15)
@@ -657,6 +712,9 @@ def ladder(c, hue: float = 210, cy: float = CY) -> None:
         rail = Rotated(Capsule(cx + sign * 210, cy - 260, cx + sign * 250, cy + 300, 22),
                        sign * -2, cx, cy)
         c.paint(rail, M.aluminium, profile=("bevel", 8, 10), shadow=True, contact=0.18)
+        c.paint(RRect(cx + sign * 252, cy + 296, 58, 30, 10), M.enamel,
+                profile=("bevel", 5, 7), hue=hue, sat=0.55, light=0.44,
+                shadow=True, contact=0.18)
     for i in range(5):
         y = cy - 190 + i * 118
         step = RRect(cx, y, 440 - i * 8, 46, 10)
@@ -684,7 +742,7 @@ def gauge(c, hue: float = 205, cy: float = CY, r: float = 300) -> None:
     c.paint_mask(radial_ticks(cx, cy, r - 126, r - 66, 8, 6.0), M.flat("#20242b"),
                  emboss=1.2, alpha=0.9)
     c.paint(Capsule(cx, cy, cx + 176, cy - 132, 11), M.enamel, profile=("bevel", 5, 6),
-            hue=2, sat=0.7, light=0.44, contact=0.25)
+            hue=hue, sat=0.70, light=0.44, contact=0.25)
     c.paint(Capsule(cx, cy, cx - 54, cy + 40, 9), M.flat("#2b3038"),
             profile=("bevel", 4, 5), contact=0.2)
     c.paint(Circle(cx, cy, 26), M.chrome, profile=("sphere", 18), contact=0.25)
@@ -706,7 +764,7 @@ def gauge_cluster(c, hue: float = 205, cy: float = CY) -> None:
         ang = -50 + sign * 80
         c.paint(Capsule(cx + dx, cy - 20, cx + dx + 86 * math.cos(math.radians(ang - 90)),
                         cy - 20 + 86 * math.sin(math.radians(ang - 90)), 6),
-                M.enamel, profile=("bevel", 3, 4), hue=2, sat=0.7, light=0.45)
+                M.enamel, profile=("bevel", 3, 4), hue=hue, sat=0.70, light=0.45)
     for i in range(4):
         c.paint(Capsule(cx - 240 + i * 160, cy + 168, cx - 240 + i * 160, cy + 168, 7),
                 M.lamp, profile=("sphere", 6), hue=(140, 45, 200, 140)[i])
@@ -729,6 +787,8 @@ def stopwatch(c, hue: float = 205, cy: float = CY) -> None:
     c.paint(Capsule(cx, cy, cx + 110, cy - 150, 8), M.flat("#2a2e35"),
             profile=("bevel", 3, 4), contact=0.2)
     c.paint(Capsule(cx, cy, cx - 30, cy - 180, 5), M.flat("#a33a2f"), profile=("bevel", 2, 3))
+    c.paint(ring(cx, cy, 306, 30), M.enamel, profile=("bevel", 8, 12), hue=hue, sat=0.55,
+            light=0.44, contact=0.24)
     c.paint(Circle(cx, cy, 22), M.chrome, profile=("sphere", 16), contact=0.25)
 
 
@@ -746,6 +806,8 @@ def balance(c, hue: float = 40, cy: float = CY) -> None:
         pan = Ellipse(x, cy - 40, 128, 34)
         c.paint(Moved(pan, 0, 10), M.brass, profile=("bevel", 6, 8))
         c.paint(pan, M.brass, profile=("bevel", 14, 18), shadow=True, contact=0.22)
+        c.paint(Ellipse(x, cy - 44, 96, 22), M.enamel, profile=("bevel", 5, 8), hue=hue,
+                sat=0.55, light=0.50, contact=0.16)
     c.paint(Capsule(cx, cy + 120, cx, cy + 300, 8), M.brass, profile=("bevel", 4, 5))
 
 
@@ -759,8 +821,8 @@ def ruler(c, hue: float = 210, cy: float = CY) -> None:
         height = 46 if i % 5 else 76
         c.paint(Capsule(x, cy - 78, x, cy - 78 + height, 2.2), M.flat("#3a4048"), emboss=1.0,
                 alpha=0.75)
-    c.paint(RRect(cx + 200, cy + 24, 120, 120, 8), M.brass, profile=("bevel", 5, 7),
-            shadow=True, contact=0.2)
+    c.paint(RRect(cx + 200, cy + 24, 120, 120, 8), M.enamel, profile=("bevel", 5, 7),
+            hue=hue, sat=0.52, light=0.44, shadow=True, contact=0.2)
     c.paint(Circle(cx + 200, cy + 24, 20), M.gunmetal, profile=("sphere", 14))
 
 
@@ -798,6 +860,8 @@ def service_bell(c, hue: float = 210, cy: float = CY) -> None:
     cx = CX
     base = Ellipse(cx, cy + 214, 320, 58)
     c.paint(base, M.steel, profile=("bevel", 16, 20), shadow=True, contact=0.2)
+    c.paint(Ellipse(cx, cy + 232, 264, 40), M.enamel, profile=("bevel", 8, 12), hue=hue,
+            sat=0.58, light=0.48, contact=0.2)
     bell = Circle(cx, cy - 20, 224) & RRect(cx, cy + 76, 520, 300)
     c.paint(bell, M.chrome, profile=("bevel", 26, 40), shadow=True, contact=0.24)
     c.paint(Ellipse(cx, cy + 168, 258, 54), M.chrome, profile=("bevel", 14, 18),
@@ -849,6 +913,10 @@ def gears(c, hue: float = 210, cy: float = CY) -> None:
     c.paint(Moved(big, 0, 24), M.steel, profile=("bevel", 12, 16))
     c.paint(big, M.steel, profile=("bevel", 22, 28), shadow=True, contact=0.22)
     c.paint(Circle(cx - 90, cy + 60, 250), M.steel, profile=("bevel", 16, 22), contact=0.2)
+    # a painted rim on the big wheel: the accent that makes one machine's gears
+    # a different machine's gears
+    c.paint(ring(cx - 90, cy + 60, 224, 26), M.enamel, profile=("bevel", 6, 9), hue=hue,
+            sat=0.55, light=0.46, contact=0.2)
     c.paint(ring(cx - 90, cy + 60, 176, 56), M.brass, profile=("bevel", 12, 16), contact=0.25)
     c.paint(Circle(cx - 90, cy + 60, 116), M.gunmetal, profile=("sphere", 90), contact=0.3)
     c.paint(Circle(cx - 90, cy + 60, 46), M.brass, profile=("sphere", 34), contact=0.2)

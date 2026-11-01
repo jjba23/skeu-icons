@@ -25,7 +25,7 @@ __all__ = [
     "spec_sheet", "type_stamps", "mug", "platter_stack", "wrench_lens",
     "combination_lock", "planner", "desk_lamp", "crystal_ball", "parcel",
     "drawer", "spectacles", "chart_recorder", "multitool", "lady_justice",
-    "conductor", "floppy_lambda", "bottle",
+    "conductor", "floppy_lambda", "bottle", "sieve",
 ]
 
 
@@ -1443,3 +1443,89 @@ def floppy_lambda(c, hue: float = 204, cy: float = CY) -> None:
     c.paint(curl, M.paper, profile=("bevel", 5, 8), shadow=True, contact=0.22)
     c.paint_mask(polyline_mask([(cx + 212, cy + 248), (cx + 268, cy + 246)], 4.0),
                  M.ink, emboss=0.8, alpha=0.35)
+
+
+# --------------------------------------------------------------------------- #
+# sift - the sieve
+# --------------------------------------------------------------------------- #
+
+def sieve(c, hue: float = 204, cy: float = CY) -> None:
+    """A kitchen sieve held at an angle: chrome hoop, gauze, walnut handle.
+
+    The story is the one on sift's own avatar, told as an object: what goes in
+    is loose, what comes out is lined up.  A few grains tumble onto the screen
+    and three straight threads fall away beneath the bowl, so the icon says
+    "sifts a file and leaves it ordered" without a single letter on it.
+    """
+    from PIL import Image
+
+    cx = CX
+    tilt = -17.0                          # held, not set down on the hob
+    rim_y = cy - 46
+    rx, ry = 322, 176                     # a shallow dish, not a drum
+    hoop = 34
+
+    def turned(shape):
+        return Rotated(shape, tilt, cx, cy)
+
+    # what came out: three threads, already lined up, straight under the sieve
+    for i, (dx, w) in enumerate(((-170, 232), (-40, 190), (96, 146))):
+        c.paint(Capsule(cx + dx, cy + 268 + i * 44, cx + dx + w, cy + 268 + i * 44, 15),
+                M.enamel, profile=("bevel", 7, 10), hue=hue, sat=0.58, light=0.54,
+                contact=0.18)
+
+    # the bowl: a shallow drum, so the wall is a thin crescent under the rim
+    wall = turned(Ellipse(cx, rim_y + 46, rx - 12, ry - 10) - Ellipse(cx, rim_y, rx - 12, ry - 10))
+    c.paint(Moved(wall, 0, 18), M.flat("#4c5259"), profile=("bevel", 8, 12))
+    c.paint(wall, M.chrome, profile=("bevel", 18, 26), shadow=True, contact=0.24)
+
+    # the gauze: brushed steel with a woven wire grid showing through it
+    screen = turned(Ellipse(cx, rim_y + 8, rx - 40, ry - 32))
+    c.paint(screen, M.steel, profile=("flat",), brush=0.06, contact=0.2)
+    inside = np.clip(0.6 - screen.sdf(c.X, c.Y), 0.0, 1.0)
+    weave = np.zeros_like(inside)
+    for k in range(-9, 10):
+        y = rim_y + 8 + k * 26
+        weave += polyline_mask([(cx - rx, y), (cx + rx, y)], 3.2)
+        x = cx + k * 26
+        weave += polyline_mask([(x, rim_y - ry), (x, rim_y + ry)], 3.2)
+    weave = np.clip(weave, 0.0, 1.0) * inside
+    if tilt:
+        img = Image.fromarray((weave * 255).astype(np.uint8), mode="L")
+        weave = np.asarray(img.rotate(-tilt, resample=Image.BICUBIC, center=(cx, cy)),
+                           dtype=np.float32) / 255.0
+    c.paint_mask(weave, M.flat("#39404a"), emboss=2.2, alpha=0.55)
+    c.paint_mask(inside * clamp01((c.Y - (rim_y - ry)) / 240.0), M.flat("#e4ecf4"),
+                 alpha=0.20)              # the light lying on the cloth
+    c.paint_mask(inside * clamp01((c.Y - (rim_y + ry * 0.55)) / 120.0), M.flat("#141a22"),
+                 alpha=0.30)              # and the shadow the near rim casts on it
+
+    # the hoop: a chrome rim rolled over the edge of the gauze
+    c.paint(turned(_oval_ring(cx, rim_y, rx, ry, hoop + 6)), M.chrome,
+            profile=("bevel", 24, 32), shadow=True, contact=0.26)
+    c.paint(turned(_oval_ring(cx, rim_y, rx - 26, ry - 15, 9)), M.steel,
+            profile=("bevel", 5, 8), contact=0.2)
+
+    # the handle: a turned walnut grip through a brass ferrule, angled with
+    # the dish so the sieve reads as held rather than set down on the hob
+    c.paint(Rotated(Capsule(cx + 260, rim_y - 6, cx + 400, rim_y - 52, 18), tilt,
+                    cx, cy), M.wood, profile=("sphere", 20), hue=22, sat=0.48,
+            light=0.30, shadow=True, contact=0.22)
+    c.paint(Rotated(Circle(cx + 404, rim_y - 54, 24), tilt, cx, cy), M.wood,
+            profile=("sphere", 22), hue=22, sat=0.48, light=0.28, shadow=True,
+            contact=0.2)
+    # the ferrule is a band around the grip, not a plate beside it
+    c.paint(Rotated(Capsule(cx + 268, rim_y - 9, cx + 280, rim_y - 13, 22), tilt, cx, cy),
+            M.brass, profile=("bevel", 5, 8), shadow=True, contact=0.2)
+    c.paint(Rotated(Capsule(cx + 320, rim_y - 26, cx + 328, rim_y - 29, 4), tilt, cx, cy),
+            M.engraved, profile=("bevel", 2, 3), alpha=0.35)
+
+    # what goes in: a few grains still falling, in the one accent
+    for dx, dy, r in ((-146, -178, 32), (-30, -238, 24), (92, -168, 28)):
+        c.paint(Circle(cx + dx, cy + dy, r), M.enamel, profile=("sphere", r * 0.9),
+                hue=hue, sat=0.62, light=0.54, shadow=True, contact=0.18)
+    # and the heap on the screen, already sifting through it
+    for dx, dy, r in ((-66, 4, 34), (18, -22, 28), (72, 14, 22), (-10, 34, 18)):
+        c.paint(Circle(cx + dx + 24, rim_y + dy + 30, r), M.enamel,
+                profile=("sphere", r * 0.9), hue=hue, sat=0.58, light=0.52,
+                contact=0.18)

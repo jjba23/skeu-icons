@@ -1,8 +1,8 @@
 {
   "generator": "tools/render_skeu.py",
   "style": "skeuomorphic, no icon mask",
-  "count": 47,
-  "objects": 42,
+  "count": 48,
+  "objects": 43,
   "icons": [
     {
       "name": "araneola",
@@ -308,6 +308,15 @@
       "object": "inkwell",
       "files": {
         "png": "scriba/icon-1024.png"
+      }
+    },
+    {
+      "name": "sift",
+      "slug": "sift",
+      "purpose": "Dialect-aware formatter, linter and LSP for Scheme, Emacs Lisp and Common Lisp: what goes in loose comes out lined up",
+      "object": "sieve",
+      "files": {
+        "png": "sift/icon-1024.png"
       }
     },
     {

@@ -43,11 +43,11 @@
     "brown",
     "graphite"
   ],
-  "icons": 2225,
+  "icons": 2230,
   "contexts": {
-    "apps": 1241,
+    "apps": 1244,
     "places": 174,
-    "mimetypes": 678,
+    "mimetypes": 680,
     "emblems": 17,
     "categories": 27,
     "devices": 88

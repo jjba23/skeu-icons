@@ -605,6 +605,9 @@ def gamepad(c, hue: float = 210, cy: float = CY) -> None:
                 hue=hue_b, sat=0.65, light=0.5, contact=0.25)
     c.paint(Capsule(cx - 40, cy + 30, cx + 20, cy + 30, 20), M.gunmetal,
             profile=("bevel", 6, 8))
+    # a painted band across the grips: the game store's own colourway
+    c.paint(RRect(cx, cy + 130, 300, 26, 10), M.enamel,
+            profile=("bevel", 4, 6), hue=hue, sat=0.62, light=0.46, contact=0.16)
     for x in (cx - 60, cx + 10):
         c.paint(Circle(x, cy - 40, 26), M.ivory, profile=("sphere", 20), contact=0.2)
 
@@ -924,6 +927,8 @@ def printer(c, hue: float = 210, cy: float = CY) -> None:
     c.paint(body, M.aluminium, profile=("bevel", 20, 28), shadow=True, contact=0.22)
     c.paint(RRect(cx, cy + 120, 520, 130, 12), M.flat("#22262d"),
             profile=("bevel", 6, 9), contact=0.3)
+    c.paint(Capsule(cx - 200, cy + 120, cx + 200, cy + 120, 6), M.enamel,
+            profile=("bevel", 3, 4), hue=hue, sat=0.55, light=0.46, contact=0.2)
     sheet = RRect(cx, cy - 190, 420, 320, 8)
     c.paint(Moved(sheet, 0, 10), M.paper, profile=("bevel", 3, 5),
             shadow=True, contact=0.2)
@@ -999,7 +1004,8 @@ def microphone(c, hue: float = 210, cy: float = CY) -> None:
     c.paint(body, M.chrome, profile=("sphere", 120), shadow=True, contact=0.24)
     c.paint_mask(dots_mask(SIZE, 13, 3.0, bounds=(cx - 80, cy - 286, cx + 80, cy - 60)),
             M.flat("#20242b"), emboss=2.0, alpha=0.7)
-    c.paint(ring(cx, cy - 60, 82, 12), M.brass, profile=("bevel", 5, 7))
+    c.paint(ring(cx, cy - 60, 82, 12), M.enamel, profile=("bevel", 5, 7), hue=hue,
+            sat=0.60, light=0.46)
 
 
 def server(c, hue: float = 210, cy: float = CY) -> None:
@@ -1029,8 +1035,8 @@ def router(c, hue: float = 210, cy: float = CY) -> None:
     body = RRect(cx, cy + 130, 680, 280, 56)
     c.paint(Moved(body, 0, 26), M.steel, profile=("bevel", 10, 14))
     c.paint(body, M.aluminium, profile=("bevel", 26, 38), shadow=True, contact=0.22)
-    c.paint(RRect(cx, cy + 96, 600, 90, 26), M.aluminium, profile=("bevel", 12, 16),
-            contact=0.25)
+    c.paint(RRect(cx, cy + 96, 600, 90, 26), M.enamel, profile=("bevel", 12, 16),
+            hue=hue, sat=0.34, light=0.44, contact=0.25)
     for i in range(5):
         c.paint(Capsule(cx - 190 + i * 96, cy + 190, cx - 190 + i * 96, cy + 190, 8),
                 M.lamp, profile=("sphere", 6), hue=140 if i < 4 else 45)

@@ -82,44 +82,19 @@ BORROWED: dict[str, str] = {
     "ardour": "garageband",
     "lmms": "garageband-alt",
     # --- file managers: the Finder face, blue / green / violet -------------- #
+    # Six file managers, six faces: the two colourways below, then the teal and
+    # amber ones cut for the rest, because two programs in a row with the same
+    # tile is exactly what a desktop looks like when someone stopped looking.
     "files": "finder",
-    "nemo": "finder",
+    "nemo": "finder-alt-2",
     "dolphin": "finder-alt",
-    "caja": "finder-alt",
-    "thunar": "finder-alt-2",
-    "pcmanfm": "finder-alt-2",
-    # --- games: Game Center, blue / teal / magenta ------------------------- #
-    # The chess set is the exception: the era drew a chess set of its own (see
-    # ``CATEGORY_KEEP``), so the board game keeps the knight and everything
-    # else in the menu is Game Center.
-    "quadrapassel": "game-center",
-    "swell-foop": "game-center",
-    "mines": "game-center-alt",
-    "reversi": "game-center-alt",
-    "lights-off": "game-center-alt",
-    "mahjongg": "game-center-alt-2",
-    "sudoku": "game-center-alt-2",
-    # --- chat: iMessage, green / blue / violet ----------------------------- #
-    "telegram": "messages",
-    "element": "messages",
-    "zulip": "messages",
-    "emblem": "messages",
-    "discord": "messages-alt",
-    "mattermost": "messages-alt",
-    "zapzap": "messages-alt",
-    "skype": "messages-alt",
-    "slack": "messages-alt-2",
-    "rocket-chat": "messages-alt-2",
-    "dialect": "messages-alt-2",
-    # --- mail: the airmail stamp, brass / teal / violet -------------------- #
-    "thunderbird": "mail",
-    "evolution": "mail-alt",
-    "geary": "mail-alt-2",
+    "caja": "finder-alt-3",
+    "thunar": "finder-alt-4",
+    "pcmanfm": "finder-alt-5",
     # --- video calls ------------------------------------------------------- #
     "zoom": "facetime",
     "microsoft-teams": "facetime-alt",
     # --- drives and disks -------------------------------------------------- #
-    "impression": "disks-alt",     # the USB writer, on a blue drive
     "gparted": "disk-utility",     # a partitioner, shown as Disk Utility
     # --- pictures: iPhoto -------------------------------------------------- #
     "image-viewer": "iphoto",
@@ -129,6 +104,10 @@ BORROWED: dict[str, str] = {
     "joplin": "notes",
     "obsidian": "notes-alt",
     "logseq": "notes-alt-2",
+    # --- mail: the airmail stamp, brass / teal / violet -------------------- #
+    "thunderbird": "mail",
+    "evolution": "mail-alt",
+    "geary": "mail-alt-2",
     # --- music: the silver disc, blue / red / gold -------------------------- #
     "music": "itunes",
     "rhythmbox": "itunes-alt",
@@ -144,7 +123,10 @@ BORROWED: dict[str, str] = {
     "software": "app-store",
     "discover": "app-store-alt",
     "settings": "system-preferences",
-    "tweaks": "system-preferences-alt",
+    # GNOME Tweaks is a control panel of its own kind, so it keeps the gear
+    # train drawn for it instead of a recoloured System Preferences pane: the
+    # colourway of a graphite pane is graphite, and the two tiles were one.
+
     # --- monitors, the calendar, the clock and the scratch pad ------------- #
     "gnome-system-monitor": "activity-monitor",
     "system-monitor": "activity-monitor-alt",
@@ -163,34 +145,26 @@ BORROWED: dict[str, str] = {
     "libreoffice-writer": "pages",
     "abiword": "pages-alt",
     "libreoffice-impress": "keynote",
-    "libreoffice-math": "grapher",
     "libreoffice-calc": "microsoft-excel",
     "gnumeric": "microsoft-excel-alt",
     # --- passwords: the ring of keys --------------------------------------- #
-    "1password": "keychain-access",
-    "keepassxc": "keychain-access",
+    # 1Password is not borrowed: it has a hand-drawn mark of its own in ``svg/``
+    # and wearing Apple's key ring over it was the one trade that lost artwork.
+    "keepassxc": "keychain-access-alt-2",
     "bitwarden": "keychain-access-alt",
-    "passwords-and-keys": "keychain-access-alt-2",
+    "passwords-and-keys": "keychain-access-alt-3",
     # --- archives and remote machines -------------------------------------- #
     "file-roller": "betterzip",
     "ark": "betterzip-alt",
-    "remmina": "remote-desktop-connection",
-    "rustdesk": "remote-desktop-connection-alt",
-    "tigervnc": "screen-sharing",
-    "remote-viewer": "screen-sharing-alt",
-    "connections": "screen-sharing-alt-2",
     # --- the darkroom, the colour meter and the network tap ---------------- #
     "darktable": "aperture",
     "rawtherapee": "aperture-alt",
     "eyedropper": "digitalcolor-meter",
     "color-profile-viewer": "colorsync-utility",
-    "wireshark": "network-utility",
-    "wireshark-super-user-mode": "network-utility-alt",
     # --- the library, the type case and the graph paper -------------------- #
     "calibre": "ibooks-author",
     "webfont-bundler": "font-book",
     "graphs": "grapher-alt",
-    "disk-usage-analyzer": "disks-alt",
     # --- another operating system on the same machine ---------------------- #
     "virtualbox": "boot-camp-assistant",
     "vmware-workstation": "boot-camp-assistant-alt",
@@ -199,7 +173,6 @@ BORROWED: dict[str, str] = {
     "warp": "bluetooth-file-exchange-alt",
     # --- one IDE and one pane splitter ------------------------------------- #
     "intellij-idea": "xcode",
-    "terminator": "terminal-red",
     # --- the graphics suite: the feather, the flower, the butterfly -------- #
     "krita": "photoshop-cs2",
     "inkscape": "illustrator-cs2",
@@ -208,10 +181,7 @@ BORROWED: dict[str, str] = {
     # --- authoring for the web: the sphere with the d, the spark ----------- #
     "workbench": "dreamweaver-8",
     "curtail": "fireworks-8",
-    # --- burning a disc, transcoding a film -------------------------------- #
-    "brasero": "roxio-toast",
-    "k3b": "roxio-toast-alt",
-    "impression": "roxio-toast-alt-2",
+    # --- burning a disc, transcoding a film --------------------------------- #
     "handbrake": "roxio-popcorn",
     # --- an emulator is the Classic environment ---------------------------- #
     "boxes": "classic",
@@ -219,7 +189,6 @@ BORROWED: dict[str, str] = {
     # --- peer to peer: the lime --------------------------------------------- #
     "transmission": "limewire",
     "qbittorrent": "limewire-alt",
-    "fragments": "limewire-alt-2",
     # --- the blue marble --------------------------------------------------- #
     "maps": "google-earth",
 }
@@ -232,18 +201,23 @@ TERMINAL_ART = "terminal"
 TERMINAL_SOURCE = "console"
 
 #: Categories whose applications answer with one Apple icon, because the
-#: category *is* the Mac application: every file manager is the Finder, every
-#: game is Game Center.  A slug in BORROWED always wins.
+#: category *is* the Mac application: every file manager is the Finder.  A slug
+#: in BORROWED always wins.
+#:
+#: Games and terminals used to be here as well, and that was one object too far:
+#: seven GNOME games showed three Game Center tiles between them and ten
+#: emulators showed one CRT, which is the repetition this pack is supposed to be
+#: the cure for.  Those programs now answer with the object drawn for them (a
+#: mahjong tile, a tetromino, a rack of stones, a CRT each in its own glass),
+#: and ``game-center.png`` and ``terminal.png`` keep the era names they were
+#: drawn for.  A file manager is different: the pack draws one chrome folder for
+#: all six, so the Finder's colourways are what tells them apart.
 BORROWED_CATEGORIES: tuple[tuple[str, str], ...] = (
-    ("TerminalEmulator", TERMINAL_ART),
     ("FileManager", "finder"),
-    ("Game", "game-center"),
 )
 
 #: Programs in a mapped category that keep the object drawn for them: a game
-#: store, an emulator or a Wine prefix is a shelf, not a game.  ``chess`` is
-#: here for the other reason - the era drew a chess set of its own, so the
-#: board game keeps its knight while the rest of the menu is Game Center.
+#: store, an emulator or a Wine prefix is a shelf, not a game.
 CATEGORY_KEEP: frozenset[str] = frozenset({
     "steam", "lutris", "heroic", "prism-launcher", "cartridges", "retroarch",
     "retrodeck", "retrodeck-configurator", "bottles", "wine", "chess",
@@ -359,6 +333,9 @@ ALTS: dict[str, tuple[str, float, float, str]] = {
     # --- the Finder and the games ------------------------------------------ #
     "finder-alt": ("finder", -100, 0.95, "shift"),         # green face
     "finder-alt-2": ("finder", 55, 0.95, "shift"),         # violet face
+    "finder-alt-3": ("finder", 160, 0.95, "shift"),        # teal face
+    "finder-alt-4": ("finder", 30, 0.95, "shift"),         # amber face
+    "finder-alt-5": ("finder", -30, 0.95, "shift"),        # rose face
     "game-center-alt": ("game-center", 100, 0.95, "shift"),
     "game-center-alt-2": ("game-center", -100, 0.95, "shift"),
     # --- media production --------------------------------------------------- #
@@ -576,8 +553,44 @@ def plan() -> list[tuple[str, list[str], bool, dict]]:
         if not (ICONS / slug / "icon-1024.png").is_file():
             continue
         names = lookup_names(app)
-        out.append((slug, names, (THEME / "48x48" / CONTEXT / f"{slug}.png").is_file(), app))
+        path = THEME / "48x48" / CONTEXT / f"{slug}.png"
+        # A symlink is not artwork of its own: it is a name pointing at another
+        # tile, which is exactly what a build writes for a program that borrows
+        # one.  Counting it as present would keep that program on the borrowed
+        # tile after the table stopped borrowing it.
+        present = path.is_file() and not path.is_symlink()
+        out.append((slug, names, present, app))
     return out
+
+
+def prune_stale_borrow(apps: list[tuple[str, list[str], bool, dict]],
+                       problems: list[str], write: bool) -> int:
+    """Take back a borrowed tile from a program that now draws its own.
+
+    ``install_artwork`` keeps artwork that is already on disk, which is what
+    makes the step idempotent - but the file a previous build left for a
+    borrowing program is a *symlink*, and a symlink resolves.  Without this, a
+    program that stopped borrowing (a game that used to be Game Center, an
+    emulator that used to be the shared terminal) would keep the old tile for
+    ever, because nothing ever overwrote it.  Removing the link is enough: the
+    artwork pass just below writes the drawing it should have had.
+    """
+    cleared = 0
+    for slug, _names, _present, app in apps:
+        if borrowed(app) or slug in OWN_ARTWORK:
+            continue
+        for size in SIZES:
+            for suffix in ("", "@2x"):
+                path = THEME / f"{size}x{size}{suffix}" / CONTEXT / f"{slug}.png"
+                if not path.is_symlink():
+                    continue
+                if write:
+                    path.unlink()
+                    cleared += 1
+                else:
+                    problems.append(f"{path.relative_to(ROOT)}: still points at "
+                                    f"{os.readlink(path)}")
+    return cleared
 
 
 def owners() -> dict[str, str]:
@@ -693,6 +706,8 @@ def install(write: bool) -> tuple[int, int, int, list[str]]:
     # Before anything is linked: a name this step is not allowed to answer for
     # comes off the theme, so a rebuild cannot leave an override in place.
     cleared = prune_own_artwork(problems, write)
+    # ... and so does a borrowed tile on a program that stopped borrowing one.
+    cleared += prune_stale_borrow(apps, problems, write)
 
     # The artwork goes in first, for every app that answers with its own
     # drawing.  Two later steps read it back: a colourway is cut from a

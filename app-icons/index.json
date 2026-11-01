@@ -11,7 +11,6 @@
   "objects": [
     "1Password",
     "Emacs",
-    "Firefox 24",
     "IntelliJ IDEA",
     "Signal",
     "address_book",
@@ -149,6 +148,7 @@
     "lens_turret",
     "loupe",
     "magnet",
+    "magnifier",
     "mahjong_tile",
     "metronome",
     "microphone",
@@ -186,6 +186,7 @@
     "shield",
     "slide_carousel",
     "speakers",
+    "spec_sheet",
     "stopwatch",
     "tape_cartridge",
     "terminal",
@@ -212,7 +213,13 @@
       "categories": "Office;",
       "comment": "Password manager and secure wallet",
       "exec": "/opt/1Password/1password",
+      "icon": "1password",
+      "wmclass": "1Password",
       "desktop": "1password.desktop",
+      "desktops": [
+        "1password",
+        "com.onepassword.OnePassword"
+      ],
       "design": {
         "kind": "hand-authored",
         "source": "1Password"
@@ -258,7 +265,7 @@
         "source": "apps/activity-monitor.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the oscilloscope trace",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "activity-monitor/icon-1024.png"
@@ -280,7 +287,7 @@
         "source": "apps/address-book.png",
         "era": "Mavericks (10.9)",
         "credit": "the address book with the @ tab",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "address-book/icon-1024.png"
@@ -302,7 +309,7 @@
         "source": "apps/adium.png",
         "era": "Leopard (10.5)",
         "credit": "the green duck",
-        "licence": "fan-art"
+        "licence": "Adium (GPL)"
       },
       "files": {
         "png": "adium/icon-1024.png"
@@ -315,11 +322,16 @@
       "categories": "GNOME;GTK;Settings;X-GNOME-NetworkSettings;X-GNOME-Utilities;",
       "comment": "Manage and change your network connection settings",
       "exec": "nm-connection-editor",
+      "icon": "preferences-system-network",
+      "wmclass": "",
       "desktop": "nm-connection-editor.desktop",
+      "desktops": [
+        "nm-connection-editor"
+      ],
       "design": {
         "kind": "object",
         "object": "patch_panel",
-        "hue": 182,
+        "hue": 30,
         "archetype": "still-life object"
       },
       "files": {
@@ -342,7 +354,7 @@
         "source": "apps/airport-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the radar sweep",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "airport-utility/icon-1024.png"
@@ -355,11 +367,16 @@
       "categories": "System;TerminalEmulator;Utility;",
       "comment": "A fast, cross-platform, OpenGL terminal emulator",
       "exec": "alacritty",
+      "icon": "Alacritty",
+      "wmclass": "Alacritty",
       "desktop": "org.alacritty.Alacritty.desktop",
+      "desktops": [
+        "org.alacritty.Alacritty"
+      ],
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 192,
+        "hue": 190,
         "archetype": "still-life object"
       },
       "files": {
@@ -373,7 +390,12 @@
       "categories": "GNOME;GTK;Music;Audio;AudioVideo;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.bassi.Amberol",
+      "wmclass": "",
       "desktop": "io.bassi.Amberol.desktop",
+      "desktops": [
+        "io.bassi.Amberol"
+      ],
       "design": {
         "kind": "object",
         "object": "gramophone",
@@ -391,7 +413,12 @@
       "categories": "Development;IDE;",
       "comment": "An IDE for Android app development",
       "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/android-studio/bin/studio\"",
+      "icon": "jetbrains-studio-0864e1a5-b113-4840-8c08-5f1d81328037",
+      "wmclass": "jetbrains-studio",
       "desktop": "jetbrains-studio-0864e1a5-b113-4840-8c08-5f1d81328037.desktop",
+      "desktops": [
+        "jetbrains-studio-0864e1a5-b113-4840-8c08-5f1d81328037"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -439,7 +466,7 @@
         "source": "apps/aperture.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the lens barrel",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "aperture/icon-1024.png"
@@ -474,7 +501,12 @@
       "categories": "AudioVideo;Audio;AudioVideoEditing;X-Recorders;X-Multitrack;X-Jack;",
       "comment": "Ardour Digital Audio Workstation",
       "exec": "ardour9",
+      "icon": "ardour9",
+      "wmclass": "Ardour",
       "desktop": "ardour9.desktop",
+      "desktops": [
+        "ardour9"
+      ],
       "design": {
         "kind": "object",
         "object": "speakers",
@@ -534,7 +566,12 @@
       "categories": "AudioVideo;Audio;AudioVideoEditing;",
       "comment": "Record and edit audio files",
       "exec": "env",
+      "icon": "audacity",
+      "wmclass": "Audacity",
       "desktop": "audacity.desktop",
+      "desktops": [
+        "audacity"
+      ],
       "design": {
         "kind": "object",
         "object": "microphone",
@@ -561,7 +598,7 @@
         "source": "apps/audio-midi-setup.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the MIDI keyboard and speaker",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "audio-midi-setup/icon-1024.png"
@@ -605,7 +642,7 @@
         "source": "apps/betterzip.png",
         "era": "Mavericks (10.9)",
         "credit": "the cardboard box with the zip pull",
-        "licence": "apple"
+        "licence": "MacItBetter"
       },
       "files": {
         "png": "betterzip/icon-1024.png"
@@ -618,7 +655,12 @@
       "categories": "GTK;Utility;",
       "comment": "Convert numbers between bases",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.fizzyizzy05.binary",
+      "wmclass": "",
       "desktop": "io.github.fizzyizzy05.binary.desktop",
+      "desktops": [
+        "io.github.fizzyizzy05.binary"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -657,7 +699,12 @@
       "categories": "Graphics;3DGraphics;",
       "comment": "3D modeling, animation, rendering and post-production",
       "exec": "blender-5.2",
+      "icon": "blender-5.2",
+      "wmclass": "Blender",
       "desktop": "blender-5.2.desktop",
+      "desktops": [
+        "blender-5.2"
+      ],
       "design": {
         "kind": "object",
         "object": "wire_cube",
@@ -675,11 +722,16 @@
       "categories": "X-XFCE;Settings;HardwareSettings;X-XFCE-SettingsDialog;GTK;",
       "comment": "Set Bluetooth Adapter Properties",
       "exec": "blueman-adapters",
+      "icon": "blueman-device",
+      "wmclass": "",
       "desktop": "blueman-adapters.desktop",
+      "desktops": [
+        "blueman-adapters"
+      ],
       "design": {
         "kind": "object",
         "object": "dongle",
-        "hue": 200,
+        "hue": 166,
         "archetype": "still-life object"
       },
       "files": {
@@ -702,7 +754,7 @@
         "source": "apps/bluetooth-file-exchange.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the two arrows around the rune",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "bluetooth-file-exchange/icon-1024.png"
@@ -715,7 +767,12 @@
       "categories": "GTK;GNOME;Settings;HardwareSettings;",
       "comment": "Blueman Bluetooth Manager",
       "exec": "blueman-manager",
+      "icon": "blueman",
+      "wmclass": "",
       "desktop": "blueman-manager.desktop",
+      "desktops": [
+        "blueman-manager"
+      ],
       "design": {
         "kind": "object",
         "object": "dongle",
@@ -742,7 +799,7 @@
         "source": "apps/boot-camp-assistant.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the partitioned drive",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "boot-camp-assistant/icon-1024.png"
@@ -776,7 +833,12 @@
       "categories": "GNOME;GTK;System;Development;Emulator;",
       "comment": "View and use virtual machines",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.Boxes",
+      "wmclass": "",
       "desktop": "org.gnome.Boxes.desktop",
+      "desktops": [
+        "org.gnome.Boxes"
+      ],
       "design": {
         "kind": "object",
         "object": "parcel",
@@ -815,11 +877,16 @@
       "categories": "Network;WebBrowser;",
       "comment": "Access the Internet",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.brave.Browser",
+      "wmclass": "brave-browser",
       "desktop": "com.brave.Browser.desktop",
+      "desktops": [
+        "com.brave.Browser"
+      ],
       "design": {
         "kind": "object",
         "object": "browser_globe",
-        "hue": 22,
+        "hue": 2,
         "archetype": "still-life object"
       },
       "files": {
@@ -833,7 +900,12 @@
       "categories": "Development;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.usebruno.Bruno",
+      "wmclass": "Bruno",
       "desktop": "com.usebruno.Bruno.desktop",
+      "desktops": [
+        "com.usebruno.Bruno"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -851,7 +923,12 @@
       "categories": "System;Monitor;ConsoleOnly;",
       "comment": "Resource monitor that shows usage and stats for processor, memory, dis",
       "exec": "btop",
+      "icon": "btop",
+      "wmclass": "",
       "desktop": "btop.desktop",
+      "desktops": [
+        "btop"
+      ],
       "design": {
         "kind": "object",
         "object": "oscilloscope",
@@ -914,7 +991,12 @@
       "categories": "GNOME;GTK;Office;Calendar;Core;",
       "comment": "Access and manage your calendars",
       "exec": "gnome-calendar",
+      "icon": "org.gnome.Calendar",
+      "wmclass": "",
       "desktop": "org.gnome.Calendar.desktop",
+      "desktops": [
+        "org.gnome.Calendar"
+      ],
       "design": {
         "kind": "object",
         "object": "calendar_pad",
@@ -953,7 +1035,12 @@
       "categories": "AudioVideo;Video;Recorder;GNOME;GTK;",
       "comment": "Take pictures and videos",
       "exec": "snapshot",
+      "icon": "org.gnome.Snapshot",
+      "wmclass": "",
       "desktop": "org.gnome.Snapshot.desktop",
+      "desktops": [
+        "org.gnome.Snapshot"
+      ],
       "design": {
         "kind": "object",
         "object": "camera",
@@ -971,7 +1058,12 @@
       "categories": "Qt;KDE;AudioVideo;Player;",
       "comment": "Listen to and manage your music collection",
       "exec": "/usr/bin/flatpak",
+      "icon": "dog.unix.cantata.Cantata",
+      "wmclass": "",
       "desktop": "dog.unix.cantata.Cantata.desktop",
+      "desktops": [
+        "dog.unix.cantata.Cantata"
+      ],
       "design": {
         "kind": "object",
         "object": "record_sleeve",
@@ -989,11 +1081,16 @@
       "categories": "GNOME;GTK;Game;PackageManager;",
       "comment": "Launch all your games",
       "exec": "/usr/bin/flatpak",
+      "icon": "page.kramo.Cartridges",
+      "wmclass": "",
       "desktop": "page.kramo.Cartridges.desktop",
+      "desktops": [
+        "page.kramo.Cartridges"
+      ],
       "design": {
         "kind": "object",
         "object": "cartridge",
-        "hue": 262,
+        "hue": 30,
         "archetype": "still-life object"
       },
       "files": {
@@ -1028,7 +1125,12 @@
       "categories": "GNOME;GTK;Utility;",
       "comment": "Utility application to find and insert unusual characters",
       "exec": "/usr/bin/gnome-characters",
+      "icon": "org.gnome.Characters",
+      "wmclass": "",
       "desktop": "org.gnome.Characters.desktop",
+      "desktops": [
+        "org.gnome.Characters"
+      ],
       "design": {
         "kind": "object",
         "object": "type_block",
@@ -1046,7 +1148,12 @@
       "categories": "GNOME;AudioVideo;Video;Recorder;",
       "comment": "Take photos and videos with your webcam, with fun graphical effects",
       "exec": "cheese",
+      "icon": "org.gnome.Cheese",
+      "wmclass": "",
       "desktop": "org.gnome.Cheese.desktop",
+      "desktops": [
+        "org.gnome.Cheese"
+      ],
       "design": {
         "kind": "object",
         "object": "webcam",
@@ -1140,7 +1247,7 @@
         "source": "apps/cleanmymac.png",
         "era": "Mavericks (10.9)",
         "credit": "CleanMyMac 2, the broom",
-        "licence": "apple"
+        "licence": "MacPaw"
       },
       "files": {
         "png": "cleanmymac/icon-1024.png"
@@ -1175,7 +1282,12 @@
       "categories": "GNOME;GTK;Utility;Clock;",
       "comment": "Clocks for world times, plus alarms, stopwatch and a timer",
       "exec": "gnome-clocks",
+      "icon": "org.gnome.clocks",
+      "wmclass": "",
       "desktop": "org.gnome.clocks.desktop",
+      "desktops": [
+        "org.gnome.clocks"
+      ],
       "design": {
         "kind": "object",
         "object": "clock_dial",
@@ -1193,7 +1305,12 @@
       "categories": "GNOME;GTK;System;",
       "comment": "Inspect and compare installed color profiles",
       "exec": "gcm-viewer",
+      "icon": "gnome-color-manager",
+      "wmclass": "",
       "desktop": "org.gnome.ColorProfileViewer.desktop",
+      "desktops": [
+        "org.gnome.ColorProfileViewer"
+      ],
       "design": {
         "kind": "object",
         "object": "prism",
@@ -1220,7 +1337,7 @@
         "source": "apps/colorsync-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the three overlapping primaries",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "colorsync-utility/icon-1024.png"
@@ -1233,7 +1350,12 @@
       "categories": "GNOME;GTK;Utility;RemoteAccess;Network;",
       "comment": "",
       "exec": "gnome-connections",
+      "icon": "org.gnome.Connections",
+      "wmclass": "",
       "desktop": "org.gnome.Connections.desktop",
+      "desktops": [
+        "org.gnome.Connections"
+      ],
       "design": {
         "kind": "object",
         "object": "router",
@@ -1272,7 +1394,12 @@
       "categories": "AudioVideo;Video;GNOME;GTK;",
       "comment": "Compress videos to target sizes",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.wartybix.Constrict",
+      "wmclass": "",
       "desktop": "io.github.wartybix.Constrict.desktop",
+      "desktops": [
+        "io.github.wartybix.Constrict"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -1290,7 +1417,12 @@
       "categories": "GNOME;GTK;Office;ContactManagement;",
       "comment": "Manage your contacts",
       "exec": "gnome-contacts",
+      "icon": "org.gnome.Contacts",
+      "wmclass": "",
       "desktop": "org.gnome.Contacts.desktop",
+      "desktops": [
+        "org.gnome.Contacts"
+      ],
       "design": {
         "kind": "object",
         "object": "address_book",
@@ -1308,7 +1440,12 @@
       "categories": "GNOME;GTK;Graphics;",
       "comment": "Compress your images",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.github.huluti.Curtail",
+      "wmclass": "curtail",
       "desktop": "com.github.huluti.Curtail.desktop",
+      "desktops": [
+        "com.github.huluti.Curtail"
+      ],
       "design": {
         "kind": "object",
         "object": "zip_disc",
@@ -1326,7 +1463,12 @@
       "categories": "Utility;Archiving;",
       "comment": "Protect yourself from data loss",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.DejaDup",
+      "wmclass": "",
       "desktop": "org.gnome.DejaDup.desktop",
+      "desktops": [
+        "org.gnome.DejaDup"
+      ],
       "design": {
         "kind": "object",
         "object": "drive",
@@ -1360,12 +1502,17 @@
     },
     {
       "name": "DataGrip",
-      "display": "DataGrip 2026.2.6",
+      "display": "DataGrip 2026.2.6.1",
       "slug": "datagrip",
       "categories": "Development;IDE;",
       "comment": "The IDE for databases and SQL",
       "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/datagrip/bin/datagrip\"",
+      "icon": "jetbrains-datagrip-c8a53190-f227-4527-9a4d-0977d400f0c9",
+      "wmclass": "jetbrains-datagrip",
       "desktop": "jetbrains-datagrip-c8a53190-f227-4527-9a4d-0977d400f0c9.desktop",
+      "desktops": [
+        "jetbrains-datagrip-c8a53190-f227-4527-9a4d-0977d400f0c9"
+      ],
       "design": {
         "kind": "object",
         "object": "card_catalog",
@@ -1411,7 +1558,7 @@
       "design": {
         "kind": "object",
         "object": "card_catalog",
-        "hue": 28,
+        "hue": 268,
         "archetype": "still-life object"
       },
       "files": {
@@ -1425,7 +1572,12 @@
       "categories": "GNOME;GTK;System;",
       "comment": "Directly edit your entire configuration database",
       "exec": "dconf-editor",
+      "icon": "ca.desrt.dconf-editor",
+      "wmclass": "",
       "desktop": "ca.desrt.dconf-editor.desktop",
+      "desktops": [
+        "ca.desrt.dconf-editor"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -1443,10 +1595,15 @@
       "categories": "Utility;GTK;GNOME;Scanning;",
       "comment": "Scan and Generate QR Codes",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.belmoussaoui.Decoder",
+      "wmclass": "",
       "desktop": "com.belmoussaoui.Decoder.desktop",
+      "desktops": [
+        "com.belmoussaoui.Decoder"
+      ],
       "design": {
         "kind": "object",
-        "object": "scanner",
+        "object": "magnifier",
         "hue": 196,
         "archetype": "still-life object"
       },
@@ -1461,7 +1618,12 @@
       "categories": "Network;GTK;",
       "comment": "Translate between languages",
       "exec": "/usr/bin/flatpak",
+      "icon": "app.drey.Dialect",
+      "wmclass": "",
       "desktop": "app.drey.Dialect.desktop",
+      "desktops": [
+        "app.drey.Dialect"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
@@ -1510,7 +1672,7 @@
         "source": "apps/digitalcolor-meter.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the eyedropper over the swatch",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "digitalcolor-meter/icon-1024.png"
@@ -1532,7 +1694,7 @@
         "source": "apps/directory-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the network node tree",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "directory-utility/icon-1024.png"
@@ -1545,7 +1707,12 @@
       "categories": "Network;InstantMessaging;",
       "comment": "All-in-one voice and text chat for gamers that's free, secure, and wor",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.discordapp.Discord",
+      "wmclass": "discord",
       "desktop": "com.discordapp.Discord.desktop",
+      "desktops": [
+        "com.discordapp.Discord"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
@@ -1584,7 +1751,12 @@
       "categories": "GTK;GNOME;System;Filesystem;Utility;",
       "comment": "Check folder sizes and available disk space",
       "exec": "baobab",
+      "icon": "org.gnome.baobab",
+      "wmclass": "",
       "desktop": "org.gnome.baobab.desktop",
+      "desktops": [
+        "org.gnome.baobab"
+      ],
       "design": {
         "kind": "object",
         "object": "gauge",
@@ -1611,7 +1783,7 @@
         "source": "apps/disk-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the drive with the first-aid cross",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "disk-utility/icon-1024.png"
@@ -1648,7 +1820,12 @@
       "categories": "GTK;Settings;DesktopSettings;HardwareSettings;",
       "comment": "wlroots displays configuration",
       "exec": "wdisplays",
+      "icon": "wdisplays",
+      "wmclass": "",
       "desktop": "network.cycles.wdisplays.desktop",
+      "desktops": [
+        "network.cycles.wdisplays"
+      ],
       "design": {
         "kind": "object",
         "object": "monitor",
@@ -1687,7 +1864,12 @@
       "categories": "GNOME;GTK;Graphics;Scanning;",
       "comment": "Make a digital copy of your photos and documents",
       "exec": "simple-scan",
+      "icon": "org.gnome.SimpleScan",
+      "wmclass": "",
       "desktop": "org.gnome.SimpleScan.desktop",
+      "desktops": [
+        "org.gnome.SimpleScan"
+      ],
       "design": {
         "kind": "object",
         "object": "scanner",
@@ -1705,7 +1887,12 @@
       "categories": "GNOME;GTK;Office;Viewer;Graphics;2DGraphics;VectorGraphics;",
       "comment": "View multi-page documents",
       "exec": "evince",
+      "icon": "org.gnome.Evince",
+      "wmclass": "",
       "desktop": "org.gnome.Evince.desktop",
+      "desktops": [
+        "org.gnome.Evince"
+      ],
       "design": {
         "kind": "object",
         "object": "book_open",
@@ -1796,7 +1983,7 @@
         "source": "apps/dvd-player.png",
         "era": "Mavericks (10.9)",
         "credit": "the player puck",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "dvd-player/icon-1024.png"
@@ -1872,7 +2059,12 @@
       "categories": "Development;TextEditor;",
       "comment": "Edit text",
       "exec": "emacs",
+      "icon": "emacs",
+      "wmclass": "Emacs",
       "desktop": "emacs.desktop",
+      "desktops": [
+        "emacs"
+      ],
       "design": {
         "kind": "hand-authored",
         "source": "Emacs"
@@ -1888,7 +2080,12 @@
       "categories": "Development;TextEditor;",
       "comment": "Edit text",
       "exec": "sh",
+      "icon": "emacs",
+      "wmclass": "Emacs",
       "desktop": "emacsclient.desktop",
+      "desktops": [
+        "emacsclient"
+      ],
       "design": {
         "kind": "hand-authored",
         "source": "Emacs"
@@ -1904,7 +2101,12 @@
       "categories": "Utility;GTK;GNOME;",
       "comment": "Generate project avatars",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.design.Emblem",
+      "wmclass": "",
       "desktop": "org.gnome.design.Emblem.desktop",
+      "desktops": [
+        "org.gnome.design.Emblem"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
@@ -1922,7 +2124,12 @@
       "categories": "AudioVideo;Player;",
       "comment": "GTK4 libadwaita MPD client",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.htkhiem.Euphonica",
+      "wmclass": "",
       "desktop": "io.github.htkhiem.Euphonica.desktop",
+      "desktops": [
+        "io.github.htkhiem.Euphonica"
+      ],
       "design": {
         "kind": "object",
         "object": "headphones",
@@ -1940,7 +2147,12 @@
       "categories": "GNOME;GTK;Office;Email;Calendar;ContactManagement;X-Red-Hat-Base;",
       "comment": "Manage your email, contacts and schedule",
       "exec": "evolution",
+      "icon": "evolution",
+      "wmclass": "",
       "desktop": "org.gnome.Evolution.desktop",
+      "desktops": [
+        "org.gnome.Evolution"
+      ],
       "design": {
         "kind": "object",
         "object": "envelope",
@@ -1958,7 +2170,12 @@
       "categories": "GNOME;GTK;Utility;",
       "comment": "Configure GNOME Shell Extensions",
       "exec": "/usr/bin/gnome-extensions-app",
+      "icon": "org.gnome.Extensions",
+      "wmclass": "",
       "desktop": "org.gnome.Extensions.desktop",
+      "desktops": [
+        "org.gnome.Extensions"
+      ],
       "design": {
         "kind": "object",
         "object": "puzzle_piece",
@@ -1976,11 +2193,16 @@
       "categories": "GNOME;GTK;Development;Graphics;Utility;WebDevelopment;",
       "comment": "Pick and format colors",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.github.finefindus.eyedropper",
+      "wmclass": "",
       "desktop": "com.github.finefindus.eyedropper.desktop",
+      "desktops": [
+        "com.github.finefindus.eyedropper"
+      ],
       "design": {
         "kind": "object",
         "object": "paint_tin",
-        "hue": 300,
+        "hue": 188,
         "archetype": "still-life object"
       },
       "files": {
@@ -2003,7 +2225,7 @@
         "source": "apps/facebook.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the 2011 f on its blue tile",
-        "licence": "apple"
+        "licence": "Meta"
       },
       "files": {
         "png": "facebook/icon-1024.png"
@@ -2025,7 +2247,7 @@
         "source": "apps/facetime.png",
         "era": "Mavericks (10.9)",
         "credit": "the video camera on the glass tile",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "facetime/icon-1024.png"
@@ -2080,7 +2302,12 @@
       "categories": "GNOME;GTK;Utility;Core;FileManager;",
       "comment": "Access and organize files",
       "exec": "nautilus",
+      "icon": "org.gnome.Nautilus",
+      "wmclass": "",
       "desktop": "org.gnome.Nautilus.desktop",
+      "desktops": [
+        "org.gnome.Nautilus"
+      ],
       "design": {
         "kind": "object",
         "object": "chrome_folder",
@@ -2141,10 +2368,17 @@
       "categories": "Network;WebBrowser;GTK;",
       "comment": "Browse the Web",
       "exec": "firefox",
+      "icon": "firefox",
+      "wmclass": "",
       "desktop": "firefox.desktop",
+      "desktops": [
+        "firefox"
+      ],
       "design": {
-        "kind": "historical",
-        "source": "Firefox 24"
+        "kind": "object",
+        "object": "browser_globe",
+        "hue": 24,
+        "archetype": "still-life object"
       },
       "files": {
         "png": "firefox/icon-1024.png"
@@ -2201,11 +2435,16 @@
       "categories": "Utility;",
       "comment": "Manage Flatpak permissions",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.github.tchx84.Flatseal",
+      "wmclass": "",
       "desktop": "com.github.tchx84.Flatseal.desktop",
+      "desktops": [
+        "com.github.tchx84.Flatseal"
+      ],
       "design": {
         "kind": "object",
         "object": "shield",
-        "hue": 210,
+        "hue": 258,
         "archetype": "still-life object"
       },
       "files": {
@@ -2228,7 +2467,7 @@
         "source": "apps/font-book.png",
         "era": "Mavericks (10.9)",
         "credit": "the type specimen book",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "font-book/icon-1024.png"
@@ -2248,7 +2487,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 262,
+        "hue": 280,
         "archetype": "still-life object"
       },
       "files": {
@@ -2262,7 +2501,12 @@
       "categories": "GNOME;GTK;Utility;FileTransfer;P2P;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "de.haeckerfelix.Fragments",
+      "wmclass": "",
       "desktop": "de.haeckerfelix.Fragments.desktop",
+      "desktops": [
+        "de.haeckerfelix.Fragments"
+      ],
       "design": {
         "kind": "object",
         "object": "funnel",
@@ -2280,7 +2524,12 @@
       "categories": "Education;GTK;GNOME",
       "comment": "Look up guitar chords",
       "exec": "/usr/bin/flatpak",
+      "icon": "dev.bragefuglseth.Fretboard",
+      "wmclass": "",
       "desktop": "dev.bragefuglseth.Fretboard.desktop",
+      "desktops": [
+        "dev.bragefuglseth.Fretboard"
+      ],
       "design": {
         "kind": "object",
         "object": "tuning_fork",
@@ -2329,7 +2578,7 @@
         "source": "apps/game-center.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the board-game table",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "game-center/icon-1024.png"
@@ -2342,7 +2591,12 @@
       "categories": "GTK;GNOME;Development;ProjectManagement;",
       "comment": "The simple modeling tool",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gaphor.Gaphor",
+      "wmclass": "",
       "desktop": "org.gaphor.Gaphor.desktop",
+      "desktops": [
+        "org.gaphor.Gaphor"
+      ],
       "design": {
         "kind": "object",
         "object": "blueprint",
@@ -2369,7 +2623,7 @@
         "source": "apps/garageband.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the electric guitar",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "garageband/icon-1024.png"
@@ -2431,7 +2685,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 276,
+        "hue": 310,
         "archetype": "still-life object"
       },
       "files": {
@@ -2466,7 +2720,12 @@
       "categories": "Development;RevisionControl;",
       "comment": "Git GUI",
       "exec": "git",
+      "icon": "git-gui",
+      "wmclass": "",
       "desktop": "git-gui.desktop",
+      "desktops": [
+        "git-gui"
+      ],
       "design": {
         "kind": "object",
         "object": "pipe_branch",
@@ -2484,7 +2743,12 @@
       "categories": "GNOME;GTK;System;Monitor;",
       "comment": "View current processes and monitor system state",
       "exec": "gnome-system-monitor",
+      "icon": "org.gnome.SystemMonitor",
+      "wmclass": "gnome-system-monitor",
       "desktop": "gnome-system-monitor-kde.desktop",
+      "desktops": [
+        "gnome-system-monitor-kde"
+      ],
       "design": {
         "kind": "object",
         "object": "gauge_cluster",
@@ -2509,7 +2773,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 200,
+        "hue": 160,
         "archetype": "still-life object"
       },
       "files": {
@@ -2638,7 +2902,7 @@
         "source": "apps/grab.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the camera on the tripod stand",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "grab/icon-1024.png"
@@ -2651,7 +2915,12 @@
       "categories": "Office;Database;",
       "comment": "Manage genealogical information, perform genealogical research and ana",
       "exec": "gramps",
+      "icon": "org.gramps_project.Gramps",
+      "wmclass": "",
       "desktop": "org.gramps_project.Gramps.desktop",
+      "desktops": [
+        "org.gramps_project.Gramps"
+      ],
       "design": {
         "kind": "object",
         "object": "book",
@@ -2678,7 +2947,7 @@
         "source": "apps/grapher.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the rainbow surface plot",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "grapher/icon-1024.png"
@@ -2691,7 +2960,12 @@
       "categories": "Education;Science",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "se.sjoerd.Graphs",
+      "wmclass": "",
       "desktop": "se.sjoerd.Graphs.desktop",
+      "desktops": [
+        "se.sjoerd.Graphs"
+      ],
       "design": {
         "kind": "object",
         "object": "chart_recorder",
@@ -2709,7 +2983,12 @@
       "categories": "Development;GTK;",
       "comment": "GTK code examples and demonstrations",
       "exec": "gtk4-demo",
+      "icon": "org.gtk.Demo4",
+      "wmclass": "",
       "desktop": "org.gtk.Demo4.desktop",
+      "desktops": [
+        "org.gtk.Demo4"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -2748,7 +3027,12 @@
       "categories": "GTK;AudioVideo;Video;",
       "comment": "Transcodes DVD, Blu-ray, and other media",
       "exec": "/usr/bin/flatpak",
+      "icon": "fr.handbrake.ghb",
+      "wmclass": "",
       "desktop": "fr.handbrake.ghb.desktop",
+      "desktops": [
+        "fr.handbrake.ghb"
+      ],
       "design": {
         "kind": "object",
         "object": "tape_cartridge",
@@ -2766,7 +3050,12 @@
       "categories": "GNOME;GTK;Core;Documentation;Utility;",
       "comment": "Get help with GNOME",
       "exec": "yelp",
+      "icon": "org.gnome.Yelp",
+      "wmclass": "",
       "desktop": "org.gnome.Yelp.desktop",
+      "desktops": [
+        "org.gnome.Yelp"
+      ],
       "design": {
         "kind": "object",
         "object": "book",
@@ -2814,7 +3103,7 @@
         "source": "apps/ibooks-author.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the open book and pencil",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "ibooks-author/icon-1024.png"
@@ -2836,7 +3125,7 @@
         "source": "apps/ical.png",
         "era": "Mavericks (10.9)",
         "credit": "the tear-off desk calendar",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "ical/icon-1024.png"
@@ -2849,7 +3138,12 @@
       "categories": "Development;GTK;",
       "comment": "An application that edits icons",
       "exec": "gtk4-icon-editor",
+      "icon": "org.gtk.Shaper",
+      "wmclass": "",
       "desktop": "org.gtk.Shaper.desktop",
+      "desktops": [
+        "org.gtk.Shaper"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -2889,7 +3183,12 @@
       "categories": "GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;",
       "comment": "View and edit images",
       "exec": "loupe",
+      "icon": "org.gnome.Loupe",
+      "wmclass": "",
       "desktop": "org.gnome.Loupe.desktop",
+      "desktops": [
+        "org.gnome.Loupe"
+      ],
       "design": {
         "kind": "object",
         "object": "loupe",
@@ -2916,7 +3215,7 @@
         "source": "apps/imovie.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the star on its clapper",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "imovie/icon-1024.png"
@@ -2929,7 +3228,12 @@
       "categories": "GTK;GNOME;Utility;System;DiscBurning;",
       "comment": "Create bootable drives",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.gitlab.adhami3310.Impression",
+      "wmclass": "",
       "desktop": "io.gitlab.adhami3310.Impression.desktop",
+      "desktops": [
+        "io.gitlab.adhami3310.Impression"
+      ],
       "design": {
         "kind": "object",
         "object": "usb_stick",
@@ -2969,7 +3273,12 @@
       "categories": "Graphics;VectorGraphics;GTK;",
       "comment": "Create and edit Scalable Vector Graphics images",
       "exec": "inkscape",
+      "icon": "org.inkscape.Inkscape",
+      "wmclass": "",
       "desktop": "org.inkscape.Inkscape.desktop",
+      "desktops": [
+        "org.inkscape.Inkscape"
+      ],
       "design": {
         "kind": "object",
         "object": "pen_nib",
@@ -3003,12 +3312,17 @@
     },
     {
       "name": "IntelliJ IDEA",
-      "display": "IntelliJ IDEA 2026.2.3",
+      "display": "IntelliJ IDEA 2026.2.4",
       "slug": "intellij-idea",
       "categories": "Development;IDE;",
       "comment": "The IDE for pro Java and Kotlin development",
       "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/intellij-idea/bin/idea\"",
+      "icon": "jetbrains-idea-9ab5d346-9ae8-47a6-aa61-d4a71fe71380",
+      "wmclass": "jetbrains-idea",
       "desktop": "jetbrains-idea-9ab5d346-9ae8-47a6-aa61-d4a71fe71380.desktop",
+      "desktops": [
+        "jetbrains-idea-9ab5d346-9ae8-47a6-aa61-d4a71fe71380"
+      ],
       "design": {
         "kind": "hand-authored",
         "source": "IntelliJ IDEA"
@@ -3033,7 +3347,7 @@
         "source": "apps/iphoto.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the camera-lens aperture",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "iphoto/icon-1024.png"
@@ -3068,7 +3382,12 @@
       "categories": "Development",
       "comment": "",
       "exec": "/home/joe/Downloads/jetbrains-toolbox-3.6.4.86641/bin/jetbrains-toolbox",
+      "icon": "jetbrains-toolbox",
+      "wmclass": "jetbrains-toolbox",
       "desktop": "jetbrains-toolbox.desktop",
+      "desktops": [
+        "jetbrains-toolbox"
+      ],
       "design": {
         "kind": "object",
         "object": "toolbox",
@@ -3149,7 +3468,12 @@
       "categories": "Qt;KDE;AudioVideo;AudioVideoEditing;",
       "comment": "Nonlinear video editor by KDE",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.kde.kdenlive",
+      "wmclass": "kdenlive",
       "desktop": "org.kde.kdenlive.desktop",
+      "desktops": [
+        "org.kde.kdenlive"
+      ],
       "design": {
         "kind": "object",
         "object": "clapper",
@@ -3167,7 +3491,12 @@
       "categories": "Utility;Security;Qt;",
       "comment": "Community-driven port of the Windows application “KeePass Password Saf",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.keepassxc.KeePassXC",
+      "wmclass": "keepassxc",
       "desktop": "org.keepassxc.KeePassXC.desktop",
+      "desktops": [
+        "org.keepassxc.KeePassXC"
+      ],
       "design": {
         "kind": "object",
         "object": "keyring",
@@ -3194,7 +3523,7 @@
         "source": "apps/keychain-access.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the ring of keys",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "keychain-access/icon-1024.png"
@@ -3216,7 +3545,7 @@
         "source": "apps/keynote.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the lectern and its slide",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "keynote/icon-1024.png"
@@ -3229,11 +3558,16 @@
       "categories": "System;TerminalEmulator;",
       "comment": "Fast, feature-rich, GPU based terminal",
       "exec": "kitty",
+      "icon": "kitty",
+      "wmclass": "",
       "desktop": "kitty.desktop",
+      "desktops": [
+        "kitty"
+      ],
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 278,
+        "hue": 210,
         "archetype": "still-life object"
       },
       "files": {
@@ -3254,7 +3588,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 224,
+        "hue": 30,
         "archetype": "still-life object"
       },
       "files": {
@@ -3268,7 +3602,12 @@
       "categories": "Qt;KDE;Graphics;2DGraphics;RasterGraphics;",
       "comment": "Digital Painting",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.kde.krita",
+      "wmclass": "krita",
       "desktop": "org.kde.krita.desktop",
+      "desktops": [
+        "org.kde.krita"
+      ],
       "design": {
         "kind": "object",
         "object": "paint_tin",
@@ -3308,7 +3647,13 @@
       "categories": "Office;X-Red-Hat-Base;X-SuSE-Core-Office;",
       "comment": "Launch applications to create text documents, spreadsheets, presentati",
       "exec": "libreoffice",
+      "icon": "libreoffice-startcenter",
+      "wmclass": "libreoffice-startcenter",
       "desktop": "libreoffice-startcenter.desktop",
+      "desktops": [
+        "libreoffice-startcenter",
+        "org.libreoffice.LibreOffice"
+      ],
       "design": {
         "kind": "object",
         "object": "documents",
@@ -3326,7 +3671,13 @@
       "categories": "Office;Database;X-Red-Hat-Base;",
       "comment": "Manage databases, create queries and reports to track and manage your",
       "exec": "libreoffice",
+      "icon": "libreoffice-base",
+      "wmclass": "libreoffice-base",
       "desktop": "libreoffice-base.desktop",
+      "desktops": [
+        "libreoffice-base",
+        "org.libreoffice.LibreOffice.base"
+      ],
       "design": {
         "kind": "object",
         "object": "card_catalog",
@@ -3344,7 +3695,13 @@
       "categories": "Office;Spreadsheet;X-Red-Hat-Base;",
       "comment": "Perform calculations, analyze information and manage lists in spreadsh",
       "exec": "libreoffice",
+      "icon": "libreoffice-calc",
+      "wmclass": "libreoffice-calc",
       "desktop": "libreoffice-calc.desktop",
+      "desktops": [
+        "libreoffice-calc",
+        "org.libreoffice.LibreOffice.calc"
+      ],
       "design": {
         "kind": "object",
         "object": "ledger",
@@ -3362,7 +3719,13 @@
       "categories": "Office;FlowChart;Graphics;2DGraphics;VectorGraphics;X-Red-Hat-Base;",
       "comment": "Create and edit drawings, flow charts and logos.",
       "exec": "libreoffice",
+      "icon": "libreoffice-draw",
+      "wmclass": "libreoffice-draw",
       "desktop": "libreoffice-draw.desktop",
+      "desktops": [
+        "libreoffice-draw",
+        "org.libreoffice.LibreOffice.draw"
+      ],
       "design": {
         "kind": "object",
         "object": "palette",
@@ -3380,7 +3743,13 @@
       "categories": "Office;Presentation;X-Red-Hat-Base;",
       "comment": "Create and edit presentations for slideshows, meetings and Web pages.",
       "exec": "libreoffice",
+      "icon": "libreoffice-impress",
+      "wmclass": "libreoffice-impress",
       "desktop": "libreoffice-impress.desktop",
+      "desktops": [
+        "libreoffice-impress",
+        "org.libreoffice.LibreOffice.impress"
+      ],
       "design": {
         "kind": "object",
         "object": "slide_carousel",
@@ -3398,7 +3767,13 @@
       "categories": "Office;Spreadsheet;Education;Science;Math;X-Red-Hat-Base;",
       "comment": "Create and edit scientific formulas and equations.",
       "exec": "libreoffice",
+      "icon": "libreoffice-math",
+      "wmclass": "libreoffice-math",
       "desktop": "libreoffice-math.desktop",
+      "desktops": [
+        "libreoffice-math",
+        "org.libreoffice.LibreOffice.math"
+      ],
       "design": {
         "kind": "object",
         "object": "type_block",
@@ -3416,7 +3791,13 @@
       "categories": "Office;WordProcessor;X-Red-Hat-Base;",
       "comment": "Create and edit text and graphics in letters, reports, documents and W",
       "exec": "libreoffice",
+      "icon": "libreoffice-writer",
+      "wmclass": "libreoffice-writer",
       "desktop": "libreoffice-writer.desktop",
+      "desktops": [
+        "libreoffice-writer",
+        "org.libreoffice.LibreOffice.writer"
+      ],
       "design": {
         "kind": "object",
         "object": "typewriter",
@@ -3455,7 +3836,12 @@
       "categories": "GNOME;GTK;Game;LogicGame;",
       "comment": "Turn off all the lights",
       "exec": "lightsoff",
+      "icon": "org.gnome.LightsOff",
+      "wmclass": "",
       "desktop": "org.gnome.LightsOff.desktop",
+      "desktops": [
+        "org.gnome.LightsOff"
+      ],
       "design": {
         "kind": "object",
         "object": "lamps",
@@ -3495,7 +3881,12 @@
       "categories": "Development;Utility;",
       "comment": "Use the chat UI or local server to experiment and develop with local L",
       "exec": "/usr/bin/flatpak",
+      "icon": "ai.lmstudio.lm-studio",
+      "wmclass": "LM-Studio",
       "desktop": "ai.lmstudio.lm-studio.desktop",
+      "desktops": [
+        "ai.lmstudio.lm-studio"
+      ],
       "design": {
         "kind": "object",
         "object": "chip",
@@ -3534,7 +3925,12 @@
       "categories": "GTK;GNOME;System;Monitor;Utility;",
       "comment": "View detailed event logs for the system",
       "exec": "gnome-logs",
+      "icon": "org.gnome.Logs",
+      "wmclass": "",
       "desktop": "org.gnome.Logs.desktop",
+      "desktops": [
+        "org.gnome.Logs"
+      ],
       "design": {
         "kind": "object",
         "object": "journal",
@@ -3573,7 +3969,12 @@
       "categories": "Utility;GTK;GNOME;",
       "comment": "Generate placeholder text",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.design.Lorem",
+      "wmclass": "",
       "desktop": "org.gnome.design.Lorem.desktop",
+      "desktops": [
+        "org.gnome.design.Lorem"
+      ],
       "design": {
         "kind": "object",
         "object": "notes_pad",
@@ -3612,7 +4013,12 @@
       "categories": "GNOME;GTK;Game;BoardGame;LogicGame;",
       "comment": "Match tiles and clear the board",
       "exec": "gnome-mahjongg",
+      "icon": "org.gnome.Mahjongg",
+      "wmclass": "",
       "desktop": "org.gnome.Mahjongg.desktop",
+      "desktops": [
+        "org.gnome.Mahjongg"
+      ],
       "design": {
         "kind": "object",
         "object": "mahjong_tile",
@@ -3652,7 +4058,12 @@
       "categories": "GNOME;GTK;Utility;",
       "comment": "A simple maps application",
       "exec": "gapplication",
+      "icon": "org.gnome.Maps",
+      "wmclass": "",
       "desktop": "org.gnome.Maps.desktop",
+      "desktops": [
+        "org.gnome.Maps"
+      ],
       "design": {
         "kind": "object",
         "object": "paper",
@@ -3755,7 +4166,12 @@
       "categories": "Utility;TextEditor;",
       "comment": "A simple editor for simple needs",
       "exec": "msedit",
+      "icon": "msedit",
+      "wmclass": "",
       "desktop": "com.microsoft.edit.desktop",
+      "desktops": [
+        "com.microsoft.edit"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -3782,7 +4198,7 @@
         "source": "apps/microsoft-excel.png",
         "era": "Mountain Lion (10.8)",
         "credit": "Excel 2011, the green X",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "microsoft-excel/icon-1024.png"
@@ -3804,7 +4220,7 @@
         "source": "apps/microsoft-messenger.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the two blue figures",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "microsoft-messenger/icon-1024.png"
@@ -3826,7 +4242,7 @@
         "source": "apps/microsoft-outlook.png",
         "era": "Mountain Lion (10.8)",
         "credit": "Outlook 2011, the yellow O",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "microsoft-outlook/icon-1024.png"
@@ -3848,7 +4264,7 @@
         "source": "apps/microsoft-powerpoint.png",
         "era": "Mountain Lion (10.8)",
         "credit": "PowerPoint 2011, the orange P",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "microsoft-powerpoint/icon-1024.png"
@@ -3891,7 +4307,7 @@
         "source": "apps/microsoft-word.png",
         "era": "Mountain Lion (10.8)",
         "credit": "Word 2011, the blue W",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "microsoft-word/icon-1024.png"
@@ -3913,7 +4329,7 @@
         "source": "apps/migration-assistant.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the two machines with the transfer arrow",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "migration-assistant/icon-1024.png"
@@ -3926,7 +4342,12 @@
       "categories": "GNOME;GTK;Game;LogicGame;",
       "comment": "Clear hidden mines from a minefield",
       "exec": "gnome-mines",
+      "icon": "org.gnome.Mines",
+      "wmclass": "",
       "desktop": "org.gnome.Mines.desktop",
+      "desktops": [
+        "org.gnome.Mines"
+      ],
       "design": {
         "kind": "object",
         "object": "naval_mine",
@@ -3965,7 +4386,12 @@
       "categories": "AudioVideo;Audio;Video;Player;TV;",
       "comment": "Play movies and songs",
       "exec": "mpv",
+      "icon": "mpv",
+      "wmclass": "mpv",
       "desktop": "mpv.desktop",
+      "desktops": [
+        "mpv"
+      ],
       "design": {
         "kind": "object",
         "object": "optical_disc",
@@ -3983,7 +4409,12 @@
       "categories": "GNOME;GTK;AudioVideo;Player;Audio;",
       "comment": "Play and organize your music collection",
       "exec": "gnome-music",
+      "icon": "org.gnome.Music",
+      "wmclass": "",
       "desktop": "org.gnome.Music.desktop",
+      "desktops": [
+        "org.gnome.Music"
+      ],
       "design": {
         "kind": "object",
         "object": "record_sleeve",
@@ -4001,7 +4432,12 @@
       "categories": "System;Settings",
       "comment": "Full root access (via sudo)",
       "exec": "myrlyn-sudo",
+      "icon": "Myrlyn.png",
+      "wmclass": "",
       "desktop": "myrlyn-sudo.desktop",
+      "desktops": [
+        "myrlyn-sudo"
+      ],
       "design": {
         "kind": "object",
         "object": "crate",
@@ -4019,7 +4455,12 @@
       "categories": "System;Settings",
       "comment": "Read-only mode for non-privileged users",
       "exec": "/usr/bin/myrlyn",
+      "icon": "Myrlyn.png",
+      "wmclass": "",
       "desktop": "myrlyn-user.desktop",
+      "desktops": [
+        "myrlyn-user"
+      ],
       "design": {
         "kind": "object",
         "object": "crate",
@@ -4109,7 +4550,7 @@
         "source": "apps/network-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the RJ-45 plug",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "network-utility/icon-1024.png"
@@ -4122,7 +4563,12 @@
       "categories": "GNOME;GTK;Network;Feed;",
       "comment": "Keep up with your feeds",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.gitlab.news_flash.NewsFlash",
+      "wmclass": "",
       "desktop": "io.gitlab.news_flash.NewsFlash.desktop",
+      "desktops": [
+        "io.gitlab.news_flash.NewsFlash"
+      ],
       "design": {
         "kind": "object",
         "object": "newspaper",
@@ -4161,7 +4607,12 @@
       "categories": "Development;GTK;",
       "comment": "An application that edits render nodes",
       "exec": "gtk4-node-editor",
+      "icon": "org.gtk.gtk4.NodeEditor",
+      "wmclass": "",
       "desktop": "org.gtk.gtk4.NodeEditor.desktop",
+      "desktops": [
+        "org.gtk.gtk4.NodeEditor"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -4201,7 +4652,12 @@
       "categories": "GTK;Network;WebBrowser;",
       "comment": "Be Productive",
       "exec": "/usr/bin/flatpak",
+      "icon": "engineer.atlas.Nyxt",
+      "wmclass": "nyxt",
       "desktop": "engineer.atlas.Nyxt.desktop",
+      "desktops": [
+        "engineer.atlas.Nyxt"
+      ],
       "design": {
         "kind": "object",
         "object": "browser_globe",
@@ -4219,7 +4675,12 @@
       "categories": "AudioVideo;Recorder;",
       "comment": "Free and Open Source Streaming/Recording Software",
       "exec": "obs",
+      "icon": "com.obsproject.Studio",
+      "wmclass": "obs",
       "desktop": "com.obsproject.Studio.desktop",
+      "desktops": [
+        "com.obsproject.Studio"
+      ],
       "design": {
         "kind": "object",
         "object": "camcorder",
@@ -4279,7 +4740,12 @@
       "categories": "GNOME;GTK;Documentation;Utility;",
       "comment": "",
       "exec": "opensuse-welcome",
+      "icon": "org.opensuse.Welcome",
+      "wmclass": "",
       "desktop": "org.opensuse.Welcome.desktop",
+      "desktops": [
+        "org.opensuse.Welcome"
+      ],
       "design": {
         "kind": "object",
         "object": "service_bell",
@@ -4318,10 +4784,15 @@
       "categories": "Settings;X-GNOME-Settings-Panel;",
       "comment": "Enable or disable package repositories",
       "exec": "gpk-prefs",
+      "icon": "gpk-prefs",
+      "wmclass": "",
       "desktop": "gpk-prefs.desktop",
+      "desktops": [
+        "gpk-prefs"
+      ],
       "design": {
         "kind": "object",
-        "object": "card_catalog",
+        "object": "spec_sheet",
         "hue": 150,
         "archetype": "still-life object"
       },
@@ -4336,11 +4807,16 @@
       "categories": "GNOME;GTK;System;",
       "comment": "Update software installed on the system",
       "exec": "gpk-update-viewer",
+      "icon": "system-software-update",
+      "wmclass": "",
       "desktop": "org.gnome.PackageUpdater.desktop",
+      "desktops": [
+        "org.gnome.PackageUpdater"
+      ],
       "design": {
         "kind": "object",
         "object": "crate",
-        "hue": 150,
+        "hue": 32,
         "archetype": "still-life object"
       },
       "files": {
@@ -4363,7 +4839,7 @@
         "source": "apps/pages.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the ink bottle and fountain pen",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "pages/icon-1024.png"
@@ -4376,7 +4852,12 @@
       "categories": "GTK;GNOME;System;",
       "comment": "Set parental controls and monitor usage by users",
       "exec": "malcontent-control",
+      "icon": "org.freedesktop.MalcontentControl",
+      "wmclass": "",
       "desktop": "org.freedesktop.MalcontentControl.desktop",
+      "desktops": [
+        "org.freedesktop.MalcontentControl"
+      ],
       "design": {
         "kind": "object",
         "object": "shield",
@@ -4394,7 +4875,12 @@
       "categories": "GNOME;GTK;Security;Utility;DesktopSettings;X-XFCE-SettingsDialog;",
       "comment": "Manage your passwords and encryption keys",
       "exec": "seahorse",
+      "icon": "org.gnome.seahorse.Application",
+      "wmclass": "",
       "desktop": "org.gnome.seahorse.Application.desktop",
+      "desktops": [
+        "org.gnome.seahorse.Application"
+      ],
       "design": {
         "kind": "object",
         "object": "keyring",
@@ -4476,7 +4962,12 @@
       "categories": "GNOME;GTK;Core;Graphics;Photography;",
       "comment": "Access, organize and share photos",
       "exec": "gnome-photos",
+      "icon": "org.gnome.Photos",
+      "wmclass": "",
       "desktop": "org.gnome.Photos.desktop",
+      "desktops": [
+        "org.gnome.Photos"
+      ],
       "design": {
         "kind": "object",
         "object": "photo_print",
@@ -4559,7 +5050,12 @@
       "categories": "Development;GTK;",
       "comment": "A simple editor demonstrating GTK printing",
       "exec": "gtk4-print-editor",
+      "icon": "org.gtk.PrintEditor4",
+      "wmclass": "",
       "desktop": "org.gtk.PrintEditor4.desktop",
+      "desktops": [
+        "org.gtk.PrintEditor4"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -4620,7 +5116,12 @@
       "categories": "Game;ActionGame;AdventureGame;Simulation;PackageManager;",
       "comment": "Discover, manage, and play Minecraft instances",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.prismlauncher.PrismLauncher",
+      "wmclass": "PrismLauncher",
       "desktop": "org.prismlauncher.PrismLauncher.desktop",
+      "desktops": [
+        "org.prismlauncher.PrismLauncher"
+      ],
       "design": {
         "kind": "object",
         "object": "pickaxe",
@@ -4638,7 +5139,12 @@
       "categories": "Network;",
       "comment": "Proton VPN GUI client",
       "exec": "protonvpn-app",
+      "icon": "proton-vpn-logo",
+      "wmclass": "protonvpn-app",
       "desktop": "proton-vpn.desktop",
+      "desktops": [
+        "proton-vpn"
+      ],
       "design": {
         "kind": "object",
         "object": "padlock",
@@ -4656,7 +5162,12 @@
       "categories": "Network;FileTransfer;P2P;Qt;",
       "comment": "Download and share files over BitTorrent",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.qbittorrent.qBittorrent",
+      "wmclass": "qbittorrent",
       "desktop": "org.qbittorrent.qBittorrent.desktop",
+      "desktops": [
+        "org.qbittorrent.qBittorrent"
+      ],
       "design": {
         "kind": "object",
         "object": "magnet",
@@ -4695,11 +5206,16 @@
       "categories": "AudioVideo;Audio;Video;Midi;X-Alsa;X-PipeWire;Qt;",
       "comment": "qpwgraph is a PipeWire graph Qt GUI interface",
       "exec": "qpwgraph",
+      "icon": "org.rncbc.qpwgraph",
+      "wmclass": "",
       "desktop": "org.rncbc.qpwgraph.desktop",
+      "desktops": [
+        "org.rncbc.qpwgraph"
+      ],
       "design": {
         "kind": "object",
         "object": "patch_panel",
-        "hue": 196,
+        "hue": 262,
         "archetype": "still-life object"
       },
       "files": {
@@ -4713,7 +5229,12 @@
       "categories": "GNOME;GTK;Game;BlocksGame;",
       "comment": "Fit falling blocks together",
       "exec": "quadrapassel",
+      "icon": "org.gnome.Quadrapassel",
+      "wmclass": "",
       "desktop": "org.gnome.Quadrapassel.desktop",
+      "desktops": [
+        "org.gnome.Quadrapassel"
+      ],
       "design": {
         "kind": "object",
         "object": "tetromino",
@@ -4740,7 +5261,7 @@
         "source": "apps/quicktime-player.png",
         "era": "Mavericks (10.9)",
         "credit": "the blue glass Q",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "quicktime-player/icon-1024.png"
@@ -4795,7 +5316,12 @@
       "categories": "GTK;GNOME;X-GNOME-NetworkSettings;Network;RemoteAccess;GTK;",
       "comment": "Connect to remote desktops",
       "exec": "remmina-file-wrapper",
+      "icon": "org.remmina.Remmina",
+      "wmclass": "org.remmina.Remmina",
       "desktop": "org.remmina.Remmina.desktop",
+      "desktops": [
+        "org.remmina.Remmina"
+      ],
       "design": {
         "kind": "object",
         "object": "remote_desktop",
@@ -4822,7 +5348,7 @@
         "source": "apps/remote-desktop-connection.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the dish over the client window",
-        "licence": "apple"
+        "licence": "Microsoft"
       },
       "files": {
         "png": "remote-desktop-connection/icon-1024.png"
@@ -4835,11 +5361,16 @@
       "categories": "GNOME;GTK;Network;RemoteAccess;X-SuSE-YaST;",
       "comment": "Access remote desktops",
       "exec": "remote-viewer",
+      "icon": "virt-viewer",
+      "wmclass": "",
       "desktop": "remote-viewer.desktop",
+      "desktops": [
+        "remote-viewer"
+      ],
       "design": {
         "kind": "object",
         "object": "remote_desktop",
-        "hue": 204,
+        "hue": 28,
         "archetype": "still-life object"
       },
       "files": {
@@ -4853,7 +5384,12 @@
       "categories": "System;",
       "comment": "Keep an eye on system resources",
       "exec": "/usr/bin/flatpak",
+      "icon": "net.nokyan.Resources",
+      "wmclass": "",
       "desktop": "net.nokyan.Resources.desktop",
+      "desktops": [
+        "net.nokyan.Resources"
+      ],
       "design": {
         "kind": "object",
         "object": "gauge",
@@ -4871,7 +5407,12 @@
       "categories": "Game;Emulator;",
       "comment": "Unified frontend for many game console emulators, frameworks and media",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.libretro.RetroArch",
+      "wmclass": "retroarch",
       "desktop": "org.libretro.RetroArch.desktop",
+      "desktops": [
+        "org.libretro.RetroArch"
+      ],
       "design": {
         "kind": "object",
         "object": "cartridge",
@@ -4889,11 +5430,16 @@
       "categories": "Emulator;Game;PackageManager",
       "comment": "Platform for managing and playing retro games",
       "exec": "/usr/bin/flatpak",
+      "icon": "net.retrodeck.retrodeck",
+      "wmclass": "",
       "desktop": "net.retrodeck.retrodeck.desktop",
+      "desktops": [
+        "net.retrodeck.retrodeck"
+      ],
       "design": {
         "kind": "object",
         "object": "cartridge",
-        "hue": 338,
+        "hue": 262,
         "archetype": "still-life object"
       },
       "files": {
@@ -4907,7 +5453,12 @@
       "categories": "Emulator;Game;PackageManager",
       "comment": "A handy multi-tool for managing all of RetroDECK",
       "exec": "/usr/bin/flatpak",
+      "icon": "net.retrodeck.retrodeck.configurator",
+      "wmclass": "",
       "desktop": "net.retrodeck.retrodeck.Configurator.desktop",
+      "desktops": [
+        "net.retrodeck.retrodeck.Configurator"
+      ],
       "design": {
         "kind": "object",
         "object": "volume_knob",
@@ -4925,7 +5476,12 @@
       "categories": "GNOME;GTK;Game;BoardGame;",
       "comment": "Dominate the board in a classic version of Reversi",
       "exec": "iagno",
+      "icon": "org.gnome.Reversi",
+      "wmclass": "",
       "desktop": "org.gnome.Reversi.desktop",
+      "desktops": [
+        "org.gnome.Reversi"
+      ],
       "design": {
         "kind": "object",
         "object": "reversi_discs",
@@ -4964,7 +5520,12 @@
       "categories": "GTK;GNOME;Music;AudioVideo;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "dev.diegovsky.Riff",
+      "wmclass": "",
       "desktop": "dev.diegovsky.Riff.desktop",
+      "desktops": [
+        "dev.diegovsky.Riff"
+      ],
       "design": {
         "kind": "object",
         "object": "cassette",
@@ -5003,7 +5564,12 @@
       "categories": "",
       "comment": "",
       "exec": "rofi",
+      "icon": "rofi",
+      "wmclass": "",
       "desktop": "rofi.desktop",
+      "desktops": [
+        "rofi"
+      ],
       "design": {
         "kind": "object",
         "object": "terminal",
@@ -5021,10 +5587,15 @@
       "categories": "",
       "comment": "",
       "exec": "rofi-theme-selector",
+      "icon": "rofi",
+      "wmclass": "",
       "desktop": "rofi-theme-selector.desktop",
+      "desktops": [
+        "rofi-theme-selector"
+      ],
       "design": {
         "kind": "object",
-        "object": "terminal",
+        "object": "palette",
         "hue": 196,
         "archetype": "still-life object"
       },
@@ -5104,7 +5675,12 @@
       "categories": "Network;RemoteAccess;GTK;",
       "comment": "Remote Desktop",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.rustdesk.RustDesk",
+      "wmclass": "rustdesk",
       "desktop": "com.rustdesk.RustDesk.desktop",
+      "desktops": [
+        "com.rustdesk.RustDesk"
+      ],
       "design": {
         "kind": "object",
         "object": "monitor",
@@ -5131,7 +5707,7 @@
         "source": "apps/safari.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the compass, Safari 6",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "safari/icon-1024.png"
@@ -5153,7 +5729,7 @@
         "source": "apps/screen-sharing.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the display with the broadcast mark",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "screen-sharing/icon-1024.png"
@@ -5196,7 +5772,7 @@
         "source": "apps/script-editor.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the scroll and quill",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "script-editor/icon-1024.png"
@@ -5209,7 +5785,12 @@
       "categories": "GNOME;GTK;Settings;",
       "comment": "",
       "exec": "gnome-control-center",
+      "icon": "org.gnome.Settings",
+      "wmclass": "",
       "desktop": "org.gnome.Settings.desktop",
+      "desktops": [
+        "org.gnome.Settings"
+      ],
       "design": {
         "kind": "object",
         "object": "gears",
@@ -5249,7 +5830,12 @@
       "categories": "GNOME;GTK;Audio;AudioVideo;",
       "comment": "Listen to internet radio",
       "exec": "/usr/bin/flatpak",
+      "icon": "de.haeckerfelix.Shortwave",
+      "wmclass": "",
       "desktop": "de.haeckerfelix.Shortwave.desktop",
+      "desktops": [
+        "de.haeckerfelix.Shortwave"
+      ],
       "design": {
         "kind": "object",
         "object": "radio",
@@ -5309,7 +5895,12 @@
       "categories": "Network;InstantMessaging;Chat;",
       "comment": "Private messaging from your desktop",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.signal.Signal",
+      "wmclass": "signal",
       "desktop": "org.signal.Signal.desktop",
+      "desktops": [
+        "org.signal.Signal"
+      ],
       "design": {
         "kind": "hand-authored",
         "source": "Signal"
@@ -5346,7 +5937,12 @@
       "categories": "GNOME;GTK;Network;InstantMessaging;",
       "comment": "Slack Desktop",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.slack.Slack",
+      "wmclass": "Slack",
       "desktop": "com.slack.Slack.desktop",
+      "desktops": [
+        "com.slack.Slack"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
@@ -5364,7 +5960,12 @@
       "categories": "GNOME;GTK;System;PackageManager;",
       "comment": "Add, remove or update software on this computer",
       "exec": "gnome-software",
+      "icon": "org.gnome.Software",
+      "wmclass": "",
       "desktop": "org.gnome.Software.desktop",
+      "desktops": [
+        "org.gnome.Software"
+      ],
       "design": {
         "kind": "object",
         "object": "display_case",
@@ -5382,7 +5983,12 @@
       "categories": "GTK;GNOME;Utility;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.Solanum",
+      "wmclass": "",
       "desktop": "org.gnome.Solanum.desktop",
+      "desktops": [
+        "org.gnome.Solanum"
+      ],
       "design": {
         "kind": "object",
         "object": "stopwatch",
@@ -5400,7 +6006,12 @@
       "categories": "Audio;Music;Player;AudioVideo;",
       "comment": "",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.spotify.Client",
+      "wmclass": "spotify",
       "desktop": "com.spotify.Client.desktop",
+      "desktops": [
+        "com.spotify.Client"
+      ],
       "design": {
         "kind": "object",
         "object": "record_sleeve",
@@ -5439,7 +6050,12 @@
       "categories": "Application;Network;GNOME;GTK;System;X-SuSE-ServiceConfiguration;",
       "comment": "",
       "exec": "/usr/bin/sqlitebrowser",
+      "icon": "sqlitebrowser",
+      "wmclass": "",
       "desktop": "sqlitebrowser.desktop",
+      "desktops": [
+        "sqlitebrowser"
+      ],
       "design": {
         "kind": "object",
         "object": "card_catalog",
@@ -5457,7 +6073,12 @@
       "categories": "Network;FileTransfer;Game;",
       "comment": "Application for managing and playing games on Steam",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.valvesoftware.Steam",
+      "wmclass": "Steam",
       "desktop": "com.valvesoftware.Steam.desktop",
+      "desktops": [
+        "com.valvesoftware.Steam"
+      ],
       "design": {
         "kind": "object",
         "object": "gamepad",
@@ -5497,7 +6118,12 @@
       "categories": "GNOME;GTK;Game;LogicGame;",
       "comment": "Test yourself in the classic puzzle",
       "exec": "gnome-sudoku",
+      "icon": "org.gnome.Sudoku",
+      "wmclass": "",
       "desktop": "org.gnome.Sudoku.desktop",
+      "desktops": [
+        "org.gnome.Sudoku"
+      ],
       "design": {
         "kind": "object",
         "object": "pencil_pad",
@@ -5515,7 +6141,12 @@
       "categories": "GNOME;GTK;Game;LogicGame;",
       "comment": "Clear the screen by removing groups of colored and shaped tiles",
       "exec": "swell-foop",
+      "icon": "org.gnome.SwellFoop",
+      "wmclass": "",
       "desktop": "org.gnome.SwellFoop.desktop",
+      "desktops": [
+        "org.gnome.SwellFoop"
+      ],
       "design": {
         "kind": "object",
         "object": "game_tiles",
@@ -5533,7 +6164,12 @@
       "categories": "GTK;GNOME;Graphics;ImageProcessing;Utility;",
       "comment": "Convert and manipulate images",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.gitlab.adhami3310.Converter",
+      "wmclass": "",
       "desktop": "io.gitlab.adhami3310.Converter.desktop",
+      "desktops": [
+        "io.gitlab.adhami3310.Converter"
+      ],
       "design": {
         "kind": "object",
         "object": "lens_turret",
@@ -5581,7 +6217,7 @@
         "source": "apps/system-image-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the disc image on its stack",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "system-image-utility/icon-1024.png"
@@ -5603,7 +6239,7 @@
         "source": "apps/system-information.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the stethoscope over the board",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "system-information/icon-1024.png"
@@ -5616,7 +6252,12 @@
       "categories": "GNOME;GTK;System;Monitor;",
       "comment": "View current processes and monitor system state",
       "exec": "gnome-system-monitor",
+      "icon": "org.gnome.SystemMonitor",
+      "wmclass": "gnome-system-monitor",
       "desktop": "org.gnome.SystemMonitor.desktop",
+      "desktops": [
+        "org.gnome.SystemMonitor"
+      ],
       "design": {
         "kind": "object",
         "object": "gauge_cluster",
@@ -5643,7 +6284,7 @@
         "source": "apps/system-preferences.png",
         "era": "Mavericks (10.9)",
         "credit": "the brushed-steel gear panel",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "system-preferences/icon-1024.png"
@@ -5656,7 +6297,12 @@
       "categories": "Chat;Network;InstantMessaging;Qt;",
       "comment": "New era of messaging",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.telegram.desktop",
+      "wmclass": "TelegramDesktop",
       "desktop": "org.telegram.desktop.desktop",
+      "desktops": [
+        "org.telegram.desktop"
+      ],
       "design": {
         "kind": "object",
         "object": "paper_plane",
@@ -5681,7 +6327,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 150,
+        "hue": 4,
         "archetype": "still-life object"
       },
       "files": {
@@ -5695,7 +6341,12 @@
       "categories": "GNOME;GTK;Utility;TextEditor;",
       "comment": "View and edit text files",
       "exec": "gnome-text-editor",
+      "icon": "org.gnome.TextEditor",
+      "wmclass": "",
       "desktop": "org.gnome.TextEditor.desktop",
+      "desktops": [
+        "org.gnome.TextEditor"
+      ],
       "design": {
         "kind": "object",
         "object": "notes_pad",
@@ -5713,7 +6364,12 @@
       "categories": "Utility;TextTools;GNOME;GTK;",
       "comment": "Developer's scratchpad",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.gitlab.liferooter.TextPieces",
+      "wmclass": "",
       "desktop": "io.gitlab.liferooter.TextPieces.desktop",
+      "desktops": [
+        "io.gitlab.liferooter.TextPieces"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -5740,7 +6396,7 @@
         "source": "apps/textedit.png",
         "era": "Mavericks (10.9)",
         "credit": "the sheet with the fountain pen",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "textedit/icon-1024.png"
@@ -5795,11 +6451,16 @@
       "categories": "Network;RemoteAccess;",
       "comment": "Connect to VNC server and display remote desktop",
       "exec": "/usr/bin/vncviewer",
+      "icon": "tigervnc",
+      "wmclass": "vncviewer",
       "desktop": "vncviewer.desktop",
+      "desktops": [
+        "vncviewer"
+      ],
       "design": {
         "kind": "object",
         "object": "remote_desktop",
-        "hue": 210,
+        "hue": 262,
         "archetype": "still-life object"
       },
       "files": {
@@ -5820,7 +6481,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 168,
+        "hue": 96,
         "archetype": "still-life object"
       },
       "files": {
@@ -5898,7 +6559,12 @@
       "categories": "GTK;GNOME;AudioVideo;Player;Video;",
       "comment": "Play movies",
       "exec": "totem",
+      "icon": "org.gnome.Totem",
+      "wmclass": "",
       "desktop": "org.gnome.Totem.desktop",
+      "desktops": [
+        "org.gnome.Totem"
+      ],
       "design": {
         "kind": "object",
         "object": "film_reel",
@@ -5916,7 +6582,12 @@
       "categories": "GNOME;GTK;Documentation;Utility;",
       "comment": "",
       "exec": "gnome-tour",
+      "icon": "org.gnome.Tour",
+      "wmclass": "",
       "desktop": "org.gnome.Tour.desktop",
+      "desktops": [
+        "org.gnome.Tour"
+      ],
       "design": {
         "kind": "object",
         "object": "paper",
@@ -5955,7 +6626,12 @@
       "categories": "GNOME;GTK;Utility;",
       "comment": "Tweak advanced GNOME settings",
       "exec": "gnome-tweaks",
+      "icon": "org.gnome.tweaks",
+      "wmclass": "gnome-tweaks",
       "desktop": "org.gnome.tweaks.desktop",
+      "desktops": [
+        "org.gnome.tweaks"
+      ],
       "design": {
         "kind": "object",
         "object": "gears",
@@ -5982,7 +6658,7 @@
         "source": "apps/twitter.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the 2011 bird on its blue tile",
-        "licence": "apple"
+        "licence": "X (Twitter)"
       },
       "files": {
         "png": "twitter/icon-1024.png"
@@ -6016,7 +6692,12 @@
       "categories": "Utility;GTK;GNOME;",
       "comment": "Convert between currencies",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.idevecore.Valuta",
+      "wmclass": "",
       "desktop": "io.github.idevecore.Valuta.desktop",
+      "desktops": [
+        "io.github.idevecore.Valuta"
+      ],
       "design": {
         "kind": "object",
         "object": "balance",
@@ -6034,7 +6715,12 @@
       "categories": "GNOME;GTK;Video;AudioVideo;",
       "comment": "Trim videos quickly",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.gitlab.YaLTeR.VideoTrimmer",
+      "wmclass": "",
       "desktop": "org.gnome.gitlab.YaLTeR.VideoTrimmer.desktop",
+      "desktops": [
+        "org.gnome.gitlab.YaLTeR.VideoTrimmer"
+      ],
       "design": {
         "kind": "object",
         "object": "clapper",
@@ -6052,7 +6738,12 @@
       "categories": "System;Emulator;GTK;",
       "comment": "Manage Virtual Machines for Xen and KVM",
       "exec": "/usr/bin/virt-manager",
+      "icon": "virt-manager",
+      "wmclass": "",
       "desktop": "virt-manager.desktop",
+      "desktops": [
+        "virt-manager"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_cubes",
@@ -6077,7 +6768,7 @@
       "design": {
         "kind": "object",
         "object": "parcel",
-        "hue": 200,
+        "hue": 24,
         "archetype": "still-life object"
       },
       "files": {
@@ -6161,7 +6852,7 @@
       "design": {
         "kind": "object",
         "object": "glass_cubes",
-        "hue": 208,
+        "hue": 268,
         "archetype": "still-life object"
       },
       "files": {
@@ -6184,7 +6875,7 @@
         "source": "apps/voiceover-utility.png",
         "era": "Mountain Lion (10.8)",
         "credit": "the speaking figure",
-        "licence": "apple"
+        "licence": "Apple Inc."
       },
       "files": {
         "png": "voiceover-utility/icon-1024.png"
@@ -6197,7 +6888,12 @@
       "categories": "AudioVideo;Audio;Mixer;GTK;Settings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;",
       "comment": "Adjust the volume level",
       "exec": "pavucontrol",
+      "icon": "org.pulseaudio.pavucontrol",
+      "wmclass": "",
       "desktop": "org.pulseaudio.pavucontrol.desktop",
+      "desktops": [
+        "org.pulseaudio.pavucontrol"
+      ],
       "design": {
         "kind": "object",
         "object": "volume_knob",
@@ -6236,7 +6932,12 @@
       "categories": "GTK;System;Utility;",
       "comment": "Manage all things Flatpak",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.flattool.Warehouse",
+      "wmclass": "",
       "desktop": "io.github.flattool.Warehouse.desktop",
+      "desktops": [
+        "io.github.flattool.Warehouse"
+      ],
       "design": {
         "kind": "object",
         "object": "pallet",
@@ -6254,7 +6955,12 @@
       "categories": "Utility",
       "comment": "Fast and secure file transfer",
       "exec": "/usr/bin/flatpak",
+      "icon": "app.drey.Warp",
+      "wmclass": "",
       "desktop": "app.drey.Warp.desktop",
+      "desktops": [
+        "app.drey.Warp"
+      ],
       "design": {
         "kind": "object",
         "object": "cable_coil",
@@ -6295,7 +7001,12 @@
       "categories": "Network;GNOME;GTK;WebBrowser;",
       "comment": "Browse the web",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.gnome.Epiphany",
+      "wmclass": "",
       "desktop": "org.gnome.Epiphany.desktop",
+      "desktops": [
+        "org.gnome.Epiphany"
+      ],
       "design": {
         "kind": "object",
         "object": "browser_globe",
@@ -6313,7 +7024,12 @@
       "categories": "Utility;GTK;",
       "comment": "Create @font-face kits easily",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.rafaelmardojai.WebfontKitGenerator",
+      "wmclass": "",
       "desktop": "com.rafaelmardojai.WebfontKitGenerator.desktop",
+      "desktops": [
+        "com.rafaelmardojai.WebfontKitGenerator"
+      ],
       "design": {
         "kind": "object",
         "object": "type_block",
@@ -6326,16 +7042,21 @@
     },
     {
       "name": "WebStorm",
-      "display": "WebStorm 2026.2.3",
+      "display": "WebStorm 2026.2.4",
       "slug": "webstorm",
       "categories": "Development;IDE;",
       "comment": "A JavaScript and TypeScript IDE",
       "exec": "\"/home/joe/.local/share/JetBrains/Toolbox/apps/webstorm/bin/webstorm\"",
+      "icon": "jetbrains-webstorm-6b78cee7-0e66-4710-9908-aca3fde58267",
+      "wmclass": "jetbrains-webstorm",
       "desktop": "jetbrains-webstorm-6b78cee7-0e66-4710-9908-aca3fde58267.desktop",
+      "desktops": [
+        "jetbrains-webstorm-6b78cee7-0e66-4710-9908-aca3fde58267"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
-        "hue": 206,
+        "hue": 348,
         "archetype": "still-life object"
       },
       "files": {
@@ -6349,11 +7070,16 @@
       "categories": "Qt;System;Documentation",
       "comment": "The openSUSE Welcome launcher utility.",
       "exec": "/usr/bin/opensuse-welcome-launcher",
+      "icon": "org.opensuse.opensuse_welcome_launcher",
+      "wmclass": "",
       "desktop": "org.opensuse.opensuse_welcome_launcher.desktop",
+      "desktops": [
+        "org.opensuse.opensuse_welcome_launcher"
+      ],
       "design": {
         "kind": "object",
         "object": "service_bell",
-        "hue": 150,
+        "hue": 200,
         "archetype": "still-life object"
       },
       "files": {
@@ -6367,11 +7093,16 @@
       "categories": "System;TerminalEmulator;Utility;",
       "comment": "Wez's Terminal Emulator",
       "exec": "wezterm",
+      "icon": "org.wezfurlong.wezterm",
+      "wmclass": "org.wezfurlong.wezterm",
       "desktop": "org.wezfurlong.wezterm.desktop",
+      "desktops": [
+        "org.wezfurlong.wezterm"
+      ],
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 246,
+        "hue": 250,
         "archetype": "still-life object"
       },
       "files": {
@@ -6385,7 +7116,12 @@
       "categories": "Development;GTK;",
       "comment": "A showcase for GTK widgets, designed for testing themes.",
       "exec": "gtk4-widget-factory",
+      "icon": "org.gtk.WidgetFactory4",
+      "wmclass": "",
       "desktop": "org.gtk.WidgetFactory4.desktop",
+      "desktops": [
+        "org.gtk.WidgetFactory4"
+      ],
       "design": {
         "kind": "object",
         "object": "type_block",
@@ -6403,7 +7139,12 @@
       "categories": "Network;GTK;",
       "comment": "Search and read Wikipedia articles",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.github.hugolabe.Wike",
+      "wmclass": "",
       "desktop": "com.github.hugolabe.Wike.desktop",
+      "desktops": [
+        "com.github.hugolabe.Wike"
+      ],
       "design": {
         "kind": "object",
         "object": "book",
@@ -6442,7 +7183,12 @@
       "categories": "Network;Monitor;Qt;",
       "comment": "Network traffic analyzer",
       "exec": "wireshark",
+      "icon": "org.wireshark.Wireshark",
+      "wmclass": "",
       "desktop": "org.wireshark.Wireshark.desktop",
+      "desktops": [
+        "org.wireshark.Wireshark"
+      ],
       "design": {
         "kind": "object",
         "object": "patch_panel",
@@ -6460,7 +7206,12 @@
       "categories": "Network;Monitor;Qt;",
       "comment": "Network traffic analyzer",
       "exec": "xdg-su",
+      "icon": "org.wireshark.Wireshark",
+      "wmclass": "",
       "desktop": "org.wireshark.Wireshark-su.desktop",
+      "desktops": [
+        "org.wireshark.Wireshark-su"
+      ],
       "design": {
         "kind": "object",
         "object": "patch_panel",
@@ -6478,7 +7229,12 @@
       "categories": "Dictionary;Education;GTK;",
       "comment": "Look up definitions for words",
       "exec": "/usr/bin/flatpak",
+      "icon": "dev.mufeed.Wordbook",
+      "wmclass": "",
       "desktop": "dev.mufeed.Wordbook.desktop",
+      "desktops": [
+        "dev.mufeed.Wordbook"
+      ],
       "design": {
         "kind": "object",
         "object": "book_open",
@@ -6496,7 +7252,12 @@
       "categories": "WebDevelopment;Development;IDE;GNOME;GTK;",
       "comment": "Learn and prototype with GNOME technologies",
       "exec": "/usr/bin/flatpak",
+      "icon": "re.sonny.Workbench",
+      "wmclass": "",
       "desktop": "re.sonny.Workbench.desktop",
+      "desktops": [
+        "re.sonny.Workbench"
+      ],
       "design": {
         "kind": "object",
         "object": "glass_keycap",
@@ -6565,7 +7326,7 @@
       "design": {
         "kind": "object",
         "object": "terminal",
-        "hue": 30,
+        "hue": 40,
         "archetype": "still-life object"
       },
       "files": {
@@ -6579,7 +7340,12 @@
       "categories": "Settings;System;X-SuSE-Core-System;X-SuSE-ControlCenter-System;X-GNOME-SystemSettings;",
       "comment": "Manage system-wide settings",
       "exec": "/usr/bin/xdg-su",
+      "icon": "yast-control-center",
+      "wmclass": "",
       "desktop": "org.opensuse.YaST.desktop",
+      "desktops": [
+        "org.opensuse.YaST"
+      ],
       "design": {
         "kind": "object",
         "object": "toolbox",
@@ -6597,11 +7363,16 @@
       "categories": "System;PackageManager;X-SuSE-ControlCenter-System;",
       "comment": "Install/Remove Software",
       "exec": "/usr/lib/YaST2/bin/sw_single_wrapper",
+      "icon": "yast-sw_single",
+      "wmclass": "",
       "desktop": "org.opensuse.yast.Packager.desktop",
+      "desktops": [
+        "org.opensuse.yast.Packager"
+      ],
       "design": {
         "kind": "object",
         "object": "toolbox",
-        "hue": 142,
+        "hue": 26,
         "archetype": "still-life object"
       },
       "files": {
@@ -6615,7 +7386,12 @@
       "categories": "Utility;",
       "comment": "Download videos and audios from YouTube and other sites",
       "exec": "/usr/bin/flatpak",
+      "icon": "io.github.aandrew_me.ytdn",
+      "wmclass": "",
       "desktop": "io.github.aandrew_me.ytdn.desktop",
+      "desktops": [
+        "io.github.aandrew_me.ytdn"
+      ],
       "design": {
         "kind": "object",
         "object": "funnel",
@@ -6633,7 +7409,12 @@
       "categories": "Chat;Network;InstantMessaging;Qt;",
       "comment": "WhatsApp Desktop for Linux",
       "exec": "/usr/bin/flatpak",
+      "icon": "com.rtosta.zapzap",
+      "wmclass": "zapzap",
       "desktop": "com.rtosta.zapzap.desktop",
+      "desktops": [
+        "com.rtosta.zapzap"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
@@ -6651,11 +7432,16 @@
       "categories": "Network;WebBrowser;",
       "comment": "A fast, private and secure web browser built to improve your day-to-da",
       "exec": "/usr/bin/flatpak",
+      "icon": "app.zen_browser.zen",
+      "wmclass": "zen",
       "desktop": "app.zen_browser.zen.desktop",
+      "desktops": [
+        "app.zen_browser.zen"
+      ],
       "design": {
         "kind": "object",
         "object": "browser_globe",
-        "hue": 212,
+        "hue": 156,
         "archetype": "still-life object"
       },
       "files": {
@@ -6690,7 +7476,12 @@
       "categories": "Network;InstantMessaging;",
       "comment": "Zulip Desktop Client for Linux",
       "exec": "/usr/bin/flatpak",
+      "icon": "org.zulip.Zulip",
+      "wmclass": "Zulip",
       "desktop": "org.zulip.Zulip.desktop",
+      "desktops": [
+        "org.zulip.Zulip"
+      ],
       "design": {
         "kind": "object",
         "object": "bubble",
